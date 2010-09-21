@@ -1,5 +1,5 @@
 /**
-* TwigView for CakePHP
+* TwigView for CakePHP v0.4
 *
 * About Twig
 * http://www.twig-project.org/
@@ -21,7 +21,7 @@ Install:
 
       var $view = 'TwigView.Twig';
 
-4) Create your views with .tpl or .ctp extension
+4) Create your views with .tpl extension
 
 
 
@@ -30,3 +30,18 @@ For example Views and Helper usage see:
 
 http://gist.github.com/589273
 
+
+Started adding Snippets to a TextMate Bundle.
+=====================================================
+
+TextMate is editor for Mac. Here are some Tab completions.
+
+form.c = {{ form.create('$1'$2) }}$3
+form.i = {{ form.input('$1', ['label': '$2'|trans$3]) }}
+form.e = {{ form.end($1) }}$2
+html.a = {{ html.link('$1'|trans, ['controller':'$2']) }}  
+... and so on 
+
+Fast and simple. I think some editors on windows support
+bundles aswell.. anyway. wrote this mainly for myself.
+Will release my bundle at some point. 

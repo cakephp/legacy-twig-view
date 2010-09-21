@@ -27,7 +27,7 @@ App::import('Lib', 'TwigView.CoreExtension');
 /**
  * TwigView for CakePHP
  * 
- * @version 0.3
+ * @version 0.4
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
  * @link http://github.com/m3nt0r/cakephp-twig-view GitHub
  * @package app.views
