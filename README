@@ -4,16 +4,29 @@
 * About Twig
 * http://www.twig-project.org/
 *
+*/
+
 Install:
 =====================================================
+
 1) It's a plugin: 
-     clone/extract to APP/plugins/twig_view
 
-2) Make APP/plugins/twig_view/tmp/views writeable
+      clone/extract to APP/plugins/twig_view
 
-3) Edit your app_controller.php
-     var $view = 'TwigView.Twig'
+2) Make the view-cache folder writeable
+
+      APP/plugins/twig_view/tmp/views
+
+3) Edit your app_controller.php and add/change:
+
+      var $view = 'TwigView.Twig';
 
 4) Create your views with .tpl or .ctp extension
 
+
+
+For example Views and Helper usage see:
+=====================================================
+
+http://gist.github.com/589273
 
