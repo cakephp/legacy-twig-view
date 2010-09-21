@@ -21,6 +21,9 @@ Twig_Autoloader::register();
 App::import('Lib', 'TwigView.TransNode');
 App::import('Lib', 'TwigView.ExtensionI18n');
 
+// get twig core extension
+App::import('Lib', 'TwigView.CoreExtension');
+
 /**
  * TwigView for CakePHP
  * 
@@ -65,6 +68,9 @@ class TwigView extends View {
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => (bool) Configure::read('debug')
 		));;
+		
+		// load cakephp extensions
+		$this->Twig->addExtension(new CoreExtension);
 		
 		// activate |trans filter
 		$this->Twig->addExtension(new Twig_Extension_I18n);
