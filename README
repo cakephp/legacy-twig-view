@@ -1,0 +1,19 @@
+/**
+* TwigView for CakePHP
+*
+* About Twig
+* http://www.twig-project.org/
+*
+Install:
+=====================================================
+1) It's a plugin: 
+     clone/extract to APP/plugins/twig_view
+
+2) Make APP/plugins/twig_view/tmp/views writeable
+
+3) Edit your app_controller.php
+     var $view = 'TwigView.Twig'
+
+4) Create your views with .tpl or .ctp extension
+
+
