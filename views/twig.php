@@ -21,7 +21,10 @@ Twig_Autoloader::register();
 App::import('Lib', 'TwigView.TransNode');
 App::import('Lib', 'TwigView.ExtensionI18n');
 
-// get twig core extension
+// my custom cake extensions
+App::import('Lib', 'TwigView.ExtensionAgo');
+
+// get twig core extension (overwrite trans block)
 App::import('Lib', 'TwigView.CoreExtension');
 
 /**
@@ -71,11 +74,14 @@ class TwigView extends View {
 			'auto_reload' => (bool) Configure::read('debug')
 		));;
 		
-		// load cakephp extensions
+		// overwrite some stuff
 		$this->Twig->addExtension(new CoreExtension);
 		
 		// activate |trans filter
 		$this->Twig->addExtension(new Twig_Extension_I18n);
+		
+		// activate |ago filter
+		$this->Twig->addExtension(new Twig_Extension_TimeAgo);
 		
 		parent::__construct($controller, $register);
 		$this->ext = '.tpl';
