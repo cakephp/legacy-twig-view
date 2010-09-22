@@ -177,25 +177,30 @@ class TwigView extends View {
 	/**
 	 * I know. There are probably a million better ways, but this works too.
 	 */
-	private function _exception($type, $content) {
-		$html = '<html><head><title>'.$type.'.</title></head><body style="font-family:sans-serif">';
-		$html.= '<div style="width:70%;margin:20px auto;border:1px solid #aaa;text-align:center;padding: 10px">';
-		$html.= '<h1 style="color:#f06">Twig :: '.$type.'</h1>'.$content.'</div></body></html>';
-		return $html;
+	private function _exception($type, $content, $message = null) {
+		if (Configure::read() > 0) {
+			$html = '<html><head><title>'.$type.'.</title></head><body style="font-family:sans-serif">';
+			$html.= '<div style="width:70%;margin:20px auto;border:1px solid #aaa;text-align:center;padding: 10px">';
+			$html.= '<h1 style="color:#f06">Twig :: '.$type.'</h1>'.$content.'</div></body></html>';
+			return $html;
+		} else {
+			$this->log('[TwigView] '.$type.': '.$message);
+			return '';
+		}
 	}
 	private function displaySyntaxException($e) {
 		$content = '<h3>'.$e->getFilename().', Line: '.$e->getLine().'</h3>';
 		$content.= '<p class="error">'.$e->getMessage().'</p>';
-		echo $this->_exception('Syntax Error', $content);
+		echo $this->_exception('Syntax Error', $content, $e->getMessage());
 	}
 	private function displayRuntimeException($e) {
 		$content = '<h3>'.$e->getMessage().'</h3>';
 		$content.= '<p class="error">'.$e->getFile().', Line: '.$e->getLine().'</p>';
-		echo $this->_exception('Runtime Error', $content);
+		echo $this->_exception('Runtime Error', $content, $e->getMessage());
 	}
 	private function displayException($e) {
 		$content = '<h3>'.$e->getMessage().'</h3>';
 		$content.= '<p class="error">'.$e->getFile().', Line: '.$e->getLine().'</p>';
-		echo $this->_exception('Error', $content);
+		echo $this->_exception('Error', $content, $e->getMessage());
 	}
 }
