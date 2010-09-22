@@ -193,4 +193,9 @@ class TwigView extends View {
 		$content.= '<p class="error">'.$e->getFile().', Line: '.$e->getLine().'</p>';
 		echo $this->_exception('Runtime Error', $content);
 	}
+	private function displayException($e) {
+		$content = '<h3>'.$e->getMessage().'</h3>';
+		$content.= '<p class="error">'.$e->getFile().', Line: '.$e->getLine().'</p>';
+		echo $this->_exception('Error', $content);
+	}
 }
