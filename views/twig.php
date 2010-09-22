@@ -35,6 +35,8 @@ App::import('Lib', 'TwigView.CoreExtension');
  */
 class TwigView extends View {
 	
+	public $ext = '.tpl';
+	
 	/**
 	 * Twig Environment Instance
 	 * @var Twig_Environment
@@ -84,7 +86,7 @@ class TwigView extends View {
 	 */
 	function _render($___viewFn, $___dataForView, $loadHelpers = true) {
 		$loadedHelpers = array();
-
+		
 		if ($this->helpers != false && $loadHelpers === true) {
 			$loadedHelpers = $this->_loadHelpers($loadedHelpers, $this->helpers);
 			$helpers = array_keys($loadedHelpers);
@@ -92,39 +94,84 @@ class TwigView extends View {
 
 			for ($i = count($helpers) - 1; $i >= 0; $i--) {
 				$name = $helperNames[$i];
-				$this->loaded[$name] =& $loadedHelpers[$helpers[$i]];
+				$helper =& $loadedHelpers[$helpers[$i]];
+
+				if (!isset($___dataForView[$name])) {
+					${$name} =& $helper;
+				}
+				$this->loaded[$helperNames[$i]] =& $helper;
+				$this->{$helpers[$i]} =& $helper;
 			}
 			$this->_triggerHelpers('beforeRender');
 			unset($name, $loadedHelpers, $helpers, $i, $helperNames);
 		}
-
-		// seed helpers
-		$data = array_merge($___dataForView, $this->loaded);
-
+		
+		$isCtpFile = (substr($___viewFn, -3) == 'ctp');
+		
 		ob_start();
 		
-		try {
-			$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
-			$template = $this->Twig->loadTemplate($relativeFn);
-			echo $template->render($data);
-		} 
-		catch (Twig_SyntaxError $e) {
-			$this->displaySyntaxException($e);
-		} catch (Twig_RuntimeError $e) {
-			$this->displayRuntimeException($e);
-		} catch (RuntimeException $e) {
-			$this->displayRuntimeException($e);
-		} catch (Twig_Error $e) {
-			$this->displayException($e, 'Error');
+		if ($isCtpFile) {
+			extract($___dataForView, EXTR_SKIP);
+			if (Configure::read() > 0) {
+				include ($___viewFn);
+			} else {
+				@include ($___viewFn);
+			}
+		} else {
+			$data = array_merge($___dataForView, $this->loaded);	
+			try {
+				$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
+				$template = $this->Twig->loadTemplate($relativeFn);
+				echo $template->render($data);
+			} 
+			catch (Twig_SyntaxError $e) {
+				$this->displaySyntaxException($e);
+			} catch (Twig_RuntimeError $e) {
+				$this->displayRuntimeException($e);
+			} catch (RuntimeException $e) {
+				$this->displayRuntimeException($e);
+			} catch (Twig_Error $e) {
+				$this->displayException($e, 'Error');
+			}
 		}
-		
 		if ($loadHelpers === true) {
 			$this->_triggerHelpers('afterRender');
 		}
 		
 		$out = ob_get_clean();
 		
+		if ($isCtpFile) {
+			$caching = (
+				isset($this->loaded['cache']) &&
+				(($this->cacheAction != false)) && (Configure::read('Cache.check') === true)
+			);
+			if ($caching) {
+				if (is_a($this->loaded['cache'], 'CacheHelper')) {
+					$cache =& $this->loaded['cache'];
+					$cache->base = $this->base;
+					$cache->here = $this->here;
+					$cache->helpers = $this->helpers;
+					$cache->action = $this->action;
+					$cache->controllerName = $this->name;
+					$cache->layout = $this->layout;
+					$cache->cacheAction = $this->cacheAction;
+					$cache->cache($___viewFn, $out, $cached);
+				}
+			}
+		}
 		return $out;
+	}
+	
+	/**
+	 * Workaround for Debug Kit and possibly others.
+	 * In Twig we use the "element" tag, not this method. 
+	 * Shouldn't matter.. KISS
+	 */
+	function element($name, $params = array(), $loadHelpers = false) {
+		$this->ext = '.ctp';
+		$return = parent::element($name, $params, $loadHelpers);
+		$this->ext = '.tpl';
+		return $return;
 	}
 	
 	/**
