@@ -3,53 +3,60 @@
  * 
  * About Twig
  *   http://www.twig-project.org/
+ *
+ * @package app.views
+ * @subpackage app.views.twig
+ * @author Kjell Bublitz <m3nt0r.de@gmail.com>
+ * @license MIT License
  */
 
 Install:
-=====================================================
+==========================================================================================
 
-1) It's a plugin: 
+1) Clone/extract this plugin to: 
 
-      clone/extract to APP/plugins/twig_view
+      APP/plugins/twig_view
 
 2) Get the Twig library and put it in "vendors/Twig"
 
       Added as submodule: 
-        > git submodule init
-        > git submodule update
+
+         $ git submodule init
+         $ git submodule update
 
       Alternative: 
-        download from http://github.com/fabpot/Twig/archives/master
 
-3) Make the view-cache folder writeable
+         Download from http://github.com/fabpot/Twig/archives/master
+         and extract manually into APP/plugins/twig_view/vendors/
 
-      APP/plugins/twig_view/tmp/views
+3) Make the view-cache folder writeable.
 
-4) Edit your app_controller.php and add/change:
+	    The default is: 
+	
+	       APP/plugins/twig_view/tmp/views
+		
+			But you may define your own path in bootstrap like so:
+			
+			   define('TWIG_VIEW_CACHE', '/your/cache/path');
+
+4) Edit AppController and add/change:
 
       var $view = 'TwigView.Twig';
 
 5) Create your views with .tpl extension
 
 
+About template files, or Why doesn't it render my TPL?
+==========================================================================================
 
-For example Views and Helper usage see:
-=====================================================
+   .ctp always wins over .tpl
 
-http://gist.github.com/589273
+   If you already have home.ctp and just create home.tpl CakePHP will take the .ctp file.
+   Best is if you remove or rename any existing .ctp, or just start from scratch.
 
 
-Started adding Snippets to a TextMate Bundle.
-=====================================================
+Example Views and Helper usage:
+==========================================================================================
 
-TextMate is editor for Mac. Here are some Tab completions.
+   http://gist.github.com/589273
 
-form.c = {{ form.create('$1'$2) }}$3
-form.i = {{ form.input('$1', ['label': '$2'|trans$3]) }}
-form.e = {{ form.end($1) }}$2
-html.a = {{ html.link('$1'|trans, ['controller':'$2']) }}  
-... and so on 
-
-Fast and simple. I think some editors on windows support
-bundles aswell.. anyway. wrote this mainly for myself.
-Will release my bundle at some point. 

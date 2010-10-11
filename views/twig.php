@@ -12,6 +12,11 @@
  * @link http://twitter.com/m3nt0r My Twitter
  * @license MIT License
  */
+if (!defined('TWIG_VIEW_CACHE')) {
+	define('TWIG_VIEW_CACHE', APP.'plugins'.DS.'twig_view'.DS.'tmp'.DS.'views');
+}
+
+// Load Twig Lib and start auto loader
 App::import('Vendor', 'TwigView.TwigAutoloader', array(
 	'file' => 'Twig'.DS.'lib'.DS.'Twig'.DS.'Autoloader.php'
 ));
@@ -69,7 +74,7 @@ class TwigView extends View {
 		
 		// setup twig and go.
 		$this->Twig = new Twig_Environment($loader, array(
-			'cache' => APP.'plugins'.DS.'twig_view'.DS.'tmp'.DS.'views',
+			'cache' => TWIG_VIEW_CACHE,
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => (bool) Configure::read('debug')
 		));;
