@@ -31,13 +31,13 @@ Install:
 
 3) Make the view-cache folder writeable.
 
-	    The default is: 
+      The default is: 
 	
-	       APP/plugins/twig_view/tmp/views
+         APP/plugins/twig_view/tmp/views
 		
-			But you may define your own path in bootstrap like so:
+      But you may define your own path in bootstrap like so:
 			
-			   define('TWIG_VIEW_CACHE', '/your/cache/path');
+         define('TWIG_VIEW_CACHE', '/your/cache/path');
 
 4) Edit AppController and add/change:
 
