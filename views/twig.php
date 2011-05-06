@@ -28,6 +28,7 @@ App::import('Lib', 'TwigView.ExtensionI18n');
 
 // my custom cake extensions
 App::import('Lib', 'TwigView.ExtensionAgo');
+App::import('Lib', 'TwigView.ExtensionBasic');
 
 // get twig core extension (overwrite trans block)
 App::import('Lib', 'TwigView.CoreExtension');
@@ -87,6 +88,9 @@ class TwigView extends View {
 		
 		// activate |ago filter
 		$this->Twig->addExtension(new Twig_Extension_TimeAgo);
+		
+		// activate basic filter
+		$this->Twig->addExtension(new Twig_Extension_Basic);
 		
 		parent::__construct($controller, $register);
 		$this->ext = '.tpl';
