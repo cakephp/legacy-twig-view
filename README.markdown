@@ -1,9 +1,9 @@
 # Twig for CakePHP
 
-This plugin for the CakePHP Framework allows you to use the Twig Templating Language to write your views.
+This plugin for the CakePHP Framework allows you to use the Twig Templating Language.
 
-Apart from enabling you to use most of Twigs powerful features the plugin is tightly integrated with 
-CakePHP View Rendering giving you full access to Helpers and Elements.
+Apart from enabling you to use most of Twig's features the plugin is tightly integrated with 
+the CakePHP view renderer giving you full access to helpers, objects and elements.
 
 ## Installation
 
@@ -16,7 +16,7 @@ Alternatively: Just clone the repository directly into your app.
 ### Vendor Files
 
 Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/lib/Twig``` to ```plugins/twig_view/vendors/```.  
-Alternatively: Just run init on the submodules of this repository:
+Alternatively: Just init the submodules of this repository. This will grab the latest version.
 
     $ git submodule init
     $ git submodule update
@@ -33,13 +33,15 @@ Alternatively: Set where you want cache files to be stored.
 
 ## Using the View Class
 
-To make CakePHP aware of this custom view class edit your ```app_controller.php``` and add the following:
+To make CakePHP aware of this view edit your ```app_controller.php``` file and add the following:
 
     var $view = 'TwigView.Twig';
 
 Now start creating view files using the ```.tpl``` extension.
 
-Example files can be found in 
+## Default Layouts
+
+Examples can be found in 
 
      plugins/twig_view/examples
 
@@ -152,7 +154,7 @@ http://www.twig-project.org/doc/templates.html#list-of-built-in-filters
 In some cases it is useful to access ```$this```, for example to build a DOM id from 
 the current controller and action name. 
 
-The object is accessible through ```_view``` 
+The object is accessible through ```_view```. 
 
     <div class="default" id="{{ _view.name|lower ~ '_' ~ _view.action|lower }}">
 
