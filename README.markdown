@@ -102,7 +102,7 @@ This plugin comes with a couple of handy filters, just like 'trans', piping some
 
 ### ago
 
-This is a filter for CakePHP Dates and is a shortcut to TimeHelper::timeAgoInWords
+Shortcut to TimeHelper::timeAgoInWords
 
     {{ user.created|ago }}
 
@@ -116,23 +116,33 @@ Convert a string to lower case
 
 Convert a string to upper case
 
-    {{ 'FOO'|low }}
+    {{ 'foo'|up }}
 
 ### debug
 
-Get the debug (pre+print_r) output for the variable
+Display the debug (pre+print_r) output
 
     {{ user|debug }}
 
 ### pr
 
-Get just the print_r output
+Display just the print_r output
 
     {{ user|pr }}
 
 ### env
 
-Get the value from a environment variable
+Display the value from a environment variable
 
    {{ 'HTTP_HOST'|env }}
+
+
+## Twig Built-In Filters
+
+For a list of available filters please refer to the Twig Manual  
+http://www.twig-project.org/doc/templates.html#list-of-built-in-filters
+
+## License
+
+MIT License
 
