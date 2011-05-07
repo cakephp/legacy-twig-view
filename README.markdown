@@ -143,6 +143,32 @@ Display the value from a environment variable
 
    {{ 'HTTP_HOST'|env }}
 
+### size
+
+Convert byte integer to a humand readable size
+
+    {{ '3535839525'|size }}    //=> 3.29 GB
+
+### p
+
+Formats a number with a level of precision.
+
+    {{ '0.555'|p(2) }}    //=> 0.56
+
+### curr
+
+Display floating point value as currency value. USD, GBP and EUR only
+
+    {{ '5999'|curr }}         // default, $5,999.00 
+    {{ '5999'|curr('GBP') }}  // £5,999.00
+    {{ '5999'|curr('EUR') }}  // €5.999,00 
+
+### pct
+
+Formats a number into a percentage string.
+
+    {{ '2.3'|pct }}    //=> 2.30%
+
 
 ## Twig Built-In Filters
 
