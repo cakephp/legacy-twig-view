@@ -47,12 +47,15 @@ This plugin comes with all default layouts converted to Twig. Examples can be fo
 
 ## Using Helpers inside Templates
 
-All helper objects are available inside a view and can be use like any other variable inside Twig.
+All helper objects are available inside a view and can be used like any other variable inside Twig.
 
     {{ time.nice(user.created) }}
-    
+
+... where ...
+
+    {{ time.nice(user.created) }}
         ^    ^    ^    ^____key
-        |    |    |____array
+        |    |    |____array (from $this->set() or loop)
         |    |_____ method
         |______ helper
 
