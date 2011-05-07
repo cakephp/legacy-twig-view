@@ -141,7 +141,7 @@ Display just the print_r output
 
 Display the value from a environment variable
 
-   {{ 'HTTP_HOST'|env }}
+    {{ 'HTTP_HOST'|env }}
 
 ### size
 
