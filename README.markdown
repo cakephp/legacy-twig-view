@@ -6,7 +6,7 @@ Apart from enabling you to use most of Twigs powerful features the plugin is tig
 
 ## Installation
 
-Download the repository, create a folder called ```twig_view``` in your plugins folder and extract. 
+Download the repository, create a folder called ```twig_view``` in your plugins folder and extract.  
 Alternatively: Just clone the repository directly into your app.
 
     $ cd app/plugins 
@@ -14,7 +14,7 @@ Alternatively: Just clone the repository directly into your app.
 
 ### Vendor Files
 
-Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/lib/Twig``` to ```plugins/twig_view/vendors/```. 
+Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/lib/Twig``` to ```plugins/twig_view/vendors/```.  
 Alternatively: Just run init on the submodules of this repository:
 
     $ git submodule init
