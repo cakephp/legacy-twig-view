@@ -101,9 +101,76 @@ class TwigView extends View {
 	}
 	
 	/**
-	 * Overwrite the default _render()
+	 * Feature Detection
 	 */
-	function _render($___viewFn, $___dataForView, $loadHelpers = true) {
+	private function isCake2() {
+		return (isset($this->Helpers) && method_exists($this->Helpers, 'attached'));
+	}
+	
+	/**
+	 * Render Proxy
+	 */
+	function _render($___viewFn, $___dataForView = array(), $loadHelpers = true) {
+		if ($this->isCake2()) {
+			return $this->_render2x($___viewFn, $___dataForView);
+	 	} else {
+			return $this->_render1x($___viewFn, $___dataForView, $loadHelpers = true);
+		}
+	}
+	
+	/**
+	 * Render: 2.0
+	 *
+	 * Thanks to BigClick
+	 * @link https://github.com/bigclick/cakephp-twig-view/commit/2e3e0aa65d3ac6e492f441cd6196c524087c5e95
+	 */
+	protected function _render2x($___viewFn, $___dataForView = array()) {
+		
+		$isCtpFile = (substr($___viewFn, -3) == 'ctp');
+		
+		if (empty($___dataForView)) {
+			$___dataForView = $this->viewVars;
+		}
+				
+		if ($isCtpFile) {
+			$out = parent::_render($___viewFn, $___dataForView);
+		} else {
+			ob_start();
+			// Setup the helpers from the new Helper Collection
+			$helpers = array();
+			$loaded_helpers = $this->Helpers->attached();
+			foreach($loaded_helpers as $helper) {
+				$name = Inflector::variable($helper);
+				$helpers[$name] =& $this->loadHelper($helper);
+			}
+
+			$data = array_merge($___dataForView, $helpers);	
+			try {
+				$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
+				$template = $this->Twig->loadTemplate($relativeFn);
+				echo $template->render($data);
+			} 
+			catch (Twig_SyntaxError $e) {
+				$this->displaySyntaxException($e);
+			} catch (Twig_RuntimeError $e) {
+				$this->displayRuntimeException($e);
+			} catch (RuntimeException $e) {
+				$this->displayRuntimeException($e);
+			} catch (Twig_Error $e) {
+				$this->displayException($e, 'Error');
+			}
+			$out = ob_get_clean();
+			
+		}
+		
+		return $out;
+	}
+	
+	
+	/**
+	 * Render: 1.2+
+	 */
+	function _render1x($___viewFn, $___dataForView, $loadHelpers = true) {
 		$loadedHelpers = array();
 		
 		if ($this->helpers != false && $loadHelpers === true) {
@@ -183,23 +250,44 @@ class TwigView extends View {
 	}
 	
 	/**
-	 * Workaround for Debug Kit and possibly others.
-	 * In Twig we use the "element" tag, not this method. 
-	 * Shouldn't matter.. KISS
+	 * Element: 1.2+
 	 */
-	function element($name, $params = array(), $loadHelpers = false) {
-		
-		// email hack
-		if (substr($name, 0, 5) != 'email') {
-			$this->ext = '.ctp'; // not an email, use .ctp
-		}
-		
+	function element1x($name, $params = array(), $loadHelpers = false) {
 		// render and revert to using .tpl
 		$return = parent::element($name, $params, $loadHelpers);
 		$this->ext = '.tpl';
 		return $return;
 	}
 	
+	/**
+	 * Element: 2.0
+	 */
+	function element2x($name, $params = array(), $callbacks = false) {
+		// render and revert to using .tpl
+		$return = parent::element($name, $params, $callbacks);
+		$this->ext = '.tpl';
+		return $return;
+	}
+	
+	/**
+	 * Element Proxy
+	 *
+	 * Support for cake 2.0
+	 */
+	public function element($name, $params = array(), $callbacks = false) {
+		// email hack
+		if (substr($name, 0, 5) != 'email') {
+			$this->ext = '.ctp'; // not an email, use .ctp
+		}
+		
+		if ($this->isCake2()) {
+			return $this->element2x($name, $params, $callbacks);
+		} else {
+			return $this->element1x($name, $params, $callbacks);
+		}
+	}
+	
+
 	/**
 	 * I know. There are probably a million better ways, but this works too.
 	 */
