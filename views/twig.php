@@ -5,6 +5,7 @@
  * About Twig
  *  http://www.twig-project.org/
  *
+ * @version 0.5
  * @package app.views
  * @subpackage app.views.twig
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
@@ -37,7 +38,7 @@ App::import('Lib', 'TwigView.CoreExtension');
 /**
  * TwigView for CakePHP
  * 
- * @version 0.4
+ * @version 0.5
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
  * @link http://github.com/m3nt0r/cakephp-twig-view GitHub
  * @package app.views
