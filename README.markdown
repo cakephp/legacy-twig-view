@@ -15,7 +15,7 @@ Alternatively: Just clone the repository directly into your app.
 
 ### Vendor Files
 
-Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/lib/Twig``` to ```plugins/twig_view/vendors/```.  
+Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/*``` to ```plugins/twig_view/vendors/Twig```.  
 Alternatively: Just init the submodules of this repository. This will grab the latest version.
 
     $ git submodule init
