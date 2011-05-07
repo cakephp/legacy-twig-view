@@ -2,7 +2,8 @@
 
 This plugin for the CakePHP Framework allows you to use the Twig Templating Language to write your views.
 
-Apart from enabling you to use most of Twigs powerful features the plugin is tightly integrated with CakePHP View Rendering giving you full access to Helpers and Elements.
+Apart from enabling you to use most of Twigs powerful features the plugin is tightly integrated with 
+CakePHP View Rendering giving you full access to Helpers and Elements.
 
 ## Installation
 
@@ -65,13 +66,15 @@ A more complex example, FormHelper inputs:
 
 ## Referencing View Elements
 
-Elements must be ```.tpl``` files and are parsed as Twig templates. Using ```.ctp``` is not possible. In exchange for this limitation you can import elements as easy as this:
+Elements must be ```.tpl``` files and are parsed as Twig templates. Using ```.ctp``` is not possible.
+In exchange for this limitation you can import elements as easy as this:
 
     {{ element 'sidebar/about' }}
 
 ## Translating Strings
 
-The ```trans``` filter can be used on any string and simply takes the preceeding string and passes it through the ```__()``` function. 
+The ```trans``` filter can be used on any string and simply takes the preceeding string and 
+passes it through the ```__()``` function. 
 
     {{
       form.input('email', [
@@ -87,7 +90,8 @@ This is the equivalent of writing:
 
 ## Translating multiple lines
 
-The trans-block element will help you with that. This is especially useful when writing email templates using Twig.
+The trans-block element will help you with that. This is especially useful when writing email 
+templates using Twig.
 
     {% trans %}
     Hello {{ username }}!
@@ -98,7 +102,8 @@ The trans-block element will help you with that. This is especially useful when 
 
 ## TwigView Custom Filters
 
-This plugin comes with a couple of handy filters, just like 'trans', piping some core CakePHP functions into Twig templates.
+This plugin comes with a couple of handy filters, just like 'trans', piping some core CakePHP 
+functions into Twig templates.
 
 ### ago
 
@@ -142,7 +147,12 @@ Display the value from a environment variable
 For a list of available filters please refer to the Twig Manual  
 http://www.twig-project.org/doc/templates.html#list-of-built-in-filters
 
-## License
+## Accessing View Instance
 
-MIT License
+In some cases it is useful to access ```$this```, for example to build a DOM id from 
+the current controller and action name. 
+
+The object is accessible through ```_view``` 
+
+    <div class="default" id="{{ _view.name|lower ~ '_' ~ _view.action|lower }}">
 
