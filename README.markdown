@@ -1,0 +1,138 @@
+# Twig for CakePHP
+
+This plugin for the CakePHP Framework allows you to use the Twig Templating Language to write your views.
+
+Apart from enabling you to use most of Twigs powerful features the plugin is tightly integrated with CakePHP View Rendering giving you full access to Helpers and Elements.
+
+## Installation
+
+Download the repository, create a folder called ```twig_view``` in your plugins folder and extract. 
+Alternatively: Just clone the repository directly into your app.
+
+    $ cd app/plugins 
+    $ git clone git://github.com/m3nt0r/cakephp-twig-view.git twig_view
+
+### Vendor Files
+
+Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/lib/Twig``` to ```plugins/twig_view/vendors/```. 
+Alternatively: Just run init on the submodules of this repository:
+
+    $ git submodule init
+    $ git submodule update
+
+### Cache Permissions
+
+Make the default view-cache folder writeable. 
+
+    APP/plugins/twig_view/tmp/views
+
+Alternatively: Set where you want cache files to be stored.
+
+    define('TWIG_VIEW_CACHE', '/your/cache/path');
+
+## Using the View Class
+
+To make CakePHP aware of this custom view class edit your ```app_controller.php``` and add the following:
+
+    var $view = 'TwigView.Twig';
+
+Now start creating view files using the ```.tpl``` extension.
+
+Example files can be found in 
+
+     plugins/twig_view/examples
+
+## Using Helpers inside Templates
+
+All helpers variables are available inside a view and can be use like any other variable in Twig.
+
+    {{ time.nice(user.created) }}
+
+Which is in this example the equivalent of writing when not using TwigView:
+
+    <?php echo $this->Time->nice($user['created']); ?>
+
+A more complex example, FormHelper inputs:
+
+    {{
+     form.input('message', [
+       'label': 'Your message',
+       'error': [
+         'notempty': 'Please enter a message'
+        ]
+      ])
+    }}
+
+## Referencing View Elements
+
+Elements must be ```.tpl``` files and are parsed as Twig templates. Using ```.ctp``` is not possible. In exchange for this limitation you can import elements as easy as this:
+
+    {{ element 'sidebar/about' }}
+
+## Translating Strings
+
+The ```trans``` filter can be used on any string and simply takes the preceeding string and passes it through the ```__()``` function. 
+
+    {{
+      form.input('email', [
+        'label': 'Your E-Mail Address'| trans
+      ])
+    }}
+
+This is the equivalent of writing:
+
+    <?php echo $this->Form->input('email', array(
+       'label' => __("Your E-Mail Address", true)
+    )); ?>
+
+## Translating multiple lines
+
+The trans-block element will help you with that. This is especially useful when writing email templates using Twig.
+
+    {% trans %}
+    Hello {{ username }}!
+    
+    This is my mail body and i can translate it in X languages now.
+    We love it ... {{ someotherVar }}
+    {% endtrans %}
+
+## TwigView Custom Filters
+
+This plugin comes with a couple of handy filters, just like 'trans', piping some core CakePHP functions into Twig templates.
+
+### ago
+
+This is a filter for CakePHP Dates and is a shortcut to TimeHelper::timeAgoInWords
+
+    {{ user.created|ago }}
+
+### low
+
+Convert a string to lower case
+
+    {{ 'FOO'|low }}
+
+### up
+
+Convert a string to upper case
+
+    {{ 'FOO'|low }}
+
+### debug
+
+Get the debug (pre+print_r) output for the variable
+
+    {{ user|debug }}
+
+### pr
+
+Get just the print_r output
+
+    {{ user|pr }}
+
+### env
+
+Get the value from a environment variable
+
+   {{ 'HTTP_HOST'|env }}
+
