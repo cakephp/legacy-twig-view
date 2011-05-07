@@ -7,7 +7,7 @@ the CakePHP view renderer giving you full access to helpers, objects and element
 
 ## Installation
 
-Download the repository, create a folder called ```twig_view``` in your plugins folder and extract.  
+Download the repository, create a folder called ```twig_view``` in your plugins folder. Extract.  
 Alternatively: Just clone the repository directly into your app.
 
     $ cd app/plugins 
@@ -29,11 +29,11 @@ Make the default view-cache folder writeable.
 
 Alternatively: Set where you want cache files to be stored.
 
-    define('TWIG_VIEW_CACHE', '/your/cache/path');
+    define('TWIG_VIEW_CACHE', APP . 'tmp');
 
 ## Using the View Class
 
-To make CakePHP aware of this view edit your ```app_controller.php``` file and add the following:
+To make CakePHP aware of TwigView edit your ```app_controller.php``` file and add the following:
 
     var $view = 'TwigView.Twig';
 
@@ -41,17 +41,22 @@ Now start creating view files using the ```.tpl``` extension.
 
 ## Default Layouts
 
-Examples can be found in 
+This plugin comes with all default layouts converted to Twig. Examples can be found in:
 
      plugins/twig_view/examples
 
 ## Using Helpers inside Templates
 
-All helpers variables are available inside a view and can be use like any other variable in Twig.
+All helper objects are available inside a view and can be use like any other variable inside Twig.
 
     {{ time.nice(user.created) }}
+    
+        ^    ^    ^    ^____key
+        |    |    |____array
+        |    |_____ method
+        |______ helper
 
-Which is in this example the equivalent of writing when not using TwigView:
+Which is the equivalent of writing:
 
     <?php echo $this->Time->nice($user['created']); ?>
 
