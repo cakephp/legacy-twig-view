@@ -35,7 +35,10 @@ Alternatively: Set where you want cache files to be stored.
 
 To make CakePHP aware of TwigView edit your ```app_controller.php``` file and add the following:
 
-    var $view = 'TwigView.Twig';
+    class AppController extends Controller 
+    {
+        public $view = 'TwigView.Twig';
+    }
 
 Now start creating view files using the ```.tpl``` extension.
 
@@ -44,6 +47,28 @@ Now start creating view files using the ```.tpl``` extension.
 This plugin comes with all default layouts converted to Twig. Examples can be found in:
 
      plugins/twig_view/examples
+
+
+## Themes
+
+The plugin has support for themes and works just like the "Theme" view. Simply add the ```$theme```
+property to your controller and you're set.
+
+    class AppController extends Controller 
+    {
+        public $view = 'TwigView.Twig';
+        public $theme = 'rockstar';
+    }
+
+This will cause the view to also look in the "themed" folder for templates. In the above example
+templates in the following directory are favored over their non-themed version.
+
+    app/views/themed/rockstar/
+
+If you, for example, want to overwrite the 'layouts/default.tpl' file in the 'rockstar' theme, 
+then create this file:
+
+    app/views/themed/rockstar/layouts/default.tpl
 
 ## Using Helpers inside Templates
 
