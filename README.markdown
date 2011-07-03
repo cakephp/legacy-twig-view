@@ -91,12 +91,12 @@ Which is the equivalent of writing:
 A more complex example, FormHelper inputs:
 
     {{
-     form.input('message', [
+     form.input('message', {
        'label': 'Your message',
-       'error': [
+       'error': {
          'notempty': 'Please enter a message'
-        ]
-      ])
+        }
+      })
     }}
 
 ## Referencing View Elements
@@ -112,9 +112,9 @@ The ```trans``` filter can be used on any string and simply takes the preceeding
 passes it through the ```__()``` function. 
 
     {{
-      form.input('email', [
+      form.input('email', {
         'label': 'Your E-Mail Address'| trans
-      ])
+      })
     }}
 
 This is the equivalent of writing:
@@ -129,10 +129,10 @@ The trans-block element will help you with that. This is especially useful when 
 templates using Twig.
 
     {% trans %}
-    Hello {{ username }}!
+    Hello!
     
     This is my mail body and i can translate it in X languages now.
-    We love it ... {{ someotherVar }}
+    We love it!
     {% endtrans %}
 
 ## TwigView Custom Filters
