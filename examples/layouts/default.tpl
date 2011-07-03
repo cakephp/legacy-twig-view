@@ -20,10 +20,10 @@
 		</div>
 		<div id="footer">
 		{{ 
-			html.image('cake.power.gif', [
+			html.image('cake.power.gif', {
 				'alt': 'Powered by CakePHP'|trans,
 				'url': 'http://cakephp.org'
-			])
+			})
 		}}
 		</div>
 	</div>
