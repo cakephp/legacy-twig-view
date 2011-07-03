@@ -25,9 +25,10 @@ Twig_Autoloader::register();
 
 // overwrite twig classes (thanks to autoload, no problem)
 App::import('Lib', 'TwigView.TransNode');
-App::import('Lib', 'TwigView.ExtensionI18n');
+App::import('Lib', 'TwigView.TokenparserTrans');
 
 // my custom cake extensions
+App::import('Lib', 'TwigView.ExtensionI18n');
 App::import('Lib', 'TwigView.ExtensionAgo');
 App::import('Lib', 'TwigView.ExtensionBasic');
 App::import('Lib', 'TwigView.ExtensionNumbers');
@@ -79,7 +80,8 @@ class TwigView extends View {
 		$this->Twig = new Twig_Environment($loader, array(
 			'cache' => TWIG_VIEW_CACHE,
 			'charset' => strtolower(Configure::read('App.encoding')),
-			'auto_reload' => (bool) Configure::read('debug')
+			'auto_reload' => (bool) Configure::read('debug'),
+			'autoescape' => false
 		));;
 		
 		// overwrite some stuff
