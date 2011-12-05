@@ -1,219 +1,215 @@
-# Twig for CakePHP
+# TwigView plugin for CakePHP #
 
-This plugin for the CakePHP Framework allows you to use the Twig Templating Language.
+This plugin for the [CakePHP Framework](http://cakephp.org) allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
 
-Apart from enabling you to use most of Twig's features the plugin is tightly integrated with 
-the CakePHP view renderer giving you full access to helpers, objects and elements.
+In addition to enabling the use of most of Twig's features, the plugin is tightly integrated with the CakePHP view renderer giving you full access to helpers, objects and elements.
 
-## Installation
+## Installation ##
 
-Download the repository, create a folder called ```twig_view``` in your plugins folder. Extract.  
+Download the repository, create a folder called `TwigView` in your `plugins` folder. Extract.
+
 Alternatively: Just clone the repository directly into your app.
 
-    $ cd app/plugins 
-    $ git clone git://github.com/m3nt0r/cakephp-twig-view.git twig_view
+	$ cd app/Plugin
+	$ git clone git://github.com/m3nt0r/cakephp-twig-view.git TwigView
 
-### Vendor Files
+### Vendor Files ###
 
-Download the [Twig Library](http://www.twig-project.org/) and move ```(archive)/*``` to ```plugins/twig_view/vendors/Twig```.  
+Download the [Twig Library](http://www.twig-project.org/) and move `(archive)/*` to `APP/Plugin/TwigView/Vendor/Twig`.
+
 Alternatively: Just init the submodules of this repository. This will grab the latest version.
 
-    $ git submodule init
-    $ git submodule update
+	$ git submodule update --init
 
-### Cache Permissions
+### Cache Permissions ###
 
-Make the default view-cache folder writeable. 
+Make the default view-cache folder writeable.
 
-    APP/plugins/twig_view/tmp/views
+	APP/Plugins/TwigView/tmp/views
 
 Alternatively: Set where you want cache files to be stored.
 
-    define('TWIG_VIEW_CACHE', APP . 'tmp');
+	define('TWIG_VIEW_CACHE', APP . 'tmp');
 
-## Using the View Class
+## Using the View Class ##
 
-To make CakePHP aware of TwigView edit your ```app_controller.php``` file and add the following:
+To make CakePHP aware of TwigView edit your `APP/Controller/AppController.php` file and add the following:
 
-    class AppController extends Controller 
-    {
-        public $view = 'TwigView.Twig';
-    }
+	class AppController extends Controller  {
+		public $view = 'TwigView.Twig';
+	}
 
-Now start creating view files using the ```.tpl``` extension.
+Be sure to load the TwigView plugin in your bootstrap.php file with:
 
-## Default Layouts
+	CakePlugin::load('TwigView');
+
+or:
+
+	CakePlugin::loadAll();
+
+Now start creating view files using the `.tpl` extension.
+
+## Default Layouts ##
 
 This plugin comes with all default layouts converted to Twig. Examples can be found in:
 
-     plugins/twig_view/examples
+	APP/Plugin/TwigView/examples
 
+## Themes ##
 
-## Themes
+The plugin has support for themes and works just like the `Theme` view. Simply add the `$theme` property to your controller and you're set.
 
-The plugin has support for themes and works just like the "Theme" view. Simply add the ```$theme```
-property to your controller and you're set.
+	class AppController extends Controller  {
+		public $viewClass = 'TwigView.Twig';
+		public $theme = 'rockstar';
+	}
 
-    class AppController extends Controller 
-    {
-        public $view = 'TwigView.Twig';
-        public $theme = 'rockstar';
-    }
+This will cause the view to also look in the `Themed` folder for templates. In the above example templates in the following directory are favored over their non-themed version.
 
-This will cause the view to also look in the "themed" folder for templates. In the above example
-templates in the following directory are favored over their non-themed version.
+	APP/View/Themed/rockstar/
 
-    app/views/themed/rockstar/
+If you, for example, want to overwrite the `Layouts/default.tpl` file in the `rockstar` theme, then create this file:
 
-If you, for example, want to overwrite the 'layouts/default.tpl' file in the 'rockstar' theme, 
-then create this file:
+	APP/View/Themed/rockstar/Layouts/default.tpl
 
-    app/views/themed/rockstar/layouts/default.tpl
-
-## Using Helpers inside Templates
+## Using Helpers inside Templates ##
 
 All helper objects are available inside a view and can be used like any other variable inside Twig.
 
-    {{ time.nice(user.created) }}
+	{{ time.nice(user.created) }}
 
 ... where ...
 
-    {{ time.nice(user.created) }}
-        ^    ^    ^    ^____key
-        |    |    |____array (from $this->set() or loop)
-        |    |_____ method
-        |______ helper
+	{{ time.nice(user.created) }}
+	    ^    ^    ^    ^____key
+	    |    |    |____array (from $this->set() or loop)
+	    |    |_____ method
+	    |______ helper
 
 Which is the equivalent of writing:
 
-    <?php echo $this->Time->nice($user['created']); ?>
+	<?php echo $this->Time->nice($user['created']); ?>
 
 A more complex example, FormHelper inputs:
 
-    {{
-     form.input('message', {
-       'label': 'Your message',
-       'error': {
-         'notempty': 'Please enter a message'
-        }
-      })
-    }}
+	{{
+	  form.input('message', {
+	    'label': 'Your message',
+	    'error': {
+	      'notempty': 'Please enter a message'
+	    }
+	  })
+	}}
 
-## Referencing View Elements
+## Referencing View Elements ##
 
-Elements must be ```.tpl``` files and are parsed as Twig templates. Using ```.ctp``` is not possible.
+Elements must be `.tpl` files and are parsed as Twig templates. Using `.ctp` is not possible.
+
 In exchange for this limitation you can import elements as easy as this:
 
-    {{ element 'sidebar/about' }}
+	{{ element 'sidebar/about' }}
 
-## Translating Strings
+## Translating Strings ##
 
-The ```trans``` filter can be used on any string and simply takes the preceeding string and 
-passes it through the ```__()``` function. 
+The `trans` filter can be used on any string and simply takes the preceding string and passes it through the `__()` function.
 
-    {{
-      form.input('email', {
-        'label': 'Your E-Mail Address'| trans
-      })
-    }}
+	{{
+	  form.input('email', {
+	    'label': 'Your E-Mail Address'| trans
+	  })
+	}}
 
 This is the equivalent of writing:
 
-    <?php echo $this->Form->input('email', array(
-       'label' => __("Your E-Mail Address", true)
-    )); ?>
+	<?php echo $this->Form->input('email', array(
+	   'label' => __("Your E-Mail Address", true)
+	)); ?>
 
-## Translating multiple lines
+## Translating multiple lines ##
 
-The trans-block element will help you with that. This is especially useful when writing email 
-templates using Twig.
+The trans-block element will help you with that. This is especially useful when writing email templates using Twig.
 
-    {% trans %}
-    Hello!
-    
-    This is my mail body and i can translate it in X languages now.
-    We love it!
-    {% endtrans %}
+	{% trans %}
+	Hello!
 
-## TwigView Custom Filters
+	This is my mail body and i can translate it in X languages now.
+	We love it!
+	{% endtrans %}
 
-This plugin comes with a couple of handy filters, just like 'trans', piping some core CakePHP 
-functions into Twig templates.
+## TwigView Custom Filters ##
 
-### ago
+This plugin comes with a couple of handy filters, just like 'trans', piping some core CakePHP functions into Twig templates.
+
+### `ago` ###
 
 Shortcut to TimeHelper::timeAgoInWords
 
-    {{ user.created|ago }}
+	{{ user.created|ago }}
 
-### low
+### `low` ###
 
 Convert a string to lower case
 
-    {{ 'FOO'|low }}
+	{{ 'FOO'|low }}
 
-### up
+### `up` ###
 
 Convert a string to upper case
 
-    {{ 'foo'|up }}
+	{{ 'foo'|up }}
 
-### debug
+### `debug` ###
 
 Display the debug (pre+print_r) output
 
-    {{ user|debug }}
+	{{ user|debug }}
 
-### pr
+### `pr` ###
 
 Display just the print_r output
 
-    {{ user|pr }}
+	{{ user|pr }}
 
-### env
+### `env` ###
 
 Display the value from a environment variable
 
-    {{ 'HTTP_HOST'|env }}
+	{{ 'HTTP_HOST'|env }}
 
-### size
+### `size` ###
 
 Convert byte integer to a humand readable size
 
-    {{ '3535839525'|size }}    //=> 3.29 GB
+	{{ '3535839525'|size }}    //=> 3.29 GB
 
-### p
+### `p` ###
 
 Formats a number with a level of precision.
 
-    {{ '0.555'|p(2) }}    //=> 0.56
+	{{ '0.555'|p(2) }}    //=> 0.56
 
-### curr
+### `curr` ###
 
 Display floating point value as currency value. USD, GBP and EUR only
 
-    {{ '5999'|curr }}         // default, $5,999.00 
-    {{ '5999'|curr('GBP') }}  // £5,999.00
-    {{ '5999'|curr('EUR') }}  // €5.999,00 
+	{{ '5999'|curr }}         // default, $5,999.00
+	{{ '5999'|curr('GBP') }}  // £5,999.00
+	{{ '5999'|curr('EUR') }}  // €5.999,00
 
-### pct
+### `pct` ###
 
 Formats a number into a percentage string.
 
-    {{ '2.3'|pct }}    //=> 2.30%
+	{{ '2.3'|pct }}    //=> 2.30%
 
+## Twig Built-In Filters ##
 
-## Twig Built-In Filters
+For a list of available filters please refer to the [Twig Manual](http://www.twig-project.org/doc/templates.html#list-of-built-in-filters)
 
-For a list of available filters please refer to the Twig Manual  
-http://www.twig-project.org/doc/templates.html#list-of-built-in-filters
+## Accessing View Instance ##
 
-## Accessing View Instance
+In some cases it is useful to access `$this`, for example to build a DOM id from the current controller and action name.
 
-In some cases it is useful to access ```$this```, for example to build a DOM id from 
-the current controller and action name. 
+The object is accessible through `_view`.
 
-The object is accessible through ```_view```. 
-
-    <div class="default" id="{{ _view.name|lower ~ '_' ~ _view.action|lower }}">
-
+	<div class="default" id="{{ _view.name|lower ~ '_' ~ _view.action|lower }}">
