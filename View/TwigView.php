@@ -23,6 +23,7 @@ require_once(CakePlugin::path('TwigView') . 'Vendor' . DS . 'Twig' . DS . 'lib' 
 Twig_Autoloader::register();
 
 // overwrite twig classes (thanks to autoload, no problem)
+App::import('Lib', 'TwigView.Twig_Node_Element');
 App::import('Lib', 'TwigView.Twig_Node_Trans');
 App::import('Lib', 'TwigView.Twig_Tokenparser_Trans');
 
