@@ -6,12 +6,13 @@
  *  http://www.twig-project.org/
  *
  * @version 0.5
- * @package app.views
- * @subpackage app.views.twig
+ * @package TwigView
+ * @subpackage TwigView.View
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
  * @link http://github.com/m3nt0r My GitHub
  * @link http://twitter.com/m3nt0r My Twitter
- * @license MIT License
+ * @author Graham Weldon (http://grahamweldon.com)
+ * @license The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 if (!defined('TWIG_VIEW_CACHE')) {
 	define('TWIG_VIEW_CACHE', APP.'plugins'.DS.'twig_view'.DS.'tmp'.DS.'views');
