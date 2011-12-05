@@ -85,7 +85,7 @@ class TwigView extends View {
 		$this->Twig->addExtension(new Twig_Extension_Basic);
 		$this->Twig->addExtension(new Twig_Extension_Number);
 		
-		parent::__construct($controller, $register);
+		parent::__construct($Controller, $register);
 		
 		if (isset($Controller->theme)) {
 			$this->theme = $Controller->theme;
