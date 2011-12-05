@@ -75,7 +75,6 @@ class TwigView extends View {
  * Overridden to provide Twig loading
  *
  * @param Controller $Controller Controller
- * @param string $register 
  */
 	public function __construct(Controller $Controller) {
 		$this->templatePaths = App::path('View');
