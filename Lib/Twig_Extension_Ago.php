@@ -1,10 +1,10 @@
 <?php
-App::import('Helper', 'Time');
+App::uses('TimeHelper', 'View/Helper');
 
 /**
  * Wrapper to Time->timeAgoInWords()
  */
-function cakeTimeAgo($var) {
+function cakeAgo($var) {
 	$time = new TimeHelper();
 	return $time->timeAgoInWords($var);
 }
@@ -15,7 +15,7 @@ function cakeTimeAgo($var) {
  *
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
  */
-class Twig_Extension_TimeAgo extends Twig_Extension
+class Twig_Extension_Ago extends Twig_Extension
 {
     /**
      * Returns a list of filters to add to the existing list.
@@ -25,7 +25,7 @@ class Twig_Extension_TimeAgo extends Twig_Extension
     public function getFilters()
     {
         return array(
-            'ago' => new Twig_Filter_Function('cakeTimeAgo'),
+            'ago' => new Twig_Filter_Function('cakeAgo'),
         );
     }
 
@@ -36,6 +36,6 @@ class Twig_Extension_TimeAgo extends Twig_Extension
      */
     public function getName()
     {
-        return 'timeAgo';
+        return 'ago';
     }
 }

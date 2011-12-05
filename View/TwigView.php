@@ -23,14 +23,14 @@ require_once(CakePlugin::path('TwigView') . 'Vendor' . DS . 'Twig' . DS . 'lib' 
 Twig_Autoloader::register();
 
 // overwrite twig classes (thanks to autoload, no problem)
-App::import('Lib', 'TwigView.TransNode');
-App::import('Lib', 'TwigView.TokenparserTrans');
+App::import('Lib', 'TwigView.Twig_Node_Trans');
+App::import('Lib', 'TwigView.Twig_Tokenparser_Trans');
 
 // my custom cake extensions
-App::import('Lib', 'TwigView.ExtensionI18n');
-App::import('Lib', 'TwigView.ExtensionAgo');
-App::import('Lib', 'TwigView.ExtensionBasic');
-App::import('Lib', 'TwigView.ExtensionNumbers');
+App::import('Lib', 'TwigView.Twig_Extension_I18n');
+App::import('Lib', 'TwigView.Twig_Extension_Ago');
+App::import('Lib', 'TwigView.Twig_Extension_Basic');
+App::import('Lib', 'TwigView.Twig_Extension_Number');
 
 // get twig core extension (overwrite trans block)
 App::import('Lib', 'TwigView.CoreExtension');
@@ -81,7 +81,7 @@ class TwigView extends View {
 		
 		$this->Twig->addExtension(new CoreExtension);
 		$this->Twig->addExtension(new Twig_Extension_I18n);
-		$this->Twig->addExtension(new Twig_Extension_TimeAgo);
+		$this->Twig->addExtension(new Twig_Extension_Ago);
 		$this->Twig->addExtension(new Twig_Extension_Basic);
 		$this->Twig->addExtension(new Twig_Extension_Number);
 		
