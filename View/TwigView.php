@@ -15,7 +15,7 @@
  * @license The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 if (!defined('TWIG_VIEW_CACHE')) {
-	define('TWIG_VIEW_CACHE', CakePlugin::path() . 'tmp' . DS . 'views');
+	define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
 }
 
 // Load Twig Lib and start auto loader
