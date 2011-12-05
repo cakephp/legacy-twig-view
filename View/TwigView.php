@@ -45,7 +45,12 @@ App::import('Lib', 'TwigView.CoreExtension');
  * @subpackage app.views.twig
  */
 class TwigView extends View {
-	
+
+	/**
+	 * File extension
+	 *
+	 * @var string
+	 */
 	public $ext = '.tpl';
 	
 	/**
