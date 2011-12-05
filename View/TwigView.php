@@ -47,30 +47,37 @@ App::import('Lib', 'TwigView.CoreExtension');
  */
 class TwigView extends View {
 
-	/**
-	 * File extension
-	 *
-	 * @var string
-	 */
+/**
+ * File extension
+ *
+ * @var string
+ */
 	public $ext = '.tpl';
 	
-	/**
-	 * Twig Environment Instance
-	 * @var Twig_Environment
-	 */
+/**
+ * Twig Environment Instance
+ *
+ * @var Twig_Environment
+ */
 	public $Twig;
 	
-	/**
-	 * Collection of paths. 
-	 * These are stripped from $___viewFn.
-	 * @todo overwrite getFilename()
-	 */
+/**
+ * Collection of paths. 
+ * These are stripped from $___viewFn.
+ *
+ * @todo overwrite getFilename()
+ * @var array
+ */
 	public $templatePaths = array();
 	
-	/**
-	 * Load Twig
-	 */
-	public function __construct(Controller $Controller, $register = true) {
+/**
+ * Constructor
+ * Overridden to provide Twig loading
+ *
+ * @param Controller $Controller Controller
+ * @param string $register 
+ */
+	public function __construct(Controller $Controller) {
 		$this->templatePaths = App::path('View');
 		$loader = new Twig_Loader_Filesystem($this->templatePaths[0]);
 		$this->Twig = new Twig_Environment($loader, array(
@@ -86,7 +93,7 @@ class TwigView extends View {
 		$this->Twig->addExtension(new Twig_Extension_Basic);
 		$this->Twig->addExtension(new Twig_Extension_Number);
 		
-		parent::__construct($Controller, $register);
+		parent::__construct($Controller);
 		
 		if (isset($Controller->theme)) {
 			$this->theme = $Controller->theme;
