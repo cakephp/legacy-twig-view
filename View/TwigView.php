@@ -15,13 +15,11 @@
  * @license The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 if (!defined('TWIG_VIEW_CACHE')) {
-	define('TWIG_VIEW_CACHE', APP.'plugins'.DS.'twig_view'.DS.'tmp'.DS.'views');
+	define('TWIG_VIEW_CACHE', CakePlugin::path() . 'tmp' . DS . 'views');
 }
 
 // Load Twig Lib and start auto loader
-App::import('Vendor', 'TwigView.TwigAutoloader', array(
-	'file' => 'Twig'.DS.'lib'.DS.'Twig'.DS.'Autoloader.php'
-));
+require_once(CakePlugin::path('TwigView') . 'Vendor' . DS . 'Twig' . DS . 'lib' . DS . 'Twig' . DS . 'Autoloader.php');
 Twig_Autoloader::register();
 
 // overwrite twig classes (thanks to autoload, no problem)
