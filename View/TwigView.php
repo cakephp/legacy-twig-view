@@ -69,75 +69,35 @@ class TwigView extends View {
 	/**
 	 * Load Twig
 	 */
-	function __construct(&$controller, $register = true) {
-		
-		// just collecting for str_replace
-		$this->templatePaths = array(
-			APP.'views',
-			ROOT.DS.'cake'.DS.'libs'.DS.'view'
-		);
-		
-		// we always look in APP, this includes error templates.
-		$loader = new Twig_Loader_Filesystem(APP.'views');
-		
-		// setup twig and go.
+	public function __construct(Controller $Controller, $register = true) {
+		$this->templatePaths = App::path('View');
+		$loader = new Twig_Loader_Filesystem($this->templatePaths[0]);
 		$this->Twig = new Twig_Environment($loader, array(
 			'cache' => TWIG_VIEW_CACHE,
 			'charset' => strtolower(Configure::read('App.encoding')),
-			'auto_reload' => (bool) Configure::read('debug'),
+			'auto_reload' => Configure::read('debug') > 0,
 			'autoescape' => false
 		));;
 		
-		// overwrite some stuff
 		$this->Twig->addExtension(new CoreExtension);
-		
-		// activate |trans filter
 		$this->Twig->addExtension(new Twig_Extension_I18n);
-		
-		// activate |ago filter
 		$this->Twig->addExtension(new Twig_Extension_TimeAgo);
-		
-		// activate basic filter
 		$this->Twig->addExtension(new Twig_Extension_Basic);
-		
-		// activate number filters
 		$this->Twig->addExtension(new Twig_Extension_Number);
 		
 		parent::__construct($controller, $register);
 		
-		if (isset($controller->theme))
-			$this->theme =& $controller->theme;
-			
+		if (isset($Controller->theme)) {
+			$this->theme = $Controller->theme;
+		}
 		$this->ext = '.tpl';
-	}
-	
-	/**
-	 * Feature Detection
-	 */
-	private function isCake2() {
-		return (isset($this->Helpers) && method_exists($this->Helpers, 'attached'));
 	}
 	
 	/**
 	 * Render Proxy
 	 */
-	function _render($___viewFn, $___dataForView = array(), $loadHelpers = true) {
-		if ($this->isCake2()) {
-			return $this->_render2x($___viewFn, $___dataForView);
-	 	} else {
-			return $this->_render1x($___viewFn, $___dataForView, $loadHelpers = true);
-		}
-	}
-	
-	/**
-	 * Render: 2.0
-	 *
-	 * Thanks to BigClick
-	 * @link https://github.com/bigclick/cakephp-twig-view/commit/2e3e0aa65d3ac6e492f441cd6196c524087c5e95
-	 */
-	protected function _render2x($___viewFn, $___dataForView = array()) {
-		
-		$isCtpFile = (substr($___viewFn, -3) == 'ctp');
+	protected function _render($___viewFn, $___dataForView = array()) {
+		$isCtpFile = (substr($___viewFn, -3) === 'ctp');
 		
 		if (empty($___dataForView)) {
 			$___dataForView = $this->viewVars;
@@ -173,133 +133,26 @@ class TwigView extends View {
 				$this->displayException($e, 'Error');
 			}
 			$out = ob_get_clean();
-			
 		}
 		
 		return $out;
 	}
-	
-	
-	/**
-	 * Render: 1.2+
-	 */
-	function _render1x($___viewFn, $___dataForView, $loadHelpers = true) {
-		$loadedHelpers = array();
-		
-		if ($this->helpers != false && $loadHelpers === true) {
-			$loadedHelpers = $this->_loadHelpers($loadedHelpers, $this->helpers);
-			$helpers = array_keys($loadedHelpers);
-			$helperNames = array_map(array('Inflector', 'variable'), $helpers);
 
-			for ($i = count($helpers) - 1; $i >= 0; $i--) {
-				$name = $helperNames[$i];
-				$helper =& $loadedHelpers[$helpers[$i]];
-
-				if (!isset($___dataForView[$name])) {
-					${$name} =& $helper;
-				}
-				$this->loaded[$helperNames[$i]] =& $helper;
-				$this->{$helpers[$i]} =& $helper;
-			}
-			$this->_triggerHelpers('beforeRender');
-			unset($name, $loadedHelpers, $helpers, $i, $helperNames);
-		}
-		
-		$isCtpFile = (substr($___viewFn, -3) == 'ctp');
-		
-		ob_start();
-		
-		if ($isCtpFile) {
-			extract($___dataForView, EXTR_SKIP);
-			if (Configure::read() > 0) {
-				include ($___viewFn);
-			} else {
-				@include ($___viewFn);
-			}
-		} else {			
-			$data = array_merge($___dataForView, $this->loaded);
-			$data['_view'] = $this;
-			try {
-				$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
-				$template = $this->Twig->loadTemplate($relativeFn);
-				echo $template->render($data);
-			} 
-			catch (Twig_SyntaxError $e) {
-				$this->displaySyntaxException($e);
-			} catch (Twig_RuntimeError $e) {
-				$this->displayRuntimeException($e);
-			} catch (RuntimeException $e) {
-				$this->displayRuntimeException($e);
-			} catch (Twig_Error $e) {
-				$this->displayException($e, 'Error');
-			}
-		}
-		if ($loadHelpers === true) {
-			$this->_triggerHelpers('afterRender');
-		}
-		
-		$out = ob_get_clean();
-		
-		if ($isCtpFile) {
-			$caching = (
-				isset($this->loaded['cache']) &&
-				(($this->cacheAction != false)) && (Configure::read('Cache.check') === true)
-			);
-			if ($caching) {
-				if (is_a($this->loaded['cache'], 'CacheHelper')) {
-					$cache =& $this->loaded['cache'];
-					$cache->base = $this->base;
-					$cache->here = $this->here;
-					$cache->helpers = $this->helpers;
-					$cache->action = $this->action;
-					$cache->controllerName = $this->name;
-					$cache->layout = $this->layout;
-					$cache->cacheAction = $this->cacheAction;
-					$cache->cache($___viewFn, $out, $cached);
-				}
-			}
-		}
-		return $out;
-	}
-	
-	/**
-	 * Element: 1.2+
-	 */
-	function element1x($name, $params = array(), $loadHelpers = false) {
-		// render and revert to using .tpl
-		$return = parent::element($name, $params, $loadHelpers);
-		$this->ext = '.tpl';
-		return $return;
-	}
-	
 	/**
 	 * Element: 2.0
 	 */
-	function element2x($name, $params = array(), $callbacks = false) {
+	function element($name, $params = array(), $callbacks = false) {
+		// email hack
+		if (substr($name, 0, 5) != 'email') {
+			$this->ext = '.ctp'; // not an email, use .ctp
+		}
+		
 		// render and revert to using .tpl
 		$return = parent::element($name, $params, $callbacks);
 		$this->ext = '.tpl';
 		return $return;
 	}
 	
-	/**
-	 * Element Proxy
-	 *
-	 * Support for cake 2.0
-	 */
-	public function element($name, $params = array(), $callbacks = false) {
-		// email hack
-		if (substr($name, 0, 5) != 'email') {
-			$this->ext = '.ctp'; // not an email, use .ctp
-		}
-		
-		if ($this->isCake2()) {
-			return $this->element2x($name, $params, $callbacks);
-		} else {
-			return $this->element1x($name, $params, $callbacks);
-		}
-	}
-
 	/**
 	 * Return all possible paths to find view files in order
 	 * 
