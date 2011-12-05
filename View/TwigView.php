@@ -154,44 +154,6 @@ class TwigView extends View {
 	}
 	
 	/**
-	 * Return all possible paths to find view files in order
-	 * 
-	 * Added to TwigView
-	 *   - super hard copy-paste job from /cake/libs/view/theme.php :)
-	 *   - added "isset" test: fallback to default behavior.
-	 *
-	 * @param string $plugin The name of the plugin views are being found for.
-	 * @param boolean $cached Set to true to force dir scan.
-	 * @return array paths
-	 * @access protected
-	 * @todo Make theme path building respect $cached parameter.
-	 */
-	function _paths($plugin = null, $cached = true) {
-		if (!isset($this->theme)) {
-			return parent::_paths($plugin, $cached);
-		}
-		
-		$paths = parent::_paths($plugin, $cached);
-		$themePaths = array();
-
-		if (!empty($this->theme)) {
-			$count = count($paths);
-			for ($i = 0; $i < $count; $i++) {
-				if (strpos($paths[$i], DS . 'plugins' . DS) === false
-					&& strpos($paths[$i], DS . 'libs' . DS . 'view') === false) {
-						if ($plugin) {
-							$themePaths[] = $paths[$i] . 'themed'. DS . $this->theme . DS . 'plugins' . DS . $plugin . DS;
-						}
-						$themePaths[] = $paths[$i] . 'themed'. DS . $this->theme . DS;
-					}
-			}
-			$paths = array_merge($themePaths, $paths);
-		}
-		return $paths;
-	}
-
-
-	/**
 	 * I know. There are probably a million better ways, but this works too.
 	 */
 	private function _exception($type, $content, $message = null) {
