@@ -129,68 +129,31 @@ class TwigView extends View {
 			$data = array_merge($___dataForView, $helpers);	
 			$data['_view'] = $this;
 			
-			try {
-				$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
-				$template = $this->Twig->loadTemplate($relativeFn);
-				echo $template->render($data);
-			} 
-			catch (Twig_SyntaxError $e) {
-				$this->displaySyntaxException($e);
-			} catch (Twig_RuntimeError $e) {
-				$this->displayRuntimeException($e);
-			} catch (RuntimeException $e) {
-				$this->displayRuntimeException($e);
-			} catch (Twig_Error $e) {
-				$this->displayException($e, 'Error');
-			}
+			$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
+			$template = $this->Twig->loadTemplate($relativeFn);
+			echo $template->render($data);
 			$out = ob_get_clean();
 		}
 		
 		return $out;
 	}
 
-	/**
-	 * Element: 2.0
-	 */
+/**
+ * Render an element
+ *
+ * @param string $name Element Name
+ * @param array $params Parameters
+ * @param boolean $callbacks Fire callbacks
+ * @return string
+ */
 	function element($name, $params = array(), $callbacks = false) {
 		// email hack
 		if (substr($name, 0, 5) != 'email') {
 			$this->ext = '.ctp'; // not an email, use .ctp
 		}
 		
-		// render and revert to using .tpl
 		$return = parent::element($name, $params, $callbacks);
 		$this->ext = '.tpl';
 		return $return;
-	}
-	
-	/**
-	 * I know. There are probably a million better ways, but this works too.
-	 */
-	private function _exception($type, $content, $message = null) {
-		if (Configure::read() > 0) {
-			$html = '<html><head><title>'.$type.'.</title></head><body style="font-family:sans-serif">';
-			$html.= '<div style="width:70%;margin:20px auto;border:1px solid #aaa;text-align:center;padding: 10px">';
-			$html.= '<h1 style="color:#f06">Twig :: '.$type.'</h1>'.$content.'</div></body></html>';
-			return $html;
-		} else {
-			$this->log('[TwigView] '.$type.': '.$message);
-			return '';
-		}
-	}
-	private function displaySyntaxException($e) {
-		$content = '<h3>'.$e->getFilename().', Line: '.$e->getLine().'</h3>';
-		$content.= '<p class="error">'.$e->getMessage().'</p>';
-		echo $this->_exception('Syntax Error', $content, $e->getMessage());
-	}
-	private function displayRuntimeException($e) {
-		$content = '<h3>'.$e->getMessage().'</h3>';
-		$content.= '<p class="error">'.$e->getFile().', Line: '.$e->getLine().'</p>';
-		echo $this->_exception('Runtime Error', $content, $e->getMessage());
-	}
-	private function displayException($e) {
-		$content = '<h3>'.$e->getMessage().'</h3>';
-		$content.= '<p class="error">'.$e->getFile().', Line: '.$e->getLine().'</p>';
-		echo $this->_exception('Error', $content, $e->getMessage());
 	}
 }
