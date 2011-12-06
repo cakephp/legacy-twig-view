@@ -99,10 +99,14 @@ class TwigView extends View {
 		}
 		$this->ext = '.tpl';
 	}
-	
-	/**
-	 * Render Proxy
-	 */
+
+/**
+ * Render the view
+ *
+ * @param string $___viewFn 
+ * @param string $___dataForView 
+ * @return void
+ */
 	protected function _render($___viewFn, $___dataForView = array()) {
 		$isCtpFile = (substr($___viewFn, -3) === 'ctp');
 		
