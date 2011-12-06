@@ -36,7 +36,7 @@ Alternatively: Set where you want cache files to be stored.
 To make CakePHP aware of TwigView edit your `APP/Controller/AppController.php` file and add the following:
 
 	class AppController extends Controller  {
-		public $view = 'TwigView.Twig';
+		public $viewClass = 'TwigView.Twig';
 	}
 
 Be sure to load the TwigView plugin in your bootstrap.php file with:
