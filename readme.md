@@ -122,7 +122,7 @@ The `trans` filter can be used on any string and simply takes the preceding stri
 This is the equivalent of writing:
 
 	<?php echo $this->Form->input('email', array(
-	   'label' => __("Your E-Mail Address", true)
+	   'label' => __("Your E-Mail Address")
 	)); ?>
 
 ## Translating multiple lines ##
