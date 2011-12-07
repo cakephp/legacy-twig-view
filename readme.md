@@ -11,7 +11,7 @@ Download the repository, create a folder called `TwigView` in your `plugins` fol
 Alternatively: Just clone the repository directly into your app.
 
 	$ cd app/Plugin
-	$ git clone git://github.com/m3nt0r/cakephp-twig-view.git TwigView
+	$ git clone git://github.com/predominant/TwigView.git TwigView
 
 ### Vendor Files ###
 
@@ -25,7 +25,7 @@ Alternatively: Just init the submodules of this repository. This will grab the l
 
 Make the default view-cache folder writeable.
 
-	APP/Plugins/TwigView/tmp/views
+	APP/Plugin/TwigView/tmp/views
 
 Alternatively: Set where you want cache files to be stored.
 
@@ -61,16 +61,16 @@ The plugin has support for themes and works just like the `Theme` view. Simply a
 
 	class AppController extends Controller  {
 		public $viewClass = 'TwigView.Twig';
-		public $theme = 'rockstar';
+		public $theme = 'Rockstar';
 	}
 
 This will cause the view to also look in the `Themed` folder for templates. In the above example templates in the following directory are favored over their non-themed version.
 
-	APP/View/Themed/rockstar/
+	APP/View/Themed/Rockstar/
 
-If you, for example, want to overwrite the `Layouts/default.tpl` file in the `rockstar` theme, then create this file:
+If you, for example, want to overwrite the `Layouts/default.tpl` file in the `Rockstar` theme, then create this file:
 
-	APP/View/Themed/rockstar/Layouts/default.tpl
+	APP/View/Themed/Rockstar/Layouts/default.tpl
 
 ## Using Helpers inside Templates ##
 
