@@ -83,7 +83,8 @@ class TwigView extends View {
 			'cache' => TWIG_VIEW_CACHE,
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => Configure::read('debug') > 0,
-			'autoescape' => false
+			'autoescape' => true,
+			'debug' => Configure::read('debug') > 0
 		));;
 		
 		$this->Twig->addExtension(new CoreExtension);
