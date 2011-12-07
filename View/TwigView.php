@@ -146,7 +146,7 @@ class TwigView extends View {
  * @param boolean $callbacks Fire callbacks
  * @return string
  */
-	function element($name, $params = array(), $callbacks = false) {
+	public function element($name, $params = array(), $callbacks = false) {
 		// email hack
 		if (substr($name, 0, 5) != 'email') {
 			$this->ext = '.ctp'; // not an email, use .ctp

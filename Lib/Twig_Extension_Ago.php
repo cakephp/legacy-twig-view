@@ -1,4 +1,5 @@
 <?php
+
 App::uses('TimeHelper', 'View/Helper');
 
 /**
@@ -14,28 +15,26 @@ function cakeAgo($var) {
  * Use: {{ user.User.created|ago }} 
  *
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
+ * @package TwigView
+ * @subpackage TwigView.Lib
  */
-class Twig_Extension_Ago extends Twig_Extension
-{
-    /**
-     * Returns a list of filters to add to the existing list.
-     *
-     * @return array An array of filters
-     */
-    public function getFilters()
-    {
-        return array(
-            'ago' => new Twig_Filter_Function('cakeAgo'),
-        );
-    }
+class Twig_Extension_Ago extends Twig_Extension {
 
-    /**
-     * Returns the name of the extension.
-     *
-     * @return string The extension name
-     */
-    public function getName()
-    {
-        return 'ago';
-    }
+/**
+ * Returns a list of filters to add to the existing list.
+ *
+ * @return array An array of filters
+ */
+	public function getFilters() {
+		return array('ago' => new Twig_Filter_Function('cakeAgo'));
+	}
+
+/**
+ * Returns the name of the extension.
+ *
+ * @return string The extension name
+ */
+	public function getName() {
+		return 'ago';
+	}
 }
