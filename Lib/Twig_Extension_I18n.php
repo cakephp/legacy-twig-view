@@ -3,7 +3,7 @@
  * Wrapper to __()
  */
 function cakeI18nFunction($var) {
-	return __($var, true);
+	return __($var);
 }
 
 /**
