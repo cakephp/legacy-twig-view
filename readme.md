@@ -178,7 +178,7 @@ Display the value from a environment variable
 
 ### `size` ###
 
-Convert byte integer to a humand readable size
+Convert byte integer to a human readable size
 
 	{{ '3535839525'|size }}    //=> 3.29 GB
 
