@@ -15,7 +15,7 @@ Alternatively: Just clone the repository directly into your app.
 
 ### Vendor Files ###
 
-Download the [Twig Library](http://www.twig-project.org/) and move `(archive)/*` to `APP/Plugin/TwigView/Vendor/Twig`.
+Download the [Twig Library](http://twig.sensiolabs.org/) and move `(archive)/*` to `APP/Plugin/TwigView/Vendor/Twig`.
 
 Alternatively: Just init the submodules of this repository. This will grab the latest version.
 
@@ -204,7 +204,7 @@ Formats a number into a percentage string.
 
 ## Twig Built-In Filters ##
 
-For a list of available filters please refer to the [Twig Manual](http://www.twig-project.org/doc/templates.html#list-of-built-in-filters)
+For a list of available filters please refer to the [Twig Manual](http://twig.sensiolabs.org/doc/filters/index.html)
 
 ## Accessing View Instance ##
 
