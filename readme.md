@@ -11,7 +11,7 @@ Download the repository, create a folder called `TwigView` in your `plugins` fol
 Alternatively: Just clone the repository directly into your app.
 
 	$ cd app/Plugin
-	$ git clone git://github.com/predominant/TwigView.git TwigView
+	$ git clone git://github.com/WyriHaximus/TwigView.git TwigView
 
 ### Vendor Files ###
 
@@ -107,7 +107,7 @@ Elements must be `.tpl` files and are parsed as Twig templates. Using `.ctp` is 
 
 In exchange for this limitation you can import elements as easy as this:
 
-	{{ element 'sidebar/about' }}
+	{{ _view.element('Plugin.element') }}
 
 ## Translating Strings ##
 
