@@ -5,17 +5,17 @@
  * About Twig
  *  http://www.twig-project.org/
  *
- * @version 0.5
  * @package TwigView
  * @subpackage TwigView.View
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
  * @link http://github.com/m3nt0r My GitHub
  * @link http://twitter.com/m3nt0r My Twitter
  * @author Graham Weldon (http://grahamweldon.com)
+ * @author Cees-Jan Kiewiet (http://wyrihaximus.net)
  * @license The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 if (!defined('TWIG_VIEW_CACHE')) {
-	define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
+    define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
 }
 
 $twigPath = CakePlugin::path('TwigView');
@@ -34,9 +34,16 @@ require_once($twigPath . 'Lib' . DS . 'Twig_Extension_I18n.php');
 require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Ago.php');
 require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Basic.php');
 require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Number.php');
+require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Utils.php');
+require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Array.php');
+require_once($twigPath . 'Lib' . DS . 'Twig_Extension_String.php');
+require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Inflector.php');
 
 // get twig core extension (overwrite trans block)
 require_once($twigPath . 'Lib' . DS . 'CoreExtension.php');
+
+// custom loader
+require_once($twigPath . 'Lib' . DS . 'Twig_Loader_Cakephp.php');
 
 /**
  * TwigView for CakePHP
@@ -62,7 +69,7 @@ class TwigView extends View {
  * @var Twig_Environment
  */
 	public $Twig;
-	
+        
 /**
  * Collection of paths. 
  * These are stripped from $___viewFn.
@@ -78,14 +85,12 @@ class TwigView extends View {
  *
  * @param Controller $Controller Controller
  */
-	public function __construct(Controller $Controller) {
-		$this->templatePaths = App::path('View');
-		$loader = new Twig_Loader_Filesystem($this->templatePaths[0]);
-		$this->Twig = new Twig_Environment($loader, array(
+	public function __construct(Controller $Controller = null) {
+		$this->Twig = new Twig_Environment(new Twig_Loader_Cakephp(array()), array(
 			'cache' => TWIG_VIEW_CACHE,
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => Configure::read('debug') > 0,
-			'autoescape' => true,
+			'autoescape' => false,
 			'debug' => Configure::read('debug') > 0
 		));;
 		
@@ -94,6 +99,11 @@ class TwigView extends View {
 		$this->Twig->addExtension(new Twig_Extension_Ago);
 		$this->Twig->addExtension(new Twig_Extension_Basic);
 		$this->Twig->addExtension(new Twig_Extension_Number);
+		$this->Twig->addExtension(new Twig_Extension_Utils);
+		$this->Twig->addExtension(new Twig_Extension_Array);
+		$this->Twig->addExtension(new Twig_Extension_String);
+		$this->Twig->addExtension(new Twig_Extension_Inflector);
+                $this->Twig->addExtension(new Twig_Extension_StringLoader);
 		
 		parent::__construct($Controller);
 		
@@ -126,11 +136,12 @@ class TwigView extends View {
 			$loaded_helpers = $this->Helpers->attached();
 			foreach($loaded_helpers as $helper) {
 				$name = Inflector::variable($helper);
-				$helpers[$name] =& $this->loadHelper($helper);
+				$helpers[$name] = $this->loadHelper($helper);
 			}
 
 			$data = array_merge($___dataForView, $helpers);	
 			$data['_view'] = $this;
+			$data['config'] = Configure::read();
 			
 			$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
 			$template = $this->Twig->loadTemplate($relativeFn);
@@ -152,9 +163,8 @@ class TwigView extends View {
 	public function element($name, $params = array(), $callbacks = false) {
 		// email hack
 		if (substr($name, 0, 5) != 'email') {
-			$this->ext = '.ctp'; // not an email, use .ctp
+			//$this->ext = '.ctp'; // not an email, use .ctp
 		}
-		
 		$return = parent::element($name, $params, $callbacks);
 		$this->ext = '.tpl';
 		return $return;
