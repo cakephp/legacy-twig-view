@@ -1,6 +1,7 @@
 {
     "name": "wyrihaximus/twigview",
     "description": "Twig powered View for CakePHP",
+    "type": "cakephp-plugin",
     "license": "MIT",
     "keywords": [
         "twig",
@@ -15,6 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=5.2.4"
+        "php": ">=5.2.4",
+        "composer/installers": "*"
     }
 }
