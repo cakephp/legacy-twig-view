@@ -14,6 +14,9 @@
  * @author Cees-Jan Kiewiet (http://wyrihaximus.net)
  * @license The MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
+
+App::uses('View', 'View');
+
 if (!defined('TWIG_VIEW_CACHE')) {
     define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
 }
@@ -28,19 +31,6 @@ Twig_Autoloader::register();
 require_once($twigPath . 'Lib' . DS . 'Twig_Node_Element.php');
 require_once($twigPath . 'Lib' . DS . 'Twig_Node_Trans.php');
 require_once($twigPath . 'Lib' . DS . 'Twig_TokenParser_Trans.php');
-
-// my custom cake extensions
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_I18n.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Ago.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Basic.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Number.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Utils.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Array.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_String.php');
-require_once($twigPath . 'Lib' . DS . 'Twig_Extension_Inflector.php');
-
-// get twig core extension (overwrite trans block)
-require_once($twigPath . 'Lib' . DS . 'CoreExtension.php');
 
 // custom loader
 require_once($twigPath . 'Lib' . DS . 'Twig_Loader_Cakephp.php');
@@ -92,18 +82,11 @@ class TwigView extends View {
 			'auto_reload' => Configure::read('debug') > 0,
 			'autoescape' => false,
 			'debug' => Configure::read('debug') > 0
-		));;
-		
-		$this->Twig->addExtension(new CoreExtension);
-		$this->Twig->addExtension(new Twig_Extension_I18n);
-		$this->Twig->addExtension(new Twig_Extension_Ago);
-		$this->Twig->addExtension(new Twig_Extension_Basic);
-		$this->Twig->addExtension(new Twig_Extension_Number);
-		$this->Twig->addExtension(new Twig_Extension_Utils);
-		$this->Twig->addExtension(new Twig_Extension_Array);
-		$this->Twig->addExtension(new Twig_Extension_String);
-		$this->Twig->addExtension(new Twig_Extension_Inflector);
-                $this->Twig->addExtension(new Twig_Extension_StringLoader);
+		));
+                
+                CakeEventManager::instance()->dispatch(new CakeEvent('Twig.TwigView.construct', $this, array(
+                    'TwigEnvironment' => $this->Twig,
+                )));
 		
 		parent::__construct($Controller);
 		

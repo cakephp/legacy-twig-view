@@ -41,7 +41,7 @@ To make CakePHP aware of TwigView edit your `APP/Controller/AppController.php` f
 
 Be sure to load the TwigView plugin in your bootstrap.php file with:
 
-	CakePlugin::load('TwigView');
+	CakePlugin::load('TwigView', array('bootstrap' => true));
 
 or:
 
