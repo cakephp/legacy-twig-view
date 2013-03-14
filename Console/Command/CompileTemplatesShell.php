@@ -2,7 +2,7 @@
 
 App::uses('TwigView', 'TwigView.View');
 
-class TemplateCompileShell extends Shell {
+class CompileTemplatesShell extends Shell {
     
     private $TwigView;
     
