@@ -23,10 +23,6 @@ if (!defined('TWIG_VIEW_CACHE')) {
 
 $twigPath = CakePlugin::path('TwigView');
 
-// Load Twig Lib and start auto loader
-require_once($twigPath . 'Vendor' . DS . 'Twig' . DS . 'lib' . DS . 'Twig' . DS . 'Autoloader.php');
-Twig_Autoloader::register();
-
 // overwrite twig classes (thanks to autoload, no problem)
 require_once($twigPath . 'Lib' . DS . 'Twig_Node_Element.php');
 require_once($twigPath . 'Lib' . DS . 'Twig_Node_Trans.php');
