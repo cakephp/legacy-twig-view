@@ -1,5 +1,5 @@
 {
-    "name": "wyrihaximus/twigview",
+    "name": "wyrihaximus/twig-view",
     "description": "Twig powered View for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
