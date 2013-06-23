@@ -26,6 +26,7 @@ class Twig_Extension_Basic extends Twig_Extension {
 			'low'   => new Twig_Filter_Function('low'),
 			'up'    => new Twig_Filter_Function('up'),
 			'env'   => new Twig_Filter_Function('env'),
+			'count'   => new Twig_Filter_Function('count'),
 		);
 	}
 
