@@ -36,7 +36,10 @@ class Twig_Extension_I18n extends Twig_Extension {
  * @return array An array of filters
  */
 	public function getFilters() {
-		return array('trans' => new Twig_Filter_Function('cakeI18nFunction'));
+		return array(
+                    'trans' => new Twig_Filter_Function('cakeI18nFunction'),
+                    'transd' => new Twig_Filter_Function('__d'),
+                );
 	}
 
 /**
