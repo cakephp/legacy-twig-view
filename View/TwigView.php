@@ -47,7 +47,13 @@ class TwigView extends View {
  *
  * @var string
  */
-	public $ext = '.tpl';
+	const EXT = '.tpl';
+/**
+ * File extension
+ *
+ * @var string
+ */
+	public $ext = self::EXT;
 	
 /**
  * Twig Environment Instance
@@ -89,7 +95,7 @@ class TwigView extends View {
 		if (isset($Controller->theme)) {
 			$this->theme = $Controller->theme;
 		}
-		$this->ext = '.tpl';
+		$this->ext = self::EXT;
 	}
 
 /**
@@ -145,7 +151,7 @@ class TwigView extends View {
 			//$this->ext = '.ctp'; // not an email, use .ctp
 		}
 		$return = parent::element($name, $params, $callbacks);
-		$this->ext = '.tpl';
+		$this->ext = self::EXT;
 		return $return;
 	}
 }
