@@ -4,7 +4,7 @@ TwigView loves to welcome your contributions. There are several ways to help out
 * Create a ticket in GitHub, if you have found a bug
 * Write testcases for open bug tickets
 * Write patches for open bug/feature tickets, preferably with testcases included
-* Contribute to the [documentation](https://github.com/Wyrihaximus/TwigView/tree/gh-pages)
+* Contribute to the [documentation](https://github.com/WyriHaximus/TwigView/tree/master/docs)
 
 There are a few guidelines that we need contributors to follow so that we have a
 chance of keeping on top of things.
