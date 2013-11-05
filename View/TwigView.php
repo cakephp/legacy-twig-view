@@ -16,11 +16,6 @@
  */
 
 App::uses('View', 'View');
-
-if (!defined('TWIG_VIEW_CACHE')) {
-	define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
-}
-
 App::uses('Twig_Loader_Cakephp', 'TwigView.Lib');
 
 /**
@@ -40,6 +35,7 @@ class TwigView extends View {
 	 * @var string
 	 */
 	const EXT = '.tpl';
+
 	/**
 	 * File extension
 	 *
@@ -71,7 +67,7 @@ class TwigView extends View {
 	 */
 	public function __construct(Controller $Controller = null) {
 		$this->Twig = new Twig_Environment(new Twig_Loader_Cakephp(array()), array(
-			'cache' => TWIG_VIEW_CACHE,
+			'cache' => Configure::read('TwigView.Cache'),
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => Configure::read('debug') > 0,
 			'autoescape' => false,
