@@ -104,7 +104,7 @@ class TwigView extends View {
 			$out = parent::_render($___viewFn, $___dataForView);
 		} else {
 			ob_start();
-// Setup the helpers from the new Helper Collection
+			// Setup the helpers from the new Helper Collection
 			$helpers = array();
 			$loaded_helpers = $this->Helpers->attached();
 			foreach($loaded_helpers as $helper) {
@@ -123,23 +123,5 @@ class TwigView extends View {
 		}
 
 		return $out;
-	}
-
-	/**
-	 * Render an element
-	 *
-	 * @param string $name Element Name
-	 * @param array $params Parameters
-	 * @param boolean $callbacks Fire callbacks
-	 * @return string
-	 */
-	public function element($name, $params = array(), $callbacks = false) {
-// email hack
-		if (substr($name, 0, 5) != 'email') {
-//$this->ext = '.ctp'; // not an email, use .ctp
-		}
-		$return = parent::element($name, $params, $callbacks);
-		$this->ext = self::EXT;
-		return $return;
 	}
 }
