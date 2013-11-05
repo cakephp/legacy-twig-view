@@ -7,33 +7,41 @@ php:
   - 5.5
 
 env:
-  - CAKE_VERSION=master
-  - CAKE_VERSION=2.3
+  global:
+    - REPO_NAME=TwigView
+    - PLUGIN_NAME=TwigView
+    - REQUIRE=""
+
+  matrix:
+    - DB=mysql CAKE_VERSION=master
+    - DB=mysql CAKE_VERSION=2.5
+
+matrix:
+  include:
+    - php: 5.4
+      env:
+        - DB=mysql CAKE_VERSION=master COVERALLS=1
+    - php: 5.4
+      env:
+        - DB=mysql CAKE_VERSION=master PHPCS=1
+    - php: 5.4
+      env:
+        - DB=mysql CAKE_VERSION=master FOC_VALIDATE=1
 
 before_script:
-  - sh -c "mysql -e 'CREATE DATABASE cakephp_test;'"
-  - git clone --depth 1 git://github.com/cakephp/cakephp ../cakephp && cd ../cakephp && git checkout $CAKE_VERSION
-  - cp -R ../Ratchet plugins/Ratchet
-  - chmod -R 777 ../cakephp/app/tmp
-  - set +H
-  - echo "<?php
-    class DATABASE_CONFIG {
-    public \$test = array(
-      'datasource' => 'Database/Mysql',
-      'database' => 'cakephp_test',
-      'host' => '0.0.0.0',
-      'login' => 'travis'
-      'host' => '',
-      'persistent' => false,
-    );
-    }" > ../cakephp/app/Config/database.php
+  - git clone https://github.com/WyriHaximus/travis.git --depth 1 ../travis
+  - ../travis/before_script.sh
 
 script:
-  - ./lib/Cake/Console/cake test TwigView AllTests --stderr
-  
+  - ../travis/script.sh
+
+after_success:
+  - ../travis/after_success.sh
+
 notifications:
+  email: false
   webhooks:
-    urls: 
+    urls:
       - http://wyrihaximus.net/wyri_projects/wyri_projects/webhook/travisci.json
     on_success: always
     on_failure: always
