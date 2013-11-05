@@ -18,14 +18,14 @@
 App::uses('View', 'View');
 
 if (!defined('TWIG_VIEW_CACHE')) {
-    define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
+	define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
 }
 
 App::uses('Twig_Loader_Cakephp', 'TwigView.Lib');
 
 /**
  * TwigView for CakePHP
- * 
+ *
  * @version 0.5
  * @author Kjell Bublitz <m3nt0r.de@gmail.com>
  * @link http://github.com/m3nt0r/cakephp-twig-view GitHub
@@ -34,41 +34,41 @@ App::uses('Twig_Loader_Cakephp', 'TwigView.Lib');
  */
 class TwigView extends View {
 
-/**
- * File extension
- *
- * @var string
- */
+	/**
+	 * File extension
+	 *
+	 * @var string
+	 */
 	const EXT = '.tpl';
-/**
- * File extension
- *
- * @var string
- */
+	/**
+	 * File extension
+	 *
+	 * @var string
+	 */
 	public $ext = self::EXT;
-	
-/**
- * Twig Environment Instance
- *
- * @var Twig_Environment
- */
+
+	/**
+	 * Twig Environment Instance
+	 *
+	 * @var Twig_Environment
+	 */
 	public $Twig;
-        
-/**
- * Collection of paths. 
- * These are stripped from $___viewFn.
- *
- * @todo overwrite getFilename()
- * @var array
- */
+
+	/**
+	 * Collection of paths.
+	 * These are stripped from $___viewFn.
+	 *
+	 * @todo overwrite getFilename()
+	 * @var array
+	 */
 	public $templatePaths = array();
-	
-/**
- * Constructor
- * Overridden to provide Twig loading
- *
- * @param Controller $Controller Controller
- */
+
+	/**
+	 * Constructor
+	 * Overridden to provide Twig loading
+	 *
+	 * @param Controller $Controller Controller
+	 */
 	public function __construct(Controller $Controller = null) {
 		$this->Twig = new Twig_Environment(new Twig_Loader_Cakephp(array()), array(
 			'cache' => TWIG_VIEW_CACHE,
@@ -77,38 +77,38 @@ class TwigView extends View {
 			'autoescape' => false,
 			'debug' => Configure::read('debug') > 0
 		));
-                
-                CakeEventManager::instance()->dispatch(new CakeEvent('Twig.TwigView.construct', $this, array(
-                    'TwigEnvironment' => $this->Twig,
-                )));
-		
+
+		CakeEventManager::instance()->dispatch(new CakeEvent('Twig.TwigView.construct', $this, array(
+			'TwigEnvironment' => $this->Twig,
+		)));
+
 		parent::__construct($Controller);
-		
+
 		if (isset($Controller->theme)) {
 			$this->theme = $Controller->theme;
 		}
 		$this->ext = self::EXT;
 	}
 
-/**
- * Render the view
- *
- * @param string $___viewFn 
- * @param string $___dataForView 
- * @return void
- */
+	/**
+	 * Render the view
+	 *
+	 * @param string $___viewFn
+	 * @param string $___dataForView
+	 * @return void
+	 */
 	protected function _render($___viewFn, $___dataForView = array()) {
 		$isCtpFile = (substr($___viewFn, -3) === 'ctp');
-		
+
 		if (empty($___dataForView)) {
 			$___dataForView = $this->viewVars;
 		}
-				
+
 		if ($isCtpFile) {
 			$out = parent::_render($___viewFn, $___dataForView);
 		} else {
 			ob_start();
-			// Setup the helpers from the new Helper Collection
+// Setup the helpers from the new Helper Collection
 			$helpers = array();
 			$loaded_helpers = $this->Helpers->attached();
 			foreach($loaded_helpers as $helper) {
@@ -116,31 +116,31 @@ class TwigView extends View {
 				$helpers[$name] = $this->loadHelper($helper);
 			}
 
-			$data = array_merge($___dataForView, $helpers);	
+			$data = array_merge($___dataForView, $helpers);
 			$data['_view'] = $this;
 			$data['config'] = Configure::read();
-			
+
 			$relativeFn = str_replace($this->templatePaths, '', $___viewFn);
 			$template = $this->Twig->loadTemplate($relativeFn);
 			echo $template->render($data);
 			$out = ob_get_clean();
 		}
-		
+
 		return $out;
 	}
 
-/**
- * Render an element
- *
- * @param string $name Element Name
- * @param array $params Parameters
- * @param boolean $callbacks Fire callbacks
- * @return string
- */
+	/**
+	 * Render an element
+	 *
+	 * @param string $name Element Name
+	 * @param array $params Parameters
+	 * @param boolean $callbacks Fire callbacks
+	 * @return string
+	 */
 	public function element($name, $params = array(), $callbacks = false) {
-		// email hack
+// email hack
 		if (substr($name, 0, 5) != 'email') {
-			//$this->ext = '.ctp'; // not an email, use .ctp
+//$this->ext = '.ctp'; // not an email, use .ctp
 		}
 		$return = parent::element($name, $params, $callbacks);
 		$this->ext = self::EXT;
