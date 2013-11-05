@@ -21,10 +21,7 @@ if (!defined('TWIG_VIEW_CACHE')) {
     define('TWIG_VIEW_CACHE', CakePlugin::path('TwigView') . 'tmp' . DS . 'views');
 }
 
-$twigPath = CakePlugin::path('TwigView');
-
-// custom loader
-require_once($twigPath . 'Lib' . DS . 'Twig_Loader_Cakephp.php');
+App::uses('Twig_Loader_Cakephp', 'TwigView.Lib');
 
 /**
  * TwigView for CakePHP
