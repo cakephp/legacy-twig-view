@@ -219,3 +219,6 @@ The object is accessible through `_view`.
 Twig has to compile all the templates before they can be used. This adds a one time per template delay to the loading of a page. This can be countered by using the Compile Templates shell command. This commands scans for all the templates and compiles them with Twig for caching and performence gains.
 
 	./cake TwigView.compile_templates all
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WyriHaximus/twigview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
