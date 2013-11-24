@@ -12,8 +12,10 @@ Download the repository, create a folder called `TwigView` in your `plugins` fol
 
 Alternatively: Just clone the repository directly into your app.
 
-	$ cd app/Plugin
-	$ git clone git://github.com/WyriHaximus/TwigView.git TwigView
+```bash
+$ cd app/Plugin
+$ git clone git://github.com/WyriHaximus/TwigView.git TwigView
+```
 
 ### Vendor Files ###
 
@@ -21,7 +23,9 @@ Download the [Twig Library](http://twig.sensiolabs.org/) and move `(archive)/*` 
 
 Alternatively: Just init the submodules of this repository. This will grab the latest version.
 
-	$ git submodule update --init
+```bash
+$ git submodule update --init
+```
 
 ### Cache Permissions ###
 
@@ -31,23 +35,31 @@ Make the default view-cache folder writeable.
 
 Alternatively: Set where you want cache files to be stored.
 
-	define('TWIG_VIEW_CACHE', APP . 'tmp');
+```php
+define('TWIG_VIEW_CACHE', APP . 'tmp');
+```
 
 ## Using the View Class ##
 
 To make CakePHP aware of TwigView edit your `APP/Controller/AppController.php` file and add the following:
 
-	class AppController extends Controller  {
-		public $viewClass = 'TwigView.Twig';
-	}
+```php
+class AppController extends Controller  {
+	public $viewClass = 'TwigView.Twig';
+}
+```
 
 Be sure to load the TwigView plugin in your bootstrap.php file with:
 
-	CakePlugin::load('TwigView', array('bootstrap' => true));
+```php
+CakePlugin::load('TwigView', array('bootstrap' => true));
+```
 
 or:
 
-	CakePlugin::loadAll();
+```php
+CakePlugin::loadAll();
+```
 
 Now start creating view files using the `.tpl` extension.
 
@@ -61,10 +73,12 @@ This plugin comes with all default layouts converted to Twig. Examples can be fo
 
 The plugin has support for themes and works just like the `Theme` view. Simply add the `$theme` property to your controller and you're set.
 
-	class AppController extends Controller  {
-		public $viewClass = 'TwigView.Twig';
-		public $theme = 'Rockstar';
-	}
+```php
+class AppController extends Controller  {
+	public $viewClass = 'TwigView.Twig';
+	public $theme = 'Rockstar';
+}
+```
 
 This will cause the view to also look in the `Themed` folder for templates. In the above example templates in the following directory are favored over their non-themed version.
 
@@ -78,30 +92,38 @@ If you, for example, want to overwrite the `Layouts/default.tpl` file in the `Ro
 
 All helper objects are available inside a view and can be used like any other variable inside Twig.
 
-	{{ time.nice(user.created) }}
+```jinja
+{{ time.nice(user.created) }}
+```
 
 ... where ...
 
-	{{ time.nice(user.created) }}
-	    ^    ^    ^    ^____key
-	    |    |    |____array (from $this->set() or loop)
-	    |    |_____ method
-	    |______ helper
+```jinja
+{{ time.nice(user.created) }}
+    ^    ^    ^    ^____key
+    |    |    |____array (from $this->set() or loop)
+    |    |_____ method
+    |______ helper
+```
 
 Which is the equivalent of writing:
 
-	<?php echo $this->Time->nice($user['created']); ?>
+```php
+<?php echo $this->Time->nice($user['created']); ?>
+```
 
 A more complex example, FormHelper inputs:
 
-	{{
-	  form.input('message', {
-	    'label': 'Your message',
-	    'error': {
-	      'notempty': 'Please enter a message'
-	    }
-	  })
-	}}
+```jinja
+{{
+  form.input('message', {
+    'label': 'Your message',
+    'error': {
+      'notempty': 'Please enter a message'
+    }
+  })
+}}
+```
 
 ## Referencing View Elements ##
 
@@ -109,34 +131,42 @@ Elements must be `.tpl` files and are parsed as Twig templates. Using `.ctp` is 
 
 In exchange for this limitation you can import elements as easy as this:
 
-	{{ _view.element('Plugin.element') }}
+```jinja
+{{ _view.element('Plugin.element') }}
+```
 
 ## Translating Strings ##
 
 The `trans` filter can be used on any string and simply takes the preceding string and passes it through the `__()` function.
 
-	{{
-	  form.input('email', {
-	    'label': 'Your E-Mail Address'| trans
-	  })
-	}}
+```jinja
+{{
+  form.input('email', {
+    'label': 'Your E-Mail Address'| trans
+  })
+}}
+````
 
 This is the equivalent of writing:
 
-	<?php echo $this->Form->input('email', array(
-	   'label' => __("Your E-Mail Address")
-	)); ?>
+```php
+<?php echo $this->Form->input('email', array(
+   'label' => __("Your E-Mail Address")
+)); ?>
+```
 
 ## Translating multiple lines ##
 
 The trans-block element will help you with that. This is especially useful when writing email templates using Twig.
 
-	{% trans %}
-	Hello!
+```jinja
+{% trans %}
+Hello!
 
-	This is my mail body and i can translate it in X languages now.
-	We love it!
-	{% endtrans %}
+This is my mail body and i can translate it in X languages now.
+We love it!
+{% endtrans %}
+```
 
 ## Accessing View Instance ##
 
@@ -144,11 +174,15 @@ In some cases it is useful to access `$this`, for example to build a DOM id from
 
 The object is accessible through `_view`.
 
-	<div class="default" id="{{ _view.name|lower ~ '_' ~ _view.action|lower }}">
+```jinja
+<div class="default" id="{{ _view.name|lower ~ '_' ~ _view.action|lower }}">
+```
 
 ## Precompiling all templates ##
 
 Twig has to compile all the templates before they can be used. This adds a one time per template delay to the loading of a page. This can be countered by using the Compile Templates shell command. This commands scans for all the templates and compiles them with Twig for caching and performence gains.
 
-	./cake TwigView.compile_templates all
+```bash
+./cake TwigView.compile_templates all
+```
 
