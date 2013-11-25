@@ -8,23 +8,10 @@ In addition to enabling the use of most of Twig's features, the plugin is tightl
 
 ## Installation ##
 
-Download the repository, create a folder called `TwigView` in your `plugins` folder. Extract.
+Make sure you have [composer](http://getcomposer.org/) installed and configured with the autoloader registering during bootstrap as described [here](http://ceeram.github.io/blog/2013/02/22/using-composer-with-cakephp-2-dot-x/). Make sure you have a composer.json and add the following to your required section.
 
-Alternatively: Just clone the repository directly into your app.
-
-```bash
-$ cd app/Plugin
-$ git clone git://github.com/WyriHaximus/TwigView.git TwigView
-```
-
-### Vendor Files ###
-
-Download the [Twig Library](http://twig.sensiolabs.org/) and move `(archive)/*` to `APP/Plugin/TwigView/Vendor/Twig`.
-
-Alternatively: Just init the submodules of this repository. This will grab the latest version.
-
-```bash
-$ git submodule update --init
+```json
+"wyrihaximus/twig-view": "dev-master"
 ```
 
 ### Cache Permissions ###
