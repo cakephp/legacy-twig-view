@@ -23,7 +23,6 @@ class TwigRegisterTwigExtentionsListener implements CakeEventListener {
 
     public function construct($event) {	
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_StringLoader);
-        $event->data['TwigEnvironment']->addExtension(new CoreExtension);
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_I18n);
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_Ago);
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_Basic);
