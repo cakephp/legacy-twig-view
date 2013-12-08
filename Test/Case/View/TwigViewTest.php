@@ -36,7 +36,7 @@ class TwigViewTest extends CakeTestCase {
 		$callbackFired = false;
 		$that = $this;
 		$eventCallback = function($event) use($that, &$callbackFired) {
-			$this->assertInstanceof('Twig_Environment', $event->data['TwigEnvironment']);
+			$that->assertInstanceof('Twig_Environment', $event->data['TwigEnvironment']);
 			$callbackFired = true;
 		};
 		CakeEventManager::instance()->attach($eventCallback, 'Twig.TwigView.construct');
