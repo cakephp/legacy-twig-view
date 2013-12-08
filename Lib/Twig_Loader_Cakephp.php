@@ -15,10 +15,15 @@ class Twig_Loader_Cakephp implements Twig_LoaderInterface {
     }
     
     private function resolveFileName($name) {
-        if (!file_exists($name)) {
-            list($plugin, $file) = pluginSplit($name);
-            return CakePlugin::path($plugin) . 'View' . DS . $file . TwigView::EXT;
+        if (file_exists($name)) {
+			return $name;
         }
-        return $name;
+
+		list($plugin, $file) = pluginSplit($name);
+		if ($plugin === null || !CakePlugin::loaded($plugin)) {
+			return APP . 'View' . DS . $file . TwigView::EXT;
+		}
+
+		return CakePlugin::path($plugin) . 'View' . DS . $file . TwigView::EXT;
     }
 }
