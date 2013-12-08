@@ -35,4 +35,14 @@ class Twig_Loader_CakephpTest extends CakeTestCase {
 		$this->assertSame(APP . 'Plugin/TwigView/Test/test_app/Plugin/TestTwigView/View/twig.tpl', $this->Loader->getCacheKey('TestTwigView.twig'));
 	}
 
+	public function testIsFresh() {
+		file_put_contents(TMP . 'TwigViewIsFreshTest', 'TwigViewIsFreshTest');
+		$time = filemtime(TMP . 'TwigViewIsFreshTest');
+
+		$this->assertTrue($this->Loader->isFresh(TMP . 'TwigViewIsFreshTest', $time + 5));
+		$this->assertTrue(!$this->Loader->isFresh(TMP . 'TwigViewIsFreshTest', $time - 5));
+
+		unlink(TMP . 'TwigViewIsFreshTest');
+	}
+
 }
