@@ -10,6 +10,7 @@ env:
   global:
     - REPO_NAME=TwigView
     - PLUGIN_NAME=TwigView
+    - COMPOSER_VENDOR=Vendor
     - REQUIRE=""
 
   matrix:
