@@ -29,42 +29,41 @@ App::uses('Twig_Loader_Cakephp', 'TwigView.Lib');
  */
 class TwigView extends View {
 
-	/**
-	 * File extension
-	 *
-	 * @var string
-	 */
+/**
+ * File extension
+ *
+ * @var string
+ */
 	const EXT = '.tpl';
 
-	/**
-	 * File extension
-	 *
-	 * @var string
-	 */
+/**
+ * File extension
+ *
+ * @var string
+ */
 	public $ext = self::EXT;
 
-	/**
-	 * Twig Environment Instance
-	 *
-	 * @var Twig_Environment
-	 */
+/**
+ * Twig Environment Instance
+ *
+ * @var Twig_Environment
+ */
 	public $Twig;
 
-	/**
-	 * Collection of paths.
-	 * These are stripped from $___viewFn.
-	 *
-	 * @todo overwrite getFilename()
-	 * @var array
-	 */
+/**
+ * Collection of paths.
+ * These are stripped from $___viewFn.
+ *
+ * @var array
+ */
 	public $templatePaths = array();
 
-	/**
-	 * Constructor
-	 * Overridden to provide Twig loading
-	 *
-	 * @param Controller $Controller Controller
-	 */
+/**
+ * Constructor
+ * Overridden to provide Twig loading
+ *
+ * @param Controller $Controller Controller
+ */
 	public function __construct(Controller $Controller = null) {
 		$this->Twig = new Twig_Environment(new Twig_Loader_Cakephp(array()), array(
 			'cache' => Configure::read('TwigView.Cache'),
@@ -86,13 +85,13 @@ class TwigView extends View {
 		$this->ext = self::EXT;
 	}
 
-	/**
-	 * Render the view
-	 *
-	 * @param string $___viewFn
-	 * @param string $___dataForView
-	 * @return void
-	 */
+/**
+ * Render the view
+ *
+ * @param string $___viewFn
+ * @param string $___dataForView
+ * @return void
+ */
 	protected function _render($___viewFn, $___dataForView = array()) {
 		$isCtpFile = (substr($___viewFn, -3) === 'ctp');
 
@@ -106,8 +105,8 @@ class TwigView extends View {
 			ob_start();
 			// Setup the helpers from the new Helper Collection
 			$helpers = array();
-			$loaded_helpers = $this->Helpers->attached();
-			foreach($loaded_helpers as $helper) {
+			$loadedHelpers = $this->Helpers->attached();
+			foreach ($loadedHelpers as $helper) {
 				$name = Inflector::variable($helper);
 				$helpers[$name] = $this->loadHelper($helper);
 			}
