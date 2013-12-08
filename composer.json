@@ -15,6 +15,9 @@
             "homepage": "http://wyrihaximus.net/"
         }
     ],
+    "config": {
+        "vendor-dir": "Vendor"
+    },
     "require": {
         "php": ">=5.2.4",
         "twig/twig": "1.*",
