@@ -24,7 +24,7 @@ class Twig_Loader_CakephpTest extends CakeTestCase {
 	}
 
 	public function testGetSource() {
-
+		$this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig'));
 	}
 
 	public function testGetCacheKeyNoPlugin() {
