@@ -105,7 +105,7 @@ class TwigView extends View {
 			ob_start();
 			// Setup the helpers from the new Helper Collection
 			$helpers = array();
-			$loadedHelpers = $this->Helpers->attached();
+			$loadedHelpers = $this->Helpers->loaded();
 			foreach ($loadedHelpers as $helper) {
 				$name = Inflector::variable($helper);
 				$helpers[$name] = $this->loadHelper($helper);
