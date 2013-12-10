@@ -1,35 +1,71 @@
 <?php
 class Cake_Utils_Filters
 {
+
+/**
+ * serialize wrapper
+ * @param $str
+ * @return string
+ */
     public static function serialize($str) {
         return serialize($str);
     }
 
+/**
+ * unserialize wrapper
+ * @param $str
+ * @return string
+ */
     public static function unserialize($str) {
         return unserialize($str);
     }
 
+/**
+ * md5 wrapper
+ * @param $str
+ * @return string
+ */
     public static function md5($str) {
         return md5($str);
     }
 
+/**
+ * base64_encode wrapper
+ * @param $str
+ * @return string
+ */
     public static function base64_encode($str) {
         return base64_encode($str);
     }
 
+/**
+ * base64_decode wrapper
+ * @param $str
+ * @return string
+ */
     public static function base64_decode($str) {
         return base64_decode($str);
     }
 
-    public static function nl2br($str) {
+/**
+ * nl2br wrapper
+ * @param $str
+ * @return string
+ */
+	public static function nl2br($str) {
         return nl2br($str);
     }
 
     public static function tb2sp($str) {
         return str_replace(' ', '&nbsp;', $str);
     }
-    
-    public static function string($str) {
+
+/**
+ * Cast to string
+ * @param $str
+ * @return string
+ */
+	public static function string($str) {
         return (string) $str;
     }
 }
