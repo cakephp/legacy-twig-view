@@ -2,6 +2,11 @@
 
 class Cake_String_Filters
 {
+/**
+ * substr wrapper
+ * @param $str
+ * @return string
+ */
     public static function substr($haystack, $a = null, $b = null) {
         return substr($haystack, $a, $b);
     }
