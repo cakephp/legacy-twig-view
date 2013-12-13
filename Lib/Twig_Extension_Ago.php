@@ -4,6 +4,8 @@ App::uses('TimeHelper', 'View/Helper');
 
 /**
  * Wrapper to Time->timeAgoInWords()
+ * @param $var
+ * @return mixed
  */
 function cakeAgo($var) {
 	$time = new TimeHelper();
