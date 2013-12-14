@@ -15,13 +15,19 @@ App::uses('Twig_Extension_Inflector', 'TwigView.Lib');
 
 class TwigRegisterTwigExtentionsListener implements CakeEventListener {
 
-    public function implementedEvents() {
+/**
+ * {@inheritdoc}
+ */
+	public function implementedEvents() {
         return array(
             'Twig.TwigView.construct' => 'construct',
         );
     }
 
-    public function construct($event) {	
+/**
+ * @param CakeEvent $event
+ */
+	public function construct(CakeEvent $event) {
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_StringLoader);
         //$event->data['TwigEnvironment']->addExtension(new Twig_Extension_I18n);
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_Ago);
