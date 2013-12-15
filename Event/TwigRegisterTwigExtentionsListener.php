@@ -29,7 +29,7 @@ class TwigRegisterTwigExtentionsListener implements CakeEventListener {
  */
 	public function construct(CakeEvent $event) {
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_StringLoader);
-        //$event->data['TwigEnvironment']->addExtension(new Twig_Extension_I18n);
+        //$event->data['TwigEnvironment']->addExtension(new Twig_Extension_I18n); // @todo this should be fixed
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_Ago);
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_Basic);
         $event->data['TwigEnvironment']->addExtension(new Twig_Extension_Number);
