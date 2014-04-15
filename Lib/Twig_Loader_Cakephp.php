@@ -6,21 +6,39 @@ class Twig_Loader_Cakephp implements Twig_LoaderInterface {
  * @{inheritDoc}
  */
     public function getSource($name) {
-        return file_get_contents($this->resolveFileName($name));
+        $name = $this->resolveFileName($name);
+        
+        if(file_exists( $name ) !== false) {
+            return file_get_contents($name);
+        }
+        
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
     }
 
 /**
  * @{inheritDoc}
  */
     public function getCacheKey($name) {
-        return $this->resolveFileName($name);
+        $name = $this->resolveFileName($name);
+        
+        if(file_exists( $name ) !== false) {
+            return $name;
+        }
+        
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
     }
 
 /**
  * @{inheritDoc}
  */
     public function isFresh($name, $time) {
-        return filemtime($this->resolveFileName($name)) < $time;
+        $name = $this->resolveFileName($name);
+        
+        if(file_exists( $name ) !== false) {
+            return filemtime($name) < $time;
+        }
+        
+        throw new Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
     }
 
 /**
