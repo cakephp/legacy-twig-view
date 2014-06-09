@@ -39,7 +39,6 @@ before_script:
   - ../travis/before_script.sh
 
 script:
-  - ln -s ./Vendor/phpunit/phpunit/PHPUnit ./Vendor/PHPUnit
   - ../travis/script.sh
 
 after_success:
