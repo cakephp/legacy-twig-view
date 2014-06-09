@@ -35,7 +35,7 @@ env:
         - DB=mysql CAKE_VERSION=master FOC_VALIDATE=1
 
 before_script:
-  - git clone https://github.com/WyriHaximus/travis.git --depth 1 ../travis
+  - git clone https://github.com/FriendsOfCake/travis.git --depth 1 ../travis
   - ../travis/before_script.sh
 
 script:
