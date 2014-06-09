@@ -37,9 +37,9 @@ env:
 before_script:
   - git clone https://github.com/WyriHaximus/travis.git --depth 1 ../travis
   - ../travis/before_script.sh
-  - ln -s ./Vendor/phpunit/phpunit/PHPUnit ./Vendor/PHPUnit
 
 script:
+  - ln -s ./Vendor/phpunit/phpunit/PHPUnit ./Vendor/PHPUnit
   - ../travis/script.sh
 
 after_success:
