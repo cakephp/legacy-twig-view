@@ -21,15 +21,15 @@ class Inflector extends \Twig_Extension {
      */
     public function getFilters() {
         return [
-            'pluralize' => new \Twig_Filter_Function('Cake\Utility\Inflector::pluralize'),
-            'singularize' => new \Twig_Filter_Function('Cake\Utility\Inflector::singularize'),
-            'camelize' => new \Twig_Filter_Function('Cake\Utility\Inflector::camelize'),
-            'underscore' => new \Twig_Filter_Function('Cake\Utility\Inflector::underscore'),
-            'humanize' => new \Twig_Filter_Function('Cake\Utility\Inflector::humanize'),
-            'tableize' => new \Twig_Filter_Function('Cake\Utility\Inflector::tableize'),
-            'classify' => new \Twig_Filter_Function('Cake\Utility\Inflector::classify'),
-            'variable' => new \Twig_Filter_Function('Cake\Utility\Inflector::variable'),
-            'slug' => new \Twig_Filter_Function('Cake\Utility\Inflector::slug'),
+            new \Twig_SimpleFunction('pluralize', 'Cake\Utility\Inflector::pluralize'),
+            new \Twig_SimpleFunction('singularize', 'Cake\Utility\Inflector::singularize'),
+            new \Twig_SimpleFunction('camelize', 'Cake\Utility\Inflector::camelize'),
+            new \Twig_SimpleFunction('underscore', 'Cake\Utility\Inflector::underscore'),
+            new \Twig_SimpleFunction('humanize', 'Cake\Utility\Inflector::humanize'),
+            new \Twig_SimpleFunction('tableize', 'Cake\Utility\Inflector::tableize'),
+            new \Twig_SimpleFunction('classify', 'Cake\Utility\Inflector::classify'),
+            new \Twig_SimpleFunction('variable', 'Cake\Utility\Inflector::variable'),
+            new \Twig_SimpleFunction('slug', 'Cake\Utility\Inflector::slug'),
         ];
     }
 
