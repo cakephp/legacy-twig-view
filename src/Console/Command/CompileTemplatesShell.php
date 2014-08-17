@@ -46,8 +46,10 @@ class CompileTemplatesShell extends Shell {
         $this->out('<info>Compiling all templates</info>');
 
         $plugins = Plugin::loaded();
-        foreach ($plugins as $plugin) {
-            $this->processPlugin($plugin);
+        if (is_array($plugins)) {
+            foreach ($plugins as $plugin) {
+                $this->processPlugin($plugin);
+            }
         }
     }
 
