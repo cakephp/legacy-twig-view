@@ -15,7 +15,7 @@ In addition to enabling the use of most of Twig's features, the plugin is tightl
 Make sure you have [composer](http://getcomposer.org/) installed and configured with the autoloader registering during bootstrap as described [here](http://ceeram.github.io/blog/2013/02/22/using-composer-with-cakephp-2-dot-x/). Make sure you have a composer.json and add the following to your required section.
 
 ```json
-"wyrihaximus/twig-view": "dev-masters"
+"wyrihaximus/twig-view": "dev-master"
 ```
 
 ## Application wide usage ##
