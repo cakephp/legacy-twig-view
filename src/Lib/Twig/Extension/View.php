@@ -10,6 +10,8 @@
  */
 namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension;
 
+use Cake\View\View;
+
 /**
  * Class View
  * @package WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension
