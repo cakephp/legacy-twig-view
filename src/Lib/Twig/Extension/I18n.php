@@ -17,7 +17,7 @@ namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension;
 class I18n extends \Twig_Extension {
 
     /**
-     * @return array
+     * @return \Twig_SimpleFunction[]
      */
     public function getFunctions() {
 		return [
