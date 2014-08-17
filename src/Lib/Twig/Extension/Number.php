@@ -21,12 +21,12 @@ class Number extends \Twig_Extension {
      */
     public function getFilters() {
         return [
-            'toReadableSize' => new \Twig_Filter_Function('Cake\Utility\Number::toReadableSize'),
-            'fromReadableSize' => new \Twig_Filter_Function('Cake\Utility\Number::fromReadableSize'),
-            'toPercentage' => new \Twig_Filter_Function('Cake\Utility\Number::toPercentage'),
-            'format' => new \Twig_Filter_Function('Cake\Utility\Number::format'),
-            'formatDelta' => new \Twig_Filter_Function('Cake\Utility\Number::formatDelta'),
-            'currency' => new \Twig_Filter_Function('Cake\Utility\Number::currency'),
+            new \Twig_SimpleFilter('toReadableSize', 'Cake\Utility\Number::toReadableSize'),
+            new \Twig_SimpleFilter('fromReadableSize', 'Cake\Utility\Number::fromReadableSize'),
+            new \Twig_SimpleFilter('toPercentage', 'Cake\Utility\Number::toPercentage'),
+            new \Twig_SimpleFilter('format', 'Cake\Utility\Number::format'),
+            new \Twig_SimpleFilter('formatDelta', 'Cake\Utility\Number::formatDelta'),
+            new \Twig_SimpleFilter('currency', 'Cake\Utility\Number::currency'),
         ];
     }
 
