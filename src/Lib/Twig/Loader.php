@@ -21,7 +21,8 @@ use WyriHaximus\CakePHP\TwigView\View\TwigView;
 class Loader implements \Twig_LoaderInterface {
 
     /**
-     * @{inheritDoc}
+     * @param string $name
+     * @return string
      */
     public function getSource($name) {
         $name = $this->resolveFileName($name);
@@ -29,14 +30,17 @@ class Loader implements \Twig_LoaderInterface {
     }
 
     /**
-     * @{inheritDoc}
+     * @param string $name
+     * @return string
      */
     public function getCacheKey($name) {
         return $this->resolveFileName($name);
     }
 
     /**
-     * @{inheritDoc}
+     * @param string $name
+     * @param \timestamp $time
+     * @return bool
      */
     public function isFresh($name, $time) {
         $name = $this->resolveFileName($name);
@@ -44,7 +48,9 @@ class Loader implements \Twig_LoaderInterface {
     }
 
     /**
-     * @{inheritDoc}
+     * @param $name
+     * @return string
+     * @throws \Twig_Error_Loader
      */
     private function resolveFileName($name) {
         if (file_exists($name)) {
