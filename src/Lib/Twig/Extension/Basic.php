@@ -21,12 +21,12 @@ class Basic extends \Twig_Extension {
      */
     public function getFilters() {
 		return [
-			'debug' => new \Twig_Filter_Function('debug'),
-			'pr'    => new \Twig_Filter_Function('pr'),
-			'low'   => new \Twig_Filter_Function('low'),
-			'up'    => new \Twig_Filter_Function('up'),
-			'env'   => new \Twig_Filter_Function('env'),
-			'count'   => new \Twig_Filter_Function('count'),
+			new \Twig_SimpleFilter('debug', 'debug'),
+			new \Twig_SimpleFilter('pr', 'debug'),
+			new \Twig_SimpleFilter('low', 'low'),
+			new \Twig_SimpleFilter('up', 'up'),
+			new \Twig_SimpleFilter('env', 'env'),
+			new \Twig_SimpleFilter('count', 'count'),
 		];
 	}
 
