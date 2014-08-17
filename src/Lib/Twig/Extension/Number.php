@@ -17,7 +17,7 @@ namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension;
 class Number extends \Twig_Extension {
 
     /**
-     * @return array
+     * @return \Twig_SimpleFilter[]
      */
     public function getFilters() {
         return [
