@@ -10,7 +10,7 @@
  */
 namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension;
 
-use Cake\View\View;
+use Cake\View\View as CakeView;
 
 /**
  * Class View
@@ -19,14 +19,14 @@ use Cake\View\View;
 class View extends \Twig_Extension {
 
     /**
-     * @var View
+     * @var CakeView
      */
     protected $view;
 
     /**
-     * @param View $view
+     * @param CakeView $view
      */
-    public function __construct(View $view) {
+    public function __construct(CakeView $view) {
         $this->view = $view;
     }
 
