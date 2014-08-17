@@ -21,13 +21,13 @@ class Utils extends \Twig_Extension {
      */
     public function getFilters() {
 		return [
-			'serialize' => new \Twig_Filter_Function('serialize'),
-			'unserialize' => new \Twig_Filter_Function('unserialize'),
-			'md5' => new \Twig_Filter_Function('md5'),
-			'base64_encode' => new \Twig_Filter_Function('base64_encode'),
-			'base64_decode' => new \Twig_Filter_Function('base64_decode'),
-			'nl2br' => new \Twig_Filter_Function('nl2br'),
-			'string' => new \Twig_Filter_Function(function($str) {
+			new \Twig_SimpleFilter('serialize', 'serialize'),
+			new \Twig_SimpleFilter('unserialize', 'unserialize'),
+			new \Twig_SimpleFilter('md5', 'md5'),
+			new \Twig_SimpleFilter('base64_encode', 'base64_encode'),
+			new \Twig_SimpleFilter('base64_decode', 'base64_decode'),
+			new \Twig_SimpleFilter('nl2br', 'nl2br'),
+			new \Twig_SimpleFilter('string', function($str) {
                 return (string) $str;
             }),
 		];
