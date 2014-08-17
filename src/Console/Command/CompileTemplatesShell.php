@@ -81,7 +81,7 @@ class CompileTemplatesShell extends Shell {
     }
 
     /**
-     * @param $plugin
+     * @param string $plugin
      * @return \RegexIterator
      */
     protected function setupIterator($plugin) {
