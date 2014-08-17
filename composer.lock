@@ -1762,12 +1762,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/PHPUnitClassReflectionHelpers.git",
-                "reference": "66c8bead50e66afd9a7a3e414ca661d916fd0a19"
+                "reference": "ce4760ba53ddc965869f095171b80513c3c35e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/PHPUnitClassReflectionHelpers/zipball/66c8bead50e66afd9a7a3e414ca661d916fd0a19",
-                "reference": "66c8bead50e66afd9a7a3e414ca661d916fd0a19",
+                "url": "https://api.github.com/repos/WyriHaximus/PHPUnitClassReflectionHelpers/zipball/ce4760ba53ddc965869f095171b80513c3c35e59",
+                "reference": "ce4760ba53ddc965869f095171b80513c3c35e59",
                 "shasum": ""
             },
             "type": "library",
@@ -1786,7 +1786,7 @@
                     "email": "ceesjank@gmail.com"
                 }
             ],
-            "time": "2014-08-17 16:19:01"
+            "time": "2014-08-17 16:31:47"
         }
     ],
     "aliases": [
