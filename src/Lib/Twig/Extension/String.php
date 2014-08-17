@@ -21,21 +21,21 @@ class String extends \Twig_Extension {
      */
     public function getFilters() {
 		return [
-            'substr' => new \Twig_Filter_Function('substr'),
-            'tokenize' => new \Twig_Filter_Function('Cake\Utility\String::tokenize'),
-            'insert' => new \Twig_Filter_Function('Cake\Utility\String::insert'),
-            'cleanInsert' => new \Twig_Filter_Function('Cake\Utility\String::cleanInsert'),
-            'wrap' => new \Twig_Filter_Function('Cake\Utility\String::wrap'),
-            'wordWrap' => new \Twig_Filter_Function('Cake\Utility\String::wordWrap'),
-            'highlight' => new \Twig_Filter_Function('Cake\Utility\String::highlight'),
-            'tail' => new \Twig_Filter_Function('Cake\Utility\String::tail'),
-            'truncate' => new \Twig_Filter_Function('Cake\Utility\String::truncate'),
-            'excerpt' => new \Twig_Filter_Function('Cake\Utility\String::excerpt'),
-            'toList' => new \Twig_Filter_Function('Cake\Utility\String::toList'),
-            'stripLinks' => new \Twig_Filter_Function('Cake\Utility\String::stripLinks'),
-			'isMultibyte' => new \Twig_Filter_Function('Cake\Utility\String::isMultibyte'),
-			'utf8' => new \Twig_Filter_Function('Cake\Utility\String::utf8'),
-			'ascii' => new \Twig_Filter_Function('Cake\Utility\String::ascii'),
+            new \Twig_SimpleFilter('substr', 'substr'),
+            new \Twig_SimpleFilter('tokenize', 'Cake\Utility\String::tokenize'),
+            new \Twig_SimpleFilter('insert', 'Cake\Utility\String::insert'),
+            new \Twig_SimpleFilter('cleanInsert', 'Cake\Utility\String::cleanInsert'),
+            new \Twig_SimpleFilter('wrap', 'Cake\Utility\String::wrap'),
+            new \Twig_SimpleFilter('wordWrap', 'Cake\Utility\String::wordWrap'),
+            new \Twig_SimpleFilter('highlight', 'Cake\Utility\String::highlight'),
+            new \Twig_SimpleFilter('tail', 'Cake\Utility\String::tail'),
+            new \Twig_SimpleFilter('truncate', 'Cake\Utility\String::truncate'),
+            new \Twig_SimpleFilter('excerpt', 'Cake\Utility\String::excerpt'),
+            new \Twig_SimpleFilter('toList', 'Cake\Utility\String::toList'),
+            new \Twig_SimpleFilter('stripLinks', 'Cake\Utility\String::stripLinks'),
+			new \Twig_SimpleFilter('isMultibyte', 'Cake\Utility\String::isMultibyte'),
+			new \Twig_SimpleFilter('utf8', 'Cake\Utility\String::utf8'),
+			new \Twig_SimpleFilter('ascii', 'Cake\Utility\String::ascii'),
 		];
 	}
 
