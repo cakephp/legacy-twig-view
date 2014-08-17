@@ -21,17 +21,17 @@ class Arrays extends \Twig_Extension {
      */
     public function getFunctions() {
 		return [
-			'in_array' => new \Twig_Filter_Function('in_array'),
-			'explode' => new \Twig_Filter_Function('explode'),
-			'array' => new \Twig_Filter_Function(function($array) {
+			new \Twig_SimpleFunction('in_array', 'in_array'),
+			new \Twig_SimpleFunction('explode', 'explode'),
+			new \Twig_SimpleFunction('array', function($array) {
                 return (array)$array;
             }),
-			'array_push' => new \Twig_Filter_Function('push'),
-			'array_add' => new \Twig_Filter_Function('add'),
-			'array_prev' => new \Twig_Filter_Function('prev'),
-			'array_next' => new \Twig_Filter_Function('next'),
-			'array_current' => new \Twig_Filter_Function('current'),
-			'array_each' => new \Twig_Filter_Function('each'),
+			new \Twig_SimpleFunction('array_push', 'push'),
+			new \Twig_SimpleFunction('array_add', 'add'),
+			new \Twig_SimpleFunction('array_prev', 'prev'),
+			new \Twig_SimpleFunction('array_next', 'next'),
+			new \Twig_SimpleFunction('array_current', 'current'),
+			new \Twig_SimpleFunction('array_each', 'each'),
 		];
 	}
 
