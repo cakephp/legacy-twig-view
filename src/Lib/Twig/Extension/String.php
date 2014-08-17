@@ -44,7 +44,7 @@ class String extends \Twig_Extension {
      */
     public function getFunctions() {
         return [
-            'uuid' => new \Twig_Filter_Function('Cake\Utility\String::uuid'),
+            new \Twig_SimpleFunction('uuid', 'Cake\Utility\String::uuid'),
         ];
     }
 
