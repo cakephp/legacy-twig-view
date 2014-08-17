@@ -33,13 +33,13 @@ class View extends \Twig_Extension {
      */
     public function getFunctions() {
 		return [
-			'elementExists' => new \Twig_Filter_Function(function($name) {
+			new \Twig_SimpleFunction('elementExists', function($name) {
                 return $this->view->elementExists($name);
             }),
-			'getVars' => new \Twig_Filter_Function(function() {
+			new \Twig_SimpleFunction('getVars', function() {
                 return $this->view->getVars();
             }),
-            'get' => new \Twig_Filter_Function(function($var, $default = null) {
+            new \Twig_SimpleFunction('get', function($var, $default = null) {
                 return $this->view->get($var, $default);
             }),
 		];
