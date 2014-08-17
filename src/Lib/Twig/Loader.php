@@ -48,7 +48,7 @@ class Loader implements \Twig_LoaderInterface {
     }
 
     /**
-     * @param $name
+     * @param string $name
      * @return string
      * @throws \Twig_Error_Loader
      */
