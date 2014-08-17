@@ -35,8 +35,8 @@ class Number extends \Twig_Extension {
      */
     public function getFunctions() {
         return [
-            'defaultCurrency' => new \Twig_Filter_Function('Cake\Utility\Number::defaultCurrency'),
-            'number_formatter' => new \Twig_Filter_Function('Cake\Utility\Number::formatter'),
+            new \Twig_SimpleFunction('defaultCurrency', 'Cake\Utility\Number::defaultCurrency'),
+            new \Twig_SimpleFunction('number_formatter', 'Cake\Utility\Number::formatter'),
         ];
     }
 
