@@ -61,6 +61,10 @@ class TwigView extends View {
 			'debug' => Configure::read('debug')
 		]);
 
+        if ($eventManager === null) {
+            $eventManager = EventManager::instance();
+        }
+
         $eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
 
 		parent::__construct($request, $response, $eventManager, $viewOptions);
