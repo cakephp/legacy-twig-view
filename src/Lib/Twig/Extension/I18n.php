@@ -21,10 +21,10 @@ class I18n extends \Twig_Extension {
      */
     public function getFunctions() {
 		return [
-			'__' => new \Twig_Filter_Function('__'),
-			'__d' => new \Twig_Filter_Function('__d'),
-			'__n' => new \Twig_Filter_Function('__n'),
-			'__dn' => new \Twig_Filter_Function('__dn'),
+			new \Twig_SimpleFunction('__', '__'),
+			new \Twig_SimpleFunction('__d', '__d'),
+			new \Twig_SimpleFunction('__n', '__n'),
+			new \Twig_SimpleFunction('__dn', '__dn'),
 		];
 	}
 
