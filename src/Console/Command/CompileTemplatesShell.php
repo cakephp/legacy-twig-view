@@ -113,7 +113,7 @@ class CompileTemplatesShell extends Shell {
         try {
             $this->twigView->getTwig()->loadTemplate($fileName);
             $this->out('<success>' . $fileName . '</success>');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->out('<error>' . $fileName . '</error>');
             $this->out('<error>' . $e->getMessage() . '</error>');
         }
