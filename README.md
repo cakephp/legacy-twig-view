@@ -17,3 +17,11 @@ Make sure you have [composer](http://getcomposer.org/) installed and configured 
 ```json
 "wyrihaximus/twig-view": "dev-masters"
 ```
+
+## Application wide usage ##
+
+```php
+class AppController extends Controller {
+    public $viewClass = 'WyriHaximus\CakePHP\TwigView\View\TwigView';
+}
+```
