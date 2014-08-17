@@ -21,10 +21,10 @@ class Time extends \Twig_Extension {
      */
     public function getFunctions() {
 		return [
-            'time' => new \Twig_Filter_Function(function($time = null, $tz = null) {
+            new \Twig_SimpleFunction('time', function($time = null, $tz = null) {
                 return new \Cake\Utility\Time($time, $tz);
             }),
-            'timezones' => new \Twig_Filter_Function('Cake\Utility\Time::listTimezones'),
+            new \Twig_SimpleFunction('timezones', 'Cake\Utility\Time::listTimezones'),
         ];
 	}
 
