@@ -54,7 +54,7 @@ class TwigView extends View {
      */
     public function __construct(Request $request = null, Response $response = null,
                                 EventManager $eventManager = null, array $viewOptions = []) {
-		$this->twig = new \Twig_Environment(new Loader([]), [
+		$this->twig = new \Twig_Environment(new Loader(), [
 			'cache' => CACHE . 'twigView' . DS,
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => Configure::read('debug'),
