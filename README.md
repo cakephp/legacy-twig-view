@@ -18,6 +18,17 @@ Running the following composer command will install the TwigView to your project
 composer require "wyrihaximus/twig-view:dev-master"
 ```
 
+## Bootstrap ##
+
+Add the following to your `config/bootstrap.php` to load the plugin.
+
+```php
+Plugin::load('TwigView', [
+    'namespace' => 'WyriHaximus\CakePHP\TwigView',
+    'bootstrap' => true,
+]);
+```
+
 ## Application wide usage ##
 
 ```php
