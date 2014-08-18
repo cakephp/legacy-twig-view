@@ -23,16 +23,13 @@ composer require "wyrihaximus/twig-view:dev-master"
 Add the following to your `config/bootstrap.php` to load the plugin.
 
 ```php
-Plugin::load('TwigView', [
-    'namespace' => 'WyriHaximus\CakePHP\TwigView',
-    'bootstrap' => true,
-]);
+Plugin::load('WyriHaximus/CakePHP/TwigView');
 ```
 
 ## Application wide usage ##
 
 ```php
 class AppController extends Controller {
-    public $viewClass = 'WyriHaximus\CakePHP\TwigView\View\TwigView';
+    public $viewClass = '\WyriHaximus\CakePHP\TwigView\View\TwigView';
 }
 ```
