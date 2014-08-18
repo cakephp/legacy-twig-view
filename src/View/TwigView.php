@@ -29,7 +29,7 @@ class TwigView extends View {
     /**
      * @var string
      */
-    protected $ext = self::EXT;
+    protected $_ext = self::EXT;
 
     /**
      * @var \Twig_Environment
@@ -68,7 +68,7 @@ class TwigView extends View {
         $eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
 
 		parent::__construct($request, $response, $eventManager, $viewOptions);
-		$this->ext = self::EXT;
+		$this->_ext = self::EXT;
 
         $this->generateHelperList();
 	}
