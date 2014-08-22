@@ -1,10 +1,21 @@
 <?php
 
+/**
+ * This file is part of TwigView.
+ *
+ ** (c) 2014 Cees-Jan Kiewiet
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 use Cake\Event\EventManager;
 use Cake\TestSuite\TestCase;
 use WyriHaximus\CakePHP\TwigView\Lib\Loader;
 use WyriHaximus\CakePHP\TwigView\View\TwigView;
 
+/**
+ * Class TwigViewTest
+ */
 class TwigViewTest extends TestCase {
 
     /**
