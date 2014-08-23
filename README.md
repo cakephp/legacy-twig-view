@@ -30,6 +30,6 @@ Plugin::load('WyriHaximus/CakePHP/TwigView');
 
 ```php
 class AppController extends Controller {
-    public $viewClass = '\WyriHaximus\CakePHP\TwigView\View\TwigView';
+    public $viewClass = '\WyriHaximus\TwigView\View\TwigView';
 }
 ```

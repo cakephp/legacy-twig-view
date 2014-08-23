@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\Console\Command;
+namespace WyriHaximus\TwigView\Console\Command;
 
 use Cake\Console\ConsoleIo;
 use Cake\Console\Shell;
 use Cake\Core\Plugin;
-use WyriHaximus\CakePHP\TwigView\View\TwigView;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class CompileTemplatesShell
- * @package WyriHaximus\CakePHP\TwigView\Console\Command
+ * @package WyriHaximus\TwigView\Console\Command
  */
 class CompileTemplatesShell extends Shell {
 

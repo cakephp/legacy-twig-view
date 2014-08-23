@@ -12,7 +12,7 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
 use Cake\TestSuite\TestCase;
 use Phake;
-use WyriHaximus\CakePHP\TwigView\Event\ExtensionsListener;
+use WyriHaximus\TwigView\Event\ExtensionsListener;
 
 /**
  * Class ExtensionsListenerTest
@@ -29,7 +29,7 @@ class ExtensionsListenerTest extends TestCase {
     public function testConstruct() {
         $twig = Phake::mock('\Twig_Environment');
 
-        $twigView = Phake::mock('WyriHaximus\CakePHP\TwigView\View\TwigView');
+        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         Phake::when($twigView)->getTwig()->thenReturn($twig);
 
         $event = Phake::mock('Cake\Event\Event');

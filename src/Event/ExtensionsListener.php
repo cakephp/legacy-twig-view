@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\Event;
+namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
 use Cake\Event\EventListener;
-use WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension;
+use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
  * Class ExtensionsListener
- * @package WyriHaximus\CakePHP\TwigView\Event
+ * @package WyriHaximus\TwigView\Event
  */
 class ExtensionsListener implements EventListener {
 

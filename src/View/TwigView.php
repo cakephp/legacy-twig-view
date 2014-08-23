@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\View;
+namespace WyriHaximus\TwigView\View;
 
 use Cake\Event\Event;
 use Cake\Event\EventManager;
@@ -16,11 +16,11 @@ use Cake\Core\Configure;
 use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\View\View;
-use WyriHaximus\CakePHP\TwigView\Lib\Twig\Loader;
+use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
  * Class TwigView
- * @package WyriHaximus\CakePHP\TwigView\View
+ * @package WyriHaximus\TwigView\View
  */
 class TwigView extends View {
 

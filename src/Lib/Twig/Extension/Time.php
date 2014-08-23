@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension;
+namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
  * Class Time
- * @package WyriHaximus\CakePHP\TwigView\Lib\Twig\Extension
+ * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 class Time extends \Twig_Extension {
 

@@ -10,8 +10,8 @@
  */
 use Cake\Event\EventManager;
 use Cake\TestSuite\TestCase;
-use WyriHaximus\CakePHP\TwigView\Lib\Loader;
-use WyriHaximus\CakePHP\TwigView\View\TwigView;
+use WyriHaximus\TwigView\Lib\Loader;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class TwigViewTest
@@ -23,7 +23,7 @@ class TwigViewTest extends TestCase {
      * @return ReflectionMethod
      */
     protected static function getMethod($name) {
-        $class = new ReflectionClass('WyriHaximus\CakePHP\TwigView\View\TwigView');
+        $class = new ReflectionClass('WyriHaximus\TwigView\View\TwigView');
         $method = $class->getMethod($name);
         $method->setAccessible(true);
         return $method;
@@ -34,7 +34,7 @@ class TwigViewTest extends TestCase {
      * @return ReflectionProperty
      */
     protected static function getProperty($name) {
-        $class = new ReflectionClass('WyriHaximus\CakePHP\TwigView\View\TwigView');
+        $class = new ReflectionClass('WyriHaximus\TwigView\View\TwigView');
         $property = $class->getProperty($name);
         $property->setAccessible(true);
         return $property;
@@ -97,7 +97,7 @@ class TwigViewTest extends TestCase {
             ],
         ]);
 
-        $view = Phake::mock('WyriHaximus\CakePHP\TwigView\View\TwigView');
+        $view = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         Phake::when($view)->helpers()->thenReturn($registery);
         $view->TestHelper = 'foo:bar';
         $view->helpers = $helpersArray;
@@ -113,7 +113,7 @@ class TwigViewTest extends TestCase {
 
         $twig = Phake::mock('Twig_Environment');
 
-        $view = Phake::partialMock('WyriHaximus\CakePHP\TwigView\View\TwigView');
+        $view = Phake::partialMock('WyriHaximus\TwigView\View\TwigView');
         Phake::when($view)->getTwig()->thenReturn($twig);
 
         $this->assertSame($output, self::getMethod('_render')->invokeArgs($view, [
@@ -129,7 +129,7 @@ class TwigViewTest extends TestCase {
         $twig = Phake::mock('Twig_Environment');
         Phake::when($twig)->loadTemplate('foo.tpl')->thenReturn($template);
 
-        $view = Phake::partialMock('WyriHaximus\CakePHP\TwigView\View\TwigView');
+        $view = Phake::partialMock('WyriHaximus\TwigView\View\TwigView');
         Phake::when($view)->getTwig()->thenReturn($twig);
         Phake::when($template)->render([
             '_view' => $view,

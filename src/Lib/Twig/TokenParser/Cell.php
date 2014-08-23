@@ -8,9 +8,9 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\TokenParser;
+namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
-use WyriHaximus\CakePHP\TwigView\Lib\Twig\Node\Element as ElementNode;
+use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
 
 class Cell extends \Twig_TokenParser {
 

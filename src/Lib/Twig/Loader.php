@@ -8,15 +8,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\Lib\Twig;
+namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
-use WyriHaximus\CakePHP\TwigView\View\TwigView;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Loader
- * @package WyriHaximus\CakePHP\TwigView\Lib\Twig
+ * @package WyriHaximus\TwigView\Lib\Twig
  */
 class Loader implements \Twig_LoaderInterface {
 

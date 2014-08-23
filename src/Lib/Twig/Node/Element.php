@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\TwigView\Lib\Twig\Node;
+namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
 class Element extends \Twig_Node_Include {
 
