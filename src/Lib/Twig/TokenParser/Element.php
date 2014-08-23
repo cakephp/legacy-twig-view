@@ -43,23 +43,6 @@ class Element extends \Twig_TokenParser_Include {
     }
 
     /**
-     * @param \Twig_Node_Expression $expr
-     * @return \Twig_Node_Expression_Constant
-     */
-    protected function insertElementLocation(\Twig_Node_Expression $expr) {
-        $name = $expr->getAttribute('value');
-
-        list($plugin, $file) = pluginSplit($name);
-        if ($plugin === null || !Plugin::loaded($plugin)) {
-            $name = $plugin . '.Elements/' . $file;
-        } else {
-            $name = 'Elements/' . $file;
-        }
-
-        return new \Twig_Node_Expression_Constant($name, $expr->getLine());
-    }
-
-    /**
      * @return string
      */
     public function getTag()
