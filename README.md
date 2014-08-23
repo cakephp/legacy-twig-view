@@ -23,7 +23,9 @@ composer require "wyrihaximus/twig-view:dev-master"
 Add the following to your `config/bootstrap.php` to load the plugin.
 
 ```php
-Plugin::load('WyriHaximus/TwigView');
+Plugin::load('WyriHaximus/TwigView', [
+    'bootstrap' => true,
+]);
 ```
 
 ## Application wide usage ##
