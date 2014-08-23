@@ -37,7 +37,7 @@ class Cell extends \Twig_Node {
     {
         $compiler->addDebugInfo($this);
 
-        $compiler->raw('$context[\''.$this->getAttribute('variable').'\']->cell(');
+        $compiler->raw('$context[\'' . $this->getAttribute('variable') . '\'] = $context[\'_view\']->cell(');
         $compiler->subcompile($this->getNode('name'));
         $data = $this->getNode('data');
         if ($data !== null) {
