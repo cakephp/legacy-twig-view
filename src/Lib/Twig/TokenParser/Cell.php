@@ -10,35 +10,46 @@
  */
 namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
-use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
+use WyriHaximus\TwigView\Lib\Twig\Node\Cell as CellNode;
 
-class Cell extends \Twig_TokenParser {
+/**
+ * Class Element
+ * @package WyriHaximus\TwigView\Lib\Twig\TokenParser
+ */
+class Cell extends \Twig_TokenParser_Include {
 
+    /**
+     * @param \Twig_Token $token
+     * @return \Twig_NodeInterface|ElementNode
+     */
     public function parse(\Twig_Token $token)
     {
-        $expr = $this->parser->getExpressionParser()->parseExpression();
-
-        list($variables, $only, $ignoreMissing) = $this->parseArguments();
-
-        return new ElementNode($expr, $variables, $only, $ignoreMissing, $token->getLine(), $this->getTag());
-    }
-
-    protected function insertElementLocation(\Twig_Node_Expression $expr) {
-        $name = $expr->getAttribute('value');
-
-        list($plugin, $file) = pluginSplit($name);
-        if ($plugin === null || !Plugin::loaded($plugin)) {
-            $name = $plugin . '.Elements/' . $file;
+        $stream = $this->parser->getStream();
+        $variable = $this->parser->getExpressionParser()->parseExpression();
+        $stream->expect(Twig_Token::OPERATOR_TYPE, '=');
+        $name = $this->parser->getExpressionParser()->parseExpression();
+        if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+            $data = $this->parser->getExpressionParser()->parseExpression();
         } else {
-            $name = 'Elements/' . $file;
+            $data = null;
+        }
+        if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+            $options = $this->parser->getExpressionParser()->parseExpression();
+        } else {
+            $options = null;
         }
 
-        return new \Twig_Node_Expression_Constant($name, $expr->getLine());
+        $stream->expect(\Twig_Token::BLOCK_END_TYPE);
+
+        return new CellNode($variable, $name, $data, $options, $token->getLine(), $this->getTag());
     }
 
+    /**
+     * @return string
+     */
     public function getTag()
     {
-        return 'element';
+        return 'cell';
     }
 
 }
