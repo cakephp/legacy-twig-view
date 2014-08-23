@@ -26,7 +26,7 @@ class Cell extends \Twig_TokenParser_Include {
     {
         $stream = $this->parser->getStream();
         $variable = $this->parser->getExpressionParser()->parseExpression();
-        $stream->expect(Twig_Token::OPERATOR_TYPE, '=');
+        $stream->expect(\Twig_Token::OPERATOR_TYPE, '=');
         $name = $this->parser->getExpressionParser()->parseExpression();
         if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
             $data = $this->parser->getExpressionParser()->parseExpression();
