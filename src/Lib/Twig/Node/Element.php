@@ -19,11 +19,13 @@ class Element extends \Twig_Node {
     /**
      * @param \Twig_Node_Expression $name
      */
-    public function __construct(\Twig_Node_Expression $name)
+    public function __construct(\Twig_Node_Expression $name, \Twig_Node_Expression $data = null, \Twig_Node_Expression $options = null, $lineno, $tag = null)
     {
         parent::__construct([
             'name' => $name,
-        ], []);
+            'data' => $data,
+            'options' => $options,
+        ], [], $lineno, $tag);
     }
 
     /**
@@ -35,6 +37,16 @@ class Element extends \Twig_Node {
 
         $compiler->raw('echo $context[\'_view\']->element(');
         $compiler->subcompile($this->getNode('name'));
+        $data = $this->getNode('data');
+        if ($data !== null) {
+            $compiler->raw(',');
+            $compiler->subcompile($data);
+        }
+        $options = $this->getNode('options');
+        if ($data !== null) {
+            $compiler->raw(',');
+            $compiler->subcompile($options);
+        }
         $compiler->raw(");\n");
     }
 }

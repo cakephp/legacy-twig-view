@@ -12,17 +12,40 @@ namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
 
+/**
+ * Class Element
+ * @package WyriHaximus\TwigView\Lib\Twig\TokenParser
+ */
 class Element extends \Twig_TokenParser_Include {
 
+    /**
+     * @param \Twig_Token $token
+     * @return \Twig_NodeInterface|ElementNode
+     */
     public function parse(\Twig_Token $token)
     {
-        $expr = $this->parser->getExpressionParser()->parseExpression();
+        $stream = $this->parser->getStream();
+        $name = $this->parser->getExpressionParser()->parseExpression();
+        if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+            $data = $this->parser->getExpressionParser()->parseExpression();
+        } else {
+            $data = null;
+        }
+        if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+            $options = $this->parser->getExpressionParser()->parseExpression();
+        } else {
+            $options = null;
+        }
 
-        list($variables, $only, $ignoreMissing) = $this->parseArguments();
+        $stream->expect(\Twig_Token::BLOCK_END_TYPE);
 
-        return new ElementNode($expr, $variables, $only, $ignoreMissing, $token->getLine(), $this->getTag());
+        return new ElementNode($name, $data, $options, $token->getLine(), $this->getTag());
     }
 
+    /**
+     * @param \Twig_Node_Expression $expr
+     * @return \Twig_Node_Expression_Constant
+     */
     protected function insertElementLocation(\Twig_Node_Expression $expr) {
         $name = $expr->getAttribute('value');
 
@@ -36,6 +59,9 @@ class Element extends \Twig_TokenParser_Include {
         return new \Twig_Node_Expression_Constant($name, $expr->getLine());
     }
 
+    /**
+     * @return string
+     */
     public function getTag()
     {
         return 'element';
