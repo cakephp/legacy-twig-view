@@ -47,6 +47,11 @@ class TwigView extends View {
     protected $parentView;
 
     /**
+     * @var \Cake\Event\EventManager
+     */
+    protected $eventManager;
+
+    /**
      * @param Request $request
      * @param Response $response
      * @param EventManager $eventManager
@@ -54,24 +59,41 @@ class TwigView extends View {
      */
     public function __construct(Request $request = null, Response $response = null,
                                 EventManager $eventManager = null, array $viewOptions = []) {
-		$this->twig = new \Twig_Environment(new Loader(), [
+        if ($eventManager === null) {
+            $eventManager = EventManager::instance();
+        }
+        $this->eventManager = $eventManager;
+
+		$this->twig = new \Twig_Environment($this->getLoader(), [
 			'cache' => CACHE . 'twigView' . DS,
 			'charset' => strtolower(Configure::read('App.encoding')),
 			'auto_reload' => Configure::read('debug'),
 			'debug' => Configure::read('debug')
 		]);
 
-        if ($eventManager === null) {
-            $eventManager = EventManager::instance();
-        }
-
-        $eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
+        $this->eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
 
 		parent::__construct($request, $response, $eventManager, $viewOptions);
 		$this->_ext = self::EXT;
 
         $this->generateHelperList();
 	}
+
+    /**
+     * @return \Twig_LoaderInterface
+     */
+    protected function getLoader() {
+        $event = new Event('TwigView.TwigView.loader', $this, [
+            'loader' => new Loader(),
+        ]);
+        $this->eventManager->dispatch($event);
+
+        if (isset($event->result['loader'])) {
+            return $event->result['loader'];
+        }
+
+        return $event->data['loader'];
+    }
 
     protected function generateHelperList() {
         $registry = $this->helpers();
