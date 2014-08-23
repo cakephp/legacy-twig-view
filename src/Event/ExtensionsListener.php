@@ -35,6 +35,7 @@ class ExtensionsListener implements EventListener {
      */
     public function construct(Event $event) {
         $event->subject()->getTwig()->addExtension(new \Twig_Extension_StringLoader);
+        $event->subject()->getTwig()->addExtension(new \Twig_Extension_Debug);
         $event->subject()->getTwig()->addExtension(new Extension\I18n);
         $event->subject()->getTwig()->addExtension(new Extension\Time);
         $event->subject()->getTwig()->addExtension(new Extension\Basic);
