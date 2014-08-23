@@ -13,6 +13,7 @@ namespace WyriHaximus\TwigView\Event;
 use Cake\Event\Event;
 use Cake\Event\EventListener;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
+use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 /**
  * Class ExtensionsListener
@@ -42,5 +43,7 @@ class ExtensionsListener implements EventListener {
         $event->subject()->getTwig()->addExtension(new Extension\Arrays);
         $event->subject()->getTwig()->addExtension(new Extension\String);
         $event->subject()->getTwig()->addExtension(new Extension\Inflector);
+        $event->subject()->getTwig()->addTokenParser(new TokenParser\Cell);
+        $event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
     }
 }
