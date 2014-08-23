@@ -35,3 +35,13 @@ class AppController extends Controller {
     public $viewClass = '\WyriHaximus\TwigView\View\TwigView';
 }
 ```
+
+## Elements ##
+
+```twig
+{% element 'Plugin.Element' {
+    dataName: 'dataValue'
+} {
+    optionName: 'optionValue'
+} %}
+```
