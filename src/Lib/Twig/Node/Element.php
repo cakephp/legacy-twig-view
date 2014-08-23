@@ -10,51 +10,31 @@
  */
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
-class Element extends \Twig_Node_Include {
+/**
+ * Class Element
+ * @package WyriHaximus\TwigView\Lib\Twig\Node
+ */
+class Element extends \Twig_Node {
 
+    /**
+     * @param \Twig_Node_Expression $name
+     */
+    public function __construct(\Twig_Node_Expression $name)
+    {
+        parent::__construct([
+            'name' => $name,
+        ], []);
+    }
+
+    /**
+     * @param \Twig_Compiler $compiler
+     */
     public function compile(\Twig_Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 
-        if ($this->getAttribute('ignore_missing')) {
-            $compiler
-                ->write("try {\n")
-                ->indent()
-            ;
-        }
-
-        $compiler->raw('$context[\'_view\']->element(');
-
-        $this->addTemplateArguments($compiler);
-
+        $compiler->raw('echo $context[\'_view\']->element(');
+        $compiler->subcompile($this->getNode('name'));
         $compiler->raw(");\n");
-
-        if ($this->getAttribute('ignore_missing')) {
-            $compiler
-                ->outdent()
-                ->write("} catch (Twig_Error_Loader \$e) {\n")
-                ->indent()
-                ->write("// ignore missing template\n")
-                ->outdent()
-                ->write("}\n\n")
-            ;
-        }
     }
-
-    protected function addGetTemplate(Twig_Compiler $compiler)
-    {
-        if ($this->getNode('expr') instanceof Twig_Node_Expression_Constant) {
-            $compiler
-                ->subcompile($this->getNode('expr'))
-            ;
-        } else {
-            $compiler
-                ->write("\$this->env->resolveTemplate(")
-                ->subcompile($this->getNode('expr'))
-                ->raw(")")
-            ;
-        }
-    }
-
-
 }
