@@ -23,7 +23,7 @@ class Element extends \Twig_Node_Include {
             ;
         }
 
-        $compiler->raw('$content[\'_view\']->element(');
+        $compiler->raw('$context[\'_view\']->element(');
 
         $this->addTemplateArguments($compiler);
 
