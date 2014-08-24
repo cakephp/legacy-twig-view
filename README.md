@@ -49,9 +49,11 @@ class AppController extends Controller {
 ## Cells ##
 
 ```twig
-{% cell cellReturnedData = 'Plugin.Cell' {
+{% cell cellObject = 'Plugin.Cell' {
     dataName: 'dataValue'
 } {
     optionName: 'optionValue'
 } %}
+
+{{ cellObject }}
 ```
