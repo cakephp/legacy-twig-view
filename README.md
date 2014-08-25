@@ -36,6 +36,8 @@ class AppController extends Controller {
 }
 ```
 
+(Note that you also have to do this for every Cell, a [PR](https://github.com/cakephp/app/pull/118) has been made to address that.)
+
 ## Elements ##
 
 ```twig
@@ -49,9 +51,11 @@ class AppController extends Controller {
 ## Cells ##
 
 ```twig
-{% cell cellReturnedData = 'Plugin.Cell' {
+{% cell cellObject = 'Plugin.Cell' {
     dataName: 'dataValue'
 } {
     optionName: 'optionValue'
 } %}
+
+{{ cellObject }}
 ```
