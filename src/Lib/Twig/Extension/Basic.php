@@ -16,10 +16,12 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  */
 class Basic extends \Twig_Extension {
 
-    /**
-     * @return \Twig_SimpleFilter[]
-     */
-    public function getFilters() {
+/**
+ * Get declared filters
+ *
+ * @return \Twig_SimpleFilter[]
+ */
+	public function getFilters() {
 		return [
 			new \Twig_SimpleFilter('debug', 'debug'),
 			new \Twig_SimpleFilter('pr', 'debug'),
@@ -30,10 +32,12 @@ class Basic extends \Twig_Extension {
 		];
 	}
 
-    /**
-     * @return string
-     */
-    public function getName() {
+/**
+ * Get extension name
+ *
+ * @return string
+ */
+	public function getName() {
 		return 'basic';
 	}
 }

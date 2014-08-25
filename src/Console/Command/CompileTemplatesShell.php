@@ -21,111 +21,143 @@ use WyriHaximus\TwigView\View\TwigView;
  */
 class CompileTemplatesShell extends Shell {
 
-    /**
-     * @var TwigView
-     */
-    private $twigView;
+/**
+ * @var TwigView
+ */
+	protected $_twigView;
 
-    /**
-     * @param ConsoleIo $io
-     */
-    public function __construct(ConsoleIo $io = null) {
-        parent::__construct($io);
-        
-        $this->twigView = new TwigView();
-    }
+/**
+ * Constructor
+ *
+ * @param ConsoleIo $io An IO instance
+ */
+	public function __construct(ConsoleIo $io = null) {
+		parent::__construct($io);
 
-    /**
-     * @param TwigView $twigView
-     */
-    public function setTwigview(TwigView $twigView) {
-        $this->twigView = $twigView;
-    }
+		$this->_twigView = new TwigView();
+	}
 
-    public function all() {
-        $this->out('<info>Compiling all templates</info>');
+/**
+ * Set TwigView
+ *
+ * @param TwigView $twigView TwigView instance
+ * @return void
+ */
+	public function setTwigview(TwigView $twigView) {
+		$this->_twigView = $twigView;
+	}
 
-        $plugins = Plugin::loaded();
-        if (is_array($plugins)) {
-            foreach ($plugins as $plugin) {
-                $this->processPlugin($plugin);
-            }
-        }
-    }
+/**
+ * Compile all templates
+ *
+ * @return void
+ */
+	public function all() {
+		$this->out('<info>Compiling all templates</info>');
 
-    /**
-     * @param string $plugin
-     */
-    public function plugin($plugin) {
-        $this->out('<info>Compiling one plugin\'s templates</info>');
-        $this->processPlugin($plugin);
-    }
+		$plugins = Plugin::loaded();
+		if (is_array($plugins)) {
+			foreach ($plugins as $plugin) {
+				$this->_processPlugin($plugin);
+			}
+		}
+	}
 
-    /**
-     * @param string $fileName
-     */
-    public function file($fileName) {
-        $this->out('<info>Compiling one template</info>');
-        $this->compileTemplate($fileName);
-    }
+/**
+ * Compile only this plugin
+ *
+ * @param string $plugin Plugin name
+ * @return void
+ */
+	public function plugin($plugin) {
+		$this->out('<info>Compiling one plugin\'s templates</info>');
+		$this->_processPlugin($plugin);
+	}
 
-    /**
-     * @param string $plugin
-     */
-    protected function processPlugin($plugin) {
-        if (!is_dir(Plugin::path($plugin) . 'Template' . DS)) {
-            return;
-        }
+/**
+ * Only compile one file
+ *
+ * @param string $fileName File to compile
+ * @return void
+ */
+	public function file($fileName) {
+		$this->out('<info>Compiling one template</info>');
+		$this->_compileTemplate($fileName);
+	}
 
-        $this->walkIterator($this->setupIterator($plugin));
-    }
+/**
+ * Process plugin
+ *
+ * @param string $plugin Plugin to process
+ * @return void
+ */
+	protected function _processPlugin($plugin) {
+		if (!is_dir(Plugin::path($plugin) . 'Template' . DS)) {
+			return;
+		}
 
-    /**
-     * @param string $plugin
-     * @return \RegexIterator
-     */
-    protected function setupIterator($plugin) {
-        return new \RegexIterator(new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator(
-                Plugin::path($plugin) . 'Template' . DS,
-                \FilesystemIterator::KEY_AS_PATHNAME | \FilesystemIterator::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS
-            ),
-            \RecursiveIteratorIterator::CHILD_FIRST,
-            \RecursiveIteratorIterator::CATCH_GET_CHILD
-        ), '/.*?.tpl$/', \RegexIterator::GET_MATCH);
-    }
+		$this->_walkIterator($this->_setupIterator($plugin));
+	}
 
-    /**
-     * @param \Iterator $iterator
-     */
-    protected function walkIterator(\Iterator $iterator) {
-        foreach ($iterator as $paths) {
-            foreach ($paths as $path) {
-                $this->compileTemplate($path);
-            }
-        }
-    }
+/**
+ * Setup iterator for plugin
+ *
+ * @param string $plugin Plugin to setup iterator
+ * @return \RegexIterator
+ */
+	protected function _setupIterator($plugin) {
+		return new \RegexIterator(new \RecursiveIteratorIterator(
+			new \RecursiveDirectoryIterator(
+				Plugin::path($plugin) . 'Template' . DS,
+				\FilesystemIterator::KEY_AS_PATHNAME | \FilesystemIterator::CURRENT_AS_FILEINFO | \FilesystemIterator::SKIP_DOTS
+			),
+			\RecursiveIteratorIterator::CHILD_FIRST,
+			\RecursiveIteratorIterator::CATCH_GET_CHILD
+		), '/.*?.tpl$/', \RegexIterator::GET_MATCH);
+	}
 
-    /**
-     * @param string $fileName
-     */
-    protected function compileTemplate($fileName) {
-        try {
-            $this->twigView->getTwig()->loadTemplate($fileName);
-            $this->out('<success>' . $fileName . '</success>');
-        } catch (\Exception $e) {
-            $this->out('<error>' . $fileName . '</error>');
-            $this->out('<error>' . $e->getMessage() . '</error>');
-        }
-    }
+/**
+ * Walk over the iterator and compile all templates
+ *
+ * @param \Iterator $iterator Iterator to walk
+ * @return void
+ */
+	protected function _walkIterator(\Iterator $iterator) {
+		foreach ($iterator as $paths) {
+			foreach ($paths as $path) {
+				$this->_compileTemplate($path);
+			}
+		}
+	}
 
-    /**
-     * @return \Cake\Console\ConsoleOptionParser
-     */
-    public function getOptionParser() {
-        return parent::getOptionParser()->addSubcommand('all', array(
-            'short' => 'a',
-            'help' => __('Searches and precompiles all twig templates it finds.')
-        ))->description(__('TwigView templates precompiler'));
-    }
+/**
+ * Compile a template
+ *
+ * @param string $fileName Template to compile
+ * @return void
+ */
+	protected function _compileTemplate($fileName) {
+		try {
+			$this->_twigView->getTwig()->loadTemplate($fileName);
+			$this->out('<success>' . $fileName . '</success>');
+		} catch (\Exception $e) {
+			$this->out('<error>' . $fileName . '</error>');
+			$this->out('<error>' . $e->getMessage() . '</error>');
+		}
+	}
+
+/**
+ * Set options for this console
+ *
+ * @return \Cake\Console\ConsoleOptionParser
+ */
+	public function getOptionParser() {
+		return parent::getOptionParser()->addSubcommand(
+			'all',
+			array(
+				'short' => 'a',
+				'help' => __('Searches and precompiles all twig templates it finds.')
+			)
+		)->description(__('TwigView templates precompiler'));
+	}
 }

@@ -16,10 +16,12 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  */
 class Utils extends \Twig_Extension {
 
-    /**
-     * @return \Twig_SimpleFilter[]
-     */
-    public function getFilters() {
+/**
+ * Get declared filters
+ *
+ * @return \Twig_SimpleFilter[]
+ */
+	public function getFilters() {
 		return [
 			new \Twig_SimpleFilter('serialize', 'serialize'),
 			new \Twig_SimpleFilter('unserialize', 'unserialize'),
@@ -27,16 +29,18 @@ class Utils extends \Twig_Extension {
 			new \Twig_SimpleFilter('base64_encode', 'base64_encode'),
 			new \Twig_SimpleFilter('base64_decode', 'base64_decode'),
 			new \Twig_SimpleFilter('nl2br', 'nl2br'),
-			new \Twig_SimpleFilter('string', function($str) {
-                return (string) $str;
-            }),
+			new \Twig_SimpleFilter('string', function ($str) {
+				return (string)$str;
+			}),
 		];
 	}
 
-    /**
-     * @return string
-     */
-    public function getName() {
+/**
+ * Get extension name
+ *
+ * @return string
+ */
+	public function getName() {
 		return 'utils';
 	}
 }

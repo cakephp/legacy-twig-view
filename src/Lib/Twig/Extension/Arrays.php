@@ -16,16 +16,18 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  */
 class Arrays extends \Twig_Extension {
 
-    /**
-     * @return \Twig_SimpleFunction[]
-     */
-    public function getFunctions() {
+/**
+ * Get declared functions
+ *
+ * @return \Twig_SimpleFunction[]
+ */
+	public function getFunctions() {
 		return [
 			new \Twig_SimpleFunction('in_array', 'in_array'),
 			new \Twig_SimpleFunction('explode', 'explode'),
-			new \Twig_SimpleFunction('array', function($array) {
-                return (array)$array;
-            }),
+			new \Twig_SimpleFunction('array', function ($array) {
+				return (array)$array;
+			}),
 			new \Twig_SimpleFunction('array_push', 'push'),
 			new \Twig_SimpleFunction('array_add', 'add'),
 			new \Twig_SimpleFunction('array_prev', 'prev'),
@@ -35,10 +37,12 @@ class Arrays extends \Twig_Extension {
 		];
 	}
 
-    /**
-     * @return string
-     */
-    public function getName() {
+/**
+ * Get extension name
+ *
+ * @return string
+ */
+	public function getName() {
 		return 'array';
 	}
 }

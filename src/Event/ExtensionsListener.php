@@ -21,30 +21,35 @@ use WyriHaximus\TwigView\Lib\Twig\TokenParser;
  */
 class ExtensionsListener implements EventListener {
 
-    /**
-     * @return array
-     */
-    public function implementedEvents() {
-        return [
-            'TwigView.TwigView.construct' => 'construct',
-        ];
-    }
+/**
+ * Return implemented events
+ *
+ * @return array
+ */
+	public function implementedEvents() {
+		return [
+			'TwigView.TwigView.construct' => 'construct',
+		];
+	}
 
-    /**
-     * @param Event $event
-     */
-    public function construct(Event $event) {
-        $event->subject()->getTwig()->addExtension(new \Twig_Extension_StringLoader);
-        $event->subject()->getTwig()->addExtension(new \Twig_Extension_Debug);
-        $event->subject()->getTwig()->addExtension(new Extension\I18n);
-        $event->subject()->getTwig()->addExtension(new Extension\Time);
-        $event->subject()->getTwig()->addExtension(new Extension\Basic);
-        $event->subject()->getTwig()->addExtension(new Extension\Number);
-        $event->subject()->getTwig()->addExtension(new Extension\Utils);
-        $event->subject()->getTwig()->addExtension(new Extension\Arrays);
-        $event->subject()->getTwig()->addExtension(new Extension\String);
-        $event->subject()->getTwig()->addExtension(new Extension\Inflector);
-        $event->subject()->getTwig()->addTokenParser(new TokenParser\Cell);
-        $event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
-    }
+/**
+ * Event handler
+ *
+ * @param Event $event Event
+ * @return void
+ */
+	public function construct(Event $event) {
+		$event->subject()->getTwig()->addExtension(new \Twig_Extension_StringLoader);
+		$event->subject()->getTwig()->addExtension(new \Twig_Extension_Debug);
+		$event->subject()->getTwig()->addExtension(new Extension\I18n);
+		$event->subject()->getTwig()->addExtension(new Extension\Time);
+		$event->subject()->getTwig()->addExtension(new Extension\Basic);
+		$event->subject()->getTwig()->addExtension(new Extension\Number);
+		$event->subject()->getTwig()->addExtension(new Extension\Utils);
+		$event->subject()->getTwig()->addExtension(new Extension\Arrays);
+		$event->subject()->getTwig()->addExtension(new Extension\String);
+		$event->subject()->getTwig()->addExtension(new Extension\Inflector);
+		$event->subject()->getTwig()->addTokenParser(new TokenParser\Cell);
+		$event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
+	}
 }

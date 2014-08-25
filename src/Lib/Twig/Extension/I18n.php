@@ -16,10 +16,12 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  */
 class I18n extends \Twig_Extension {
 
-    /**
-     * @return \Twig_SimpleFunction[]
-     */
-    public function getFunctions() {
+/**
+ * get declared functions
+ *
+ * @return \Twig_SimpleFunction[]
+ */
+	public function getFunctions() {
 		return [
 			new \Twig_SimpleFunction('__', '__'),
 			new \Twig_SimpleFunction('__d', '__d'),
@@ -28,10 +30,12 @@ class I18n extends \Twig_Extension {
 		];
 	}
 
-    /**
-     * @return string
-     */
-    public function getName() {
+/**
+ * Get extension name
+ *
+ * @return string
+ */
+	public function getName() {
 		return 'i18n';
 	}
 }

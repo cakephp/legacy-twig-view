@@ -18,36 +18,38 @@ use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
  */
 class Element extends \Twig_TokenParser_Include {
 
-    /**
-     * @param \Twig_Token $token
-     * @return \Twig_NodeInterface|ElementNode
-     */
-    public function parse(\Twig_Token $token)
-    {
-        $stream = $this->parser->getStream();
-        $name = $this->parser->getExpressionParser()->parseExpression();
-        if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
-            $data = $this->parser->getExpressionParser()->parseExpression();
-        } else {
-            $data = null;
-        }
-        if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
-            $options = $this->parser->getExpressionParser()->parseExpression();
-        } else {
-            $options = null;
-        }
+/**
+ * Parse token
+ *
+ * @param \Twig_Token $token Token
+ * @return \Twig_NodeInterface|ElementNode
+ */
+	public function parse(\Twig_Token $token) {
+		$stream = $this->parser->getStream();
+		$name = $this->parser->getExpressionParser()->parseExpression();
+		if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+			$data = $this->parser->getExpressionParser()->parseExpression();
+		} else {
+			$data = null;
+		}
+		if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
+			$options = $this->parser->getExpressionParser()->parseExpression();
+		} else {
+			$options = null;
+		}
 
-        $stream->expect(\Twig_Token::BLOCK_END_TYPE);
+		$stream->expect(\Twig_Token::BLOCK_END_TYPE);
 
-        return new ElementNode($name, $data, $options, $token->getLine(), $this->getTag());
-    }
+		return new ElementNode($name, $data, $options, $token->getLine(), $this->getTag());
+	}
 
-    /**
-     * @return string
-     */
-    public function getTag()
-    {
-        return 'element';
-    }
+/**
+ * Get tag name
+ *
+ * @return string
+ */
+	public function getTag() {
+		return 'element';
+	}
 
 }

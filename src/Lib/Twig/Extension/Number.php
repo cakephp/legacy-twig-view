@@ -16,34 +16,40 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  */
 class Number extends \Twig_Extension {
 
-    /**
-     * @return \Twig_SimpleFilter[]
-     */
-    public function getFilters() {
-        return [
-            new \Twig_SimpleFilter('toReadableSize', 'Cake\Utility\Number::toReadableSize'),
-            new \Twig_SimpleFilter('fromReadableSize', 'Cake\Utility\Number::fromReadableSize'),
-            new \Twig_SimpleFilter('toPercentage', 'Cake\Utility\Number::toPercentage'),
-            new \Twig_SimpleFilter('format', 'Cake\Utility\Number::format'),
-            new \Twig_SimpleFilter('formatDelta', 'Cake\Utility\Number::formatDelta'),
-            new \Twig_SimpleFilter('currency', 'Cake\Utility\Number::currency'),
-        ];
-    }
+/**
+ * Get declared functions
+ *
+ * @return \Twig_SimpleFilter[]
+ */
+	public function getFilters() {
+		return [
+			new \Twig_SimpleFilter('toReadableSize', 'Cake\Utility\Number::toReadableSize'),
+			new \Twig_SimpleFilter('fromReadableSize', 'Cake\Utility\Number::fromReadableSize'),
+			new \Twig_SimpleFilter('toPercentage', 'Cake\Utility\Number::toPercentage'),
+			new \Twig_SimpleFilter('format', 'Cake\Utility\Number::format'),
+			new \Twig_SimpleFilter('formatDelta', 'Cake\Utility\Number::formatDelta'),
+			new \Twig_SimpleFilter('currency', 'Cake\Utility\Number::currency'),
+		];
+	}
 
-    /**
-     * @return \Twig_SimpleFunction[]
-     */
-    public function getFunctions() {
-        return [
-            new \Twig_SimpleFunction('defaultCurrency', 'Cake\Utility\Number::defaultCurrency'),
-            new \Twig_SimpleFunction('number_formatter', 'Cake\Utility\Number::formatter'),
-        ];
-    }
+/**
+ * Get declared functions
+ *
+ * @return \Twig_SimpleFunction[]
+ */
+	public function getFunctions() {
+		return [
+			new \Twig_SimpleFunction('defaultCurrency', 'Cake\Utility\Number::defaultCurrency'),
+			new \Twig_SimpleFunction('number_formatter', 'Cake\Utility\Number::formatter'),
+		];
+	}
 
-    /**
-     * @return string
-     */
-    public function getName() {
-        return 'string';
-    }
+/**
+ * get extension name
+ *
+ * @return string
+ */
+	public function getName() {
+		return 'string';
+	}
 }

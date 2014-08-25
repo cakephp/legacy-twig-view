@@ -18,39 +18,45 @@ use Cake\View\View as CakeView;
  */
 class View extends \Twig_Extension {
 
-    /**
-     * @var CakeView
-     */
-    protected $view;
+/**
+ * @var CakeView
+ */
+	protected $_view;
 
-    /**
-     * @param CakeView $view
-     */
-    public function __construct(CakeView $view) {
-        $this->view = $view;
-    }
+/**
+ * Constructor
+ *
+ * @param CakeView $view View instance
+ */
+	public function __construct(CakeView $view) {
+		$this->_view = $view;
+	}
 
-    /**
-     * @return \Twig_SimpleFunction[]
-     */
-    public function getFunctions() {
+/**
+ * Get declared functions
+ *
+ * @return \Twig_SimpleFunction[]
+ */
+	public function getFunctions() {
 		return [
-			new \Twig_SimpleFunction('elementExists', function($name) {
-                return $this->view->elementExists($name);
-            }),
-			new \Twig_SimpleFunction('getVars', function() {
-                return $this->view->getVars();
-            }),
-            new \Twig_SimpleFunction('get', function($var, $default = null) {
-                return $this->view->get($var, $default);
-            }),
+			new \Twig_SimpleFunction('elementExists', function ($name) {
+				return $this->_view->elementExists($name);
+			}),
+			new \Twig_SimpleFunction('getVars', function () {
+				return $this->_view->getVars();
+			}),
+			new \Twig_SimpleFunction('get', function ($var, $default = null) {
+				return $this->_view->get($var, $default);
+			}),
 		];
 	}
 
-    /**
-     * @return string
-     */
-    public function getName() {
+/**
+ * Get extension name
+ *
+ * @return string
+ */
+	public function getName() {
 		return 'view';
 	}
 }
