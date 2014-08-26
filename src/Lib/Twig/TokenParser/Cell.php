@@ -22,7 +22,7 @@ class Cell extends \Twig_TokenParser_Include {
  * Parse token
  *
  * @param \Twig_Token $token Token
- * @return \Twig_NodeInterface|ElementNode
+ * @return CellNode
  */
 	public function parse(\Twig_Token $token) {
 		$stream = $this->parser->getStream();

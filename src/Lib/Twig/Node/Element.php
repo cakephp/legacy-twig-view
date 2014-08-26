@@ -23,7 +23,7 @@ class Element extends \Twig_Node {
  * @param \Twig_Node_Expression $data Data array
  * @param \Twig_Node_Expression $options Options array
  * @param null|string $lineno Line number
- * @param null $tag Tag
+ * @param string $tag Tag
  * @return void
  */
 	public function __construct(
