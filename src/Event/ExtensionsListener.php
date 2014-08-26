@@ -39,8 +39,15 @@ class ExtensionsListener implements EventListener {
  * @return void
  */
 	public function construct(Event $event) {
+		/**
+		 * Twig core extensions
+		 */
 		$event->subject()->getTwig()->addExtension(new \Twig_Extension_StringLoader);
 		$event->subject()->getTwig()->addExtension(new \Twig_Extension_Debug);
+
+		/**
+		 * CakePHP bridging extensions
+		 */
 		$event->subject()->getTwig()->addExtension(new Extension\I18n);
 		$event->subject()->getTwig()->addExtension(new Extension\Time);
 		$event->subject()->getTwig()->addExtension(new Extension\Basic);
@@ -49,6 +56,10 @@ class ExtensionsListener implements EventListener {
 		$event->subject()->getTwig()->addExtension(new Extension\Arrays);
 		$event->subject()->getTwig()->addExtension(new Extension\String);
 		$event->subject()->getTwig()->addExtension(new Extension\Inflector);
+
+		/**
+		 * CakePHP specific tags
+		 */
 		$event->subject()->getTwig()->addTokenParser(new TokenParser\Cell);
 		$event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
 	}
