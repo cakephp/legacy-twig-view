@@ -31,7 +31,7 @@ class CompileTemplatesShellTest extends TestCase
 
 		$shell->all();
 
-		Phake::verify($shell)->processPlugin('TwigView');
+		Phake::verify($shell)->_processPlugin('TwigView');
 	}
 
 	public function testPlugin()
@@ -41,7 +41,7 @@ class CompileTemplatesShellTest extends TestCase
 
 		$shell->plugin('bar:foo');
 
-		Phake::verify($shell)->processPlugin('bar:foo');
+		Phake::verify($shell)->_processPlugin('bar:foo');
 	}
 
 	public function testFile()
@@ -51,7 +51,7 @@ class CompileTemplatesShellTest extends TestCase
 
 		$shell->file('foo:bar');
 
-		Phake::verify($shell)->compileTemplate('foo:bar');
+		Phake::verify($shell)->_compileTemplate('foo:bar');
 	}
 
 	public function testGetOptionParser()

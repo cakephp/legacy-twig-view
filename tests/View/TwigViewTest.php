@@ -116,12 +116,12 @@ class TwigViewTest extends TestCase
 		$view->TestHelper = 'foo:bar';
 		$view->helpers = $helpersArray;
 
-		self::getMethod('generateHelperList')->invoke($view);
+		self::getMethod('_generateHelperList')->invoke($view);
 		$this->assertSame(
 			[
 				'TestHelper' => 'foo:bar',
 			],
-			self::getProperty('helperList')->getValue($view)
+			self::getProperty('_helperList')->getValue($view)
 		);
 	}
 
