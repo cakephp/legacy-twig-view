@@ -50,6 +50,7 @@ class AppController extends Controller {
 
 ## Cells ##
 
+### Store in context then echo it ###
 ```twig
 {% cell cellObject = 'Plugin.Cell' {
     dataName: 'dataValue'
@@ -59,3 +60,13 @@ class AppController extends Controller {
 
 {{ cellObject }}
 ```
+
+### Fetch and directly echo it ###
+```twig
+{% cell 'Plugin.Cell' {
+    dataName: 'dataValue'
+} {
+    optionName: 'optionValue'
+} %}
+```
+
