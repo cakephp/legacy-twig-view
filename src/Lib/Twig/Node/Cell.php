@@ -14,11 +14,17 @@ namespace WyriHaximus\TwigView\Lib\Twig\Node;
  * Class Element
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Cell extends \Twig_Node {
+class Cell extends \Twig_Node implements \Twig_NodeOutputInterface {
+
+/**
+ * @var bool
+ */
+	protected $_assign = false;
 
 /**
  * Constructor
  *
+ * @param bool $assign Assign or echo
  * @param array $variable Varriable to assign to
  * @param \Twig_Node_Expression $name Name
  * @param \Twig_Node_Expression $data Data array
@@ -28,6 +34,7 @@ class Cell extends \Twig_Node {
  * @return void
  */
 	public function __construct(
+		$assign,
 		$variable,
 		\Twig_Node_Expression $name,
 		\Twig_Node_Expression $data = null,
@@ -47,6 +54,8 @@ class Cell extends \Twig_Node {
 			$lineno,
 			$tag
 		);
+
+		$this->_assign = $assign;
 	}
 
 /**
@@ -58,7 +67,12 @@ class Cell extends \Twig_Node {
 	public function compile(\Twig_Compiler $compiler) {
 		$compiler->addDebugInfo($this);
 
-		$compiler->raw('$context[\'' . $this->getAttribute('variable') . '\'] = $context[\'_view\']->cell(');
+		if ($this->_assign) {
+			$compiler->raw('$context[\'' . $this->getAttribute('variable') . '\'] = ');
+		} else {
+			$compiler->raw('echo ');
+		}
+		$compiler->raw('$context[\'_view\']->cell(');
 		$compiler->subcompile($this->getNode('name'));
 		$data = $this->getNode('data');
 		if ($data !== null) {
