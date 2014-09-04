@@ -9,7 +9,7 @@ define('CACHE', sys_get_temp_dir() . '/TwigViewTmp/cache/');
 define('DS', DIRECTORY_SEPARATOR);
 define('PLUGIN_REPO_ROOT', dirname(__DIR__) . DS);
 
-$TMP = new \Cake\Utility\Folder(TMP);
+$TMP = new \Cake\Filesystem\Folder(TMP);
 $TMP->create(TMP . 'cache/models', 0777);
 $TMP->create(TMP . 'cache/persistent', 0777);
 $TMP->create(TMP . 'cache/views', 0777);
