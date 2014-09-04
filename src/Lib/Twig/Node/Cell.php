@@ -24,7 +24,7 @@ class Cell extends \Twig_Node {
  * @param \Twig_Node_Expression $data Data array
  * @param \Twig_Node_Expression $options Options array
  * @param string $lineno Line number
- * @param null $tag Tag name
+ * @param string $tag Tag name
  * @return void
  */
 	public function __construct(
