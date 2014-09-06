@@ -58,7 +58,7 @@ class AppController extends Controller {
     optionName: 'optionValue'
 } %}
 
-{{ cellObject }}
+{{ cellObject|raw }}
 ```
 
 ### Fetch and directly echo it ###
