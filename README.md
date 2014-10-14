@@ -40,7 +40,7 @@ class AppController extends Controller {
 
 ## Elements ##
 
-```twig
+```jinja
 {% element 'Plugin.Element' {
     dataName: 'dataValue'
 } {
@@ -51,7 +51,7 @@ class AppController extends Controller {
 ## Cells ##
 
 ### Store in context then echo it ###
-```twig
+```jinja
 {% cell cellObject = 'Plugin.Cell' {
     dataName: 'dataValue'
 } {
@@ -62,7 +62,7 @@ class AppController extends Controller {
 ```
 
 ### Fetch and directly echo it ###
-```twig
+```jinja
 {% cell 'Plugin.Cell' {
     dataName: 'dataValue'
 } {
