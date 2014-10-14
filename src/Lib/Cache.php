@@ -1,13 +1,13 @@
 <?php
 
-namespace WyriHaximus\TwigView\Lib\Doctrine;
+namespace WyriHaximus\TwigView\Lib;
 
+use Asm89\Twig\CacheExtension\CacheProviderInterface;
 use Cake\Cache\Cache;
-use Doctrine\Common\Cache\Cache as DoctrineCache;
 
-class CakeCache implements DoctrineCache
+class CakeCache implements CacheProviderInterface
 {
-    const CACHE_PREFIX = '';
+    const CACHE_PREFIX = 'twig-view-in-template-item-';
 
     public function fetch($id)
     {
@@ -15,29 +15,10 @@ class CakeCache implements DoctrineCache
         return Cache::read(static::CACHE_PREFIX . $key, $config);
     }
 
-    public function contains($id)
-    {
-        list($config, $key) = $this->configSplit($id);
-        return (bool) Cache::read(static::CACHE_PREFIX . $key, $config);
-    }
-
-
     public function save($id, $data, $lifeTime = 0)
     {
         list($config, $key) = $this->configSplit($id);
         return Cache::write(static::CACHE_PREFIX . $key, $data, $config);
-    }
-
-
-    public function delete($id)
-    {
-        list($config, $key) = $this->configSplit($id);
-        return Cache::delete(static::CACHE_PREFIX . $key, $config);
-    }
-
-    public function getStats()
-    {
-        //
     }
 
     protected function configSplit($name, $config = 'default') {

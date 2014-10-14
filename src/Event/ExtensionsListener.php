@@ -15,7 +15,7 @@ use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Event\Event;
 use Cake\Event\EventListener;
-use WyriHaximus\TwigView\Lib\Doctrine\CakeCache;
+use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
@@ -62,7 +62,7 @@ class ExtensionsListener implements EventListener {
 		$event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
 
         // Third party cache extension
-        $cacheProvider  = new DoctrineCacheAdapter(new CakeCache());
+        $cacheProvider  = new DoctrineCacheAdapter(new Cache());
         $cacheStrategy  = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->subject()->getTwig()->addTokenParser($cacheExtension);
