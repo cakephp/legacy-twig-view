@@ -24,7 +24,7 @@ class Basic extends \Twig_Extension {
 	public function getFilters() {
 		return [
 			new \Twig_SimpleFilter('debug', 'debug'),
-			new \Twig_SimpleFilter('pr', 'debug'),
+			new \Twig_SimpleFilter('pr', 'pr'),
 			new \Twig_SimpleFilter('low', 'low'),
 			new \Twig_SimpleFilter('up', 'up'),
 			new \Twig_SimpleFilter('env', 'env'),
