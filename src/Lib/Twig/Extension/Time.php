@@ -24,9 +24,9 @@ class Time extends \Twig_Extension {
 	public function getFunctions() {
 		return [
 			new \Twig_SimpleFunction('time', function ($time = null, $tz = null) {
-				return new \Cake\Utility\Time($time, $tz);
+				return new \Cake\I18n\Time($time, $tz);
 			}),
-			new \Twig_SimpleFunction('timezones', 'Cake\Utility\Time::listTimezones'),
+			new \Twig_SimpleFunction('timezones', 'Cake\I18n\Time::listTimezones'),
 		];
 	}
 

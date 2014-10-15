@@ -23,12 +23,12 @@ class Number extends \Twig_Extension {
  */
 	public function getFilters() {
 		return [
-			new \Twig_SimpleFilter('toReadableSize', 'Cake\Utility\Number::toReadableSize'),
-			new \Twig_SimpleFilter('fromReadableSize', 'Cake\Utility\Number::fromReadableSize'),
-			new \Twig_SimpleFilter('toPercentage', 'Cake\Utility\Number::toPercentage'),
-			new \Twig_SimpleFilter('format', 'Cake\Utility\Number::format'),
-			new \Twig_SimpleFilter('formatDelta', 'Cake\Utility\Number::formatDelta'),
-			new \Twig_SimpleFilter('currency', 'Cake\Utility\Number::currency'),
+			new \Twig_SimpleFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
+			new \Twig_SimpleFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
+			new \Twig_SimpleFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
+			new \Twig_SimpleFilter('format', 'Cake\I18n\Number::format'),
+			new \Twig_SimpleFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
+			new \Twig_SimpleFilter('currency', 'Cake\I18n\Number::currency'),
 		];
 	}
 
@@ -39,8 +39,8 @@ class Number extends \Twig_Extension {
  */
 	public function getFunctions() {
 		return [
-			new \Twig_SimpleFunction('defaultCurrency', 'Cake\Utility\Number::defaultCurrency'),
-			new \Twig_SimpleFunction('number_formatter', 'Cake\Utility\Number::formatter'),
+			new \Twig_SimpleFunction('defaultCurrency', 'Cake\I18n\Number::defaultCurrency'),
+			new \Twig_SimpleFunction('number_formatter', 'Cake\I18n\Number::formatter'),
 		];
 	}
 
