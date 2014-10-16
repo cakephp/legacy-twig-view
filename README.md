@@ -73,10 +73,10 @@ class AppController extends Controller {
 ## Filters ##
 * `debug` maps to `debug`
 * `pr` maps to `pr`
-* `low` maps to `low`
-* `up` maps to `up`
-* `env` maps to `env`
-* `count` maps to `count`
+* `low` maps to [`low`](http://php.net/low)
+* `up` maps to [`up`](http://php.net/up)
+* `env` maps to [`env`](http://php.net/env)
+* `count` maps to [`count`](http://php.net/count)
 * `pluralize` maps to [`Cake\Utility\Inflector::pluralize`](http://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\Utility\Inflector::pluralize)
 * `singularize` maps to [`Cake\Utility\Inflector::singularize`](http://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\Utility\Inflector::singularize)
 * `camelize` maps to [`Cake\Utility\Inflector::camelize`](http://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\Utility\Inflector::camelize)
@@ -107,24 +107,24 @@ class AppController extends Controller {
 * `isMultibyte` maps to [`Cake\Utility\String::isMultibyte`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\Utility\String::isMultibyte)
 * `utf8` maps to [`Cake\Utility\String::utf8`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\Utility\String::utf8)
 * `ascii` maps to [`Cake\Utility\String::ascii`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\Utility\String::ascii)
-* `serialize` maps to `serialize`
-* `unserialize` maps to `unserialize`
-* `md5` maps to `md5`
-* `base64_encode` maps to `base64_encode`
-* `base64_decode` maps to `base64_decode`
-* `nl2br` maps to `nl2br`
+* `serialize` maps to [`serialize`](http://php.net/serialize)
+* `unserialize` maps to [`unserialize`](http://php.net/unserialize)
+* `md5` maps to [`md5`](http://php.net/md5)
+* `base64_encode` maps to [`base64_encode`](http://php.net/base64_encode)
+* `base64_decode` maps to [`base64_decode`](http://php.net/base64_decode)
+* `nl2br` maps to [`nl2br`](http://php.net/nl2br)
 * `string` cast to `string`
 
 ## Functions ##
-* `in_array` maps to `in_array`
-* `explode` maps to `explode`
-* `array` cast to array
-* `array_push` maps to `push`
-* `array_add` maps to `add`
-* `array_prev` maps to `prev`
-* `array_next` maps to `next`
-* `array_current` maps to `current`
-* `array_each` maps to `each`
+* `in_array` maps to [`in_array`](http://php.net/in_array)
+* `explode` maps to [`explode`](http://php.net/explode)
+* `array` cast to `array`
+* `array_push` maps to [`push`](http://php.net/push)
+* `array_add` maps to [`add`](http://php.net/add)
+* `array_prev` maps to [`prev`](http://php.net/prev)
+* `array_next` maps to [`next`](http://php.net/next)
+* `array_current` maps to [`current`](http://php.net/current)
+* `array_each` maps to [`each`](http://php.net/each)
 * `__` maps to `__`
 * `__d` maps to `__d`
 * `__n` maps to `__n`
