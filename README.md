@@ -90,7 +90,7 @@ class AppController extends Controller {
 * `format` maps to [`Cake\I18n\Number::format`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::format)
 * `formatDelta` maps to [`Cake\I18n\Number::formatDelta`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatDelta)
 * `currency` maps to [`Cake\I18n\Number::currency`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::currency)
-* `substr` maps to `substr`
+* `substr` maps to [`substr`](http://php.net/substr)
 * `tokenize` maps to [`Cake\Utility\String::tokenize`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\\Utility\\String::tokenize)
 * `insert` maps to [`Cake\Utility\String::insert`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\\Utility\\String::insert)
 * `cleanInsert` maps to [`Cake\Utility\String::cleanInsert`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\\Utility\\String::cleanInsert)
