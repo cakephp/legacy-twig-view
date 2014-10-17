@@ -126,6 +126,7 @@ class AppController extends Controller {
 * `__` maps to `__`
 * `__d` maps to `__d`
 * `__n` maps to `__n`
+* `__x` maps to `__x`
 * `__dn` maps to `__dn`
 * `defaultCurrency` maps to [`Cake\I18n\Number::defaultCurrency`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::defaultCurrency)
 * `number_formatter` maps to [`Cake\I18n\Number::formatter`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatter)

@@ -26,6 +26,7 @@ class I18n extends \Twig_Extension {
 			new \Twig_SimpleFunction('__', '__'),
 			new \Twig_SimpleFunction('__d', '__d'),
 			new \Twig_SimpleFunction('__n', '__n'),
+			new \Twig_SimpleFunction('__x', '__x'),
 			new \Twig_SimpleFunction('__dn', '__dn'),
 		];
 	}
