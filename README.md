@@ -69,7 +69,7 @@ class AppController extends Controller {
 ```
 
 ## Filters ##
-* `debug` maps to `debug`
+* `debug` maps to [`debug`](http://book.cakephp.org/3.0/en/development/debugging.html#basic-debugging)
 * `pr` maps to `pr`
 * `low` maps to [`low`](http://php.net/low)
 * `up` maps to [`up`](http://php.net/up)
