@@ -111,12 +111,12 @@ class AppController extends Controller {
 * `base64_encode` maps to [`base64_encode`](http://php.net/base64_encode)
 * `base64_decode` maps to [`base64_decode`](http://php.net/base64_decode)
 * `nl2br` maps to [`nl2br`](http://php.net/nl2br)
-* `string` cast to `string`
+* `string` cast to [`string`](http://php.net/manual/en/language.types.type-juggling.php)
 
 ## Functions ##
 * `in_array` maps to [`in_array`](http://php.net/in_array)
 * `explode` maps to [`explode`](http://php.net/explode)
-* `array` cast to `array`
+* `array` cast to [`array`](http://php.net/manual/en/language.types.type-juggling.php)
 * `array_push` maps to [`push`](http://php.net/push)
 * `array_add` maps to [`add`](http://php.net/add)
 * `array_prev` maps to [`prev`](http://php.net/prev)
