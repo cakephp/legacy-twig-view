@@ -123,11 +123,11 @@ class AppController extends Controller {
 * `array_next` maps to [`next`](http://php.net/next)
 * `array_current` maps to [`current`](http://php.net/current)
 * `array_each` maps to [`each`](http://php.net/each)
-* `__` maps to `__`
-* `__d` maps to `__d`
-* `__n` maps to `__n`
-* `__x` maps to `__x`
-* `__dn` maps to `__dn`
+* `__` maps to [`__`](http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
+* `__d` maps to [`__d`](http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
+* `__n` maps to [`__n`](http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
+* `__x` maps to [`__x`](http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
+* `__dn` maps to [`__dn`](http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
 * `defaultCurrency` maps to [`Cake\I18n\Number::defaultCurrency`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::defaultCurrency)
 * `number_formatter` maps to [`Cake\I18n\Number::formatter`](http://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatter)
 * `uuid` maps to [`Cake\Utility\String::uuid`](http://book.cakephp.org/3.0/en/core-libraries/string.html#Cake\\Utility\\String::uuid)
