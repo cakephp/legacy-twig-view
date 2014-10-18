@@ -62,7 +62,7 @@ class ExtensionsListener implements EventListener {
 		$event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
 
         // Third party cache extension
-        $cacheProvider  = new DoctrineCacheAdapter(new Cache());
+        $cacheProvider  = new Cache();
         $cacheStrategy  = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->subject()->getTwig()->addTokenParser($cacheExtension);
