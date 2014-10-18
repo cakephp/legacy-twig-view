@@ -3,22 +3,22 @@
 namespace WyriHaximus\TwigView\Lib;
 
 use Asm89\Twig\CacheExtension\CacheProviderInterface;
-use Cake\Cache\Cache;
+use Cake\Cache\Cache as CakeCache;
 
-class CakeCache implements CacheProviderInterface
+class Cache implements CacheProviderInterface
 {
     const CACHE_PREFIX = 'twig-view-in-template-item-';
 
     public function fetch($id)
     {
         list($config, $key) = $this->configSplit($id);
-        return Cache::read(static::CACHE_PREFIX . $key, $config);
+        return CakeCache::read(static::CACHE_PREFIX . $key, $config);
     }
 
     public function save($id, $data, $lifeTime = 0)
     {
         list($config, $key) = $this->configSplit($id);
-        return Cache::write(static::CACHE_PREFIX . $key, $data, $config);
+        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
     }
 
     protected function configSplit($name, $config = 'default') {
