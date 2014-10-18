@@ -10,11 +10,10 @@
  */
 namespace WyriHaximus\TwigView\Event;
 
-use Asm89\Twig\CacheExtension\CacheProvider\DoctrineCacheAdapter;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Event\Event;
-use Cake\Event\EventListener;
+use Cake\Event\EventListenerInterface;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
@@ -23,7 +22,7 @@ use WyriHaximus\TwigView\Lib\Twig\TokenParser;
  * Class ExtensionsListener
  * @package WyriHaximus\TwigView\Event
  */
-class ExtensionsListener implements EventListener {
+class ExtensionsListener implements EventListenerInterface {
 
 /**
  * Return implemented events
@@ -65,6 +64,6 @@ class ExtensionsListener implements EventListener {
         $cacheProvider  = new Cache();
         $cacheStrategy  = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
-        $event->subject()->getTwig()->addTokenParser($cacheExtension);
+        $event->subject()->getTwig()->addExtension($cacheExtension);
 	}
 }
