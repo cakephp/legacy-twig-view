@@ -12,10 +12,10 @@ In addition to enabling the use of most of Twig's features, the plugin is tightl
 
 ## Installation ##
 
-Running the following composer command will install the TwigView to your project.
+To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `~`.
 
-```bash
-composer require "wyrihaximus/twig-view:dev-master"
+```
+composer require wyrihaximus/twig-view 
 ```
 
 ## Bootstrap ##
