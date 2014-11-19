@@ -46,6 +46,20 @@ class AppController extends Controller {
 } %}
 ```
 
+## Helpers ##
+
+Any helper you defined in your controller.
+
+```php
+public $helpers = ['Form'];
+```
+
+Can be access by their CamelCase name, for example creating a form using the `FormHelper`:
+
+```jinja
+{{ Form.create()|raw }}
+```
+
 ## Cells ##
 
 ### Store in context then echo it ###
