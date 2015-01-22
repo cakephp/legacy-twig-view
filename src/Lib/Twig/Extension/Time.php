@@ -14,28 +14,31 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  * Class Time
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Time extends \Twig_Extension {
+class Time extends \Twig_Extension
+{
 
-/**
- * Get declared functions
- *
- * @return \Twig_SimpleFunction[]
- */
-	public function getFunctions() {
-		return [
-			new \Twig_SimpleFunction('time', function ($time = null, $tz = null) {
-				return new \Cake\I18n\Time($time, $tz);
-			}),
-			new \Twig_SimpleFunction('timezones', 'Cake\I18n\Time::listTimezones'),
-		];
-	}
+    /**
+     * Get declared functions
+     *
+     * @return \Twig_SimpleFunction[]
+     */
+    public function getFunctions()
+    {
+        return [
+            new \Twig_SimpleFunction('time', function ($time = null, $tz = null) {
+                return new \Cake\I18n\Time($time, $tz);
+            }),
+            new \Twig_SimpleFunction('timezones', 'Cake\I18n\Time::listTimezones'),
+        ];
+    }
 
-/**
- * Get extension name
- *
- * @return string
- */
-	public function getName() {
-		return 'time';
-	}
+    /**
+     * Get extension name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'time';
+    }
 }

@@ -14,33 +14,36 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  * Class Utils
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Utils extends \Twig_Extension {
+class Utils extends \Twig_Extension
+{
 
-/**
- * Get declared filters
- *
- * @return \Twig_SimpleFilter[]
- */
-	public function getFilters() {
-		return [
-			new \Twig_SimpleFilter('serialize', 'serialize'),
-			new \Twig_SimpleFilter('unserialize', 'unserialize'),
-			new \Twig_SimpleFilter('md5', 'md5'),
-			new \Twig_SimpleFilter('base64_encode', 'base64_encode'),
-			new \Twig_SimpleFilter('base64_decode', 'base64_decode'),
-			new \Twig_SimpleFilter('nl2br', 'nl2br'),
-			new \Twig_SimpleFilter('string', function ($str) {
-				return (string)$str;
-			}),
-		];
-	}
+    /**
+     * Get declared filters
+     *
+     * @return \Twig_SimpleFilter[]
+     */
+    public function getFilters()
+    {
+        return [
+            new \Twig_SimpleFilter('serialize', 'serialize'),
+            new \Twig_SimpleFilter('unserialize', 'unserialize'),
+            new \Twig_SimpleFilter('md5', 'md5'),
+            new \Twig_SimpleFilter('base64_encode', 'base64_encode'),
+            new \Twig_SimpleFilter('base64_decode', 'base64_decode'),
+            new \Twig_SimpleFilter('nl2br', 'nl2br'),
+            new \Twig_SimpleFilter('string', function ($str) {
+                return (string)$str;
+            }),
+        ];
+    }
 
-/**
- * Get extension name
- *
- * @return string
- */
-	public function getName() {
-		return 'utils';
-	}
+    /**
+     * Get extension name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'utils';
+    }
 }

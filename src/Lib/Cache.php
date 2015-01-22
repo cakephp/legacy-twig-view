@@ -15,17 +15,18 @@ class Cache implements CacheProviderInterface
         return CakeCache::read(static::CACHE_PREFIX . $key, $config);
     }
 
-    public function save($id, $data, $lifeTime = 0)
+    protected function configSplit($name, $config = 'default')
     {
-        list($config, $key) = $this->configSplit($id);
-        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
-    }
-
-    protected function configSplit($name, $config = 'default') {
         if (strpos($name, ':') !== false) {
             $parts = explode(':', $name, 2);
             return $parts;
         }
         return [$config, $name];
+    }
+
+    public function save($id, $data, $lifeTime = 0)
+    {
+        list($config, $key) = $this->configSplit($id);
+        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
     }
 }

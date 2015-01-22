@@ -14,30 +14,33 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  * Class Basic
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Basic extends \Twig_Extension {
+class Basic extends \Twig_Extension
+{
 
-/**
- * Get declared filters
- *
- * @return \Twig_SimpleFilter[]
- */
-	public function getFilters() {
-		return [
-			new \Twig_SimpleFilter('debug', 'debug'),
-			new \Twig_SimpleFilter('pr', 'pr'),
-			new \Twig_SimpleFilter('low', 'low'),
-			new \Twig_SimpleFilter('up', 'up'),
-			new \Twig_SimpleFilter('env', 'env'),
-			new \Twig_SimpleFilter('count', 'count'),
-		];
-	}
+    /**
+     * Get declared filters
+     *
+     * @return \Twig_SimpleFilter[]
+     */
+    public function getFilters()
+    {
+        return [
+            new \Twig_SimpleFilter('debug', 'debug'),
+            new \Twig_SimpleFilter('pr', 'pr'),
+            new \Twig_SimpleFilter('low', 'low'),
+            new \Twig_SimpleFilter('up', 'up'),
+            new \Twig_SimpleFilter('env', 'env'),
+            new \Twig_SimpleFilter('count', 'count'),
+        ];
+    }
 
-/**
- * Get extension name
- *
- * @return string
- */
-	public function getName() {
-		return 'basic';
-	}
+    /**
+     * Get extension name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'basic';
+    }
 }

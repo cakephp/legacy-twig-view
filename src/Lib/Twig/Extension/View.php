@@ -16,47 +16,51 @@ use Cake\View\View as CakeView;
  * Class View
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class View extends \Twig_Extension {
+class View extends \Twig_Extension
+{
 
-/**
- * @var CakeView
- */
-	protected $_view;
+    /**
+     * @var CakeView
+     */
+    protected $view;
 
-/**
- * Constructor
- *
- * @param CakeView $view View instance
- */
-	public function __construct(CakeView $view) {
-		$this->_view = $view;
-	}
+    /**
+     * Constructor
+     *
+     * @param CakeView $view View instance
+     */
+    public function __construct(CakeView $view)
+    {
+        $this->view = $view;
+    }
 
-/**
- * Get declared functions
- *
- * @return \Twig_SimpleFunction[]
- */
-	public function getFunctions() {
-		return [
-			new \Twig_SimpleFunction('elementExists', function ($name) {
-				return $this->_view->elementExists($name);
-			}),
-			new \Twig_SimpleFunction('getVars', function () {
-				return $this->_view->getVars();
-			}),
-			new \Twig_SimpleFunction('get', function ($var, $default = null) {
-				return $this->_view->get($var, $default);
-			}),
-		];
-	}
+    /**
+     * Get declared functions
+     *
+     * @return \Twig_SimpleFunction[]
+     */
+    public function getFunctions()
+    {
+        return [
+            new \Twig_SimpleFunction('elementExists', function ($name) {
+                return $this->view->elementExists($name);
+            }),
+            new \Twig_SimpleFunction('getVars', function () {
+                return $this->view->getVars();
+            }),
+            new \Twig_SimpleFunction('get', function ($var, $default = null) {
+                return $this->view->get($var, $default);
+            }),
+        ];
+    }
 
-/**
- * Get extension name
- *
- * @return string
- */
-	public function getName() {
-		return 'view';
-	}
+    /**
+     * Get extension name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'view';
+    }
 }
