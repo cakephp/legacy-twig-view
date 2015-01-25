@@ -19,17 +19,20 @@ use WyriHaximus\TwigView\Lib\Twig\Node\Cell as CellNode;
  */
 class Cell extends \Twig_TokenParser_Include
 {
-
     /**
-     * Parse token
+     * Parse token.
      *
-     * @param Twig_Token $token Token
+     * @param Twig_Token $token Token.
+     *
      * @return CellNode
      */
+    // @codingStandardsIgnoreStart
     public function parse(Twig_Token $token)
     {
+        // @codingStandardsIgnoreEnd
         $stream = $this->parser->getStream();
 
+        // @codingStandardsIgnoreStart
         $variable = null;
         if ($stream->test(Twig_Token::NAME_TYPE)) {
             $variable = $stream->expect(Twig_Token::NAME_TYPE)->getValue();
@@ -41,16 +44,15 @@ class Cell extends \Twig_TokenParser_Include
         }
 
         $name = $this->parser->getExpressionParser()->parseExpression();
+        $data = null;
         if (!$stream->test(Twig_Token::BLOCK_END_TYPE)) {
             $data = $this->parser->getExpressionParser()->parseExpression();
-        } else {
-            $data = null;
         }
+        $options = null;
         if (!$stream->test(Twig_Token::BLOCK_END_TYPE)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
-        } else {
-            $options = null;
         }
+        // @codingStandardsIgnoreEnd
 
         $stream->expect(Twig_Token::BLOCK_END_TYPE);
 
@@ -58,7 +60,7 @@ class Cell extends \Twig_TokenParser_Include
     }
 
     /**
-     * Tag name
+     * Tag name.
      *
      * @return string
      */

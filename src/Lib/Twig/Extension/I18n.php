@@ -18,7 +18,7 @@ class I18n extends \Twig_Extension
 {
 
     /**
-     * get declared functions
+     * Get declared functions.
      *
      * @return \Twig_SimpleFunction[]
      */
@@ -34,7 +34,7 @@ class I18n extends \Twig_Extension
     }
 
     /**
-     * Get extension name
+     * Get extension name.
      *
      * @return string
      */

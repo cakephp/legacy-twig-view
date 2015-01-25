@@ -16,18 +16,21 @@ use Cake\View\View as CakeView;
  * Class View
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
+// @codingStandardsIgnoreStart
 class View extends \Twig_Extension
+// @codingStandardsIgnoreEnd
 {
-
     /**
+     * View to call methods upon.
+     *
      * @var CakeView
      */
     protected $view;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param CakeView $view View instance
+     * @param CakeView $view View instance.
      */
     public function __construct(CakeView $view)
     {
@@ -35,7 +38,7 @@ class View extends \Twig_Extension
     }
 
     /**
-     * Get declared functions
+     * Get declared functions.
      *
      * @return \Twig_SimpleFunction[]
      */
@@ -55,7 +58,7 @@ class View extends \Twig_Extension
     }
 
     /**
-     * Get extension name
+     * Get extension name.
      *
      * @return string
      */

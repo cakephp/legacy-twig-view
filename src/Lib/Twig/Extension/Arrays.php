@@ -18,7 +18,7 @@ class Arrays extends \Twig_Extension
 {
 
     /**
-     * Get declared functions
+     * Get declared functions.
      *
      * @return \Twig_SimpleFunction[]
      */
@@ -40,7 +40,7 @@ class Arrays extends \Twig_Extension
     }
 
     /**
-     * Get extension name
+     * Get extension name.
      *
      * @return string
      */

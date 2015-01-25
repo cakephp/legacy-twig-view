@@ -16,16 +16,14 @@ namespace WyriHaximus\TwigView\Lib\Twig\Node;
  */
 class Element extends \Twig_Node
 {
-
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param \Twig_Node_Expression $name Name
-     * @param \Twig_Node_Expression $data Data array
-     * @param \Twig_Node_Expression $options Options array
-     * @param null|string $lineno Line number
-     * @param string $tag Tag
-     * @return void
+     * @param \Twig_Node_Expression $name    Name.
+     * @param \Twig_Node_Expression $data    Data.
+     * @param \Twig_Node_Expression $options Options.
+     * @param string                $lineno  Linenumber.
+     * @param string                $tag     Tag.
      */
     public function __construct(
         \Twig_Node_Expression $name,
@@ -47,9 +45,10 @@ class Element extends \Twig_Node
     }
 
     /**
-     * Compile node
+     * Compile node.
      *
-     * @param \Twig_Compiler $compiler Compiler
+     * @param \Twig_Compiler $compiler Compiler.
+     *
      * @return void
      */
     public function compile(\Twig_Compiler $compiler)

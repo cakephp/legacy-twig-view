@@ -18,7 +18,7 @@ class Inflector extends \Twig_Extension
 {
 
     /**
-     * Get filters for this extension
+     * Get filters for this extension.
      *
      * @return \Twig_SimpleFunction[]
      */
@@ -38,7 +38,7 @@ class Inflector extends \Twig_Extension
     }
 
     /**
-     * get extension name
+     * Get extension name.
      *
      * @return string
      */

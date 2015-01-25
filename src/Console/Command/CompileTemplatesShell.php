@@ -19,30 +19,35 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class CompileTemplatesShell
  * @package WyriHaximus\TwigView\Console\Command
  */
+// @codingStandardsIgnoreStart
 class CompileTemplatesShell extends Shell
+// @codingStandardsIgnoreEnd
 {
 
     /**
+     * Instance of TwigView to be used to compile templates.
+     *
      * @var TwigView
      */
     protected $twigView;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param ConsoleIo $io An IO instance
+     * @param ConsoleIo $consoleIo An IO instance.
      */
-    public function __construct(ConsoleIo $io = null)
+    public function __construct(ConsoleIo $consoleIo = null)
     {
-        parent::__construct($io);
+        parent::__construct($consoleIo);
 
         $this->twigView = new TwigView();
     }
 
     /**
-     * Set TwigView
+     * Set TwigView.
      *
-     * @param TwigView $twigView TwigView instance
+     * @param TwigView $twigView TwigView instance.
+     *
      * @return void
      */
     public function setTwigview(TwigView $twigView)
@@ -51,10 +56,11 @@ class CompileTemplatesShell extends Shell
     }
 
     /**
-     * Compile all templates
+     * Compile all templates.
      *
      * @return void
      */
+    // @codingStandardsIgnoreStart
     public function all()
     {
         $this->out('<info>Compiling all templates</info>');
@@ -66,11 +72,13 @@ class CompileTemplatesShell extends Shell
             }
         }
     }
+    // @codingStandardsIgnoreEnd
 
     /**
-     * Compile only this plugin
+     * Compile only this plugin.
      *
-     * @param string $plugin Plugin name
+     * @param string $plugin Plugin name.
+     *
      * @return void
      */
     public function plugin($plugin)
@@ -80,9 +88,10 @@ class CompileTemplatesShell extends Shell
     }
 
     /**
-     * Only compile one file
+     * Only compile one file.
      *
-     * @param string $fileName File to compile
+     * @param string $fileName File to compile.
+     *
      * @return void
      */
     public function file($fileName)
@@ -92,14 +101,15 @@ class CompileTemplatesShell extends Shell
     }
 
     /**
-     * Process plugin
+     * Process plugin.
      *
-     * @param string $plugin Plugin to process
+     * @param string $plugin Plugin to process.
+     *
      * @return void
      */
     protected function processPlugin($plugin)
     {
-        if (!is_dir(Plugin::path($plugin) . 'Template' . DS)) {
+        if (!is_dir(Plugin::path($plugin) . 'Template' . DIRECTORY_SEPARATOR)) {
             return;
         }
 
@@ -107,16 +117,17 @@ class CompileTemplatesShell extends Shell
     }
 
     /**
-     * Setup iterator for plugin
+     * Setup iterator for plugin.
      *
-     * @param string $plugin Plugin to setup iterator
+     * @param string $plugin Plugin to setup iterator.
+     *
      * @return \RegexIterator
      */
     protected function setupIterator($plugin)
     {
         return new \RegexIterator(new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator(
-                Plugin::path($plugin) . 'Template' . DS,
+                Plugin::path($plugin) . 'Template' . DIRECTORY_SEPARATOR,
                 \FilesystemIterator::KEY_AS_PATHNAME |
                 \FilesystemIterator::CURRENT_AS_FILEINFO |
                 \FilesystemIterator::SKIP_DOTS
@@ -127,11 +138,13 @@ class CompileTemplatesShell extends Shell
     }
 
     /**
-     * Walk over the iterator and compile all templates
+     * Walk over the iterator and compile all templates.
      *
-     * @param \Iterator $iterator Iterator to walk
+     * @param \Iterator $iterator Iterator to walk.
+     *
      * @return void
      */
+    // @codingStandardsIgnoreStart
     protected function walkIterator(\Iterator $iterator)
     {
         foreach ($iterator as $paths) {
@@ -140,26 +153,31 @@ class CompileTemplatesShell extends Shell
             }
         }
     }
+    // @codingStandardsIgnoreEnd
 
     /**
-     * Compile a template
+     * Compile a template.
      *
-     * @param string $fileName Template to compile
+     * @param string $fileName Template to compile.
+     *
      * @return void
      */
     protected function compileTemplate($fileName)
     {
         try {
-            $this->twigView->getTwig()->loadTemplate($fileName);
+            $this->
+                twigView->
+                getTwig()->
+                loadTemplate($fileName);
             $this->out('<success>' . $fileName . '</success>');
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             $this->out('<error>' . $fileName . '</error>');
-            $this->out('<error>' . $e->getMessage() . '</error>');
+            $this->out('<error>' . $exception->getMessage() . '</error>');
         }
     }
 
     /**
-     * Set options for this console
+     * Set options for this console.
      *
      * @return \Cake\Console\ConsoleOptionParser
      */
@@ -169,8 +187,12 @@ class CompileTemplatesShell extends Shell
             'all',
             [
                 'short' => 'a',
+                // @codingStandardsIgnoreStart
                 'help' => __('Searches and precompiles all twig templates it finds.')
+                // @codingStandardsIgnoreEnd
             ]
+        // @codingStandardsIgnoreStart
         )->description(__('TwigView templates precompiler'));
+        // @codingStandardsIgnoreEnd
     }
 }

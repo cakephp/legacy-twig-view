@@ -18,7 +18,7 @@ class Number extends \Twig_Extension
 {
 
     /**
-     * Get declared functions
+     * Get declared functions.
      *
      * @return \Twig_SimpleFilter[]
      */
@@ -35,7 +35,7 @@ class Number extends \Twig_Extension
     }
 
     /**
-     * Get declared functions
+     * Get declared functions.
      *
      * @return \Twig_SimpleFunction[]
      */
@@ -48,7 +48,7 @@ class Number extends \Twig_Extension
     }
 
     /**
-     * get extension name
+     * Get extension name.
      *
      * @return string
      */

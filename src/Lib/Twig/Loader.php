@@ -22,9 +22,10 @@ class Loader implements \Twig_LoaderInterface
 {
 
     /**
-     * Get the file contents of a template
+     * Get the file contents of a template.
      *
-     * @param string $name Template
+     * @param string $name Template.
+     *
      * @return string
      */
     public function getSource($name)
@@ -34,9 +35,10 @@ class Loader implements \Twig_LoaderInterface
     }
 
     /**
-     * Get cache key for template
+     * Get cache key for template.
      *
-     * @param string $name Template
+     * @param string $name Template.
+     *
      * @return string
      */
     public function getCacheKey($name)
@@ -45,11 +47,12 @@ class Loader implements \Twig_LoaderInterface
     }
 
     /**
-     * Check if template is still fresh
+     * Check if template is still fresh.
      *
-     * @param string $name Template
-     * @param \timestamp $time Timestamp
-     * @return bool
+     * @param string  $name Template.
+     * @param integer $time Timestamp.
+     *
+     * @return boolean
      */
     public function isFresh($name, $time)
     {
@@ -58,14 +61,18 @@ class Loader implements \Twig_LoaderInterface
     }
 
     /**
-     * Resolve template name to filename
+     * Resolve template name to filename.
      *
-     * @param string $name Template
+     * @param string $name Template.
+     *
      * @return string
-     * @throws \Twig_Error_Loader
+     *
+     * @throws \Twig_Error_Loader Thrown when template file isn't found.
      */
+    // @codingStandardsIgnoreStart
     protected function resolveFileName($name)
     {
+        // @codingStandardsIgnoreEnd
         if (file_exists($name)) {
             return $name;
         }

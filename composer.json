@@ -19,15 +19,18 @@
     "require": {
         "php": ">=5.4.19",
         "cakephp/cakephp": "3.0.*-dev",
-        "twig/twig": "1.*",
+        "twig/twig": "^1.18",
         "cakephp/plugin-installer": "dev-master",
         "asm89/twig-cache-extension": "~1.0"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "~0.6",
-        "phpunit/phpunit": "~4.0",
-        "phake/phake": "1.0.*",
-        "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
+        "satooshi/php-coveralls": "^0.6",
+        "phpunit/phpunit": "^4.0",
+        "phake/phake": "^1.0",
+        "wyrihaximus/phpunit-class-reflection-helpers": "dev-master",
+        "vectorface/dunit": "^2.0",
+        "squizlabs/php_codesniffer": "^1.0",
+        "object-calisthenics/phpcs-calisthenics-rules": "^1.0"
     },
     "autoload": {
         "psr-4": {

@@ -18,7 +18,7 @@ class Basic extends \Twig_Extension
 {
 
     /**
-     * Get declared filters
+     * Get declared filters.
      *
      * @return \Twig_SimpleFilter[]
      */
@@ -35,7 +35,7 @@ class Basic extends \Twig_Extension
     }
 
     /**
-     * Get extension name
+     * Get extension name.
      *
      * @return string
      */

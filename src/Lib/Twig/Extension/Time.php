@@ -16,24 +16,23 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  */
 class Time extends \Twig_Extension
 {
-
     /**
-     * Get declared functions
+     * Get declared functions.
      *
      * @return \Twig_SimpleFunction[]
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('time', function ($time = null, $tz = null) {
-                return new \Cake\I18n\Time($time, $tz);
+            new \Twig_SimpleFunction('time', function ($time = null, $timezone = null) {
+                return new \Cake\I18n\Time($time, $timezone);
             }),
             new \Twig_SimpleFunction('timezones', 'Cake\I18n\Time::listTimezones'),
         ];
     }
 
     /**
-     * Get extension name
+     * Get extension name.
      *
      * @return string
      */

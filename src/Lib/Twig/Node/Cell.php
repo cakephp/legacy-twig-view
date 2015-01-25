@@ -14,28 +14,32 @@ namespace WyriHaximus\TwigView\Lib\Twig\Node;
  * Class Element
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
+// @codingStandardsIgnoreStart
 class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
+// @codingStandardsIgnoreEnd
 {
 
     /**
-     * @var bool
+     * Whether to assign the data or not.
+     *
+     * @var boolean
      */
     protected $assign = false;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param bool $assign Assign or echo
-     * @param array $variable Varriable to assign to
-     * @param \Twig_Node_Expression $name Name
-     * @param \Twig_Node_Expression $data Data array
-     * @param \Twig_Node_Expression $options Options array
-     * @param string $lineno Line number
-     * @param string $tag Tag name
+     * @param boolean               $assign   Assign or echo.
+     * @param array                 $variable Variable to assign to.
+     * @param \Twig_Node_Expression $name     Name.
+     * @param \Twig_Node_Expression $data     Data array.
+     * @param \Twig_Node_Expression $options  Options array.
+     * @param string                $lineno   Line number.
+     * @param string                $tag      Tag name.
      */
     public function __construct(
         $assign,
-        $variable,
+        array $variable,
         \Twig_Node_Expression $name,
         \Twig_Node_Expression $data = null,
         \Twig_Node_Expression $options = null,
@@ -59,18 +63,23 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
     }
 
     /**
-     * Compile tag
+     * Compile tag.
      *
-     * @param \Twig_Compiler $compiler Compiler
+     * @param \Twig_Compiler $compiler Compiler.
+     *
      * @return void
      */
+    // @codingStandardsIgnoreStart
     public function compile(\Twig_Compiler $compiler)
     {
+        // @codingStandardsIgnoreEnd
         $compiler->addDebugInfo($this);
 
         if ($this->assign) {
             $compiler->raw('$context[\'' . $this->getAttribute('variable') . '\'] = ');
+            // @codingStandardsIgnoreStart
         } else {
+            // @codingStandardsIgnoreEnd
             $compiler->raw('echo ');
         }
         $compiler->raw('$context[\'_view\']->cell(');

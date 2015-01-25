@@ -20,25 +20,30 @@ class Element extends \Twig_TokenParser_Include
 {
 
     /**
-     * Parse token
+     * Parse token.
      *
-     * @param \Twig_Token $token Token
+     * @param \Twig_Token $token Token.
+     *
      * @return \Twig_NodeInterface|ElementNode
      */
+    // @codingStandardsIgnoreStart
     public function parse(\Twig_Token $token)
     {
+        // @codingStandardsIgnoreEnd
+        // @codingStandardsIgnoreStart
         $stream = $this->parser->getStream();
         $name = $this->parser->getExpressionParser()->parseExpression();
+
+        $data = null;
         if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
             $data = $this->parser->getExpressionParser()->parseExpression();
-        } else {
-            $data = null;
         }
+
+        $options = null;
         if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
-        } else {
-            $options = null;
         }
+        // @codingStandardsIgnoreEnd
 
         $stream->expect(\Twig_Token::BLOCK_END_TYPE);
 
@@ -46,7 +51,7 @@ class Element extends \Twig_TokenParser_Include
     }
 
     /**
-     * Get tag name
+     * Get tag name.
      *
      * @return string
      */

@@ -24,9 +24,8 @@ use WyriHaximus\TwigView\Lib\Twig\TokenParser;
  */
 class ExtensionsListener implements EventListenerInterface
 {
-
     /**
-     * Return implemented events
+     * Return implemented events.
      *
      * @return array
      */
@@ -38,13 +37,17 @@ class ExtensionsListener implements EventListenerInterface
     }
 
     /**
-     * Event handler
+     * Event handler.
      *
-     * @param Event $event Event
+     * @param Event $event Event.
+     *
      * @return void
      */
+    // @codingStandardsIgnoreStart
     public function construct(Event $event)
     {
+        // @codingStandardsIgnoreEnd
+        // @codingStandardsIgnoreStart
         // Twig core extensions
         $event->subject()->getTwig()->addExtension(new \Twig_Extension_StringLoader);
         $event->subject()->getTwig()->addExtension(new \Twig_Extension_Debug);
@@ -68,5 +71,6 @@ class ExtensionsListener implements EventListenerInterface
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->subject()->getTwig()->addExtension($cacheExtension);
+        // @codingStandardsIgnoreEnd
     }
 }

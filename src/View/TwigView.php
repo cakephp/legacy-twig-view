@@ -22,43 +22,48 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
  * Class TwigView
  * @package WyriHaximus\TwigView\View
  */
+// @codingStandardsIgnoreStart
 class TwigView extends View
+// @codingStandardsIgnoreEnd
 {
 
     const EXT = '.tpl';
 
     /**
+     * Extension to use.
+     *
      * @var string
      */
-    protected $ext = self::EXT;
+    protected $extension = self::EXT;
 
     /**
+     * Twig instance.
+     *
      * @var \Twig_Environment
      */
     protected $twig;
 
     /**
+     * Helpers.
+     *
      * @var array
      */
     protected $helperList = [];
 
     /**
-     * @var
-     */
-    protected $parentView;
-
-    /**
-     * @var \Cake\Event\EventManager
+     * Event manager.
+     *
+     * @var EventManager
      */
     protected $eventManager;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param Request $request Request
-     * @param Response $response Response
-     * @param EventManager $eventManager EventManager
-     * @param array $viewOptions View options
+     * @param Request      $request      Request.
+     * @param Response     $response     Response.
+     * @param EventManager $eventManager EventManager.
+     * @param array        $viewOptions  View options.
      */
     public function __construct(
         Request $request = null,
@@ -81,13 +86,13 @@ class TwigView extends View
         $this->eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
 
         parent::__construct($request, $response, $eventManager, $viewOptions);
-        $this->ext = self::EXT;
+        $this->extension = self::EXT;
 
         $this->generateHelperList();
     }
 
     /**
-     * Create Loader
+     * Create the template loader.
      *
      * @return \Twig_LoaderInterface
      */
@@ -106,7 +111,7 @@ class TwigView extends View
     }
 
     /**
-     * Create a useful helper list
+     * Create a useful helper list.
      *
      * @return void
      */
@@ -121,10 +126,11 @@ class TwigView extends View
     }
 
     /**
-     * Render the template
+     * Render the template.
      *
-     * @param string $viewFile Template
-     * @param array $data Data
+     * @param string $viewFile Template file.
+     * @param array  $data     Data that can be used by the template.
+     *
      * @return string
      */
     // @codingStandardsIgnoreStart
@@ -137,7 +143,9 @@ class TwigView extends View
 
         if (substr($viewFile, -3) === 'ctp') {
             $out = parent::_render($viewFile, $data);
+            // @codingStandardsIgnoreStart
         } else {
+            // @codingStandardsIgnoreEnd
             $data = array_merge(
                 $data,
                 $this->helperList,
@@ -145,14 +153,16 @@ class TwigView extends View
                     '_view' => $this,
                 ]
             );
+            // @codingStandardsIgnoreStart
             $out = $this->getTwig()->loadTemplate($viewFile)->render($data);
+            // @codingStandardsIgnoreEnd
         }
 
         return $out;
     }
 
     /**
-     * Get twig environment instance
+     * Get twig environment instance.
      *
      * @return \Twig_Environment
      */
