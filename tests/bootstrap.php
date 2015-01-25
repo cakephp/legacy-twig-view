@@ -6,7 +6,6 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 define('APP', sys_get_temp_dir());
 define('TMP', sys_get_temp_dir() . '/TwigViewTmp/');
 define('CACHE', sys_get_temp_dir() . '/TwigViewTmp/cache/');
-define('DS', DIRECTORY_SEPARATOR);
 define('PLUGIN_REPO_ROOT', dirname(__DIR__) . DS);
 
 $TMP = new \Cake\Filesystem\Folder(TMP);
