@@ -31,7 +31,7 @@ class CompileTemplatesShellTest extends TestCase
 
 		$shell->all();
 
-		Phake::verify($shell)->_processPlugin('TwigView');
+		Phake::verify($shell)->processPlugin('TwigView');
 	}
 
 	public function testPlugin()
@@ -41,7 +41,7 @@ class CompileTemplatesShellTest extends TestCase
 
 		$shell->plugin('bar:foo');
 
-		Phake::verify($shell)->_processPlugin('bar:foo');
+		Phake::verify($shell)->processPlugin('bar:foo');
 	}
 
 	public function testFile()
@@ -51,7 +51,7 @@ class CompileTemplatesShellTest extends TestCase
 
 		$shell->file('foo:bar');
 
-		Phake::verify($shell)->_compileTemplate('foo:bar');
+		Phake::verify($shell)->compileTemplate('foo:bar');
 	}
 
 	public function testGetOptionParser()
@@ -81,7 +81,7 @@ class CompileTemplatesShellTest extends TestCase
 
 	public function _testSetupIterator()
 	{
-		$this->assertInstanceOf('Iterator', (new CompileTemplatesShell())->_setupIterator('TwigView'));
+		$this->assertInstanceOf('Iterator', (new CompileTemplatesShell())->setupIterator('TwigView'));
 	}
 
 	public function _testWalkIterator()

@@ -116,12 +116,12 @@ class TwigViewTest extends TestCase
 		$view->TestHelper = 'foo:bar';
 		$view->helpers = $helpersArray;
 
-		self::getMethod('_generateHelperList')->invoke($view);
+		self::getMethod('generateHelperList')->invoke($view);
 		$this->assertSame(
 			[
 				'TestHelper' => 'foo:bar',
 			],
-			self::getProperty('_helperList')->getValue($view)
+			self::getProperty('helperList')->getValue($view)
 		);
 	}
 
@@ -139,7 +139,7 @@ class TwigViewTest extends TestCase
 			self::getMethod('_render')->invokeArgs(
 				$view,
 				[
-					'foo.ctp',
+					PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'cakephp.ctp',
 				]
 			)
 		);
