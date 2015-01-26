@@ -183,12 +183,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "75ac510de318f12d39bf6849bdf95d5b926c15e6"
+                "reference": "052e2e5630eec12562926d64dba737ae574ad8cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/75ac510de318f12d39bf6849bdf95d5b926c15e6",
-                "reference": "75ac510de318f12d39bf6849bdf95d5b926c15e6",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/052e2e5630eec12562926d64dba737ae574ad8cf",
+                "reference": "052e2e5630eec12562926d64dba737ae574ad8cf",
                 "shasum": ""
             },
             "require": {
@@ -242,7 +242,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-01-25 14:32:14"
+            "time": "2015-01-26 19:50:19"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -678,16 +678,16 @@
         },
         {
             "name": "phake/phake",
-            "version": "v1.0.5",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mlively/Phake.git",
-                "reference": "14e4788698e4a21774220c22f3dcaa2e97648b61"
+                "reference": "7151943a668c84e392bd902d4e3fc2b4dfdd127b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mlively/Phake/zipball/14e4788698e4a21774220c22f3dcaa2e97648b61",
-                "reference": "14e4788698e4a21774220c22f3dcaa2e97648b61",
+                "url": "https://api.github.com/repos/mlively/Phake/zipball/7151943a668c84e392bd902d4e3fc2b4dfdd127b",
+                "reference": "7151943a668c84e392bd902d4e3fc2b4dfdd127b",
                 "shasum": ""
             },
             "require": {
@@ -696,7 +696,7 @@
             "require-dev": {
                 "doctrine/common": "2.3.*",
                 "ext-soap": "*",
-                "hamcrest/hamcrest-php": "1.1.*",
+                "hamcrest/hamcrest-php": "1.1.0",
                 "phpunit/phpunit": "3.7.*"
             },
             "type": "library",
@@ -724,7 +724,7 @@
                 "mock",
                 "testing"
             ],
-            "time": "2014-04-16 14:49:56"
+            "time": "2015-01-26 15:33:32"
         },
         {
             "name": "phpunit/php-code-coverage",
