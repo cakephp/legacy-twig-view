@@ -24,6 +24,7 @@
         "asm89/twig-cache-extension": "~1.0"
     },
     "require-dev": {
+        "cakephp/debug_kit": "3.0.*@dev",
         "satooshi/php-coveralls": "^0.6",
         "phpunit/phpunit": "^4.0",
         "phake/phake": "^1.0",

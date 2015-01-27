@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b05e736e4d6b1bd534d1ff4417327018",
+    "hash": "c2a31399a1266941a88065c45f016e20",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -469,6 +469,63 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "cakephp/debug_kit",
+            "version": "3.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/debug_kit.git",
+                "reference": "3bd8559a2e98d84b5ef33ea31b6653eb779bdaa2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/3bd8559a2e98d84b5ef33ea31b6653eb779bdaa2",
+                "reference": "3bd8559a2e98d84b5ef33ea31b6653eb779bdaa2",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "3.0.*-dev"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "dev-master",
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "cakephp-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugKit\\": "src",
+                    "DebugKit\\Test\\Fixture\\": "tests\\Fixture"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Story",
+                    "homepage": "http://mark-story.com",
+                    "role": "Author"
+                },
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/debug_kit/graphs/contributors"
+                }
+            ],
+            "description": "CakePHP Debug Kit",
+            "homepage": "https://github.com/cakephp/debug_kit",
+            "keywords": [
+                "cakephp",
+                "debug",
+                "kit"
+            ],
+            "time": "2015-01-23 06:25:02"
+        },
         {
             "name": "doctrine/instantiator",
             "version": "1.0.4",
@@ -2005,6 +2062,7 @@
     "stability-flags": {
         "cakephp/cakephp": 20,
         "cakephp/plugin-installer": 20,
+        "cakephp/debug_kit": 20,
         "wyrihaximus/phpunit-class-reflection-helpers": 20
     },
     "prefer-stable": false,
