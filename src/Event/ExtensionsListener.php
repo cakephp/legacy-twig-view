@@ -71,6 +71,10 @@ class ExtensionsListener implements EventListenerInterface
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->subject()->getTwig()->addExtension($cacheExtension);
+
+        // Profiler
+        $profile = new \Twig_Profiler_Profile();
+        $event->subject()->getTwig()->addExtension(new Extension\Profiler($profile));
         // @codingStandardsIgnoreEnd
     }
 }
