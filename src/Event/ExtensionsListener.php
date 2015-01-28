@@ -62,10 +62,6 @@ class ExtensionsListener implements EventListenerInterface
         $event->subject()->getTwig()->addExtension(new Extension\String);
         $event->subject()->getTwig()->addExtension(new Extension\Inflector);
 
-        // CakePHP specific tags
-        $event->subject()->getTwig()->addTokenParser(new TokenParser\Cell);
-        $event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
-
         // Third party cache extension
         $cacheProvider = new Cache();
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
