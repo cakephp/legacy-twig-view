@@ -1,5 +1,6 @@
 <?php
 
+use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use WyriHaximus\TwigView\Event;
 
