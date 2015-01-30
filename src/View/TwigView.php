@@ -34,7 +34,9 @@ class TwigView extends View
      *
      * @var string
      */
-    protected $extension = self::EXT;
+    // @codingStandardsIgnoreStart
+    protected $_ext = self::EXT;
+    // @codingStandardsIgnoreEnd
 
     /**
      * Twig instance.
@@ -86,7 +88,7 @@ class TwigView extends View
         $this->eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
 
         parent::__construct($request, $response, $eventManager, $viewOptions);
-        $this->extension = self::EXT;
+        $this->_ext = self::EXT;
 
         $this->generateHelperList();
     }
