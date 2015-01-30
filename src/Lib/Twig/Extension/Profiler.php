@@ -18,6 +18,13 @@ use DebugKit\DebugTimer;
  */
 class Profiler extends \Twig_Extension_Profiler
 {
+    /**
+     * Enter $profile.
+     *
+     * @param \Twig_Profiler_Profile $profile Profile.
+     *
+     * @return void
+     */
     public function enter(\Twig_Profiler_Profile $profile)
     {
         $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
@@ -26,6 +33,13 @@ class Profiler extends \Twig_Extension_Profiler
         parent::enter($profile);
     }
 
+    /**
+     * Leave $profile.
+     *
+     * @param \Twig_Profiler_Profile $profile Profile.
+     *
+     * @return void
+     */
     public function leave(\Twig_Profiler_Profile $profile)
     {
         parent::leave($profile);
