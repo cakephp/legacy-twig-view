@@ -20,8 +20,8 @@ class Profiler extends \Twig_Extension_Profiler
 {
     public function enter(\Twig_Profiler_Profile $profile)
     {
-        $name = 'twig.template.' . $profile->getName();
-        DebugTimer::start($name, __d('TwigView', $name));
+        $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
+        DebugTimer::start($name, __d('twig_view', $name));
 
         parent::enter($profile);
     }
@@ -30,15 +30,7 @@ class Profiler extends \Twig_Extension_Profiler
     {
         parent::leave($profile);
 
-        $name = 'twig.template.' . $profile->getName();
+        $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
         DebugTimer::stop($name);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'twigview_profiler';
     }
 }
