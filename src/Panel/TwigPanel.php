@@ -6,5 +6,5 @@ use DebugKit\DebugPanel;
 
 class TwigPanel extends DebugPanel
 {
-    //
+    public $plugin = 'TwigView';
 }
