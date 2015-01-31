@@ -14,6 +14,7 @@ use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Event\Event;
 use Cake\Event\EventListenerInterface;
+use Cake\Event\EventManager;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
@@ -50,5 +51,7 @@ class ProfilerListener implements EventListenerInterface
             subject()->
             getTwig()->
             addExtension(new Extension\Profiler($profile));
+
+        EventManager::instance()->dispatch(new Event('TwigView.Twig.profile', $profile));
     }
 }
