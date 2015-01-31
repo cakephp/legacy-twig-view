@@ -12,7 +12,7 @@ if (Configure::read('debug')) {
     Configure::write('DebugKit.panels', array_merge(
         (array)Configure::read('DebugKit.panels'),
         [
-            'WyriHaximus\TwigView\Panel\TwigPanel',
+            'WyriHaximus/TwigView.Twig',
         ]
     ));
     EventManager::instance()->attach(new Event\ProfilerListener());
