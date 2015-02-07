@@ -20,7 +20,6 @@
         "php": ">=5.4.19",
         "cakephp/cakephp": "3.0.*-dev",
         "twig/twig": "^1.18",
-        "cakephp/plugin-installer": "dev-master",
         "asm89/twig-cache-extension": "~1.0"
     },
     "require-dev": {
