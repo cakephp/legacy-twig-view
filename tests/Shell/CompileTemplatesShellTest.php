@@ -8,16 +8,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-namespace WyriHaximus\CakePHP\Tests\TwigView\Console\Command;
+namespace WyriHaximus\CakePHP\Tests\TwigView\Shell;
 
 use Cake\TestSuite\TestCase;
 use Phake;
 use WyriHaximus\PHPUnit\Helpers\ReflectionTrait;
-use WyriHaximus\TwigView\Console\Command\CompileTemplatesShell;
+use WyriHaximus\TwigView\Shell\CompileTemplatesShell;
 
 /**
  * Class CompileTemplatesShell
- * @package WyriHaximus\TwigView\Console\Command
+ * @package WyriHaximus\TwigView\Shell
  */
 class CompileTemplatesShellTest extends TestCase
 {
@@ -26,7 +26,7 @@ class CompileTemplatesShellTest extends TestCase
 
 	public function testAll()
 	{
-		$shell = Phake::mock('WyriHaximus\TwigView\Console\Command\CompileTemplatesShell');
+		$shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileTemplatesShell');
 		Phake::when($shell)->all()->thenCallParent();
 
 		$shell->all();
@@ -36,7 +36,7 @@ class CompileTemplatesShellTest extends TestCase
 
 	public function testPlugin()
 	{
-		$shell = Phake::mock('WyriHaximus\TwigView\Console\Command\CompileTemplatesShell');
+		$shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileTemplatesShell');
 		Phake::when($shell)->plugin('bar:foo')->thenCallParent();
 
 		$shell->plugin('bar:foo');
@@ -46,7 +46,7 @@ class CompileTemplatesShellTest extends TestCase
 
 	public function testFile()
 	{
-		$shell = Phake::mock('WyriHaximus\TwigView\Console\Command\CompileTemplatesShell');
+		$shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileTemplatesShell');
 		Phake::when($shell)->file('foo:bar')->thenCallParent();
 
 		$shell->file('foo:bar');
@@ -62,11 +62,11 @@ class CompileTemplatesShellTest extends TestCase
 	public function _testProcessPlugin()
 	{
 		$iterator = Phake::mock('Iterator');
-		$shell = Phake::mock('WyriHaximus\TwigView\Console\Command\CompileTemplatesShell');
+		$shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileTemplatesShell');
 		Phake::when($shell)->setupIterator('TwigView')->thenReturn($iterator);
 		Phake::when($shell)->walkIterator($iterator)->thenReturn();
 
-		self::getMethod('WyriHaximus\TwigView\Console\Command\CompileTemplatesShell', 'processPlugin')->invokeArgs(
+		self::getMethod('WyriHaximus\TwigView\Shell\CompileTemplatesShell', 'processPlugin')->invokeArgs(
 			$shell,
 			[
 				'TwigView',
