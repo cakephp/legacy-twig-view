@@ -188,8 +188,10 @@ class CompileTemplatesShell extends Shell
      *
      * @return \Cake\Console\ConsoleOptionParser
      */
+    // @codingStandardsIgnoreStart
     public function getOptionParser()
     {
+        // @codingStandardsIgnoreEnd
         return parent::getOptionParser()->addSubcommand(
             'all',
             [
