@@ -198,6 +198,22 @@ class CompileTemplatesShell extends Shell
                 'help' => __('Searches and precompiles all twig templates it finds.')
                 // @codingStandardsIgnoreEnd
             ]
+        )->addSubcommand(
+            'plugin',
+            [
+                'short' => 'p',
+                // @codingStandardsIgnoreStart
+                'help' => __('Searches and precompiles all twig templates for a specific plugin.')
+                // @codingStandardsIgnoreEnd
+            ]
+        )->addSubcommand(
+            'file',
+            [
+                'short' => 'f',
+                // @codingStandardsIgnoreStart
+                'help' => __('Precompile a specific file.')
+                // @codingStandardsIgnoreEnd
+            ]
         // @codingStandardsIgnoreStart
         )->description(__('TwigView templates precompiler'));
         // @codingStandardsIgnoreEnd
