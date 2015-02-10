@@ -126,7 +126,7 @@ class CompileTemplatesShell extends Shell
     /**
      * Setup iterator for plugin.
      *
-     * @param string $plugin Plugin to setup iterator.
+     * @param string $path Path to setup iterator for.
      *
      * @return \RegexIterator
      */
