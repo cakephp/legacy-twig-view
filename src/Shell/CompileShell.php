@@ -20,7 +20,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * @package WyriHaximus\TwigView\Console\Command
  */
 // @codingStandardsIgnoreStart
-class CompileTemplatesShell extends Shell
+class CompileShell extends Shell
 // @codingStandardsIgnoreEnd
 {
 
