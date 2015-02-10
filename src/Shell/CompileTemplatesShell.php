@@ -68,8 +68,14 @@ class CompileTemplatesShell extends Shell
         $plugins = Plugin::loaded();
         if (is_array($plugins)) {
             foreach ($plugins as $plugin) {
+                $this->out('<info>Compiling ' . $plugin . ' templates</info>');
                 $this->processPlugin($plugin);
             }
+        }
+
+        if (is_dir(APP . 'Template' . DIRECTORY_SEPARATOR)) {
+            $this->out('<info>Compiling app templates</info>');
+            $this->walkIterator($this->setupIterator(APP . 'Template' . DIRECTORY_SEPARATOR));
         }
     }
     // @codingStandardsIgnoreEnd
@@ -109,11 +115,12 @@ class CompileTemplatesShell extends Shell
      */
     protected function processPlugin($plugin)
     {
-        if (!is_dir(Plugin::path($plugin) . 'Template' . DIRECTORY_SEPARATOR)) {
+        $path = Plugin::classPath($plugin) . 'Template' . DIRECTORY_SEPARATOR;
+        if (!is_dir($path)) {
             return;
         }
 
-        $this->walkIterator($this->setupIterator($plugin));
+        $this->walkIterator($this->setupIterator($path));
     }
 
     /**
@@ -123,11 +130,11 @@ class CompileTemplatesShell extends Shell
      *
      * @return \RegexIterator
      */
-    protected function setupIterator($plugin)
+    protected function setupIterator($path)
     {
         return new \RegexIterator(new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator(
-                Plugin::path($plugin) . 'Template' . DIRECTORY_SEPARATOR,
+                $path,
                 \FilesystemIterator::KEY_AS_PATHNAME |
                 \FilesystemIterator::CURRENT_AS_FILEINFO |
                 \FilesystemIterator::SKIP_DOTS
