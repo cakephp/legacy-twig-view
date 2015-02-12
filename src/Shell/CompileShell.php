@@ -13,6 +13,7 @@ namespace WyriHaximus\TwigView\Shell;
 use Cake\Console\ConsoleIo;
 use Cake\Console\Shell;
 use Cake\Core\Plugin;
+use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
@@ -65,17 +66,9 @@ class CompileShell extends Shell
     {
         $this->out('<info>Compiling all templates</info>');
 
-        $plugins = Plugin::loaded();
-        if (is_array($plugins)) {
-            foreach ($plugins as $plugin) {
-                $this->out('<info>Compiling ' . $plugin . ' templates</info>');
-                $this->processPlugin($plugin);
-            }
-        }
-
-        if (is_dir(APP . 'Template' . DIRECTORY_SEPARATOR)) {
-            $this->out('<info>Compiling app templates</info>');
-            $this->walkIterator($this->setupIterator(APP . 'Template' . DIRECTORY_SEPARATOR));
+        foreach(Scanner::all() as $section => $templates) {
+            $this->out('<info>Compiling ' . $section . '\'s templates</info>');
+            $this->walkIterator($templates);
         }
     }
     // @codingStandardsIgnoreEnd
@@ -89,8 +82,8 @@ class CompileShell extends Shell
      */
     public function plugin($plugin)
     {
-        $this->out('<info>Compiling one plugin\'s templates</info>');
-        $this->processPlugin($plugin);
+        $this->out('<info>Compiling one ' . $plugin . '\'s templates</info>');
+        $this->walkIterator(Scanner::plugin($plugin));
     }
 
     /**
@@ -106,61 +99,12 @@ class CompileShell extends Shell
         $this->compileTemplate($fileName);
     }
 
-    /**
-     * Process plugin.
-     *
-     * @param string $plugin Plugin to process.
-     *
-     * @return void
-     */
-    protected function processPlugin($plugin)
+    protected function walkIterator($iterator)
     {
-        $path = Plugin::classPath($plugin) . 'Template' . DIRECTORY_SEPARATOR;
-        if (!is_dir($path)) {
-            return;
-        }
-
-        $this->walkIterator($this->setupIterator($path));
-    }
-
-    /**
-     * Setup iterator for plugin.
-     *
-     * @param string $path Path to setup iterator for.
-     *
-     * @return \RegexIterator
-     */
-    protected function setupIterator($path)
-    {
-        return new \RegexIterator(new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator(
-                $path,
-                \FilesystemIterator::KEY_AS_PATHNAME |
-                \FilesystemIterator::CURRENT_AS_FILEINFO |
-                \FilesystemIterator::SKIP_DOTS
-            ),
-            \RecursiveIteratorIterator::CHILD_FIRST,
-            \RecursiveIteratorIterator::CATCH_GET_CHILD
-        ), '/.*?.tpl$/', \RegexIterator::GET_MATCH);
-    }
-
-    /**
-     * Walk over the iterator and compile all templates.
-     *
-     * @param \Iterator $iterator Iterator to walk.
-     *
-     * @return void
-     */
-    // @codingStandardsIgnoreStart
-    protected function walkIterator(\Iterator $iterator)
-    {
-        foreach ($iterator as $paths) {
-            foreach ($paths as $path) {
-                $this->compileTemplate($path);
-            }
+        foreach ($iterator as $template) {
+            $this->compileTemplate($template);
         }
     }
-    // @codingStandardsIgnoreEnd
 
     /**
      * Compile a template.

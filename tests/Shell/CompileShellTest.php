@@ -30,18 +30,17 @@ class CompileShellTest extends TestCase
 		Phake::when($shell)->all()->thenCallParent();
 
 		$shell->all();
-
-		Phake::verify($shell)->processPlugin('TwigView');
 	}
 
+	/**
+	 * @expectedException Exception
+	 */
 	public function testPlugin()
 	{
 		$shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileShell');
 		Phake::when($shell)->plugin('bar:foo')->thenCallParent();
 
 		$shell->plugin('bar:foo');
-
-		Phake::verify($shell)->processPlugin('bar:foo');
 	}
 
 	public function testFile()
@@ -57,36 +56,6 @@ class CompileShellTest extends TestCase
 	public function testGetOptionParser()
 	{
 		$this->assertInstanceOf('\Cake\Console\ConsoleOptionParser', (new CompileShell())->getOptionParser());
-	}
-
-	public function _testProcessPlugin()
-	{
-		$iterator = Phake::mock('Iterator');
-		$shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileShell');
-		Phake::when($shell)->setupIterator('TwigView')->thenReturn($iterator);
-		Phake::when($shell)->walkIterator($iterator)->thenReturn();
-
-		self::getMethod('WyriHaximus\TwigView\Shell\CompileShell', 'processPlugin')->invokeArgs(
-			$shell,
-			[
-				'TwigView',
-			]
-		);
-
-		Phake::inOrder(
-			Phake::verify($shell)->setupIterator('TwigView'),
-			Phake::verify($shell)->walkIterator($iterator)
-		);
-	}
-
-	public function _testSetupIterator()
-	{
-		$this->assertInstanceOf('Iterator', (new CompileShell())->setupIterator('TwigView'));
-	}
-
-	public function _testWalkIterator()
-	{
-		//
 	}
 
 	public function testCompileTemplate()
