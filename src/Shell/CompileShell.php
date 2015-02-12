@@ -99,6 +99,13 @@ class CompileShell extends Shell
         $this->compileTemplate($fileName);
     }
 
+    /**
+     * Walk over $iterator and compile all templates in it.
+     *
+     * @param mixed $iterator Iterator to walk over.
+     *
+     * @return void
+     */
     protected function walkIterator($iterator)
     {
         foreach ($iterator as $template) {
