@@ -16,8 +16,8 @@ $TMP->create(TMP . 'cache/views', 0777);
 Cake\Core\Plugin::load(
 	'TwigView',
 	[
-		'namespace' => 'WyriHaximus\\CakePHP\TwigView',
-		'path' => PLUGIN_REPO_ROOT . 'src' . DS,
+		'namespace' => 'WyriHaximus\TwigView',
+		'path' => PLUGIN_REPO_ROOT,
 	]
 );
 Cake\Core\Configure::write(
