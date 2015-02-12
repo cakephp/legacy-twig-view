@@ -2,28 +2,29 @@
 
 namespace WyriHaximus\TwigView\Panel;
 
-use Cake\Event\Event;
 use DebugKit\DebugPanel;
+use WyriHaximus\TwigView\Lib\Scanner;
 
+// @codingStandardsIgnoreStart
 class TwigPanel extends DebugPanel
+// @codingStandardsIgnoreEnd
 {
+    /**
+     * Plugin name.
+     *
+     * @var string
+     */
+    // @codingStandardsIgnoreStart
     public $plugin = 'WyriHaximus/TwigView';
+    // @codingStandardsIgnoreEnd
 
-    protected $profile;
-
-    public function profile(Event $event)
-    {
-        $this->profile = $event->subject();
-    }
-
-    public function implementedEvents() {
-        return [
-            'TwigView.Twig.profile' => 'profile',
-        ];
-    }
-
+    /**
+     * Get the data for the twig panel.
+     *
+     * @return array
+     */
     public function data()
     {
-        return new \Twig_Markup((new \Twig_Profiler_Dumper_Html())->dump($this->profile), 'UTF-8');
+        return Scanner::all();
     }
 }
