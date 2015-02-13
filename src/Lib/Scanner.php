@@ -4,6 +4,7 @@ namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Scanner
@@ -116,7 +117,7 @@ class Scanner
             ),
             \RecursiveIteratorIterator::CHILD_FIRST,
             \RecursiveIteratorIterator::CATCH_GET_CHILD
-        ), '/.*?.tpl$/', \RegexIterator::GET_MATCH);
+        ), '/.*?' . TwigView::EXT . '$/', \RegexIterator::GET_MATCH);
     }
 
     /**
