@@ -78,23 +78,35 @@ class Loader implements \Twig_LoaderInterface
         }
 
         list($plugin, $file) = pluginSplit($name);
-        if ($plugin === null || !Plugin::loaded($plugin)) {
-            $paths = App::path('Template');
+        foreach ([
+            null,
+            $plugin,
+        ] as $scope) {
+            $paths = $this->getPaths($scope);
             foreach ($paths as $path) {
                 $filePath = $path . $file . TwigView::EXT;
                 if (file_exists($filePath)) {
                     return $filePath;
                 }
             }
-
-            throw new \Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
-        }
-
-        $filePath = Plugin::path($plugin) . 'Template' . DS . $file . TwigView::EXT;
-        if (file_exists($filePath)) {
-            return $filePath;
         }
 
         throw new \Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
+    }
+
+    /**
+     * Check if $plugin is active and return it's template paths or return the aps template paths.
+     *
+     * @param string|null $plugin The plugin in question.
+     *
+     * @return array
+     */
+    protected function getPaths($plugin)
+    {
+        if ($plugin === null || !Plugin::loaded($plugin)) {
+            return App::path('Template');
+        }
+
+        return App::path('Template', $plugin);
     }
 }

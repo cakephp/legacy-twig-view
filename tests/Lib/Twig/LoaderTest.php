@@ -21,6 +21,10 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
  */
 class LoaderTest extends TestCase
 {
+	/**
+	 * @var Loader
+	 */
+	protected $Loader;
 
 	public function setUp()
 	{
@@ -78,7 +82,7 @@ class LoaderTest extends TestCase
 	public function testGetCacheKeyPlugin()
 	{
 		$this->assertSame(
-			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/Template/twig.tpl',
+			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.tpl',
 			$this->Loader->getCacheKey('TestTwigView.twig')
 		);
 	}
