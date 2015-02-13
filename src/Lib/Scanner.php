@@ -2,6 +2,7 @@
 
 namespace WyriHaximus\TwigView\Lib;
 
+use Cake\Core\App;
 use Cake\Core\Plugin;
 
 /**
@@ -19,13 +20,28 @@ class Scanner
     {
         $sections = [];
 
-        if (is_dir(APP . 'Template' . DIRECTORY_SEPARATOR)) {
-            $sections['APP'] = static::iteratePath(APP);
-        }
+        array_walk(App::path('Template'), function ($path) use (&$sections) {
+            if (is_dir($path)) {
+                $sections['APP'] = isset($sections['APP']) ? $sections['APP'] : [];
+                $sections['APP'] = array_merge($sections['APP'], static::iteratePath($path));
+            }
+        });
 
-        foreach (static::pluginsWithTemplates() as $plugin) {
-            $sections[$plugin] = static::iteratePath(Plugin::classPath($plugin));
-        }
+        array_walk(static::pluginsWithTemplates(), function ($plugin) use (&$sections) {
+            foreach (App::path('Template', $plugin) as $path) {
+                if (!is_dir($path)) {
+                    continue;
+                }
+                $sections[$plugin] = isset($sections[$plugin]) ? $sections[$plugin] : [];
+                $sections[$plugin] = array_merge($sections[$plugin], static::iteratePath($path));
+            }
+        });
+
+        array_walk($sections, function ($templates, $index) use (&$sections) {
+            if (count($templates) == 0) {
+                unset($sections[$index]);
+            }
+        });
 
         return $sections;
     }
@@ -40,9 +56,13 @@ class Scanner
         $plugins = Plugin::loaded();
 
         array_walk($plugins, function ($plugin, $index) use (&$plugins) {
-            if (!is_dir(Plugin::classPath($plugin) . 'Template' . DIRECTORY_SEPARATOR)) {
-                unset($plugins[$index]);
-            }
+            $paths = App::path('Template', $plugin);
+
+            array_walk($paths, function ($path, $index) use (&$paths) {
+                if (!is_dir($path)) {
+                    unset($paths[$index]);
+                }
+            });
         });
 
         return $plugins;
@@ -54,16 +74,16 @@ class Scanner
      * @param string $plugin The plugin to find all templates for.
      *
      * @return mixed
-     *
-     * @throws \Exception Throws exception when the plugin doesn't contain a Template directory.
      */
     public static function plugin($plugin)
     {
-        if (!is_dir(Plugin::classPath($plugin) . 'Template' . DIRECTORY_SEPARATOR)) {
-            throw new \Exception('No Template directory found for plugin ' . $plugin);
+        $templates = [];
+
+        foreach (App::path('Template', $plugin) as $path) {
+            $templates = array_merge($templates, static::iteratePath($path));
         }
 
-        return static::iteratePath(Plugin::classPath($plugin));
+        return $templates;
     }
 
     /**
@@ -75,7 +95,7 @@ class Scanner
      */
     protected static function iteratePath($path)
     {
-        return static::walkIterator(static::setupIterator($path . 'Template' . DIRECTORY_SEPARATOR));
+        return static::walkIterator(static::setupIterator($path));
     }
 
     /**
@@ -109,15 +129,15 @@ class Scanner
     // @codingStandardsIgnoreStart
     protected static function walkIterator(\Iterator $iterator)
     {
-        $paths = [];
+        $items = [];
 
         foreach ($iterator as $paths) {
             foreach ($paths as $path) {
-                $paths[] = $path;
+                $items[] = $path;
             }
         }
 
-        return $paths;
+        return $items;
     }
     // @codingStandardsIgnoreEnd
 }
