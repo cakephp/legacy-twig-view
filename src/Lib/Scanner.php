@@ -29,15 +29,26 @@ class Scanner
         });
 
         array_walk(static::pluginsWithTemplates(), function ($plugin) use (&$sections) {
-            foreach (App::path('Template', $plugin) as $path) {
-                if (!is_dir($path)) {
-                    continue;
+            array_walk(App::path('Template', $plugin), function ($path) use (&$sections, $plugin) {
+                if (is_dir($path)) {
+                    $sections[$plugin] = isset($sections[$plugin]) ? $sections[$plugin] : [];
+                    $sections[$plugin] = array_merge($sections[$plugin], static::iteratePath($path));
                 }
-                $sections[$plugin] = isset($sections[$plugin]) ? $sections[$plugin] : [];
-                $sections[$plugin] = array_merge($sections[$plugin], static::iteratePath($path));
-            }
+            });
         });
 
+        return static::clearEmptySections($sections);
+    }
+
+    /**
+     * Check sections a remove the ones without anything in them.
+     *
+     * @param array $sections Sections to check.
+     *
+     * @return array
+     */
+    protected static function clearEmptySections(array $sections)
+    {
         array_walk($sections, function ($templates, $index) use (&$sections) {
             if (count($templates) == 0) {
                 unset($sections[$index]);
