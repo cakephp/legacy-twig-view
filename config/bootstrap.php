@@ -4,8 +4,8 @@ use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use WyriHaximus\TwigView\Event;
 
-EventManager::instance()->attach(new Event\ExtensionsListener());
-EventManager::instance()->attach(new Event\TokenParsersListener());
+EventManager::instance()->on(new Event\ExtensionsListener());
+EventManager::instance()->on(new Event\TokenParsersListener());
 
 if (Configure::read('debug')) {
     Configure::write('DebugKit.panels', array_merge(
@@ -14,5 +14,5 @@ if (Configure::read('debug')) {
             'WyriHaximus/TwigView.Twig',
         ]
     ));
-    EventManager::instance()->attach(new Event\ProfilerListener());
+    EventManager::instance()->on(new Event\ProfilerListener());
 }
