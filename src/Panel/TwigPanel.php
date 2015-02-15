@@ -25,6 +25,8 @@ class TwigPanel extends DebugPanel
      */
     public function data()
     {
-        return Scanner::all();
+        return [
+            'templates' => Scanner::all(),
+        ];
     }
 }
