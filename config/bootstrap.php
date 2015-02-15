@@ -7,14 +7,12 @@ use WyriHaximus\TwigView\Event;
 EventManager::instance()->attach(new Event\ExtensionsListener());
 EventManager::instance()->attach(new Event\TokenParsersListener());
 
-// Debug kit profiler
 if (Configure::read('debug')) {
-    // Disabling the panel until it is more solid, it causes errors atm the moment
-    /*Configure::write('DebugKit.panels', array_merge(
+    Configure::write('DebugKit.panels', array_merge(
         (array)Configure::read('DebugKit.panels'),
         [
             'WyriHaximus/TwigView.Twig',
         ]
-    ));*/
+    ));
     EventManager::instance()->attach(new Event\ProfilerListener());
 }
