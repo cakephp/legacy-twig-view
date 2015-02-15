@@ -1,5 +1,3 @@
-<?php
 
-debug($templates);
-
-return;
+<h4>Templates</h4>
+<?= $this->Toolbar->makeNeatArray($templates) ?>
