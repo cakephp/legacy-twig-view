@@ -12,13 +12,16 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Panel;
 
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
-use WyriHaximus\TwigView\Lib\Scanner;
+
+use WyriHaximus\TwigView\Lib\RelativeScanner;
 use WyriHaximus\TwigView\Panel\TwigPanel;
 
 class TwigPanelTest extends TestCase
 {
     public function testData()
     {
-        $this->assertSame(Scanner::all(), (new TwigPanel())->data());
+        $this->assertSame([
+            'templates' => RelativeScanner::all(),
+        ], (new TwigPanel())->data());
     }
 }

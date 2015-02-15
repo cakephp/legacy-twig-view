@@ -3,7 +3,7 @@
 namespace WyriHaximus\TwigView\Panel;
 
 use DebugKit\DebugPanel;
-use WyriHaximus\TwigView\Lib\Scanner;
+use WyriHaximus\TwigView\Lib\RelativeScanner;
 
 // @codingStandardsIgnoreStart
 class TwigPanel extends DebugPanel
@@ -26,7 +26,7 @@ class TwigPanel extends DebugPanel
     public function data()
     {
         return [
-            'templates' => Scanner::all(),
+            'templates' => RelativeScanner::all(),
         ];
     }
 }

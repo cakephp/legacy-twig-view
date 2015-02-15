@@ -1,1 +1,5 @@
-blaat!
+<?php
+
+debug($templates);
+
+return;
