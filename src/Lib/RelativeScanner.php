@@ -3,8 +3,6 @@
 namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
-use Cake\Core\Plugin;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class RelativeScanner
