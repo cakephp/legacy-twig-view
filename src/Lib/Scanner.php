@@ -145,7 +145,16 @@ class Scanner
     {
         $items = [];
 
-        foreach ($iterator as $paths) {
+        $array = iterator_to_array($iterator);
+        uasort($array, function ($a, $b) {
+            if ($a == $b) {
+                return 0;
+            }
+
+            return ($a < $b) ? -1 : 1;
+        });
+
+        foreach ($array as $paths) {
             foreach ($paths as $path) {
                 $items[] = $path;
             }

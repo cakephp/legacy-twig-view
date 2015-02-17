@@ -63,8 +63,8 @@ class ScannerTest extends TestCase
             ],
             'TestTwigView' => [
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'Component' . DS . 'magic.tpl',
-                PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'view.tpl',
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'index.tpl',
+                PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'view.tpl',
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'twig.tpl',
             ],
         ], Scanner::all());
@@ -74,8 +74,8 @@ class ScannerTest extends TestCase
     {
         $this->assertSame([
             PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'Component' . DS . 'magic.tpl',
-            PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'view.tpl',
             PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'index.tpl',
+            PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'view.tpl',
             PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'twig.tpl',
         ], Scanner::plugin('TestTwigView'));
     }

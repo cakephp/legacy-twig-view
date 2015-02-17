@@ -67,8 +67,8 @@ class TreeScannerTest extends TestCase
                     'Component' => [
                         'magic.tpl',
                     ],
-                    'view.tpl',
                     'index.tpl',
+                    'view.tpl',
                 ],
             ],
         ], TreeScanner::all());
@@ -82,8 +82,8 @@ class TreeScannerTest extends TestCase
                 'Component' => [
                     'magic.tpl',
                 ],
-                'view.tpl',
                 'index.tpl',
+                'view.tpl',
             ],
         ], TreeScanner::plugin('TestTwigView'));
     }
