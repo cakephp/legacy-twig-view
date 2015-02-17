@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/WyriHaximus/TwigView/badge.png)](https://coveralls.io/r/WyriHaximus/TwigView)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WyriHaximus/twigview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-This plugin for version 3 the [CakePHP Framework`](http://cakephp.org) allows you to use the [Twig Templating Language`](http://twig.sensiolabs.org) for your views.
+This plugin for version 3 the [CakePHP Framework](http://cakephp.org) allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
 
 In addition to enabling the use of most of Twig's features, the plugin is tightly integrated with the CakePHP view renderer giving you full access to helpers, objects and elements.
 
