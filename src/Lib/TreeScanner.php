@@ -2,8 +2,6 @@
 
 namespace WyriHaximus\TwigView\Lib;
 
-use Cake\Core\App;
-
 /**
  * Class TreeScanner
  * @package WyriHaximus\TwigView\Lib
