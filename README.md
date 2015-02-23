@@ -151,6 +151,16 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 * `getVars` maps to `Cake\View\View::getVars`
 * `get` maps to `Cake\View\View::get`
 
+## Screenshots ##
+
+### Profiler ###
+
+![Profiler](/docs/images/profiler.png)
+
+### Templates found ###
+
+![Templates found](/docs/images/templates-found.png)
+
 ## License ##
 
 Copyright 2014 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
