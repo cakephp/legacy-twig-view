@@ -10,9 +10,6 @@
  */
 namespace WyriHaximus\TwigView\Event;
 
-use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
-use Asm89\Twig\CacheExtension\Extension as CacheExtension;
-use Cake\Event\Event;
 use Cake\Event\EventListenerInterface;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
@@ -32,25 +29,25 @@ class TokenParsersListener implements EventListenerInterface
     public function implementedEvents()
     {
         return [
-            'TwigView.TwigView.construct' => 'construct',
+            ConstructEvent::EVENT => 'construct',
         ];
     }
 
     /**
      * Event handler.
      *
-     * @param Event $event Event.
+     * @param ConstructEvent $event Event.
      *
      * @return void
      */
     // @codingStandardsIgnoreStart
-    public function construct(Event $event)
+    public function construct(ConstructEvent $event)
     {
         // @codingStandardsIgnoreEnd
         // @codingStandardsIgnoreStart
         // CakePHP specific tags
-        $event->subject()->getTwig()->addTokenParser(new TokenParser\Cell);
-        $event->subject()->getTwig()->addTokenParser(new TokenParser\Element);
+        $event->getTwig()->addTokenParser(new TokenParser\Cell);
+        $event->getTwig()->addTokenParser(new TokenParser\Element);
         // @codingStandardsIgnoreEnd
     }
 }

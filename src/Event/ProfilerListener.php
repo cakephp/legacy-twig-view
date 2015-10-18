@@ -10,9 +10,6 @@
  */
 namespace WyriHaximus\TwigView\Event;
 
-use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
-use Asm89\Twig\CacheExtension\Extension as CacheExtension;
-use Cake\Event\Event;
 use Cake\Event\EventListenerInterface;
 use Cake\Event\EventManager;
 use WyriHaximus\TwigView\Lib\Cache;
@@ -33,25 +30,24 @@ class ProfilerListener implements EventListenerInterface
     public function implementedEvents()
     {
         return [
-            'TwigView.TwigView.construct' => 'construct',
+            ConstructEvent::EVENT => 'construct',
         ];
     }
 
     /**
      * Event handler.
      *
-     * @param Event $event Event.
+     * @param ConstructEvent $event Event.
      *
      * @return void
      */
-    public function construct(Event $event)
+    public function construct(ConstructEvent $event)
     {
         $profile = new \Twig_Profiler_Profile();
         $event->
-            subject()->
             getTwig()->
             addExtension(new Extension\Profiler($profile));
 
-        EventManager::instance()->dispatch(new Event('TwigView.Twig.profile', $profile));
+        EventManager::instance()->dispatch(ProfileEvent::create($profile));
     }
 }

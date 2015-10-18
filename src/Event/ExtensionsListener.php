@@ -12,7 +12,6 @@ namespace WyriHaximus\TwigView\Event;
 
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
-use Cake\Event\Event;
 use Cake\Event\EventListenerInterface;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
@@ -32,41 +31,41 @@ class ExtensionsListener implements EventListenerInterface
     public function implementedEvents()
     {
         return [
-            'TwigView.TwigView.construct' => 'construct',
+            ConstructEvent::EVENT => 'construct',
         ];
     }
 
     /**
      * Event handler.
      *
-     * @param Event $event Event.
+     * @param ConstructEvent $event Event.
      *
      * @return void
      */
     // @codingStandardsIgnoreStart
-    public function construct(Event $event)
+    public function construct(ConstructEvent $event)
     {
         // @codingStandardsIgnoreEnd
         // @codingStandardsIgnoreStart
         // Twig core extensions
-        $event->subject()->getTwig()->addExtension(new \Twig_Extension_StringLoader);
-        $event->subject()->getTwig()->addExtension(new \Twig_Extension_Debug);
+        $event->getTwig()->addExtension(new \Twig_Extension_StringLoader);
+        $event->getTwig()->addExtension(new \Twig_Extension_Debug);
 
         // CakePHP bridging extensions
-        $event->subject()->getTwig()->addExtension(new Extension\I18n);
-        $event->subject()->getTwig()->addExtension(new Extension\Time);
-        $event->subject()->getTwig()->addExtension(new Extension\Basic);
-        $event->subject()->getTwig()->addExtension(new Extension\Number);
-        $event->subject()->getTwig()->addExtension(new Extension\Utils);
-        $event->subject()->getTwig()->addExtension(new Extension\Arrays);
-        $event->subject()->getTwig()->addExtension(new Extension\String);
-        $event->subject()->getTwig()->addExtension(new Extension\Inflector);
+        $event->getTwig()->addExtension(new Extension\I18n);
+        $event->getTwig()->addExtension(new Extension\Time);
+        $event->getTwig()->addExtension(new Extension\Basic);
+        $event->getTwig()->addExtension(new Extension\Number);
+        $event->getTwig()->addExtension(new Extension\Utils);
+        $event->getTwig()->addExtension(new Extension\Arrays);
+        $event->getTwig()->addExtension(new Extension\String);
+        $event->getTwig()->addExtension(new Extension\Inflector);
 
         // Third party cache extension
         $cacheProvider = new Cache();
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
-        $event->subject()->getTwig()->addExtension($cacheExtension);
+        $event->getTwig()->addExtension($cacheExtension);
         // @codingStandardsIgnoreEnd
     }
 }

@@ -10,6 +10,7 @@
  */
 use Cake\Event\EventManager;
 use Cake\TestSuite\TestCase;
+use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Lib\Loader;
 use WyriHaximus\TwigView\View\TwigView;
 
@@ -78,7 +79,7 @@ class TwigViewTest extends TestCase
 
 	public function testConstruct()
 	{
-		$this->_hibernateListeners('TwigView.TwigView.construct');
+		$this->_hibernateListeners(ConstructEvent::EVENT);
 
 		$callbackFired = false;
 		$that = $this;
@@ -86,12 +87,12 @@ class TwigViewTest extends TestCase
 			$that->assertInstanceof('Twig_Environment', $event->subject()->getTwig());
 			$callbackFired = true;
 		};
-		EventManager::instance()->attach($eventCallback, 'TwigView.TwigView.construct');
+		EventManager::instance()->attach($eventCallback, ConstructEvent::EVENT);
 
 		new TwigView();
 
-		EventManager::instance()->detach($eventCallback, 'TwigView.TwigView.construct');
-		$this->_wakeupListeners('TwigView.TwigView.construct');
+		EventManager::instance()->detach($eventCallback, ConstructEvent::EVENT);
+		$this->_wakeupListeners(ConstructEvent::EVENT);
 
 		$this->assertTrue($callbackFired);
 	}

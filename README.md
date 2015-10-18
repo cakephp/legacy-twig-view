@@ -151,6 +151,63 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 * `getVars` maps to `Cake\View\View::getVars`
 * `get` maps to `Cake\View\View::get`
 
+## Events ## 
+
+### Loaders ###
+
+The default loader can be replace by listening to the `WyriHaximus\TwigView\Event\LoaderEvent::EVENT`, for example with [twital](https://github.com/goetas/twital):
+
+```php
+<?php
+
+use Cake\Event\EventListenerInterface;
+use Goetas\Twital\TwitalLoader;
+use WyriHaximus\TwigView\Event\LoaderEvent;
+
+class LoaderListener implements EventListenerInterface
+{
+    public function implementedEvents()
+    {
+        return [
+            LoaderEvent::EVENT => 'loader',
+        ];
+    }
+
+    public function loader(LoaderEvent $event)
+    {
+        $event->result = new TwitalLoader($event->getLoader());
+    }
+}
+
+```
+
+### Extensions ###
+
+Extensions can be added to the twig environment by listening to the `WyriHaximus\TwigView\Event\ConstructEvent::EVENT`, for example:
+
+```php
+<?php
+
+use Cake\Event\EventListenerInterface;
+use WyriHaximus\TwigView\Event\ConstructEvent;
+
+class LoaderListener implements EventListenerInterface
+{
+    public function implementedEvents()
+    {
+        return [
+            ConstructEvent::EVENT => 'construct',
+        ];
+    }
+
+    public function construct(ConstructEvent $event)
+    {
+        $event->getTwig()->addExtension(new YourTwigExtension);
+    }
+}
+
+```
+
 ## Screenshots ##
 
 ### Profiler ###
@@ -163,7 +220,7 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 
 ## License ##
 
-Copyright 2014 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
+Copyright 2015 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

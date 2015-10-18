@@ -16,6 +16,8 @@ use Cake\Event\EventManager;
 use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\View\View;
+use WyriHaximus\TwigView\Event\ConstructEvent;
+use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
@@ -85,7 +87,7 @@ class TwigView extends View
             'debug' => Configure::read('debug')
         ]);
 
-        $this->eventManager->dispatch(new Event('TwigView.TwigView.construct', $this));
+        $this->eventManager->dispatch(ConstructEvent::create($this, $this->twig));
 
         parent::__construct($request, $response, $eventManager, $viewOptions);
         $this->_ext = self::EXT;
@@ -100,16 +102,9 @@ class TwigView extends View
      */
     protected function getLoader()
     {
-        $event = new Event('TwigView.TwigView.loader', $this, [
-            'loader' => new Loader(),
-        ]);
+        $event = LoaderEvent::create(new Loader());
         $this->eventManager->dispatch($event);
-
-        if (isset($event->result['loader'])) {
-            return $event->result['loader'];
-        }
-
-        return $event->data['loader'];
+        return $event->getResultLoader();
     }
 
     /**
