@@ -153,6 +153,8 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 
 ## Events ## 
 
+This plugin emits several events.
+
 ### Loaders ###
 
 The default loader can be replace by listening to the `WyriHaximus\TwigView\Event\LoaderEvent::EVENT`, for example with [twital](https://github.com/goetas/twital):
