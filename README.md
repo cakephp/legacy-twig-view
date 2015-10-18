@@ -151,7 +151,7 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 * `getVars` maps to `Cake\View\View::getVars`
 * `get` maps to `Cake\View\View::get`
 
-## Events ## 
+## Events ##
 
 This plugin emits several events.
 
