@@ -58,7 +58,7 @@ class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new Extension\Number);
         $event->getTwig()->addExtension(new Extension\Utils);
         $event->getTwig()->addExtension(new Extension\Arrays);
-        $event->getTwig()->addExtension(new Extension\String);
+        $event->getTwig()->addExtension(new Extension\Strings);
         $event->getTwig()->addExtension(new Extension\Inflector);
 
         // Third party cache extension
