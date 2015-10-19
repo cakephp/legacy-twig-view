@@ -5,6 +5,7 @@
 [![Total Downloads](https://poser.pugx.org/WyriHaximus/Twig-View/downloads.png)](https://packagist.org/packages/WyriHaximus/Twig-View)
 [![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/TwigView/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/TwigView/?branch=master)
 [![License](https://poser.pugx.org/wyrihaximus/Twig-View/license.png)](https://packagist.org/packages/wyrihaximus/Twig-View)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/TwigView/badge.svg)](https://travis-ci.org/WyriHaximus/TwigView)
 
 This plugin for version 3 the [CakePHP Framework](http://cakephp.org) allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
 
