@@ -112,10 +112,9 @@ class TwigViewTest extends TestCase
 			]
 		);
 
-		$view = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-		Phake::when($view)->helpers()->thenReturn($registery);
-		$view->TestHelper = 'foo:bar';
-		$view->helpers = $helpersArray;
+        $view = new TwigView(Phake::mock('Cake\Network\Request'), Phake::mock('Cake\Network\Response'), Phake::mock('Cake\Event\EventManager'));
+        $view->TestHelper = 'foo:bar';
+        $view->helpers = $helpersArray;
 
 		self::getMethod('generateHelperList')->invoke($view);
 		$this->assertSame(
