@@ -12,7 +12,6 @@ namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Loader
@@ -84,7 +83,7 @@ class Loader implements \Twig_LoaderInterface
         ] as $scope) {
             $paths = $this->getPaths($scope);
             foreach ($paths as $path) {
-                $filePath = $path . $file . TwigView::EXT;
+                $filePath = $path . $file;
                 if (file_exists($filePath)) {
                     return $filePath;
                 }

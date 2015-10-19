@@ -40,6 +40,14 @@ class TwigView extends View
     // @codingStandardsIgnoreEnd
 
     /**
+     * @var array
+     */
+    protected $extensions = [
+        self::EXT,
+        '.ctp',
+    ];
+
+    /**
      * Twig instance.
      *
      * @var \Twig_Environment
@@ -92,6 +100,14 @@ class TwigView extends View
         $this->_ext = self::EXT;
 
         $this->generateHelperList();
+    }
+
+    /**
+     * @param string $extension
+     */
+    public function unshiftExtension($extension)
+    {
+        array_unshift($this->extensions, $extension);
     }
 
     /**
@@ -155,6 +171,50 @@ class TwigView extends View
         }
 
         return $out;
+    }
+
+    /**
+     * @param string|null $name
+     * @return string
+     * @throws \Exception
+     */
+    // @codingStandardsIgnoreStart
+    protected function _getViewFileName($name = null)
+    {
+        // @codingStandardsIgnoreEnd
+        $rethrow = new \Exception('You\'re not supposed to get here');
+        foreach ($this->extensions as $extension) {
+            $this->_ext = $extension;
+            try {
+                return parent::_getViewFileName($name);
+            } catch (\Exception $exception) {
+                $rethrow = $exception;
+            }
+        }
+
+        throw $rethrow;
+    }
+
+    /**
+     * @param string|null $name
+     * @return string
+     * @throws \Exception
+     */
+    // @codingStandardsIgnoreStart
+    protected function _getLayoutFileName($name = null)
+    {
+        // @codingStandardsIgnoreEnd
+        $rethrow = new \Exception('You\'re not supposed to get here');
+        foreach ($this->extensions as $extension) {
+            $this->_ext = $extension;
+            try {
+                return parent::_getLayoutFileName($name);
+            } catch (\Exception $exception) {
+                $rethrow = $exception;
+            }
+        }
+
+        throw $rethrow;
     }
 
     /**

@@ -165,6 +165,7 @@ The default loader can be replace by listening to the `WyriHaximus\TwigView\Even
 
 use Cake\Event\EventListenerInterface;
 use Goetas\Twital\TwitalLoader;
+use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\LoaderEvent;
 
 class LoaderListener implements EventListenerInterface
@@ -173,6 +174,7 @@ class LoaderListener implements EventListenerInterface
     {
         return [
             LoaderEvent::EVENT => 'loader',
+            ConstructEvent::EVENT => 'construct',
         ];
     }
 
@@ -180,7 +182,18 @@ class LoaderListener implements EventListenerInterface
     {
         $event->result = new TwitalLoader($event->getLoader());
     }
+
+    /**
+     * We've also listening in on this event so we can add the needed extensions to check for to the view
+     */
+    public function construct(ConstructEvent $event)
+    {
+        $event->getTwigView()->unshiftExtension('.twital.html');
+        $event->getTwigView()->unshiftExtension('.twital.xml');
+        $event->getTwigView()->unshiftExtension('.twital.xhtml');
+    }
 }
+
 
 ```
 
