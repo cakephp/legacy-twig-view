@@ -642,67 +642,6 @@
             "time": "2015-03-18 18:23:50"
         },
         {
-            "name": "object-calisthenics/phpcs-calisthenics-rules",
-            "version": "v1.0.1",
-            "target-dir": "ObjectCalisthenics",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/object-calisthenics/phpcs-calisthenics-rules.git",
-                "reference": "c752556cd94cd0d44b1356d6c27a6fef622ac2c7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/object-calisthenics/phpcs-calisthenics-rules/zipball/c752556cd94cd0d44b1356d6c27a6fef622ac2c7",
-                "reference": "c752556cd94cd0d44b1356d6c27a6fef622ac2c7",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.2",
-                "squizlabs/php_codesniffer": "dev-master"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "ObjectCalisthenics/Sniffs/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@hotmail.com"
-                }
-            ],
-            "description": "PHP CodeSniffer Object Calisthenics rules/sniffs",
-            "homepage": "https://github.com/object-calisthenics/phpcs-calisthenics-rules",
-            "keywords": [
-                "code",
-                "coding",
-                "cs",
-                "phpcs",
-                "rule",
-                "rules",
-                "sniff",
-                "sniffer",
-                "sniffs",
-                "standard",
-                "standards",
-                "style"
-            ],
-            "time": "2014-08-20 22:03:58"
-        },
-        {
             "name": "phake/phake",
             "version": "1.0.8",
             "source": {
