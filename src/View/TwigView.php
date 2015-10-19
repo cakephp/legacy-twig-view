@@ -11,7 +11,6 @@
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
-use Cake\Event\Event;
 use Cake\Event\EventManager;
 use Cake\Network\Request;
 use Cake\Network\Response;
