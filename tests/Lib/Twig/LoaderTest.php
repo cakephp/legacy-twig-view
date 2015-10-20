@@ -61,6 +61,7 @@ class LoaderTest extends TestCase
 	public function testGetSource()
 	{
 		$this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig'));
+		$this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig.tpl'));
 	}
 
 	/**
@@ -84,6 +85,10 @@ class LoaderTest extends TestCase
 		$this->assertSame(
 			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.tpl',
 			$this->Loader->getCacheKey('TestTwigView.twig')
+		);
+		$this->assertSame(
+			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.tpl',
+			$this->Loader->getCacheKey('TestTwigView.twig.tpl')
 		);
 	}
 
