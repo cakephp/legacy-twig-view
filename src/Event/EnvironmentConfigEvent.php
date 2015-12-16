@@ -14,7 +14,7 @@ use Cake\Event\Event;
 
 class EnvironmentConfigEvent extends Event
 {
-    const EVENT = 'TwigView.TwigView.environment.config';
+    const EVENT = 'TwigView.TwigView.environment';
 
     /**
      * @param array $config
