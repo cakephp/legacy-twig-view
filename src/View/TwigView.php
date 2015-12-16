@@ -16,6 +16,7 @@ use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\View\View;
 use WyriHaximus\TwigView\Event\ConstructEvent;
+use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
@@ -87,12 +88,7 @@ class TwigView extends View
         }
         $this->eventManager = $eventManager;
 
-        $this->twig = new \Twig_Environment($this->getLoader(), [
-            'cache' => CACHE . 'twigView' . DS,
-            'charset' => strtolower(Configure::read('App.encoding')),
-            'auto_reload' => Configure::read('debug'),
-            'debug' => Configure::read('debug')
-        ]);
+        $this->twig = new \Twig_Environment($this->getLoader(), $this->resolveConfig());
 
         $this->eventManager->dispatch(ConstructEvent::create($this, $this->twig));
 
@@ -100,6 +96,22 @@ class TwigView extends View
         $this->_ext = self::EXT;
 
         $this->generateHelperList();
+    }
+
+    /**
+     * @return array
+     */
+    protected function resolveConfig()
+    {
+        $config = [
+            'cache' => CACHE . 'twigView' . DS,
+            'charset' => strtolower(Configure::read('App.encoding')),
+            'auto_reload' => Configure::read('debug'),
+            'debug' => Configure::read('debug'),
+        ];
+        $configEvent = EnvironmentConfigEvent::create($config);
+        $this->eventManager->dispatch($configEvent);
+        return $configEvent->getConfig();
     }
 
     /**
