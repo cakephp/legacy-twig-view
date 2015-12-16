@@ -11,7 +11,6 @@
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
-use WyriHaximus\TwigView\View\TwigView;
 
 class EnvironmentConfigEvent extends Event
 {
