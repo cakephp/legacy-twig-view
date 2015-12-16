@@ -111,13 +111,28 @@ class TwigView extends View
             'debug' => Configure::read('debug'),
         ];
 
-        if (Configure::check(static::ENV_CONFIG) && is_array(Configure::read(static::ENV_CONFIG))) {
-            $config = array_replace($config, Configure::read(static::ENV_CONFIG));
-        }
+        $config = array_replace($config, $this->readConfig());
 
         $configEvent = EnvironmentConfigEvent::create($config);
         $this->eventManager->dispatch($configEvent);
         return $configEvent->getConfig();
+    }
+
+    /**
+     * @return array
+     */
+    protected function readConfig()
+    {
+        if (!Configure::check(static::ENV_CONFIG)) {
+            return [];
+        }
+
+        $config = Configure::read(static::ENV_CONFIG);
+        if (!is_array($config)) {
+            return [];
+        }
+
+        return $config;
     }
 
     /**
