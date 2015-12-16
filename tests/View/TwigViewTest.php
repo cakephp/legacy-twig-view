@@ -8,9 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use Cake\TestSuite\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
+use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\Lib\Loader;
 use WyriHaximus\TwigView\View\TwigView;
 
@@ -93,6 +95,32 @@ class TwigViewTest extends TestCase
 
 		EventManager::instance()->detach($eventCallback, ConstructEvent::EVENT);
 		$this->_wakeupListeners(ConstructEvent::EVENT);
+
+		$this->assertTrue($callbackFired);
+	}
+
+	public function testConstructConfig()
+	{
+        Configure::write(TwigView::ENV_CONFIG, [
+            'true' => true,
+        ]);
+
+		$this->_hibernateListeners(EnvironmentConfigEvent::EVENT);
+
+		$callbackFired = false;
+		$that = $this;
+		$eventCallback = function ($event) use ($that, &$callbackFired) {
+			$that->assertInternalType('array', $event->getConfig());
+			$that->assertTrue($event->getConfig()['true']);
+
+			$callbackFired = true;
+		};
+		EventManager::instance()->attach($eventCallback, EnvironmentConfigEvent::EVENT);
+
+		new TwigView();
+
+		EventManager::instance()->detach($eventCallback, EnvironmentConfigEvent::EVENT);
+		$this->_wakeupListeners(EnvironmentConfigEvent::EVENT);
 
 		$this->assertTrue($callbackFired);
 	}

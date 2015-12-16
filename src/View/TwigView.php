@@ -28,8 +28,9 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
 class TwigView extends View
 // @codingStandardsIgnoreEnd
 {
-
     const EXT = '.tpl';
+
+    const ENV_CONFIG = 'WyriHaximus.TwigView.environment';
 
     /**
      * Extension to use.
@@ -109,6 +110,11 @@ class TwigView extends View
             'auto_reload' => Configure::read('debug'),
             'debug' => Configure::read('debug'),
         ];
+
+        if (Configure::check(static::ENV_CONFIG) && is_array(Configure::read(static::ENV_CONFIG))) {
+            $config = array_replace($config, Configure::read(static::ENV_CONFIG));
+        }
+
         $configEvent = EnvironmentConfigEvent::create($config);
         $this->eventManager->dispatch($configEvent);
         return $configEvent->getConfig();
