@@ -31,9 +31,15 @@ Plugin::load('WyriHaximus/TwigView', [
 
 ## Application wide usage ##
 
+Instead of extending from the `View` let `AppView` extend `TwigView`:
+
 ```php
-class AppController extends Controller {
-    public $viewClass = '\WyriHaximus\TwigView\View\TwigView';
+namespace App\View;
+
+use WyriHaximus\TwigView\View\TwigView;
+
+class AppView extends TwigView
+{
 }
 ```
 
