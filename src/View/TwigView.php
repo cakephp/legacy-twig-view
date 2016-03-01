@@ -251,6 +251,26 @@ class TwigView extends View
     }
 
     /**
+     * @param string $name
+     * @return string
+     * @throws \Exception
+     */
+    // @codingStandardsIgnoreStart
+    protected function _getElementFileName($name)
+    {
+        // @codingStandardsIgnoreEnd
+        foreach ($this->extensions as $extension) {
+            $this->_ext = $extension;
+            $result = parent::_getElementFileName($name);
+            if ($result !== false) {
+                return $result;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Get twig environment instance.
      *
      * @return \Twig_Environment
