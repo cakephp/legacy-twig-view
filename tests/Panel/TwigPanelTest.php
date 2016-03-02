@@ -12,7 +12,6 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Panel;
 
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
-
 use WyriHaximus\TwigView\Lib\RelativeScanner;
 use WyriHaximus\TwigView\Panel\TwigPanel;
 
