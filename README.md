@@ -16,21 +16,20 @@ In addition to enabling the use of most of Twig's features, the plugin is tightl
 To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `~`.
 
 ```bash
-composer require wyrihaximus/twig-view 
+composer require wyrihaximus/twig-view
 ```
 
-## Bootstrap ##
+## Configuration ##
 
+### Load Plugin
 Add the following to your `config/bootstrap.php` to load the plugin.
-
 ```php
 Plugin::load('WyriHaximus/TwigView', [
     'bootstrap' => true,
 ]);
 ```
 
-## Application wide usage ##
-
+### Use View class
 Instead of extending from the `View` let `AppView` extend `TwigView`:
 
 ```php
@@ -43,9 +42,108 @@ class AppView extends TwigView
 }
 ```
 
-## Elements ##
+## Quick Start
 
-```jinja
+### Load Helpers
+In `Controller/AppController` load your plugins
+```PHP
+public $helpers = ['Html', 'Form']; // And more
+```
+
+### Layout
+Replace `Template/Layout/default.ctp` by this `Layout/default.tpl`
+
+``` twig
+<!DOCTYPE html>
+<html>
+<head>
+    {{ Html.charset()|raw }}
+
+    <title>
+        {{ __('myTwigExample') }}
+        {{ _view.fetch('title')|raw }}
+    </title>
+
+    {{ Html.meta('icon')|raw }}
+
+    {{ Html.css('default.app.css')|raw }}
+    {{ Html.script('app')|raw }}
+
+    {{ _view.fetch('meta')|raw }}
+    {{ _view.fetch('css')|raw }}
+    {{ _view.fetch('script')|raw }}
+</head>
+<body>
+    <header>
+        {{ _view.fetch('header')|raw }}
+    </header>
+
+    {{ Flash.render()|raw }}
+
+    <section>
+
+        <h1>{{ _view.fetch('title')|raw }}</h1>
+
+        {{ _view.fetch('content')|raw }}
+    </section>
+
+    <footer>
+        {{ _view.fetch('footer')|raw }}
+    </footer>
+</body>
+</html>
+```
+
+### Template View
+Create a template, for exemple `Template/Users/index.tpl` like this
+```Twig
+{{ _view.assign('title', __("I'm title")) }}
+
+{{ _view.start('header') }}
+    <p>I'm header</p>
+{{ _view.end() }}
+
+{{ _view.start('footer') }}
+    <p>I'm footer</p>
+{{ _view.end() }}
+
+<p>I'm content</p>
+```
+
+## Usage
+
+### Use `$this`
+With twig `$this` is replaced by `_view`
+
+For example, without using Twig writing
+```php
+<?= $this->fetch('content') ?>
+```
+But with Twig
+```twig
+{{ _view.fetch('content')|raw }}
+```
+### Helpers
+
+Any helper you defined in your controller.
+
+```php
+public $helpers = ['Html', 'Form']; // ...
+```
+
+Can be access by their CamelCase name, for example creating a form using the `FormHelper`:
+
+```twig
+{{ Html.link('Add user', {'controller':'Users', 'action': 'add'}, {'class':'myclass'})|raw }}
+```
+
+### Elements
+Basic
+```Twig
+{% element 'Element' %}
+```
+With variables or options
+```Twig
 {% element 'Plugin.Element' {
     dataName: 'dataValue'
 } {
@@ -53,24 +151,10 @@ class AppView extends TwigView
 } %}
 ```
 
-## Helpers ##
+### Cells
 
-Any helper you defined in your controller.
-
-```php
-public $helpers = ['Form'];
-```
-
-Can be access by their CamelCase name, for example creating a form using the `FormHelper`:
-
-```jinja
-{{ Form.create()|raw }}
-```
-
-## Cells ##
-
-### Store in context then echo it ###
-```jinja
+Store in context then echo it
+```twig
 {% cell cellObject = 'Plugin.Cell' {
     dataName: 'dataValue'
 } {
@@ -80,8 +164,8 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 {{ cellObject|raw }}
 ```
 
-### Fetch and directly echo it ###
-```jinja
+Fetch and directly echo it
+```twig
 {% cell 'Plugin.Cell' {
     dataName: 'dataValue'
 } {
@@ -89,7 +173,48 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 } %}
 ```
 
-## Filters ##
+### Extends
+If i want extend to `Common/demo.tpl`
+```twig
+<div id="sidebar">
+    {% block sidebar %}{% endblock %}
+</div>
+
+<div id="content">
+    {% block body %}{% endblock %}
+</div>
+```
+We can wrote in a view
+```twig
+{% extends 'Common/demo' %}
+
+{% block sidebar %}
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+
+    {{ _view.assign('title', __("I'm title")) }}
+
+    {{ _view.start('header') }}
+        <p>I'm header</p>
+    {{ _view.end() }}
+
+    {{ _view.start('footer') }}
+        <p>I'm footer</p>
+    {{ _view.end() }}
+
+    <p>I'm content</p>
+{% endblock %}
+```
+
+**Note : the block `body` is required, it's equivalent to `<?= $this->fetch('content') ?>`**
+
+### Filters
 * `debug` maps to [`debug`](http://book.cakephp.org/3.0/en/development/debugging.html#basic-debugging)
 * `pr` maps to `pr`
 * `low` maps to [`low`](http://php.net/low)
@@ -134,7 +259,7 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 * `nl2br` maps to [`nl2br`](http://php.net/nl2br)
 * `string` cast to [`string`](http://php.net/manual/en/language.types.type-juggling.php)
 
-## Functions ##
+### Functions
 * `in_array` maps to [`in_array`](http://php.net/in_array)
 * `explode` maps to [`explode`](http://php.net/explode)
 * `array` cast to [`array`](http://php.net/manual/en/language.types.type-juggling.php)
@@ -157,6 +282,9 @@ Can be access by their CamelCase name, for example creating a form using the `Fo
 * `elementExists` maps to `Cake\View\View::elementExists`,
 * `getVars` maps to `Cake\View\View::getVars`
 * `get` maps to `Cake\View\View::get`
+
+### Twig
+Visite [Twig Documentaion](http://twig.sensiolabs.org/documentation) for more tips
 
 ## Events ##
 
