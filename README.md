@@ -134,7 +134,7 @@ public $helpers = ['Html', 'Form']; // ...
 Can be access by their CamelCase name, for example creating a form using the `FormHelper`:
 
 ```twig
-{{ Html.link('Add user', {'controller':'Users', 'action': 'add'}, {'class':'myclass'})|raw }}
+{{ Html.link('Edit user', {'controller':'Users', 'action': 'edit' ~ '/' ~ user.id}, {'class':'myclass'})|raw }}
 ```
 
 ### Elements
