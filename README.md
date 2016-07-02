@@ -184,7 +184,7 @@ If i want extend to `Common/demo.tpl`
     {% block body %}{% endblock %}
 </div>
 ```
-We can wrote in a view
+We can write in a view
 ```twig
 {% extends 'Common/demo' %}
 
