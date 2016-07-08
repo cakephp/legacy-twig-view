@@ -57,7 +57,7 @@ Layout exemple
 </body>
 ```
 
-## Create a view
+## Create a view template
 in Template/Controller/action.tpl
 ```Twig
 
