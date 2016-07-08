@@ -23,7 +23,7 @@ class AppController extends Controller
 ```
 
 ## Create the default layout to be used by TwigView named `default.tpl` instead of `default.ctp`
-Layout exemple
+Layout example
 ```Twig
 <!DOCTYPE html>
 <html>
