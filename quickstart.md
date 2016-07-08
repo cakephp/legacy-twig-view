@@ -13,13 +13,18 @@ class AppView extends TwigView
 
 ## Load Helpers
 ```PHP
-// src/Controller/AppController
+// src/View/AppView.php
+namespace App\View;
 
-class AppController extends Controller
+use WyriHaximus\TwigView\View\TwigView;
+
+class AppView extends TwigView
 {
-    public $helpers = ['Html', 'Form']; // and mode
-
-   // code ....
+    public function initialize()
+    {
+        $this->loadHelper('Html');
+        $this->loadHelper('Form');
+    }
 ```
 
 ## Create the default layout to be used by TwigView named `default.tpl` instead of `default.ctp`
