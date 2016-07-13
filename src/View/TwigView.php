@@ -47,6 +47,7 @@ class TwigView extends View
     protected $extensions = [
         self::EXT,
         '.ctp',
+        '.twig',
     ];
 
     /**
