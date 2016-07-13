@@ -39,7 +39,7 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
      */
     public function __construct(
         $assign,
-        $variable,
+        array $variable,
         \Twig_Node_Expression $name,
         \Twig_Node_Expression $data = null,
         \Twig_Node_Expression $options = null,
