@@ -40,6 +40,7 @@ class Strings extends \Twig_Extension
             new \Twig_SimpleFilter('isMultibyte', 'Cake\Utility\String::isMultibyte'),
             new \Twig_SimpleFilter('utf8', 'Cake\Utility\String::utf8'),
             new \Twig_SimpleFilter('ascii', 'Cake\Utility\String::ascii'),
+            new \Twig_SimpleFilter('none', function($string) {return;}),
         ];
     }
 
