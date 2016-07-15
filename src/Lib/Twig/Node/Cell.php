@@ -30,7 +30,7 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
      * Constructor.
      *
      * @param boolean               $assign   Assign or echo.
-     * @param array                 $variable Variable to assign to.
+     * @param mixed                 $variable Variable to assign to.
      * @param \Twig_Node_Expression $name     Name.
      * @param \Twig_Node_Expression $data     Data array.
      * @param \Twig_Node_Expression $options  Options array.
@@ -39,7 +39,7 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
      */
     public function __construct(
         $assign,
-        array $variable,
+        $variable,
         \Twig_Node_Expression $name,
         \Twig_Node_Expression $data = null,
         \Twig_Node_Expression $options = null,
