@@ -143,11 +143,14 @@ class TwigViewTest extends TestCase
         $view = new TwigView(Phake::mock('Cake\Network\Request'), Phake::mock('Cake\Network\Response'), Phake::mock('Cake\Event\EventManager'));
         $view->TestHelper = 'foo:bar';
         $view->helpers = $helpersArray;
+        $view->loadHelper('TestSecond');
+		$view->TestSecond = 'bar:foo';
 
 		self::getMethod('generateHelperList')->invoke($view);
 		$this->assertSame(
 			[
 				'TestHelper' => 'foo:bar',
+				'TestSecond' => 'bar:foo',
 			],
 			self::getProperty('helperList')->getValue($view)
 		);
