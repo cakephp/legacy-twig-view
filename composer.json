@@ -37,7 +37,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "WyriHaximus\\CakePHP\\Tests\\TwigView\\": "tests/"
+            "WyriHaximus\\CakePHP\\Tests\\TwigView\\": "tests/",
+            "App\\": "tests/test_app/"
         }
     }
 }
