@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "name": "wyrihaximus/twig-view",
     "description": "Twig powered View for CakePHP3",
@@ -24,6 +25,7 @@
     },
     "require-dev": {
         "cakephp/debug_kit": "~3.0",
+        "cakephp/bake": "~1.1",
         "phpunit/phpunit": "^4.0|^5.0",
         "phake/phake": "^1.0.4",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master",
@@ -38,7 +40,8 @@
     "autoload-dev": {
         "psr-4": {
             "WyriHaximus\\CakePHP\\Tests\\TwigView\\": "tests/",
-            "App\\": "tests/test_app/"
+            "App\\": "tests/test_app/",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     }
 }

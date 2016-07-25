@@ -29,7 +29,8 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
                 {'action' : 'delete', 0 : <%= $singularVar %>.<%= $primaryKey[0] %>},
                 {'confirm' : __('Are you sure you want to delete # {0}?', <%= $singularVar %>.<%= $primaryKey[0] %>)}
             )|raw
-        }}</li>
+            }}
+        </li>
 <% endif; %>
         <li>{{ Html.link(__('List <%= $pluralHumanName %>'), {'action' : 'index'})|raw }}</li>
 <%
@@ -61,11 +62,11 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
                 $fieldData = $schema->column($field);
                 if (!empty($fieldData['null'])) {
 %>
-            {{ Form.input('<%= $field %>', {'options' : <%= $keyFields[$field] %>, 'empty' : true})|raw }}
+        {{ Form.input('<%= $field %>', {'options' : <%= $keyFields[$field] %>, 'empty' : true})|raw }}
 <%
                 } else {
 %>
-            {{ Form.input('<%= $field %>', {'options' : <%= $keyFields[$field] %>})|raw }}
+        {{ Form.input('<%= $field %>', {'options' : <%= $keyFields[$field] %>})|raw }}
 <%
                 }
                 continue;
@@ -74,11 +75,11 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
                 $fieldData = $schema->column($field);
                 if (in_array($fieldData['type'], ['date', 'datetime', 'time']) && (!empty($fieldData['null']))) {
 %>
-            {{ Form.input('<%= $field %>', {'empty' : true})|raw }}
+        {{ Form.input('<%= $field %>', {'empty' : true})|raw }}
 <%
                 } else {
 %>
-            {{ Form.input('<%= $field %>')|raw }}
+        {{ Form.input('<%= $field %>')|raw }}
 <%
                 }
             }
@@ -86,7 +87,7 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
         if (!empty($associations['BelongsToMany'])) {
             foreach ($associations['BelongsToMany'] as $assocName => $assocData) {
 %>
-            {{ Form.input('<%= $assocData['property'] %>._ids', {'options' : <%= $assocData['variable'] %>})|raw }}
+        {{ Form.input('<%= $assocData['property'] %>._ids', {'options' : <%= $assocData['variable'] %>})|raw }}
 <%
             }
         }
