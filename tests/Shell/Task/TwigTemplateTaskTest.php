@@ -32,8 +32,7 @@ class TemplateTaskTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'core.authors',
-        'core.tags'
+        'core.authors'
     ];
 
     /**
