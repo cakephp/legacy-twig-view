@@ -51,5 +51,4 @@ class TwigTemplateTask extends TemplateTask
 
         return $content;
     }
-
 }
