@@ -1,15 +1,11 @@
 <?php
 /**
- * CakePHP : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * This file is part of TwigView.
  *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
+ ** (c) 2015 Cees-Jan Kiewiet
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP Project
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task\TemplateTask;
 
