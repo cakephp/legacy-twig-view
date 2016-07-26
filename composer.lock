@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c079255341d22717327985c59caf8848",
-    "content-hash": "ca657e455aaecca914a5b8762cb7e76b",
+    "hash": "534570dfeee089200bf8e9c53de6a96b",
+    "content-hash": "3431d788ed81453268cccf3c3e5d1916",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -177,52 +177,6 @@
                 "localization"
             ],
             "time": "2014-08-24 00:00:00"
-        },
-        {
-            "name": "cakephp/bake",
-            "version": "1.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cakephp/bake.git",
-                "reference": "b6ffbc1caa59d7fb247644109efc83b895a3795e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/b6ffbc1caa59d7fb247644109efc83b895a3795e",
-                "reference": "b6ffbc1caa59d7fb247644109efc83b895a3795e",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": ">=3.2.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "^2.1",
-                "phpunit/phpunit": "*"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Bake\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "CakePHP Community",
-                    "homepage": "https://github.com/cakephp/bake/graphs/contributors"
-                }
-            ],
-            "description": "Bake plugin for CakePHP 3.0",
-            "homepage": "https://github.com/cakephp/bake",
-            "keywords": [
-                "bake",
-                "cakephp"
-            ],
-            "time": "2016-07-22 01:31:00"
         },
         {
             "name": "cakephp/cakephp",
@@ -448,6 +402,52 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "cakephp/bake",
+            "version": "1.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/bake.git",
+                "reference": "b6ffbc1caa59d7fb247644109efc83b895a3795e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/b6ffbc1caa59d7fb247644109efc83b895a3795e",
+                "reference": "b6ffbc1caa59d7fb247644109efc83b895a3795e",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": ">=3.2.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "cakephp/cakephp-codesniffer": "^2.1",
+                "phpunit/phpunit": "*"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Bake\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/bake/graphs/contributors"
+                }
+            ],
+            "description": "Bake plugin for CakePHP 3.0",
+            "homepage": "https://github.com/cakephp/bake",
+            "keywords": [
+                "bake",
+                "cakephp"
+            ],
+            "time": "2016-07-22 01:31:00"
+        },
         {
             "name": "cakephp/debug_kit",
             "version": "3.0.1",

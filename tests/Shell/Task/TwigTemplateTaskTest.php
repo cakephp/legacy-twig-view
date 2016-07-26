@@ -148,10 +148,6 @@ class TemplateTaskTest extends TestCase
      */
     public function testBakeIndexWithIndexLimit()
     {
-        $options = $this->Task->getOptionParser()->options();
-
-        $this->skipIf(!isset($options['index-columns']));
-
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
         $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
