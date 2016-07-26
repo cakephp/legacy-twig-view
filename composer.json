@@ -20,8 +20,7 @@
         "php": ">=5.5.9",
         "cakephp/cakephp": "~3.2",
         "twig/twig": "^1.18",
-        "asm89/twig-cache-extension": "~1.0",
-        "cakephp/bake": "~1.2"
+        "asm89/twig-cache-extension": "~1.0"
     },
     "require-dev": {
         "cakephp/debug_kit": "~3.0",
@@ -29,7 +28,8 @@
         "phake/phake": "^1.0.4",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master",
         "vectorface/dunit": "^2.0",
-        "squizlabs/php_codesniffer": "^1.5.6"
+        "squizlabs/php_codesniffer": "^1.5.6",
+        "cakephp/bake": "~1.2"
     },
     "autoload": {
         "psr-4": {
