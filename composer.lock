@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "534570dfeee089200bf8e9c53de6a96b",
-    "content-hash": "3431d788ed81453268cccf3c3e5d1916",
+    "hash": "774135f015e9f2a44bde05323b2fa43c",
+    "content-hash": "06a567b1c77c8aff1936b693a31b2293",
     "packages": [
         {
             "name": "asm89/twig-cache-extension",
@@ -2133,7 +2133,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9"
+        "php": "^5.5.9 || ^7.0"
     },
     "platform-dev": []
 }
