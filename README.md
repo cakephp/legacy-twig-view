@@ -45,9 +45,22 @@ class AppView extends TwigView
 ## Quick Start
 
 ### Load Helpers
-In `Controller/AppController` load your plugins
+In `Controller/AppController` load your helpers:
+
 ```PHP
 public $helpers = ['Html', 'Form']; // And more
+```
+
+Or in your AppView file :
+
+```PHP
+public function initialize()
+{
+    parent::initialize();
+
+    $this->loadHelper('Html');
+    $this->loadHelper('Form');
+}
 ```
 
 ### Layout
@@ -356,6 +369,17 @@ class LoaderListener implements EventListenerInterface
     }
 }
 
+```
+
+## Bake
+
+You can use Bake to generate your basic CRUD views using the `theme` option.
+Let's say you have a `TasksController` for which you want to generate twig templates.
+You can use the following command to generate your index, add, edit and view file formatted
+using Twig :
+
+```bash
+bin/cake bake twig_template Tasks all -t WyriHaximus/TwigView
 ```
 
 ## Screenshots ##

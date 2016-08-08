@@ -1,0 +1,22 @@
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading">{{ __('Actions') }}</li>
+        <li>{{ Form.postLink(
+                __('Delete'),
+                {'action' : 'delete', 0 : author.id},
+                {'confirm' : __('Are you sure you want to delete # {0}?', author.id)}
+            )|raw
+            }}
+        </li>
+        <li>{{ Html.link(__('List Authors'), {'action' : 'index'})|raw }}</li>
+    </ul>
+</nav>
+<div class="authors form large-9 medium-8 columns content">
+    {{ Form.create(author)|raw }}
+    <fieldset>
+        <legend>{{ __('Edit Author') }}</legend>
+        {{ Form.input('name')|raw }}
+    </fieldset>
+    {{ Form.button(__('Submit'))|raw }}
+    {{ Form.end()|raw }}
+</div>

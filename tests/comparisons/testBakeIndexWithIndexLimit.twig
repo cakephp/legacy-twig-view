@@ -1,0 +1,37 @@
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading">{{ __('Actions') }}</li>
+        <li>{{ Html.link(__('New Author'), {'action' : 'add'})|raw }}</li>
+    </ul>
+</nav>
+<div class="authors index large-9 medium-8 columns content">
+    <h3>{{ __('Authors') }}</h3>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>{{ Paginator.sort('id')|raw }}</th>
+                <th class="actions">{{ __('Actions') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <td>{{ Number.format(author.id) }}</td>
+                <td class="actions">
+                    {{ Html.link(__('View'), {'action' : 'view', 0 : author.id})|raw }}
+                    {{ Html.link(__('Edit'), {'action' : 'edit', 0 : author.id})|raw }}
+                    {{ Form.postLink(__('Delete'), {'action' : 'delete', 0 : author.id}, {'confirm' : __('Are you sure you want to delete # {0}?', author.id)})|raw }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="paginator">
+        <ul class="pagination">
+            {{ Paginator.prev('< ' ~ __('previous'))|raw }}
+            {{ Paginator.numbers()|raw }}
+            {{ Paginator.next(__('next') ~ ' >')|raw }}
+        </ul>
+        <p>{{ Paginator.counter()|raw }}</p>
+    </div>
+</div>
