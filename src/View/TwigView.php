@@ -15,6 +15,7 @@ use Cake\Event\EventManager;
 use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\View\View;
+use Exception;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\Event\LoaderEvent;
@@ -179,6 +180,7 @@ class TwigView extends View
      * @param string $viewFile Template file.
      * @param array  $data     Data that can be used by the template.
      *
+     * @throws \Exception
      * @return string
      */
     // @codingStandardsIgnoreStart
@@ -201,8 +203,19 @@ class TwigView extends View
                     '_view' => $this,
                 ]
             );
+
             // @codingStandardsIgnoreStart
-            $out = $this->getTwig()->loadTemplate($viewFile)->render($data);
+            try {
+                $out = $this->getTwig()->loadTemplate($viewFile)->render($data);
+            } catch (Exception $e) {
+                $previous = $e->getPrevious();
+
+                if ($previous !== null && $previous instanceof Exception) {
+                    throw $previous;
+                } else {
+                    throw $e;
+                }
+            }
             // @codingStandardsIgnoreEnd
         }
 

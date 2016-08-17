@@ -10,8 +10,14 @@
  */
 namespace App\View\Helper;
 
+use App\Exception\MissingSomethingException;
 use Cake\View\Helper;
 
 class TestSecondHelper extends Helper
 {
+
+    public function bogus()
+    {
+        throw new MissingSomethingException('Something is missing');
+    }
 }
