@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/WyriHaximus/TwigView.png)](https://travis-ci.org/WyriHaximus/TwigView)
 [![Latest Stable Version](https://poser.pugx.org/WyriHaximus/Twig-View/v/stable.png)](https://packagist.org/packages/WyriHaximus/Twig-View)
-[![Total Downloads](https://poser.pugx.org/WyriHaximus/Twig-View/downloads.png)](https://packagist.org/packages/WyriHaximus/Twig-View)
+[![Total Downloads](https://poser.pugx.org/WyriHaximus/Twig-View/downloads.png)](https://packagist.org/packages/WyriHaximus/Twig-View/stats)
 [![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/TwigView/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/TwigView/?branch=master)
 [![License](https://poser.pugx.org/wyrihaximus/Twig-View/license.png)](https://packagist.org/packages/wyrihaximus/Twig-View)
 [![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/TwigView/badge.svg)](https://travis-ci.org/WyriHaximus/TwigView)
