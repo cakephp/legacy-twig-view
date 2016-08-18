@@ -37,6 +37,8 @@ matrix:
       env: dependencies=highest
     - php: hhvm
       env: dependencies=highest
+  allow_failures:
+    - nightly
 
 ## Run the appropriate composer command and show installed packages
 install:
