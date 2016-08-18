@@ -63,8 +63,10 @@ public function initialize()
 }
 ```
 
+Note: TwigView will look for its templates with the extension `.twig` and then for `.tpl` (deprecated).
+
 ### Layout
-Replace `Template/Layout/default.ctp` by this `Layout/default.tpl`
+Replace `Template/Layout/default.ctp` by this `Layout/default.twig`
 
 ``` twig
 <!DOCTYPE html>
@@ -108,7 +110,7 @@ Replace `Template/Layout/default.ctp` by this `Layout/default.tpl`
 ```
 
 ### Template View
-Create a template, for exemple `Template/Users/index.tpl` like this
+Create a template, for exemple `Template/Users/index.twig` like this
 ```Twig
 {{ _view.assign('title', __("I'm title")) }}
 
@@ -187,7 +189,7 @@ Fetch and directly echo it
 ```
 
 ### Extends
-If i want extend to `Common/demo.tpl`
+If i want extend to `Common/demo.twig`
 ```twig
 <div id="sidebar">
     {% block sidebar %}{% endblock %}
