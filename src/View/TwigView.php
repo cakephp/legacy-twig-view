@@ -29,7 +29,7 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
 class TwigView extends View
 // @codingStandardsIgnoreEnd
 {
-    const EXT = '.tpl';
+    const EXT = '.twig';
 
     const ENV_CONFIG = 'WyriHaximus.TwigView.environment';
 
@@ -47,8 +47,8 @@ class TwigView extends View
      */
     protected $extensions = [
         self::EXT,
+        '.tpl',
         '.ctp',
-        '.twig',
     ];
 
     /**
