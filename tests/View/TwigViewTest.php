@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use Cake\TestSuite\TestCase;
@@ -202,6 +203,33 @@ class TwigViewTest extends TestCase
 				]
 			)
 		);
+	}
+
+	/**
+	 * Tests that a twig file that throws a custom exception correctly renders the thrown exception and not a Twig one
+	 *
+	 * @expectedException App\Exception\MissingSomethingException
+	 */
+	public function test_renderTwigCustomException()
+	{
+		Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+		$view = new AppView();
+		$view->layout = false;
+		$view->render('exception');
+	}
+
+	/**
+	 * Tests that a twig file that throws a Twig exception correctly throws the twig exception and does not get caught
+	 * byt the modification
+	 *
+	 * @expectedException Twig_Error_Syntax
+	 */
+	public function test_renderTwigTwigException()
+	{
+		Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+		$view = new AppView();
+		$view->layout = false;
+		$view->render('syntaxerror');
 	}
 
 }
