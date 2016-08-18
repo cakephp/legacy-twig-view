@@ -27,7 +27,9 @@ class AppView extends TwigView
     }
 ```
 
-## Create the default layout to be used by TwigView named `default.tpl` instead of `default.ctp`
+Note: TwigView will look for its templates with the extension `.twig` and then for `.tpl` (deprecated).
+
+## Create the default layout to be used by TwigView named `default.twig` instead of `default.ctp`
 Layout example
 ```Twig
 <!DOCTYPE html>
@@ -63,7 +65,7 @@ Layout example
 ```
 
 ## Create a view template
-in Template/Controller/action.tpl
+in Template/Controller/action.twig
 ```Twig
 
 {{ _view.start('header') }}
