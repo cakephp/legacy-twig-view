@@ -59,13 +59,13 @@ class RelativeScannerTest extends TestCase
     {
         $this->assertSame([
             'APP' => [
-                'layout.tpl',
+                'layout.twig',
             ],
             'TestTwigView' => [
-                'Controller/Component/magic.tpl',
-                'Controller/index.tpl',
-                'Controller/view.tpl',
-                'twig.tpl',
+                'Controller/Component/magic.twig',
+                'Controller/index.twig',
+                'Controller/view.twig',
+                'twig.twig',
             ],
         ], RelativeScanner::all());
     }
@@ -73,10 +73,10 @@ class RelativeScannerTest extends TestCase
     public function testPlugin()
     {
         $this->assertSame([
-            'Controller/Component/magic.tpl',
-            'Controller/index.tpl',
-            'Controller/view.tpl',
-            'twig.tpl',
+            'Controller/Component/magic.twig',
+            'Controller/index.twig',
+            'Controller/view.twig',
+            'twig.twig',
         ], RelativeScanner::plugin('TestTwigView'));
     }
 }

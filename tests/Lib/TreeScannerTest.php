@@ -59,16 +59,18 @@ class TreeScannerTest extends TestCase
     {
         $this->assertSame([
             'APP' => [
-                'layout.tpl',
+                'exception.twig',
+                'layout.twig',
+                'syntaxterror.twig',
             ],
             'TestTwigView' => [
-                3 => 'twig.tpl',
+                3 => 'twig.twig',
                 'Controller' => [
                     'Component' => [
-                        'magic.tpl',
+                        'magic.twig',
                     ],
-                    'index.tpl',
-                    'view.tpl',
+                    'index.twig',
+                    'view.twig',
                 ],
             ],
         ], TreeScanner::all());
@@ -77,13 +79,13 @@ class TreeScannerTest extends TestCase
     public function testPlugin()
     {
         $this->assertSame([
-            3 => 'twig.tpl',
+            3 => 'twig.twig',
             'Controller' => [
                 'Component' => [
-                    'magic.tpl',
+                    'magic.twig',
                 ],
-                'index.tpl',
-                'view.tpl',
+                'index.twig',
+                'view.twig',
             ],
         ], TreeScanner::plugin('TestTwigView'));
     }
