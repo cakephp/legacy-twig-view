@@ -61,7 +61,7 @@ class LoaderTest extends TestCase
 	public function testGetSource()
 	{
 		$this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig'));
-		$this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig.tpl'));
+		$this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig.twig'));
 	}
 
 	/**
@@ -75,7 +75,7 @@ class LoaderTest extends TestCase
 	public function testGetCacheKeyNoPlugin()
 	{
 		$this->assertSame(
-			PLUGIN_REPO_ROOT . 'tests/test_app/Template/layout.tpl',
+			PLUGIN_REPO_ROOT . 'tests/test_app/Template/layout.twig',
 			$this->Loader->getCacheKey('layout')
 		);
 	}
@@ -83,12 +83,12 @@ class LoaderTest extends TestCase
 	public function testGetCacheKeyPlugin()
 	{
 		$this->assertSame(
-			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.tpl',
+			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.twig',
 			$this->Loader->getCacheKey('TestTwigView.twig')
 		);
 		$this->assertSame(
-			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.tpl',
-			$this->Loader->getCacheKey('TestTwigView.twig.tpl')
+			PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.twig',
+			$this->Loader->getCacheKey('TestTwigView.twig.twig')
 		);
 	}
 
