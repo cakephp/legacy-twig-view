@@ -57,9 +57,11 @@ class RelativeScannerTest extends TestCase
 
     public function testAll()
     {
-        $this->assertSame([
+        $this->assertEquals([
             'APP' => [
+                'exception.twig',
                 'layout.twig',
+                'syntaxerror.twig',
             ],
             'TestTwigView' => [
                 'Controller/Component/magic.twig',
