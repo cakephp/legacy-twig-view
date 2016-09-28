@@ -268,16 +268,17 @@ class TwigView extends View
 
     /**
      * @param string $name
+     * @param bool $pluginCheck
      * @return string
      * @throws \Exception
      */
     // @codingStandardsIgnoreStart
-    protected function _getElementFileName($name)
+    protected function _getElementFileName($name, $pluginCheck = true)
     {
         // @codingStandardsIgnoreEnd
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
-            $result = parent::_getElementFileName($name);
+            $result = parent::_getElementFileName($name, $pluginCheck);
             if ($result !== false) {
                 return $result;
             }
