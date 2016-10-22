@@ -10,8 +10,10 @@
  */
 namespace WyriHaximus\TwigView\Event;
 
+use Ajgl\Twig\Extension\BreakpointExtension;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
+use Cake\Core\Configure;
 use Cake\Event\EventListenerInterface;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
@@ -66,6 +68,12 @@ class ExtensionsListener implements EventListenerInterface
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->getTwig()->addExtension($cacheExtension);
+
+        // Breakpoint extension
+        if (Configure::read('debug') === true) {
+            $event->getTwig()->addExtension(new BreakpointExtension());
+        }
+
         // @codingStandardsIgnoreEnd
     }
 }
