@@ -19,6 +19,7 @@
     "require": {
         "php": "^5.5.9 || ^7.0",
         "ajgl/breakpoint-twig-extension": "^0.3.0",
+        "aptoma/twig-markdown": "^2.0",
         "asm89/twig-cache-extension": "^1.0",
         "cakephp/cakephp": "^3.2",
         "twig/twig": "^1.18"
