@@ -13,6 +13,10 @@ namespace WyriHaximus\TwigView\Event;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Event\EventListenerInterface;
+use Jasny\Twig\ArrayExtension;
+use Jasny\Twig\DateExtension;
+use Jasny\Twig\PcreExtension;
+use Jasny\Twig\TextExtension;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
@@ -66,6 +70,13 @@ class ExtensionsListener implements EventListenerInterface
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->getTwig()->addExtension($cacheExtension);
+
+        // jasny/twig-extensions
+        $event->getTwig()->addExtension(new DateExtension());
+        $event->getTwig()->addExtension(new PcreExtension());
+        $event->getTwig()->addExtension(new TextExtension());
+        $event->getTwig()->addExtension(new ArrayExtension());
+
         // @codingStandardsIgnoreEnd
     }
 }
