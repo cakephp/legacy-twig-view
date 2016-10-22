@@ -22,6 +22,7 @@
         "aptoma/twig-markdown": "^2.0",
         "asm89/twig-cache-extension": "^1.0",
         "cakephp/cakephp": "^3.2",
+        "jasny/twig-extensions": "^1.0",
         "twig/twig": "^1.18"
     },
     "require-dev": {
