@@ -10,6 +10,8 @@
  */
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
+use Ajgl\Twig\Extension\BreakpointExtension;
+use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use Phake;
 use WyriHaximus\TwigView\Event\ConstructEvent;
@@ -39,4 +41,29 @@ class ExtensionsListenerTest extends TestCase
 		Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
 	}
 
+	public function testConstructDebug()
+	{
+		Configure::write('debug', true);
+
+		$twig = Phake::mock('\Twig_Environment');
+
+		$twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
+		(new ExtensionsListener)->construct(ConstructEvent::create($twigView, $twig));
+
+		Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+		Phake::verify($twig)->addExtension($this->isInstanceOf(BreakpointExtension::class));
+	}
+
+	public function testConstructDebugFalse()
+	{
+		Configure::write('debug', false);
+
+		$twig = Phake::mock('\Twig_Environment');
+
+		$twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
+		(new ExtensionsListener)->construct(ConstructEvent::create($twigView, $twig));
+
+		Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+		Phake::verify($twig, Phake::never())->addExtension($this->isInstanceOf(BreakpointExtension::class));
+	}
 }
