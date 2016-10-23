@@ -11,6 +11,7 @@ php:
   - 5.5
   - 5.6
   - 7
+  - 7.1
   - nightly
   - hhvm
 
@@ -23,6 +24,8 @@ matrix:
       env: dependencies=lowest
     - php: 7
       env: dependencies=lowest
+    - php: 7.1
+      env: dependencies=lowest
     - php: nightly
       env: dependencies=lowest
     - php: hhvm
@@ -33,6 +36,8 @@ matrix:
       env: dependencies=highest
     - php: 7
       env: dependencies=highest
+    - php: 7.1
+      env: dependencies=highest
     - php: nightly
       env: dependencies=highest
     - php: hhvm
@@ -42,6 +47,8 @@ matrix:
 
 ## Run the appropriate composer command and show installed packages
 install:
+  - composer validate
+  - composer config --unset platform.php
   - if [ -z "$dependencies" ]; then composer install -n --profile; fi;
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n --profile; fi;
   - if [ "$dependencies" = "highest" ]; then composer update -n --profile; fi;

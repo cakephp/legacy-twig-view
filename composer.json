@@ -29,7 +29,7 @@
         "cakephp/bake": "^1.2.2",
         "cakephp/debug_kit": "^3.0",
         "phake/phake": "^1.0.4",
-        "phpunit/phpunit": "^4.0 || ^5.0",
+        "phpunit/phpunit": "^4.8 || ^5.0",
         "squizlabs/php_codesniffer": "^1.5.6",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
     },
@@ -46,6 +46,9 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "5.5.9"
+        }
     }
 }

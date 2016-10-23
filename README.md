@@ -301,6 +301,11 @@ We can write in a view
 ### Twig
 Visite [Twig Documentaion](http://twig.sensiolabs.org/documentation) for more tips
 
+### Extra included extensions
+
+* [Breakpoint extension](https://github.com/ajgarlag/AjglBreakpointTwigExtension)
+* [aptoma/twig-markdown](https://github.com/aptoma/twig-markdown)
+
 ## Events ##
 
 This plugin emits several events.

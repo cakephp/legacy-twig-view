@@ -10,8 +10,13 @@
  */
 namespace WyriHaximus\TwigView\Event;
 
+use Aptoma\Twig\Extension\MarkdownEngineInterface;
+use Aptoma\Twig\Extension\MarkdownExtension;
+use Aptoma\Twig\TokenParser\MarkdownTokenParser;
+use Ajgl\Twig\Extension\BreakpointExtension;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
+use Cake\Core\Configure;
 use Cake\Event\EventListenerInterface;
 use Jasny\Twig\ArrayExtension;
 use Jasny\Twig\DateExtension;
@@ -65,6 +70,16 @@ class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new Extension\Strings);
         $event->getTwig()->addExtension(new Extension\Inflector);
 
+        // Markdown extension
+        if (
+            Configure::check('WyriHaximus.TwigView.markdown.engine') &&
+            Configure::read('WyriHaximus.TwigView.markdown.engine') instanceof MarkdownEngineInterface
+        ) {
+            $engine = Configure::read('WyriHaximus.TwigView.markdown.engine');
+            $event->getTwig()->addExtension(new MarkdownExtension($engine));
+            $event->getTwig()->addTokenParser(new MarkdownTokenParser($engine));
+        }
+
         // Third party cache extension
         $cacheProvider = new Cache();
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
@@ -76,6 +91,12 @@ class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new PcreExtension());
         $event->getTwig()->addExtension(new TextExtension());
         $event->getTwig()->addExtension(new ArrayExtension());
+
+
+        // Breakpoint extension
+        if (Configure::read('debug') === true) {
+            $event->getTwig()->addExtension(new BreakpointExtension());
+        }
 
         // @codingStandardsIgnoreEnd
     }
