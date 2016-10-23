@@ -13,6 +13,7 @@ namespace WyriHaximus\TwigView\Event;
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
+use Ajgl\Twig\Extension\BreakpointExtension;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Core\Configure;
@@ -80,6 +81,12 @@ class ExtensionsListener implements EventListenerInterface
         $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
         $cacheExtension = new CacheExtension($cacheStrategy);
         $event->getTwig()->addExtension($cacheExtension);
+
+        // Breakpoint extension
+        if (Configure::read('debug') === true) {
+            $event->getTwig()->addExtension(new BreakpointExtension());
+        }
+
         // @codingStandardsIgnoreEnd
     }
 }
