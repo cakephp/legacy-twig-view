@@ -10,11 +10,10 @@
  */
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
+use Ajgl\Twig\Extension\BreakpointExtension;
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-use Cake\Core\Configure;
-use Ajgl\Twig\Extension\BreakpointExtension;
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use Phake;
