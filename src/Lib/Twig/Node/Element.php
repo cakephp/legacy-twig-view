@@ -63,7 +63,7 @@ class Element extends \Twig_Node
             $compiler->subcompile($data);
         }
         $options = $this->getNode('options');
-        if ($data !== null) {
+        if ($options !== null) {
             $compiler->raw(',');
             $compiler->subcompile($options);
         }
