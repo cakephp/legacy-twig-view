@@ -32,6 +32,9 @@ class Basic extends \Twig_Extension
             new \Twig_SimpleFilter('env', 'env'),
             new \Twig_SimpleFilter('count', 'count'),
             new \Twig_SimpleFilter('h', 'h'),
+            new \Twig_SimpleFilter('null', function () {
+                return '';
+            }),
         ];
     }
 
