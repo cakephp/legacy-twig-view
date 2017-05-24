@@ -11,7 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
 /**
- * Class Element
+ * Class Cell
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
 // @codingStandardsIgnoreStart
