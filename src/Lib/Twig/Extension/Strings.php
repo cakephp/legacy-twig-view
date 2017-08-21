@@ -26,20 +26,20 @@ class Strings extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('substr', 'substr'),
-            new \Twig_SimpleFilter('tokenize', 'Cake\Utility\String::tokenize'),
-            new \Twig_SimpleFilter('insert', 'Cake\Utility\String::insert'),
-            new \Twig_SimpleFilter('cleanInsert', 'Cake\Utility\String::cleanInsert'),
-            new \Twig_SimpleFilter('wrap', 'Cake\Utility\String::wrap'),
-            new \Twig_SimpleFilter('wordWrap', 'Cake\Utility\String::wordWrap'),
-            new \Twig_SimpleFilter('highlight', 'Cake\Utility\String::highlight'),
-            new \Twig_SimpleFilter('tail', 'Cake\Utility\String::tail'),
-            new \Twig_SimpleFilter('truncate', 'Cake\Utility\String::truncate'),
-            new \Twig_SimpleFilter('excerpt', 'Cake\Utility\String::excerpt'),
-            new \Twig_SimpleFilter('toList', 'Cake\Utility\String::toList'),
-            new \Twig_SimpleFilter('stripLinks', 'Cake\Utility\String::stripLinks'),
-            new \Twig_SimpleFilter('isMultibyte', 'Cake\Utility\String::isMultibyte'),
-            new \Twig_SimpleFilter('utf8', 'Cake\Utility\String::utf8'),
-            new \Twig_SimpleFilter('ascii', 'Cake\Utility\String::ascii'),
+            new \Twig_SimpleFilter('tokenize', 'Cake\Utility\Text::tokenize'),
+            new \Twig_SimpleFilter('insert', 'Cake\Utility\Text::insert'),
+            new \Twig_SimpleFilter('cleanInsert', 'Cake\Utility\Text::cleanInsert'),
+            new \Twig_SimpleFilter('wrap', 'Cake\Utility\Text::wrap'),
+            new \Twig_SimpleFilter('wordWrap', 'Cake\Utility\Text::wordWrap'),
+            new \Twig_SimpleFilter('highlight', 'Cake\Utility\Text::highlight'),
+            new \Twig_SimpleFilter('tail', 'Cake\Utility\Text::tail'),
+            new \Twig_SimpleFilter('truncate', 'Cake\Utility\Text::truncate'),
+            new \Twig_SimpleFilter('excerpt', 'Cake\Utility\Text::excerpt'),
+            new \Twig_SimpleFilter('toList', 'Cake\Utility\Text::toList'),
+            new \Twig_SimpleFilter('stripLinks', 'Cake\Utility\Text::stripLinks'),
+            new \Twig_SimpleFilter('isMultibyte', 'Cake\Utility\Text::isMultibyte'),
+            new \Twig_SimpleFilter('utf8', 'Cake\Utility\Text::utf8'),
+            new \Twig_SimpleFilter('ascii', 'Cake\Utility\Text::ascii'),
             new \Twig_SimpleFilter('none', function ($string) {
                 return;
             }),
@@ -54,7 +54,7 @@ class Strings extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('uuid', 'Cake\Utility\String::uuid'),
+            new \Twig_SimpleFunction('uuid', 'Cake\Utility\Text::uuid'),
         ];
     }
 
