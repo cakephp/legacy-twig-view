@@ -60,4 +60,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input, ['width' => 2]]);
         $this->assertSame("Bob\nis\n65\nyears\nold.", $result);
     }
+
+    public function testWordWrap()
+    {
+        $input = "Bob is\n65 years old.";
+        $callable = $this->getFilter('wordWrap')->getCallable();
+        $result = call_user_func_array($callable, [$input, 2]);
+        $this->assertSame("Bob\nis\n65\nyears\nold.", $result);
+    }
 }
