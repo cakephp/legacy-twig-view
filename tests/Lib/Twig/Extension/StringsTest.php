@@ -76,4 +76,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input, 2]);
         $this->assertSame("Bob\nis\n65\nyears\nold.", $result);
     }
+
+    public function testHighlight()
+    {
+        $input = 'Bob is 65 years old.';
+        $callable = $this->getFilter('highlight')->getCallable();
+        $result = call_user_func_array($callable, [$input, 'Bob']);
+        $this->assertSame('<span class="highlight">Bob</span> is 65 years old.', $result);
+    }
 }
