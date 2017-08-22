@@ -44,4 +44,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$string, $keyValues]);
         $this->assertSame('Bob is 65 years old.', $result);
     }
+
+    public function testCleanInsert()
+    {
+        $input = 'Bob is 65 years old.';
+        $callable = $this->getFilter('cleanInsert')->getCallable();
+        $result = call_user_func_array($callable, [$input, ['clean' => false]]);
+        $this->assertSame('Bob is 65 years old.', $result);
+    }
 }
