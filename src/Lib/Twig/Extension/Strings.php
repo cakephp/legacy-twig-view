@@ -30,6 +30,7 @@ class Strings extends \Twig_Extension
             new \Twig_SimpleFilter('insert', 'Cake\Utility\Text::insert'),
             new \Twig_SimpleFilter('cleanInsert', 'Cake\Utility\Text::cleanInsert'),
             new \Twig_SimpleFilter('wrap', 'Cake\Utility\Text::wrap'),
+            new \Twig_SimpleFilter('wrapBlock', 'Cake\Utility\Text::wrapBlock'),
             new \Twig_SimpleFilter('wordWrap', 'Cake\Utility\Text::wordWrap'),
             new \Twig_SimpleFilter('highlight', 'Cake\Utility\Text::highlight'),
             new \Twig_SimpleFilter('tail', 'Cake\Utility\Text::tail'),

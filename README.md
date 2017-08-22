@@ -256,6 +256,7 @@ We can write in a view
 * `insert` maps to [`Cake\Utility\Text::insert`](https://book.cakephp.org/3.0/en/core-libraries/text.html#formatting-strings)
 * `cleanInsert` maps to [`Cake\Utility\Text::cleanInsert`](https://book.cakephp.org/3.0/en/core-libraries/text.html#formatting-strings)
 * `wrap` maps to [`Cake\Utility\Text::wrap`](https://book.cakephp.org/3.0/en/core-libraries/text.html#wrapping-text)
+* `wrapBlock` maps to [`Cake\Utility\Text::wrapBlock`](https://book.cakephp.org/3.0/en/core-libraries/text.html#wrapping-text)
 * `wordWrap` maps to [`Cake\Utility\Text::wordWrap`](https://book.cakephp.org/3.0/en/core-libraries/text.html#wrapping-text)
 * `highlight` maps to [`Cake\Utility\Text::highlight`](https://book.cakephp.org/3.0/en/core-libraries/text.html#highlighting-substrings)
 * `tail` maps to [`Cake\Utility\Text::tail`](https://book.cakephp.org/3.0/en/core-libraries/text.html#truncating-the-tail-of-a-string)
