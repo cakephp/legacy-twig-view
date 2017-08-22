@@ -55,4 +55,14 @@ abstract class AbstractExtensionTest extends TestCase
             $this->assertInstanceOf('Twig_SimpleFilter', $filter);
         }
     }
+
+    protected function getFilter($name)
+    {
+        $filters = $this->extension->getFilters();
+        foreach ($filters as $filter) {
+            if ($filter->getName() === $name) {
+                return $filter;
+            }
+        }
+    }
 }
