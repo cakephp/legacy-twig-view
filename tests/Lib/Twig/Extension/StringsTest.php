@@ -24,7 +24,7 @@ final class StringsTest extends AbstractExtensionTest
     {
         $string = 'abc';
         $callable = $this->getFilter('substr')->getCallable();
-        $result = $callable($string, -1);
+        $result = call_user_func_array($callable, [$string, -1]);
         $this->assertSame('c', $result);
     }
 
@@ -32,7 +32,7 @@ final class StringsTest extends AbstractExtensionTest
     {
         $string = 'a,b,c';
         $callable = $this->getFilter('tokenize')->getCallable();
-        $result = $callable($string);
+        $result = call_user_func_array($callable, [$string]);
         $this->assertSame(['a', 'b', 'c'], $result);
     }
 }
