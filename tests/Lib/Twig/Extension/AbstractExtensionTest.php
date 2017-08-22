@@ -65,4 +65,11 @@ abstract class AbstractExtensionTest extends TestCase
             }
         }
     }
+
+    public function testName()
+    {
+        $name = $this->extension->getName();
+        $this->assertInternalType('string', $name);
+        $this->assertTrue(strlen($name) > 0);
+    }
 }
