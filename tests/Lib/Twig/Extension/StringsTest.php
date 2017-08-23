@@ -124,4 +124,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input]);
         $this->assertSame('no link, a link', $result);
     }
+
+    public function testIsMultibyte()
+    {
+        $input = chr(133);
+        $callable = $this->getFilter('isMultibyte')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame(true, $result);
+    }
 }
