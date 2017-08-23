@@ -148,4 +148,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input]);
         $this->assertSame('É', $result);
     }
+
+    public function testNone()
+    {
+        $input = 'Bob is 65 years old.';
+        $callable = $this->getFilter('none')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame(null, $result);
+    }
 }
