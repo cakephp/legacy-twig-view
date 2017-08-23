@@ -267,6 +267,7 @@ We can write in a view
 * `isMultibyte` maps to `Cake\Utility\Text::isMultibyte`
 * `utf8` maps to `Cake\Utility\Text::utf8`
 * `ascii` maps to `Cake\Utility\Text::ascii`
+* `parseFileSize` maps to [`Cake\Utility\Text::parseFileSize`](https://book.cakephp.org/3.0/en/core-libraries/text.html#simple-string-parsing)
 * `serialize` maps to [`serialize`](http://php.net/serialize)
 * `unserialize` maps to [`unserialize`](http://php.net/unserialize)
 * `md5` maps to [`md5`](http://php.net/md5)

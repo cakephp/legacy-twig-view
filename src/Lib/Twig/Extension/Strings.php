@@ -41,6 +41,7 @@ class Strings extends \Twig_Extension
             new \Twig_SimpleFilter('isMultibyte', 'Cake\Utility\Text::isMultibyte'),
             new \Twig_SimpleFilter('utf8', 'Cake\Utility\Text::utf8'),
             new \Twig_SimpleFilter('ascii', 'Cake\Utility\Text::ascii'),
+            new \Twig_SimpleFilter('parseFileSize', 'Cake\Utility\Text::parseFileSize'),
             new \Twig_SimpleFilter('none', function ($string) {
                 return;
             }),

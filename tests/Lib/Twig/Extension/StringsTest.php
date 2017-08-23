@@ -149,6 +149,14 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('É', $result);
     }
 
+    public function testParseFileSize()
+    {
+        $input = '133.780486GB';
+        $callable = $this->getFilter('parseFileSize')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame(143645703053.24646, $result);
+    }
+
     public function testFilterNone()
     {
         $input = 'Bob is 65 years old.';
