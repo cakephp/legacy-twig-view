@@ -20,7 +20,7 @@ final class StringsTest extends AbstractExtensionTest
         parent::setUp();
     }
 
-    public function testSubstr()
+    public function testFilterSubstr()
     {
         $string = 'abc';
         $callable = $this->getFilter('substr')->getCallable();
@@ -28,7 +28,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('c', $result);
     }
 
-    public function testTokenize()
+    public function testFilterTokenize()
     {
         $string = 'a,b,c';
         $callable = $this->getFilter('tokenize')->getCallable();
@@ -36,7 +36,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame(['a', 'b', 'c'], $result);
     }
 
-    public function testInsert()
+    public function testFilterInsert()
     {
         $string = ':name is :age years old.';
         $keyValues = ['name' => 'Bob', 'age' => '65'];
@@ -45,7 +45,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('Bob is 65 years old.', $result);
     }
 
-    public function testCleanInsert()
+    public function testFilterCleanInsert()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('cleanInsert')->getCallable();
@@ -53,7 +53,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('Bob is 65 years old.', $result);
     }
 
-    public function testWrap()
+    public function testFilterWrap()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('wrap')->getCallable();
@@ -61,7 +61,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame("Bob\nis\n65\nyears\nold.", $result);
     }
 
-    public function testWrapBlock()
+    public function testFilterWrapBlock()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('wrapBlock')->getCallable();
@@ -69,7 +69,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame("Bob\nis\n65\nyears\nold.", $result);
     }
 
-    public function testWordWrap()
+    public function testFilterWordWrap()
     {
         $input = "Bob is\n65 years old.";
         $callable = $this->getFilter('wordWrap')->getCallable();
@@ -77,7 +77,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame("Bob\nis\n65\nyears\nold.", $result);
     }
 
-    public function testHighlight()
+    public function testFilterHighlight()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('highlight')->getCallable();
@@ -85,7 +85,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('<span class="highlight">Bob</span> is 65 years old.', $result);
     }
 
-    public function testTail()
+    public function testFilterTail()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('tail')->getCallable();
@@ -93,7 +93,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('...old.', $result);
     }
 
-    public function testTruncate()
+    public function testFilterTruncate()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('truncate')->getCallable();
@@ -101,7 +101,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('Bob ...', $result);
     }
 
-    public function testExcerpt()
+    public function testFilterExcerpt()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('excerpt')->getCallable();
@@ -109,7 +109,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('... is 65 yea...', $result);
     }
 
-    public function testToList()
+    public function testFilterToList()
     {
         $input = ['a', 'b', 'c'];
         $callable = $this->getFilter('toList')->getCallable();
@@ -117,7 +117,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('a, b and c', $result);
     }
 
-    public function testStripLinks()
+    public function testFilterStripLinks()
     {
         $input = 'no link, <a href="https://example.com">a link</a>';
         $callable = $this->getFilter('stripLinks')->getCallable();
@@ -125,7 +125,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('no link, a link', $result);
     }
 
-    public function testIsMultibyte()
+    public function testFilterIsMultibyte()
     {
         $input = chr(133);
         $callable = $this->getFilter('isMultibyte')->getCallable();
@@ -133,7 +133,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame(true, $result);
     }
 
-    public function testUtf8()
+    public function testFilterUtf8()
     {
         $input = 'É';
         $callable = $this->getFilter('utf8')->getCallable();
@@ -141,7 +141,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame([201], $result);
     }
 
-    public function testAscii()
+    public function testFilterAscii()
     {
         $input = [201];
         $callable = $this->getFilter('ascii')->getCallable();
@@ -149,7 +149,7 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('É', $result);
     }
 
-    public function testNone()
+    public function testFilterNone()
     {
         $input = 'Bob is 65 years old.';
         $callable = $this->getFilter('none')->getCallable();
