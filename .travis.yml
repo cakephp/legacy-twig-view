@@ -47,9 +47,9 @@ matrix:
     - php: hhvm
       env: dependencies=highest
   allow_failures:
-    - 7.2
-    - nightly
-    - hhvm
+    - php: 7.2
+    - php: nightly
+    - php: hhvm
 
 ## Run the appropriate composer command and show installed packages
 install:
