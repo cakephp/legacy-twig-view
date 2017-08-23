@@ -140,4 +140,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input]);
         $this->assertSame([201], $result);
     }
+
+    public function testAscii()
+    {
+        $input = [201];
+        $callable = $this->getFilter('ascii')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame('É', $result);
+    }
 }
