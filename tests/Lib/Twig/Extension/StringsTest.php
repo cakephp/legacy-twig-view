@@ -132,4 +132,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input]);
         $this->assertSame(true, $result);
     }
+
+    public function testUtf8()
+    {
+        $input = 'É';
+        $callable = $this->getFilter('utf8')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame([201], $result);
+    }
 }
