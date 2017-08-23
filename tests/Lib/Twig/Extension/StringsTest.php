@@ -116,4 +116,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input]);
         $this->assertSame('a, b and c', $result);
     }
+
+    public function testStripLinks()
+    {
+        $input = 'no link, <a href="https://example.com">a link</a>';
+        $callable = $this->getFilter('stripLinks')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame('no link, a link', $result);
+    }
 }
