@@ -108,4 +108,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input, '65', 4]);
         $this->assertSame('... is 65 yea...', $result);
     }
+
+    public function testToList()
+    {
+        $input = ['a', 'b', 'c'];
+        $callable = $this->getFilter('toList')->getCallable();
+        $result = call_user_func_array($callable, [$input]);
+        $this->assertSame('a, b and c', $result);
+    }
 }
