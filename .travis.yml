@@ -47,6 +47,7 @@ matrix:
     - php: hhvm
       env: dependencies=highest
   allow_failures:
+    - 7.2
     - nightly
     - hhvm
 
