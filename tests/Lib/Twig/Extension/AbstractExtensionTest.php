@@ -66,6 +66,16 @@ abstract class AbstractExtensionTest extends TestCase
         }
     }
 
+    protected function getFunction($name)
+    {
+        $functions = $this->extension->getFunctions();
+        foreach ($functions as $function) {
+            if ($function->getName() === $name) {
+                return $function;
+            }
+        }
+    }
+
     public function testName()
     {
         $name = $this->extension->getName();
