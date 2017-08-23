@@ -156,4 +156,12 @@ final class StringsTest extends AbstractExtensionTest
         $result = call_user_func_array($callable, [$input]);
         $this->assertSame(null, $result);
     }
+
+    public function testFunctionUuid()
+    {
+        $callable = $this->getFunction('uuid')->getCallable();
+        $result = call_user_func($callable);
+        $this->assertInternalType('string', $result);
+        $this->assertSame(36, strlen($result));
+    }
 }
