@@ -11,7 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
- * Class String
+ * Class Strings
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 class Strings extends \Twig_Extension
