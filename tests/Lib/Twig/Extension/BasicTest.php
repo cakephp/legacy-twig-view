@@ -34,4 +34,17 @@ final class BasicTest extends AbstractExtensionTest
 ###########################
 ', $output);
     }
+    public function testFilterPr()
+    {
+        $string = 'abc';
+        $callable = $this->getFilter('pr')->getCallable();
+        ob_start();
+        $result = call_user_func_array($callable, [$string]);
+        $output = ob_get_clean();
+        $this->assertSame('abc', $result);
+        $this->assertSame('
+abc
+
+', $output);
+    }
 }
