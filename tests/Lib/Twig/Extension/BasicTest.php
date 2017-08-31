@@ -34,6 +34,7 @@ final class BasicTest extends AbstractExtensionTest
 ###########################
 ', $output);
     }
+
     public function testFilterPr()
     {
         $string = 'abc';
@@ -46,5 +47,13 @@ final class BasicTest extends AbstractExtensionTest
 abc
 
 ', $output);
+    }
+
+    public function testFilterCount()
+    {
+        $array = ['a', 'b', 'c'];
+        $callable = $this->getFilter('count')->getCallable();
+        $result = call_user_func_array($callable, [$array]);
+        $this->assertSame(3, $result);
     }
 }
