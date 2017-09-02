@@ -181,7 +181,7 @@ class TwigViewTest extends TestCase
 	{
 		$output = 'foo:bar with a beer';
 
-		$template = Phake::mock('Twig_TemplateInterface');
+		$template = Phake::mock('Twig_Template');
 
 		$twig = Phake::mock('Twig_Environment');
 		Phake::when($twig)->loadTemplate('foo.tpl')->thenReturn($template);

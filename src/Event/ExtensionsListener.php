@@ -13,15 +13,15 @@ namespace WyriHaximus\TwigView\Event;
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-use Ajgl\Twig\Extension\BreakpointExtension;
+// use Ajgl\Twig\Extension\BreakpointExtension; // FIXME Not ported to Twig 2.x yet
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Core\Configure;
 use Cake\Event\EventListenerInterface;
-use Jasny\Twig\ArrayExtension;
-use Jasny\Twig\DateExtension;
-use Jasny\Twig\PcreExtension;
-use Jasny\Twig\TextExtension;
+// use Jasny\Twig\ArrayExtension; // FIXME Not ported to Twig 2.x yet
+// use Jasny\Twig\DateExtension; // FIXME Not ported to Twig 2.x yet
+// use Jasny\Twig\PcreExtension; // FIXME Not ported to Twig 2.x yet
+// use Jasny\Twig\TextExtension; // FIXME Not ported to Twig 2.x yet
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
@@ -87,15 +87,15 @@ class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension($cacheExtension);
 
         // jasny/twig-extensions
-        $event->getTwig()->addExtension(new DateExtension());
-        $event->getTwig()->addExtension(new PcreExtension());
-        $event->getTwig()->addExtension(new TextExtension());
-        $event->getTwig()->addExtension(new ArrayExtension());
+        // $event->getTwig()->addExtension(new DateExtension()); // FIXME Not ported to Twig 2.x yet
+        // $event->getTwig()->addExtension(new PcreExtension()); // FIXME Not ported to Twig 2.x yet
+        // $event->getTwig()->addExtension(new TextExtension()); // FIXME Not ported to Twig 2.x yet
+        // $event->getTwig()->addExtension(new ArrayExtension()); // FIXME Not ported to Twig 2.x yet
 
 
         // Breakpoint extension
         if (Configure::read('debug') === true) {
-            $event->getTwig()->addExtension(new BreakpointExtension());
+            // $event->getTwig()->addExtension(new BreakpointExtension()); // FIXME Not ported to Twig 2.x yet
         }
 
         // @codingStandardsIgnoreEnd
