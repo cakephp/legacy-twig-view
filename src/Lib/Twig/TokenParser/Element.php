@@ -26,11 +26,8 @@ class Element extends \Twig_TokenParser_Include
      *
      * @return \Twig_NodeInterface|ElementNode
      */
-    // @codingStandardsIgnoreStart
     public function parse(\Twig_Token $token)
     {
-        // @codingStandardsIgnoreEnd
-        // @codingStandardsIgnoreStart
         $stream = $this->parser->getStream();
         $name = $this->parser->getExpressionParser()->parseExpression();
 
@@ -43,7 +40,6 @@ class Element extends \Twig_TokenParser_Include
         if (!$stream->test(\Twig_Token::BLOCK_END_TYPE)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
         }
-        // @codingStandardsIgnoreEnd
 
         $stream->expect(\Twig_Token::BLOCK_END_TYPE);
 

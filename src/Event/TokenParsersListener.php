@@ -40,14 +40,10 @@ class TokenParsersListener implements EventListenerInterface
      *
      * @return void
      */
-    // @codingStandardsIgnoreStart
     public function construct(ConstructEvent $event)
     {
-        // @codingStandardsIgnoreEnd
-        // @codingStandardsIgnoreStart
         // CakePHP specific tags
         $event->getTwig()->addTokenParser(new TokenParser\Cell);
         $event->getTwig()->addTokenParser(new TokenParser\Element);
-        // @codingStandardsIgnoreEnd
     }
 }

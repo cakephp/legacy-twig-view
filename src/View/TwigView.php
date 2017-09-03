@@ -25,9 +25,7 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
  * Class TwigView
  * @package WyriHaximus\TwigView\View
  */
-// @codingStandardsIgnoreStart
 class TwigView extends View
-// @codingStandardsIgnoreEnd
 {
     const EXT = '.twig';
 
@@ -38,9 +36,7 @@ class TwigView extends View
      *
      * @var string
      */
-    // @codingStandardsIgnoreStart
     protected $_ext = self::EXT;
-    // @codingStandardsIgnoreEnd
 
     /**
      * @var array
@@ -183,19 +179,15 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    // @codingStandardsIgnoreStart
     protected function _render($viewFile, $data = array())
     {
-        // @codingStandardsIgnoreEnd
         if (empty($data)) {
             $data = $this->viewVars;
         }
 
         if (substr($viewFile, -3) === 'ctp') {
             $out = parent::_render($viewFile, $data);
-            // @codingStandardsIgnoreStart
         } else {
-            // @codingStandardsIgnoreEnd
             $data = array_merge(
                 $data,
                 $this->helperList,
@@ -204,7 +196,6 @@ class TwigView extends View
                 ]
             );
 
-            // @codingStandardsIgnoreStart
             try {
                 $out = $this->getTwig()->loadTemplate($viewFile)->render($data);
             } catch (Exception $e) {
@@ -216,7 +207,6 @@ class TwigView extends View
                     throw $e;
                 }
             }
-            // @codingStandardsIgnoreEnd
         }
 
         return $out;
@@ -227,10 +217,8 @@ class TwigView extends View
      * @return string
      * @throws \Exception
      */
-    // @codingStandardsIgnoreStart
     protected function _getViewFileName($name = null)
     {
-        // @codingStandardsIgnoreEnd
         $rethrow = new \Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
@@ -249,10 +237,8 @@ class TwigView extends View
      * @return string
      * @throws \Exception
      */
-    // @codingStandardsIgnoreStart
     protected function _getLayoutFileName($name = null)
     {
-        // @codingStandardsIgnoreEnd
         $rethrow = new \Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
@@ -272,10 +258,8 @@ class TwigView extends View
      * @return string
      * @throws \Exception
      */
-    // @codingStandardsIgnoreStart
     protected function _getElementFileName($name, $pluginCheck = true)
     {
-        // @codingStandardsIgnoreEnd
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
             $result = parent::_getElementFileName($name, $pluginCheck);

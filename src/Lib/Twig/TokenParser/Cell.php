@@ -26,13 +26,10 @@ class Cell extends \Twig_TokenParser_Include
      *
      * @return CellNode
      */
-    // @codingStandardsIgnoreStart
     public function parse(Twig_Token $token)
     {
-        // @codingStandardsIgnoreEnd
         $stream = $this->parser->getStream();
 
-        // @codingStandardsIgnoreStart
         $variable = null;
         if ($stream->test(Twig_Token::NAME_TYPE)) {
             $variable = $stream->expect(Twig_Token::NAME_TYPE)->getValue();
@@ -52,7 +49,6 @@ class Cell extends \Twig_TokenParser_Include
         if (!$stream->test(Twig_Token::BLOCK_END_TYPE)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
         }
-        // @codingStandardsIgnoreEnd
 
         $stream->expect(Twig_Token::BLOCK_END_TYPE);
 

@@ -17,10 +17,8 @@ class Scanner
      *
      * @return array
      */
-    // @codingStandardsIgnoreStart
     public static function all()
     {
-        // @codingStandardsIgnoreEnd
         $sections = [];
 
         foreach (App::path('Template') as $path) {
@@ -140,7 +138,6 @@ class Scanner
      *
      * @return array
      */
-    // @codingStandardsIgnoreStart
     protected static function walkIterator(\Iterator $iterator)
     {
         $items = [];
@@ -162,5 +159,4 @@ class Scanner
 
         return $items;
     }
-    // @codingStandardsIgnoreEnd
 }

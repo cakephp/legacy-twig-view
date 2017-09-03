@@ -20,9 +20,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class CompileTemplatesShell
  * @package WyriHaximus\TwigView\Console\Command
  */
-// @codingStandardsIgnoreStart
 class CompileShell extends Shell
-// @codingStandardsIgnoreEnd
 {
 
     /**
@@ -61,7 +59,6 @@ class CompileShell extends Shell
      *
      * @return void
      */
-    // @codingStandardsIgnoreStart
     public function all()
     {
         $this->out('<info>Compiling all templates</info>');
@@ -71,7 +68,6 @@ class CompileShell extends Shell
             $this->walkIterator($templates);
         }
     }
-    // @codingStandardsIgnoreEnd
 
     /**
      * Compile only this plugin.
@@ -139,36 +135,26 @@ class CompileShell extends Shell
      *
      * @return \Cake\Console\ConsoleOptionParser
      */
-    // @codingStandardsIgnoreStart
     public function getOptionParser()
     {
-        // @codingStandardsIgnoreEnd
         return parent::getOptionParser()->addSubcommand(
             'all',
             [
                 'short' => 'a',
-                // @codingStandardsIgnoreStart
                 'help' => __('Searches and precompiles all twig templates it finds.')
-                // @codingStandardsIgnoreEnd
             ]
         )->addSubcommand(
             'plugin',
             [
                 'short' => 'p',
-                // @codingStandardsIgnoreStart
                 'help' => __('Searches and precompiles all twig templates for a specific plugin.')
-                // @codingStandardsIgnoreEnd
             ]
         )->addSubcommand(
             'file',
             [
                 'short' => 'f',
-                // @codingStandardsIgnoreStart
                 'help' => __('Precompile a specific file.')
-                // @codingStandardsIgnoreEnd
             ]
-        // @codingStandardsIgnoreStart
         )->description(__('TwigView templates precompiler'));
-        // @codingStandardsIgnoreEnd
     }
 }

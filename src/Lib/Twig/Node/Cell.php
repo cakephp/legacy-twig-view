@@ -14,9 +14,7 @@ namespace WyriHaximus\TwigView\Lib\Twig\Node;
  * Class Cell
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-// @codingStandardsIgnoreStart
 class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
-// @codingStandardsIgnoreEnd
 {
 
     /**
@@ -69,17 +67,13 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
      *
      * @return void
      */
-    // @codingStandardsIgnoreStart
     public function compile(\Twig_Compiler $compiler)
     {
-        // @codingStandardsIgnoreEnd
         $compiler->addDebugInfo($this);
 
         if ($this->assign) {
             $compiler->raw('$context[\'' . $this->getAttribute('variable') . '\'] = ');
-            // @codingStandardsIgnoreStart
         } else {
-            // @codingStandardsIgnoreEnd
             $compiler->raw('echo ');
         }
         $compiler->raw('$context[\'_view\']->cell(');

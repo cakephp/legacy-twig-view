@@ -51,11 +51,8 @@ class ExtensionsListener implements EventListenerInterface
      *
      * @return void
      */
-    // @codingStandardsIgnoreStart
     public function construct(ConstructEvent $event)
     {
-        // @codingStandardsIgnoreEnd
-        // @codingStandardsIgnoreStart
         // Twig core extensions
         $event->getTwig()->addExtension(new \Twig_Extension_StringLoader);
         $event->getTwig()->addExtension(new \Twig_Extension_Debug);
@@ -92,12 +89,9 @@ class ExtensionsListener implements EventListenerInterface
         // $event->getTwig()->addExtension(new TextExtension()); // FIXME Not ported to Twig 2.x yet
         // $event->getTwig()->addExtension(new ArrayExtension()); // FIXME Not ported to Twig 2.x yet
 
-
         // Breakpoint extension
         if (Configure::read('debug') === true) {
             // $event->getTwig()->addExtension(new BreakpointExtension()); // FIXME Not ported to Twig 2.x yet
         }
-
-        // @codingStandardsIgnoreEnd
     }
 }
