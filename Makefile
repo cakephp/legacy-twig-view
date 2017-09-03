@@ -30,6 +30,3 @@ unit-coverage:
 
 ci-coverage: init
 	composer ci-coverage
-
-generate-resources: init
-	./vendor/bin/api-client-resource-generator ./resources.yml
