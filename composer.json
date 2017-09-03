@@ -24,14 +24,9 @@
         "twig/twig": "^2.4.3"
     },
     "require-dev": {
+        "api-clients/test-utilities": "^4.1",
         "cakephp/bake": "^1.4.1",
         "cakephp/debug_kit": "^3.11.1",
-        "friendsofphp/php-cs-fixer": "^2.5.0",
-        "jakub-onderka/php-console-highlighter": "^0.3.2",
-        "jakub-onderka/php-parallel-lint": "^0.9.2",
-        "phake/phake": "^3.0.0",
-        "phpunit/phpunit": "^6.2.0",
-        "squizlabs/php_codesniffer": "^1.5.6",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
     },
     "autoload": {
