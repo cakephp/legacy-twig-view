@@ -38,7 +38,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
     /**
      * Returns the source context for a given template logical name.
      *
-     * @param string $name The template logical name
+     * @param string $name The template logical name.
      *
      * @return Twig_Source
      *
@@ -82,13 +82,12 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
     /**
      * Check if we have the source code of a template, given its name.
      *
-     * @param string $name The name of the template to check if we can load
+     * @param string $name The name of the template to check if we can load.
      *
-     * @return bool If the template source code is handled by this loader or not
+     * @return bool If the template source code is handled by this loader or not.
      */
-    // @codingStandardsIgnoreStart
-    public function exists($name) {
-        // @codingStandardsIgnoreEnd
+    public function exists($name)
+    {
         $filename = $this->getFilename($name);
         if ($filename === false) {
             return false;
@@ -106,7 +105,6 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
      *
      * @throws \Twig_Error_Loader Thrown when template file isn't found.
      */
-    // @codingStandardsIgnoreStart
     protected function resolveFileName($name)
     {
         $filename = $this->getFilename($name);
@@ -125,10 +123,8 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
      * @return string|false
      *
      */
-    // @codingStandardsIgnoreStart
     protected function getFilename($name)
     {
-        // @codingStandardsIgnoreEnd
         if (file_exists($name)) {
             return $name;
         }
