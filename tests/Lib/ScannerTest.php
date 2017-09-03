@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib;
 
 use Cake\Core\Configure;
@@ -16,7 +16,7 @@ use Cake\TestSuite\TestCase;
 use WyriHaximus\TwigView\Lib\Scanner;
 
 /**
- * Class ScannerTest
+ * Class ScannerTest.
  * @package WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig
  */
 class ScannerTest extends TestCase
@@ -31,7 +31,7 @@ class ScannerTest extends TestCase
                     'templates' => [
                         PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS,
                     ],
-                ]
+                ],
             ]
         );
         Plugin::load(

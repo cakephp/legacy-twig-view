@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
 
 /**
- * Class RelativeScanner
+ * Class RelativeScanner.
  * @package WyriHaximus\TwigView\Lib
  */
 class RelativeScanner
@@ -46,6 +46,7 @@ class RelativeScanner
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::stripAbsolutePath($paths, $section == 'APP' ? null : $section);
         }
+
         return $sections;
     }
 

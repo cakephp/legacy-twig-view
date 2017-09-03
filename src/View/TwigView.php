@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
@@ -22,7 +22,7 @@ use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
- * Class TwigView
+ * Class TwigView.
  * @package WyriHaximus\TwigView\View
  */
 class TwigView extends View
@@ -98,6 +98,24 @@ class TwigView extends View
     }
 
     /**
+     * @param string $extension
+     */
+    public function unshiftExtension($extension)
+    {
+        array_unshift($this->extensions, $extension);
+    }
+
+    /**
+     * Get twig environment instance.
+     *
+     * @return \Twig_Environment
+     */
+    public function getTwig()
+    {
+        return $this->twig;
+    }
+
+    /**
      * @return array
      */
     protected function resolveConfig()
@@ -113,6 +131,7 @@ class TwigView extends View
 
         $configEvent = EnvironmentConfigEvent::create($config);
         $this->eventManager->dispatch($configEvent);
+
         return $configEvent->getConfig();
     }
 
@@ -134,14 +153,6 @@ class TwigView extends View
     }
 
     /**
-     * @param string $extension
-     */
-    public function unshiftExtension($extension)
-    {
-        array_unshift($this->extensions, $extension);
-    }
-
-    /**
      * Create the template loader.
      *
      * @return \Twig_LoaderInterface
@@ -150,18 +161,18 @@ class TwigView extends View
     {
         $event = LoaderEvent::create(new Loader());
         $this->eventManager->dispatch($event);
+
         return $event->getResultLoader();
     }
 
     /**
      * Create a useful helper list.
      *
-     * @return void
      */
     protected function generateHelperList()
     {
         $registry = $this->helpers();
-        
+
         $helpersList = array_merge($this->helpers, $registry->loaded());
         $helpers = $registry->normalizeArray($helpersList);
         foreach ($helpers as $properties) {
@@ -179,7 +190,7 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _render($viewFile, $data = array())
+    protected function _render($viewFile, $data = [])
     {
         if (empty($data)) {
             $data = $this->viewVars;
@@ -213,9 +224,9 @@ class TwigView extends View
     }
 
     /**
-     * @param string|null $name
-     * @return string
+     * @param  string|null $name
      * @throws \Exception
+     * @return string
      */
     protected function _getViewFileName($name = null)
     {
@@ -233,9 +244,9 @@ class TwigView extends View
     }
 
     /**
-     * @param string|null $name
-     * @return string
+     * @param  string|null $name
      * @throws \Exception
+     * @return string
      */
     protected function _getLayoutFileName($name = null)
     {
@@ -253,10 +264,10 @@ class TwigView extends View
     }
 
     /**
-     * @param string $name
-     * @param bool $pluginCheck
-     * @return string
+     * @param  string     $name
+     * @param  bool       $pluginCheck
      * @throws \Exception
+     * @return string
      */
     protected function _getElementFileName($name, $pluginCheck = true)
     {
@@ -269,15 +280,5 @@ class TwigView extends View
         }
 
         return false;
-    }
-
-    /**
-     * Get twig environment instance.
-     *
-     * @return \Twig_Environment
-     */
-    public function getTwig()
-    {
-        return $this->twig;
     }
 }

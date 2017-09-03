@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
 /**
- * Class TreeScanner
+ * Class TreeScanner.
  * @package WyriHaximus\TwigView\Lib
  */
 class TreeScanner
@@ -44,6 +44,7 @@ class TreeScanner
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::convertToTree($paths);
         }
+
         return $sections;
     }
 
@@ -70,7 +71,6 @@ class TreeScanner
      * @param mixed  $index Index of $path.
      * @param string $path  Path to breakup and turn into a tree.
      *
-     * @return void
      */
     protected static function convertPathToTree(array &$paths, $index, $path)
     {
@@ -94,6 +94,7 @@ class TreeScanner
         $twig = array_shift($branches);
         if (count($branches) == 0) {
             $paths[] = $twig;
+
             return $paths;
         }
 

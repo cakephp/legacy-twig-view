@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,10 +7,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
 /**
- * Class Element
+ * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
 class Element extends \Twig_Node
@@ -49,7 +49,6 @@ class Element extends \Twig_Node
      *
      * @param \Twig_Compiler $compiler Compiler.
      *
-     * @return void
      */
     public function compile(\Twig_Compiler $compiler)
     {

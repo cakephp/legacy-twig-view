@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,10 +7,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
 /**
- * Class Cell
+ * Class Cell.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
 class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
@@ -20,14 +20,14 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
     /**
      * Whether to assign the data or not.
      *
-     * @var boolean
+     * @var bool
      */
     protected $assign = false;
 
     /**
      * Constructor.
      *
-     * @param boolean               $assign   Assign or echo.
+     * @param bool                  $assign   Assign or echo.
      * @param mixed                 $variable Variable to assign to.
      * @param \Twig_Node_Expression $name     Name.
      * @param \Twig_Node_Expression $data     Data array.
@@ -65,7 +65,6 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
      *
      * @param \Twig_Compiler $compiler Compiler.
      *
-     * @return void
      */
     public function compile(\Twig_Compiler $compiler)
     {

@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,17 +7,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
 
 /**
- * Class Element
+ * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\TokenParser
  */
 class Element extends \Twig_TokenParser_Include
 {
-
     /**
      * Parse token.
      *

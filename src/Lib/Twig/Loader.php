@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
@@ -15,12 +15,11 @@ use Cake\Core\Plugin;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
- * Class Loader
+ * Class Loader.
  * @package WyriHaximus\TwigView\Lib\Twig
  */
 class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterface
 {
-
     /**
      * Get the file contents of a template.
      *
@@ -40,9 +39,9 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
      *
      * @param string $name The template logical name.
      *
+     * @throws Twig_Error_Loader When $name is not found
      * @return Twig_Source
      *
-     * @throws Twig_Error_Loader When $name is not found
      */
     public function getSourceContext($name)
     {
@@ -67,10 +66,10 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
     /**
      * Check if template is still fresh.
      *
-     * @param string  $name Template.
-     * @param integer $time Timestamp.
+     * @param string $name Template.
+     * @param int    $time Timestamp.
      *
-     * @return boolean
+     * @return bool
      */
     public function isFresh($name, $time)
     {
@@ -101,9 +100,9 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
      *
      * @param string $name Template.
      *
+     * @throws \Twig_Error_Loader Thrown when template file isn't found.
      * @return string
      *
-     * @throws \Twig_Error_Loader Thrown when template file isn't found.
      */
     protected function resolveFileName($name)
     {
@@ -116,7 +115,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
     }
 
     /**
-     * Get template filename
+     * Get template filename.
      *
      * @param string $name Template.
      *

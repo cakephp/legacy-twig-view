@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -7,27 +7,27 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task\TemplateTask;
 
 use Cake\Controller\Controller;
 
 /**
- * Class TemplateTaskAuthorsController
+ * Class TemplateTaskAuthorsController.
  */
 class AuthorsController extends Controller
 {
     /**
-     * Testing public controller action
+     * Testing public controller action.
      *
-     * @return void
      */
     public function index()
     {
     }
+
     /**
-     * Testing public controller action
+     * Testing public controller action.
      *
-     * @return void
      */
     public function add()
     {

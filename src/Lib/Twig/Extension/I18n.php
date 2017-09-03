@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,15 +7,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
- * Class I18n
+ * Class I18n.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 class I18n extends \Twig_Extension
 {
-
     /**
      * Get declared functions.
      *

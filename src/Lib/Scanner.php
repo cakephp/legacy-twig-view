@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
@@ -7,7 +7,7 @@ use Cake\Core\Plugin;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
- * Class Scanner
+ * Class Scanner.
  * @package WyriHaximus\TwigView\Lib
  */
 class Scanner
@@ -38,6 +38,24 @@ class Scanner
         }
 
         return static::clearEmptySections($sections);
+    }
+
+    /**
+     * Return all templates for a given plugin.
+     *
+     * @param string $plugin The plugin to find all templates for.
+     *
+     * @return mixed
+     */
+    public static function plugin($plugin)
+    {
+        $templates = [];
+
+        foreach (App::path('Template', $plugin) as $path) {
+            $templates = array_merge($templates, static::iteratePath($path));
+        }
+
+        return $templates;
     }
 
     /**
@@ -78,24 +96,6 @@ class Scanner
         });
 
         return $plugins;
-    }
-
-    /**
-     * Return all templates for a given plugin.
-     *
-     * @param string $plugin The plugin to find all templates for.
-     *
-     * @return mixed
-     */
-    public static function plugin($plugin)
-    {
-        $templates = [];
-
-        foreach (App::path('Template', $plugin) as $path) {
-            $templates = array_merge($templates, static::iteratePath($path));
-        }
-
-        return $templates;
     }
 
     /**

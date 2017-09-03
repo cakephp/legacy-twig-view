@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
@@ -24,6 +24,22 @@ class Cache implements CacheProviderInterface
     }
 
     /**
+     * Save data to the cache.
+     *
+     * @param string $identifier Identifier for this bit of data to write.
+     * @param string $data       Data to cache.
+     * @param int    $lifeTime   Time to life inside the cache.
+     *
+     * @return bool
+     */
+    public function save($identifier, $data, $lifeTime = 0)
+    {
+        list($config, $key) = $this->configSplit($identifier);
+
+        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
+    }
+
+    /**
      * Extract $configName and $key from $name and $config.
      *
      * @param string $name   Name.
@@ -35,25 +51,10 @@ class Cache implements CacheProviderInterface
     {
         if (strpos($name, ':') !== false) {
             $parts = explode(':', $name, 2);
+
             return $parts;
         }
 
         return [$config, $name];
-    }
-
-    /**
-     * Save data to the cache.
-     *
-     * @param string  $identifier Identifier for this bit of data to write.
-     * @param string  $data       Data to cache.
-     * @param integer $lifeTime   Time to life inside the cache.
-     *
-     * @return boolean
-     */
-    public function save($identifier, $data, $lifeTime = 0)
-    {
-        list($config, $key) = $this->configSplit($identifier);
-
-        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
     }
 }
