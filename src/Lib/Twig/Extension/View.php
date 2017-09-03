@@ -16,9 +16,7 @@ use Cake\View\View as CakeView;
  * Class View
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-// @codingStandardsIgnoreStart
 class View extends \Twig_Extension
-// @codingStandardsIgnoreEnd
 {
     /**
      * View to call methods upon.
