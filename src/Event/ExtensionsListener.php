@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Event;
 
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
@@ -24,10 +24,9 @@ use Cake\Event\EventListenerInterface;
 // use Jasny\Twig\TextExtension; // FIXME Not ported to Twig 2.x yet
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
-use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 /**
- * Class ExtensionsListener
+ * Class ExtensionsListener.
  * @package WyriHaximus\TwigView\Event
  */
 class ExtensionsListener implements EventListenerInterface
@@ -49,23 +48,22 @@ class ExtensionsListener implements EventListenerInterface
      *
      * @param ConstructEvent $event Event.
      *
-     * @return void
      */
     public function construct(ConstructEvent $event)
     {
         // Twig core extensions
-        $event->getTwig()->addExtension(new \Twig_Extension_StringLoader);
-        $event->getTwig()->addExtension(new \Twig_Extension_Debug);
+        $event->getTwig()->addExtension(new \Twig_Extension_StringLoader());
+        $event->getTwig()->addExtension(new \Twig_Extension_Debug());
 
         // CakePHP bridging extensions
-        $event->getTwig()->addExtension(new Extension\I18n);
-        $event->getTwig()->addExtension(new Extension\Time);
-        $event->getTwig()->addExtension(new Extension\Basic);
-        $event->getTwig()->addExtension(new Extension\Number);
-        $event->getTwig()->addExtension(new Extension\Utils);
-        $event->getTwig()->addExtension(new Extension\Arrays);
-        $event->getTwig()->addExtension(new Extension\Strings);
-        $event->getTwig()->addExtension(new Extension\Inflector);
+        $event->getTwig()->addExtension(new Extension\I18n());
+        $event->getTwig()->addExtension(new Extension\Time());
+        $event->getTwig()->addExtension(new Extension\Basic());
+        $event->getTwig()->addExtension(new Extension\Number());
+        $event->getTwig()->addExtension(new Extension\Utils());
+        $event->getTwig()->addExtension(new Extension\Arrays());
+        $event->getTwig()->addExtension(new Extension\Strings());
+        $event->getTwig()->addExtension(new Extension\Inflector());
 
         // Markdown extension
         if (

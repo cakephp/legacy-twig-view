@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
@@ -17,7 +17,7 @@ class LoaderEvent extends Event
     const EVENT = 'TwigView.TwigView.loader';
 
     /**
-     * @param \Twig_LoaderInterface $loader
+     * @param  \Twig_LoaderInterface $loader
      * @return LoaderEvent
      */
     public static function create(\Twig_LoaderInterface $loader)
