@@ -1,28 +1,29 @@
 <?php declare(strict_types=1);
 
-namespace WyriHaximus\TwigView\Panel;
+namespace WyriHaximus\TwigView\Panel;
 
-use DebugKit\DebugPanel;
-use WyriHaximus\TwigView\Lib\TreeScanner;
+use DebugKit\DebugPanel;
+use WyriHaximus\TwigView\Lib\TreeScanner;
 
-class TwigPanel extends DebugPanel
-{
-    /**
-     * Plugin name.
-     *
-     * @var string
-     */
-    public $plugin = 'WyriHaximus/TwigView';
+class TwigPanel extends DebugPanel
+{
+    /**
+     * Plugin name.
+     *
+     * @var string
+     */
+    public $plugin = 'WyriHaximus/TwigView';
 
-    /**
-     * Get the data for the twig panel.
-     *
-     * @return array
-     */
-    public function data()
-    {
-        return [
-            'templates' => TreeScanner::all(),
-        ];
-    }
-}
+    /**
+     * Get the data for the twig panel.
+     *
+     * @return array
+     */
+    public function data()
+    {
+        return [
+            'templates' => TreeScanner::all(),
+        ];
+    }
+}
+
