@@ -12,6 +12,7 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Cake\View\View as CakeView;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class View.
@@ -44,13 +45,13 @@ class View extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig\TwigFunction('elementExists', function ($name) {
+            new TwigFunction('elementExists', function ($name) {
                 return $this->view->elementExists($name);
             }),
-            new \Twig\TwigFunction('getVars', function () {
+            new TwigFunction('getVars', function () {
                 return $this->view->getVars();
             }),
-            new \Twig\TwigFunction('get', function ($var, $default = null) {
+            new TwigFunction('get', function ($var, $default = null) {
                 return $this->view->get($var, $default);
             }),
         ];

@@ -11,6 +11,8 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Class Strings.
@@ -26,24 +28,24 @@ class Strings extends AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig\TwigFilter('substr', 'substr'),
-            new \Twig\TwigFilter('tokenize', 'Cake\Utility\Text::tokenize'),
-            new \Twig\TwigFilter('insert', 'Cake\Utility\Text::insert'),
-            new \Twig\TwigFilter('cleanInsert', 'Cake\Utility\Text::cleanInsert'),
-            new \Twig\TwigFilter('wrap', 'Cake\Utility\Text::wrap'),
-            new \Twig\TwigFilter('wrapBlock', 'Cake\Utility\Text::wrapBlock'),
-            new \Twig\TwigFilter('wordWrap', 'Cake\Utility\Text::wordWrap'),
-            new \Twig\TwigFilter('highlight', 'Cake\Utility\Text::highlight'),
-            new \Twig\TwigFilter('tail', 'Cake\Utility\Text::tail'),
-            new \Twig\TwigFilter('truncate', 'Cake\Utility\Text::truncate'),
-            new \Twig\TwigFilter('excerpt', 'Cake\Utility\Text::excerpt'),
-            new \Twig\TwigFilter('toList', 'Cake\Utility\Text::toList'),
-            new \Twig\TwigFilter('stripLinks', 'Cake\Utility\Text::stripLinks'),
-            new \Twig\TwigFilter('isMultibyte', 'Cake\Utility\Text::isMultibyte'),
-            new \Twig\TwigFilter('utf8', 'Cake\Utility\Text::utf8'),
-            new \Twig\TwigFilter('ascii', 'Cake\Utility\Text::ascii'),
-            new \Twig\TwigFilter('parseFileSize', 'Cake\Utility\Text::parseFileSize'),
-            new \Twig\TwigFilter('none', function ($string) {
+            new TwigFilter('substr', 'substr'),
+            new TwigFilter('tokenize', 'Cake\Utility\Text::tokenize'),
+            new TwigFilter('insert', 'Cake\Utility\Text::insert'),
+            new TwigFilter('cleanInsert', 'Cake\Utility\Text::cleanInsert'),
+            new TwigFilter('wrap', 'Cake\Utility\Text::wrap'),
+            new TwigFilter('wrapBlock', 'Cake\Utility\Text::wrapBlock'),
+            new TwigFilter('wordWrap', 'Cake\Utility\Text::wordWrap'),
+            new TwigFilter('highlight', 'Cake\Utility\Text::highlight'),
+            new TwigFilter('tail', 'Cake\Utility\Text::tail'),
+            new TwigFilter('truncate', 'Cake\Utility\Text::truncate'),
+            new TwigFilter('excerpt', 'Cake\Utility\Text::excerpt'),
+            new TwigFilter('toList', 'Cake\Utility\Text::toList'),
+            new TwigFilter('stripLinks', 'Cake\Utility\Text::stripLinks'),
+            new TwigFilter('isMultibyte', 'Cake\Utility\Text::isMultibyte'),
+            new TwigFilter('utf8', 'Cake\Utility\Text::utf8'),
+            new TwigFilter('ascii', 'Cake\Utility\Text::ascii'),
+            new TwigFilter('parseFileSize', 'Cake\Utility\Text::parseFileSize'),
+            new TwigFilter('none', function ($string) {
                 return;
             }),
         ];
@@ -57,7 +59,7 @@ class Strings extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig\TwigFunction('uuid', 'Cake\Utility\Text::uuid'),
+            new TwigFunction('uuid', 'Cake\Utility\Text::uuid'),
         ];
     }
 

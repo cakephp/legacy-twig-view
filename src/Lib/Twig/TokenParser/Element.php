@@ -10,6 +10,7 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
+use Twig\Token;
 use Twig\TokenParser\IncludeTokenParser;
 use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
 
@@ -24,24 +25,24 @@ class Element extends IncludeTokenParser
      *
      * @param \Twig\Token $token Token.
      *
-     * @return \Twig\Node\NodeOutputInterface|ElementNode // FIXME or NodeCaptureInterface?
+     * @return \Twig\Node\NodeOutputInterface|ElementNode // FIXME OR NodeCaptureInterface?
      */
-    public function parse(\Twig\Token $token)
+    public function parse(Token $token)
     {
         $stream = $this->parser->getStream();
         $name = $this->parser->getExpressionParser()->parseExpression();
 
         $data = null;
-        if (!$stream->test(\Twig\Token::BLOCK_END_TYPE)) {
+        if (!$stream->test(Token::BLOCK_END_TYPE)) {
             $data = $this->parser->getExpressionParser()->parseExpression();
         }
 
         $options = null;
-        if (!$stream->test(\Twig\Token::BLOCK_END_TYPE)) {
+        if (!$stream->test(Token::BLOCK_END_TYPE)) {
             $options = $this->parser->getExpressionParser()->parseExpression();
         }
 
-        $stream->expect(\Twig\Token::BLOCK_END_TYPE);
+        $stream->expect(Token::BLOCK_END_TYPE);
 
         return new ElementNode($name, $data, $options, $token->getLine(), $this->getTag());
     }

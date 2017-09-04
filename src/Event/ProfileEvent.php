@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
+use Twig\Profiler\Profile;
 
 class ProfileEvent extends Event
 {
@@ -20,7 +21,7 @@ class ProfileEvent extends Event
      * @param  \Twig\Profiler\Profile $profile
      * @return static
      */
-    public static function create(\Twig\Profiler\Profile $profile)
+    public static function create(Profile $profile)
     {
         return new static(static::EVENT, $profile);
     }

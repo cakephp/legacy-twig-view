@@ -10,7 +10,9 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Cake\I18n\Time as CakeTime;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class Time.
@@ -26,10 +28,10 @@ class Time extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig\TwigFunction('time', function ($time = null, $timezone = null) {
-                return new \Cake\I18n\Time($time, $timezone);
+            new TwigFunction('time', function ($time = null, $timezone = null) {
+                return new CakeTime($time, $timezone);
             }),
-            new \Twig\TwigFunction('timezones', 'Cake\I18n\Time::listTimezones'),
+            new TwigFunction('timezones', 'Cake\I18n\Time::listTimezones'),
         ];
     }
 

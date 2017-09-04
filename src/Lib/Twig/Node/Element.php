@@ -10,11 +10,15 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
+use Twig\Compiler;
+use Twig\Node\Expression\AbstractExpression;
+use Twig\Node\Node;
+
 /**
  * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Element extends \Twig\Node\Node
+class Element extends Node
 {
     /**
      * Constructor.
@@ -26,9 +30,9 @@ class Element extends \Twig\Node\Node
      * @param string                                   $tag     Tag.
      */
     public function __construct(
-        \Twig\Node\Expression\AbstractExpression $name,
-        \Twig\Node\Expression\AbstractExpression $data = null,
-        \Twig\Node\Expression\AbstractExpression $options = null,
+        AbstractExpression $name,
+        AbstractExpression $data = null,
+        AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
@@ -50,7 +54,7 @@ class Element extends \Twig\Node\Node
      * @param \Twig\Compiler $compiler Compiler.
      *
      */
-    public function compile(\Twig\Compiler $compiler)
+    public function compile(Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 

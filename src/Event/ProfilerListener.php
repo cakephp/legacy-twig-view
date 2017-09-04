@@ -12,6 +12,7 @@ namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\EventListenerInterface;
 use Cake\Event\EventManager;
+use Twig\Profiler\Profile;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
@@ -40,7 +41,7 @@ class ProfilerListener implements EventListenerInterface
      */
     public function construct(ConstructEvent $event)
     {
-        $profile = new \Twig\Profiler\Profile();
+        $profile = new Profile();
         $event->
             getTwig()->
             addExtension(new Extension\Profiler($profile));

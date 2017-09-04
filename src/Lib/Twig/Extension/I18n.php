@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class I18n.
@@ -26,11 +27,11 @@ class I18n extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig\TwigFunction('__', '__'),
-            new \Twig\TwigFunction('__d', '__d'),
-            new \Twig\TwigFunction('__n', '__n'),
-            new \Twig\TwigFunction('__x', '__x'),
-            new \Twig\TwigFunction('__dn', '__dn'),
+            new TwigFunction('__', '__'),
+            new TwigFunction('__d', '__d'),
+            new TwigFunction('__n', '__n'),
+            new TwigFunction('__x', '__x'),
+            new TwigFunction('__dn', '__dn'),
         ];
     }
 

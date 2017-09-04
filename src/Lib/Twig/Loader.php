@@ -12,8 +12,10 @@ namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use Twig\Error\LoaderError;
 use Twig\Loader\LoaderInterface;
 use Twig\Loader\SourceContextLoaderInterface;
+use Twig\Source;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
@@ -50,7 +52,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
         $code = $this->getSource($name);
         $path = $this->getFilename($name);
 
-        return new \Twig\Source($code, $name, $path);
+        return new Source($code, $name, $path);
     }
 
     /**
@@ -110,7 +112,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
     {
         $filename = $this->getFilename($name);
         if ($filename === false) {
-            throw new \Twig\Error\LoaderError(sprintf('Template "%s" is not defined.', $name));
+            throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
         }
 
         return $filename;

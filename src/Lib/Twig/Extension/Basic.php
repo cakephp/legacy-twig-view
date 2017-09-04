@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * Class Basic.
@@ -26,14 +27,14 @@ class Basic extends AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig\TwigFilter('debug', 'debug'),
-            new \Twig\TwigFilter('pr', 'pr'),
-            new \Twig\TwigFilter('low', 'low'),
-            new \Twig\TwigFilter('up', 'up'),
-            new \Twig\TwigFilter('env', 'env'),
-            new \Twig\TwigFilter('count', 'count'),
-            new \Twig\TwigFilter('h', 'h'),
-            new \Twig\TwigFilter('null', function () {
+            new TwigFilter('debug', 'debug'),
+            new TwigFilter('pr', 'pr'),
+            new TwigFilter('low', 'low'),
+            new TwigFilter('up', 'up'),
+            new TwigFilter('env', 'env'),
+            new TwigFilter('count', 'count'),
+            new TwigFilter('h', 'h'),
+            new TwigFilter('null', function () {
                 return '';
             }),
         ];

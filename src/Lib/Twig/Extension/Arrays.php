@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
  * Class Arrays.
@@ -26,17 +27,17 @@ class Arrays extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig\TwigFunction('in_array', 'in_array'),
-            new \Twig\TwigFunction('explode', 'explode'),
-            new \Twig\TwigFunction('array', function ($array) {
+            new TwigFunction('in_array', 'in_array'),
+            new TwigFunction('explode', 'explode'),
+            new TwigFunction('array', function ($array) {
                 return (array)$array;
             }),
-            new \Twig\TwigFunction('array_push', 'push'),
-            new \Twig\TwigFunction('array_add', 'add'),
-            new \Twig\TwigFunction('array_prev', 'prev'),
-            new \Twig\TwigFunction('array_next', 'next'),
-            new \Twig\TwigFunction('array_current', 'current'),
-            new \Twig\TwigFunction('array_each', 'each'),
+            new TwigFunction('array_push', 'push'),
+            new TwigFunction('array_add', 'add'),
+            new TwigFunction('array_prev', 'prev'),
+            new TwigFunction('array_next', 'next'),
+            new TwigFunction('array_current', 'current'),
+            new TwigFunction('array_each', 'each'),
         ];
     }
 

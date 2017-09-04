@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
+use Twig\Environment;
 use WyriHaximus\TwigView\View\TwigView;
 
 class ConstructEvent extends Event
@@ -22,7 +23,7 @@ class ConstructEvent extends Event
      * @param  \Twig\Environment $twig
      * @return static
      */
-    public static function create(TwigView $twigView, \Twig\Environment $twig)
+    public static function create(TwigView $twigView, Environment $twig)
     {
         return new static(static::EVENT, $twigView, [
             'twigView' => $twigView,

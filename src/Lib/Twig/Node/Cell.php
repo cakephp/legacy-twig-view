@@ -10,6 +10,8 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
+use Twig\Compiler;
+use Twig\Node\Expression\AbstractExpression;
 use Twig\Node\Node;
 use Twig\Node\NodeOutputInterface;
 
@@ -32,18 +34,18 @@ class Cell extends Node implements NodeOutputInterface
      *
      * @param bool                                     $assign   Assign or echo.
      * @param mixed                                    $variable Variable to assign to.
-     * @param \Twig\Node\Expression\AbstractExpression $name     Name.
-     * @param \Twig\Node\Expression\AbstractExpression $data     Data array.
-     * @param \Twig\Node\Expression\AbstractExpression $options  Options array.
+     * @param /Twig\Node\Expression\AbstractExpression $name     Name.
+     * @param /Twig\Node\Expression\AbstractExpression $data     Data array.
+     * @param /Twig\Node\Expression\AbstractExpression $options  Options array.
      * @param string                                   $lineno   Line number.
      * @param string                                   $tag      Tag name.
      */
     public function __construct(
         $assign,
         $variable,
-        \Twig\Node\Expression\AbstractExpression $name,
-        \Twig\Node\Expression\AbstractExpression $data = null,
-        \Twig\Node\Expression\AbstractExpression $options = null,
+        AbstractExpression $name,
+        AbstractExpression $data = null,
+        AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
@@ -69,7 +71,7 @@ class Cell extends Node implements NodeOutputInterface
      * @param \Twig\Compiler $compiler Compiler.
      *
      */
-    public function compile(\Twig\Compiler $compiler)
+    public function compile(Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 

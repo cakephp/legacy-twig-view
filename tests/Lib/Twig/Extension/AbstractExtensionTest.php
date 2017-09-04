@@ -11,6 +11,7 @@
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig\Extension;
 
 use Cake\TestSuite\TestCase;
+use Twig\TokenParser\TokenParserInterface;
 
 abstract class AbstractExtensionTest extends TestCase
 {
@@ -34,7 +35,7 @@ abstract class AbstractExtensionTest extends TestCase
         $tokenParsers = $this->extension->getTokenParsers();
         $this->assertTrue(is_array($tokenParsers));
         foreach ($tokenParsers as $tokenParser) {
-            $this->assertTrue($tokenParser instanceof \Twig\TokenParser\TokenParserInterface);
+            $this->assertTrue($tokenParser instanceof TokenParserInterface);
         }
     }
 

@@ -11,6 +11,8 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * Class Number.
@@ -26,12 +28,12 @@ class Number extends AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig\TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
-            new \Twig\TwigFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
-            new \Twig\TwigFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
-            new \Twig\TwigFilter('format', 'Cake\I18n\Number::format'),
-            new \Twig\TwigFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
-            new \Twig\TwigFilter('currency', 'Cake\I18n\Number::currency'),
+            new TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
+            new TwigFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
+            new TwigFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
+            new TwigFilter('format', 'Cake\I18n\Number::format'),
+            new TwigFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
+            new TwigFilter('currency', 'Cake\I18n\Number::currency'),
         ];
     }
 
@@ -43,8 +45,8 @@ class Number extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new \Twig\TwigFunction('defaultCurrency', 'Cake\I18n\Number::defaultCurrency'),
-            new \Twig\TwigFunction('number_formatter', 'Cake\I18n\Number::formatter'),
+            new TwigFunction('defaultCurrency', 'Cake\I18n\Number::defaultCurrency'),
+            new TwigFunction('number_formatter', 'Cake\I18n\Number::formatter'),
         ];
     }
 

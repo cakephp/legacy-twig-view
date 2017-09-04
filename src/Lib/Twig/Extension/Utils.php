@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * Class Utils.
@@ -26,13 +27,13 @@ class Utils extends AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig\TwigFilter('serialize', 'serialize'),
-            new \Twig\TwigFilter('unserialize', 'unserialize'),
-            new \Twig\TwigFilter('md5', 'md5'),
-            new \Twig\TwigFilter('base64_encode', 'base64_encode'),
-            new \Twig\TwigFilter('base64_decode', 'base64_decode'),
-            new \Twig\TwigFilter('nl2br', 'nl2br'),
-            new \Twig\TwigFilter('string', function ($str) {
+            new TwigFilter('serialize', 'serialize'),
+            new TwigFilter('unserialize', 'unserialize'),
+            new TwigFilter('md5', 'md5'),
+            new TwigFilter('base64_encode', 'base64_encode'),
+            new TwigFilter('base64_decode', 'base64_decode'),
+            new TwigFilter('nl2br', 'nl2br'),
+            new TwigFilter('string', function ($str) {
                 return (string)$str;
             }),
         ];

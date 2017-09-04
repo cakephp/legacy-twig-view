@@ -22,6 +22,8 @@ use Jasny\Twig\ArrayExtension;
 use Jasny\Twig\DateExtension;
 use Jasny\Twig\PcreExtension;
 use Jasny\Twig\TextExtension;
+use Twig\Extension\DebugExtension;
+use Twig\Extension\StringLoaderExtension;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 
@@ -52,8 +54,8 @@ class ExtensionsListener implements EventListenerInterface
     public function construct(ConstructEvent $event)
     {
         // Twig core extensions
-        $event->getTwig()->addExtension(new \Twig\Extension\StringLoaderExtension());
-        $event->getTwig()->addExtension(new \Twig\Extension\DebugExtension());
+        $event->getTwig()->addExtension(new StringLoaderExtension());
+        $event->getTwig()->addExtension(new DebugExtension());
 
         // CakePHP bridging extensions
         $event->getTwig()->addExtension(new Extension\I18n());

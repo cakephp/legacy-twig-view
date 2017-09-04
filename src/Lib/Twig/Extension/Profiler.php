@@ -12,6 +12,7 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use DebugKit\DebugTimer;
 use Twig\Extension\ProfilerExtension;
+use Twig\Profiler\Profile;
 
 /**
  * Class Basic.
@@ -25,7 +26,7 @@ class Profiler extends ProfilerExtension
      * @param \Twig\Profiler\Profile $profile Profile.
      *
      */
-    public function enter(\Twig\Profiler\Profile $profile)
+    public function enter(Profile $profile)
     {
         $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
         DebugTimer::start($name, __d('twig_view', $name));
@@ -39,7 +40,7 @@ class Profiler extends ProfilerExtension
      * @param \Twig\Profiler\Profile $profile Profile.
      *
      */
-    public function leave(\Twig\Profiler\Profile $profile)
+    public function leave(Profile $profile)
     {
         parent::leave($profile);
 

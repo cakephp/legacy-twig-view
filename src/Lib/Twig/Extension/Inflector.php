@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 /**
  * Class Inflector.
@@ -26,15 +27,15 @@ class Inflector extends AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig\TwigFilter('pluralize', 'Cake\Utility\Inflector::pluralize'),
-            new \Twig\TwigFilter('singularize', 'Cake\Utility\Inflector::singularize'),
-            new \Twig\TwigFilter('camelize', 'Cake\Utility\Inflector::camelize'),
-            new \Twig\TwigFilter('underscore', 'Cake\Utility\Inflector::underscore'),
-            new \Twig\TwigFilter('humanize', 'Cake\Utility\Inflector::humanize'),
-            new \Twig\TwigFilter('tableize', 'Cake\Utility\Inflector::tableize'),
-            new \Twig\TwigFilter('classify', 'Cake\Utility\Inflector::classify'),
-            new \Twig\TwigFilter('variable', 'Cake\Utility\Inflector::variable'),
-            new \Twig\TwigFilter('slug', 'Cake\Utility\Text::slug'),
+            new TwigFilter('pluralize', 'Cake\Utility\Inflector::pluralize'),
+            new TwigFilter('singularize', 'Cake\Utility\Inflector::singularize'),
+            new TwigFilter('camelize', 'Cake\Utility\Inflector::camelize'),
+            new TwigFilter('underscore', 'Cake\Utility\Inflector::underscore'),
+            new TwigFilter('humanize', 'Cake\Utility\Inflector::humanize'),
+            new TwigFilter('tableize', 'Cake\Utility\Inflector::tableize'),
+            new TwigFilter('classify', 'Cake\Utility\Inflector::classify'),
+            new TwigFilter('variable', 'Cake\Utility\Inflector::variable'),
+            new TwigFilter('slug', 'Cake\Utility\Text::slug'),
         ];
     }
 
