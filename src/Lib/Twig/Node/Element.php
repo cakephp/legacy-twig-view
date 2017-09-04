@@ -14,21 +14,21 @@ namespace WyriHaximus\TwigView\Lib\Twig\Node;
  * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Element extends \Twig_Node
+class Element extends \Twig\Node\Node
 {
     /**
      * Constructor.
      *
-     * @param \Twig_Node_Expression $name    Name.
-     * @param \Twig_Node_Expression $data    Data.
-     * @param \Twig_Node_Expression $options Options.
-     * @param string                $lineno  Linenumber.
-     * @param string                $tag     Tag.
+     * @param \Twig\Node\Expression\AbstractExpression $name    Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data    Data.
+     * @param \Twig\Node\Expression\AbstractExpression $options Options.
+     * @param string                                   $lineno  Linenumber.
+     * @param string                                   $tag     Tag.
      */
     public function __construct(
-        \Twig_Node_Expression $name,
-        \Twig_Node_Expression $data = null,
-        \Twig_Node_Expression $options = null,
+        \Twig\Node\Expression\AbstractExpression $name,
+        \Twig\Node\Expression\AbstractExpression $data = null,
+        \Twig\Node\Expression\AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
@@ -47,10 +47,10 @@ class Element extends \Twig_Node
     /**
      * Compile node.
      *
-     * @param \Twig_Compiler $compiler Compiler.
+     * @param \Twig\Compiler $compiler Compiler.
      *
      */
-    public function compile(\Twig_Compiler $compiler)
+    public function compile(\Twig\Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 

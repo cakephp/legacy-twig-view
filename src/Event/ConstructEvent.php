@@ -19,10 +19,10 @@ class ConstructEvent extends Event
 
     /**
      * @param  TwigView          $twigView
-     * @param  \Twig_Environment $twig
+     * @param  \Twig\Environment $twig
      * @return static
      */
-    public static function create(TwigView $twigView, \Twig_Environment $twig)
+    public static function create(TwigView $twigView, \Twig\Environment $twig)
     {
         return new static(static::EVENT, $twigView, [
             'twigView' => $twigView,
@@ -39,7 +39,7 @@ class ConstructEvent extends Event
     }
 
     /**
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
     public function getTwig()
     {

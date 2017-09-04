@@ -17,16 +17,16 @@ class ProfileEvent extends Event
     const EVENT = 'TwigView.TwigView.profile';
 
     /**
-     * @param  \Twig_Profiler_Profile $profile
+     * @param  \Twig\Profiler\Profile $profile
      * @return static
      */
-    public static function create(\Twig_Profiler_Profile $profile)
+    public static function create(\Twig\Profiler\Profile $profile)
     {
         return new static(static::EVENT, $profile);
     }
 
     /**
-     * @return \Twig_Profiler_Profile
+     * @return \Twig\Profiler\Profile
      */
     public function getLoader()
     {

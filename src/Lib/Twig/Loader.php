@@ -12,13 +12,15 @@ namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use Twig\Loader\LoaderInterface;
+use Twig\Loader\SourceContextLoaderInterface;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Loader.
  * @package WyriHaximus\TwigView\Lib\Twig
  */
-class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterface
+class Loader implements LoaderInterface, SourceContextLoaderInterface
 {
     /**
      * Get the file contents of a template.
@@ -39,8 +41,8 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
      *
      * @param string $name The template logical name.
      *
-     * @throws Twig_Error_Loader When $name is not found
-     * @return Twig_Source
+     * @throws Twig\Error\Loader When $name is not found
+     * @return Twig\Source
      *
      */
     public function getSourceContext($name)
@@ -48,7 +50,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
         $code = $this->getSource($name);
         $path = $this->getFilename($name);
 
-        return new \Twig_Source($code, $name, $path);
+        return new \Twig\Source($code, $name, $path);
     }
 
     /**
@@ -100,7 +102,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
      *
      * @param string $name Template.
      *
-     * @throws \Twig_Error_Loader Thrown when template file isn't found.
+     * @throws \Twig\Error\LoaderError Thrown when template file isn't found.
      * @return string
      *
      */
@@ -108,7 +110,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_SourceContextLoaderInterfac
     {
         $filename = $this->getFilename($name);
         if ($filename === false) {
-            throw new \Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
+            throw new \Twig\Error\LoaderError(sprintf('Template "%s" is not defined.', $name));
         }
 
         return $filename;

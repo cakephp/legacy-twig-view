@@ -52,8 +52,8 @@ class ExtensionsListener implements EventListenerInterface
     public function construct(ConstructEvent $event)
     {
         // Twig core extensions
-        $event->getTwig()->addExtension(new \Twig_Extension_StringLoader());
-        $event->getTwig()->addExtension(new \Twig_Extension_Debug());
+        $event->getTwig()->addExtension(new \Twig\Extension\StringLoaderExtension());
+        $event->getTwig()->addExtension(new \Twig\Extension\DebugExtension());
 
         // CakePHP bridging extensions
         $event->getTwig()->addExtension(new Extension\I18n());

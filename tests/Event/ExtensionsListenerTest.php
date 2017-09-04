@@ -35,12 +35,12 @@ class ExtensionsListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig\Extension\AbstractExtension'));
     }
 
     public function testConstructMarkdownEngine()
@@ -50,24 +50,24 @@ class ExtensionsListenerTest extends TestCase
             $this->prophesize(MarkdownEngineInterface::class)->reveal()
         );
 
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig\Extension\AbstractExtension'));
         Phake::verify($twig)->addExtension($this->isInstanceOf(MarkdownExtension::class));
         Phake::verify($twig)->addTokenParser($this->isInstanceOf(MarkdownTokenParser::class));
     }
 
     public function testConstructNoMarkdownEngine()
     {
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig\Extension\AbstractExtension'));
         Phake::verify($twig, Phake::never())->addExtension($this->isInstanceOf(MarkdownExtension::class));
         Phake::verify($twig, Phake::never())->addTokenParser($this->isInstanceOf(MarkdownTokenParser::class));
     }
@@ -76,12 +76,12 @@ class ExtensionsListenerTest extends TestCase
     {
         Configure::write('debug', true);
 
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig\Extension\AbstractExtension'));
         // Phake::verify($twig)->addExtension($this->isInstanceOf(BreakpointExtension::class));  // FIXME Not ported to Twig 2.x yet
     }
 
@@ -89,12 +89,12 @@ class ExtensionsListenerTest extends TestCase
     {
         Configure::write('debug', false);
 
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig\Extension\AbstractExtension'));
         Phake::verify($twig, Phake::never())->addExtension($this->isInstanceOf(BreakpointExtension::class));
     }
 }

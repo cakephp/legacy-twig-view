@@ -50,7 +50,7 @@ class TwigView extends View
     /**
      * Twig instance.
      *
-     * @var \Twig_Environment
+     * @var \Twig\Environment
      */
     protected $twig;
 
@@ -87,7 +87,7 @@ class TwigView extends View
         }
         $this->eventManager = $eventManager;
 
-        $this->twig = new \Twig_Environment($this->getLoader(), $this->resolveConfig());
+        $this->twig = new \Twig\Environment($this->getLoader(), $this->resolveConfig());
 
         $this->eventManager->dispatch(ConstructEvent::create($this, $this->twig));
 
@@ -108,7 +108,7 @@ class TwigView extends View
     /**
      * Get twig environment instance.
      *
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
     public function getTwig()
     {
@@ -163,7 +163,7 @@ class TwigView extends View
     /**
      * Create the template loader.
      *
-     * @return \Twig_LoaderInterface
+     * @return \Twig\Loader\LoaderInterface
      */
     protected function getLoader()
     {

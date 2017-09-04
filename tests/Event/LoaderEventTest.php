@@ -19,7 +19,7 @@ class LoaderEventTest extends TestCase
     public function testArrayResultLoader()
     {
         $loader = new Loader();
-        $loader2 = \Phake::mock('Twig_LoaderInterface');
+        $loader2 = \Phake::mock('Twig\Loader\LoaderInterface');
         $event = LoaderEvent::create($loader);
         $event->result = [
             'loader' => $loader2,
@@ -30,7 +30,7 @@ class LoaderEventTest extends TestCase
     public function testResultLoader()
     {
         $loader = new Loader();
-        $loader2 = \Phake::mock('Twig_LoaderInterface');
+        $loader2 = \Phake::mock('Twig\Loader\LoaderInterface');
         $event = LoaderEvent::create($loader);
         $event->result = $loader2;
         $this->assertEquals($loader2, $event->getResultLoader());

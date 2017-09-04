@@ -30,11 +30,11 @@ class TokenParsersListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new TokenParsersListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addTokenParser($this->isInstanceOf('\Twig_TokenParser_Include'));
+        Phake::verify($twig, Phake::atLeast(1))->addTokenParser($this->isInstanceOf('\Twig\TokenParser\IncludeTokenParser'));
     }
 }

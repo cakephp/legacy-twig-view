@@ -17,10 +17,10 @@ class LoaderEvent extends Event
     const EVENT = 'TwigView.TwigView.loader';
 
     /**
-     * @param  \Twig_LoaderInterface $loader
+     * @param  \Twig\Loader\LoaderInterface $loader
      * @return LoaderEvent
      */
-    public static function create(\Twig_LoaderInterface $loader)
+    public static function create(\Twig\Loader\LoaderInterface $loader)
     {
         return new static(static::EVENT, $loader, [
             'loader' => $loader,
@@ -28,7 +28,7 @@ class LoaderEvent extends Event
     }
 
     /**
-     * @return \Twig_LoaderInterface
+     * @return \Twig\Loader\LoaderInterface
      */
     public function getLoader()
     {
@@ -36,15 +36,15 @@ class LoaderEvent extends Event
     }
 
     /**
-     * @return string|Twig_LoaderInterface
+     * @return string|Twig\Loader\LoaderInterface
      */
     public function getResultLoader()
     {
-        if ($this->result instanceof \Twig_LoaderInterface) {
+        if ($this->result instanceof \Twig\Loader\LoaderInterface) {
             return $this->result;
         }
 
-        if (is_array($this->result) && $this->result['loader'] instanceof \Twig_LoaderInterface) {
+        if (is_array($this->result) && $this->result['loader'] instanceof \Twig\Loader\LoaderInterface) {
             return $this->result['loader'];
         }
 

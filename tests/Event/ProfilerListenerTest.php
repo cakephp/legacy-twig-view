@@ -30,11 +30,11 @@ class ProfilerListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock('\Twig_Environment');
+        $twig = Phake::mock('\Twig\Environment');
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ProfilerListener())->construct(ConstructEvent::create($twigView, $twig));
 
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig_Extension'));
+        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf('\Twig\Extension\AbstractExtension'));
     }
 }

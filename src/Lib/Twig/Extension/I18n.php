@@ -10,25 +10,27 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+
 /**
  * Class I18n.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class I18n extends \Twig_Extension
+class I18n extends AbstractExtension
 {
     /**
      * Get declared functions.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('__', '__'),
-            new \Twig_SimpleFunction('__d', '__d'),
-            new \Twig_SimpleFunction('__n', '__n'),
-            new \Twig_SimpleFunction('__x', '__x'),
-            new \Twig_SimpleFunction('__dn', '__dn'),
+            new \Twig\TwigFunction('__', '__'),
+            new \Twig\TwigFunction('__d', '__d'),
+            new \Twig\TwigFunction('__n', '__n'),
+            new \Twig\TwigFunction('__x', '__x'),
+            new \Twig\TwigFunction('__dn', '__dn'),
         ];
     }
 

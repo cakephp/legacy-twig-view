@@ -10,11 +10,14 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
+use Twig\Node\Node;
+use Twig\Node\NodeOutputInterface;
+
 /**
  * Class Cell.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
+class Cell extends Node implements NodeOutputInterface
 {
 
     /**
@@ -27,20 +30,20 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
     /**
      * Constructor.
      *
-     * @param bool                  $assign   Assign or echo.
-     * @param mixed                 $variable Variable to assign to.
-     * @param \Twig_Node_Expression $name     Name.
-     * @param \Twig_Node_Expression $data     Data array.
-     * @param \Twig_Node_Expression $options  Options array.
-     * @param string                $lineno   Line number.
-     * @param string                $tag      Tag name.
+     * @param bool                                     $assign   Assign or echo.
+     * @param mixed                                    $variable Variable to assign to.
+     * @param \Twig\Node\Expression\AbstractExpression $name     Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data     Data array.
+     * @param \Twig\Node\Expression\AbstractExpression $options  Options array.
+     * @param string                                   $lineno   Line number.
+     * @param string                                   $tag      Tag name.
      */
     public function __construct(
         $assign,
         $variable,
-        \Twig_Node_Expression $name,
-        \Twig_Node_Expression $data = null,
-        \Twig_Node_Expression $options = null,
+        \Twig\Node\Expression\AbstractExpression $name,
+        \Twig\Node\Expression\AbstractExpression $data = null,
+        \Twig\Node\Expression\AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
@@ -63,10 +66,10 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
     /**
      * Compile tag.
      *
-     * @param \Twig_Compiler $compiler Compiler.
+     * @param \Twig\Compiler $compiler Compiler.
      *
      */
-    public function compile(\Twig_Compiler $compiler)
+    public function compile(\Twig\Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 

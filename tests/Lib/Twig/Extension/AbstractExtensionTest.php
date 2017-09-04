@@ -15,7 +15,7 @@ use Cake\TestSuite\TestCase;
 abstract class AbstractExtensionTest extends TestCase
 {
     /**
-     * @var \Twig_ExtensionInterface
+     * @var \Twig\Extension\AbstractExtensionInterface
      */
     protected $extension;
 
@@ -34,7 +34,7 @@ abstract class AbstractExtensionTest extends TestCase
         $tokenParsers = $this->extension->getTokenParsers();
         $this->assertTrue(is_array($tokenParsers));
         foreach ($tokenParsers as $tokenParser) {
-            $this->assertTrue($tokenParser instanceof \Twig_TokenParserInterface || $tokenParser instanceof \Twig_TokenParserBrokerInterface);
+            $this->assertTrue($tokenParser instanceof \Twig\TokenParser\TokenParserInterface);
         }
     }
 

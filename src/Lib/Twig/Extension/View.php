@@ -11,12 +11,13 @@
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Cake\View\View as CakeView;
+use Twig\Extension\AbstractExtension;
 
 /**
  * Class View.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class View extends \Twig_Extension
+class View extends AbstractExtension
 {
     /**
      * View to call methods upon.
@@ -38,18 +39,18 @@ class View extends \Twig_Extension
     /**
      * Get declared functions.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('elementExists', function ($name) {
+            new \Twig\TwigFunction('elementExists', function ($name) {
                 return $this->view->elementExists($name);
             }),
-            new \Twig_SimpleFunction('getVars', function () {
+            new \Twig\TwigFunction('getVars', function () {
                 return $this->view->getVars();
             }),
-            new \Twig_SimpleFunction('get', function ($var, $default = null) {
+            new \Twig\TwigFunction('get', function ($var, $default = null) {
                 return $this->view->get($var, $default);
             }),
         ];

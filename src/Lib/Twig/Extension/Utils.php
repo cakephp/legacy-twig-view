@@ -10,27 +10,29 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+
 /**
  * Class Utils.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Utils extends \Twig_Extension
+class Utils extends AbstractExtension
 {
     /**
      * Get declared filters.
      *
-     * @return \Twig_SimpleFilter[]
+     * @return \Twig\TwigFilter[]
      */
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('serialize', 'serialize'),
-            new \Twig_SimpleFilter('unserialize', 'unserialize'),
-            new \Twig_SimpleFilter('md5', 'md5'),
-            new \Twig_SimpleFilter('base64_encode', 'base64_encode'),
-            new \Twig_SimpleFilter('base64_decode', 'base64_decode'),
-            new \Twig_SimpleFilter('nl2br', 'nl2br'),
-            new \Twig_SimpleFilter('string', function ($str) {
+            new \Twig\TwigFilter('serialize', 'serialize'),
+            new \Twig\TwigFilter('unserialize', 'unserialize'),
+            new \Twig\TwigFilter('md5', 'md5'),
+            new \Twig\TwigFilter('base64_encode', 'base64_encode'),
+            new \Twig\TwigFilter('base64_decode', 'base64_decode'),
+            new \Twig\TwigFilter('nl2br', 'nl2br'),
+            new \Twig\TwigFilter('string', function ($str) {
                 return (string)$str;
             }),
         ];

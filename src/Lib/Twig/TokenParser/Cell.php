@@ -10,6 +10,7 @@
 
 namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
+use Twig\TokenParser\IncludeTokenParser;
 use Twig_Token;
 use WyriHaximus\TwigView\Lib\Twig\Node\Cell as CellNode;
 
@@ -17,7 +18,7 @@ use WyriHaximus\TwigView\Lib\Twig\Node\Cell as CellNode;
  * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\TokenParser
  */
-class Cell extends \Twig_TokenParser_Include
+class Cell extends IncludeTokenParser
 {
     /**
      * Parse token.
