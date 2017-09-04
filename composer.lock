@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c999bb209cc811e12f8bcd8e4cba6c40",
+    "content-hash": "310611533a2662b4cfeeca314b2a30cf",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
@@ -305,6 +305,73 @@
                 "time"
             ],
             "time": "2017-04-27T01:27:49+00:00"
+        },
+        {
+            "name": "jasny/twig-extensions",
+            "version": "dev-twig2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inoas/twig-extensions.git",
+                "reference": "13758d43abd455bb5d95779f1a11f32d11de6d75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inoas/twig-extensions/zipball/13758d43abd455bb5d95779f1a11f32d11de6d75",
+                "reference": "13758d43abd455bb5d95779f1a11f32d11de6d75",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0",
+                "twig/twig": "^2.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "ext-pcre": "*",
+                "jasny/php-code-quality": "^2.1"
+            },
+            "suggest": {
+                "ext-intl": "Required for the use of the LocalDate Twig extension",
+                "ext-pcre": "Required for the use of the PCRE Twig extension"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jasny\\Twig\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/support/"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arnold Daniels",
+                    "email": "arnold@jasny.net",
+                    "homepage": "http://www.jasny.net"
+                }
+            ],
+            "description": "A set of useful Twig filters",
+            "homepage": "http://github.com/jasny/twig-extensions#README",
+            "keywords": [
+                "PCRE",
+                "array",
+                "date",
+                "datetime",
+                "preg",
+                "regex",
+                "templating",
+                "text",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/jasny/twig-extensions/issues",
+                "source": "https://github.com/jasny/twig-extensions"
+            },
+            "time": "2017-09-04T15:33:21+00:00"
         },
         {
             "name": "psr/http-message",
@@ -1928,16 +1995,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.7.1",
+            "version": "v1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "15ea9ac619e37009edcda64089e3fa4cc88aa659"
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/15ea9ac619e37009edcda64089e3fa4cc88aa659",
-                "reference": "15ea9ac619e37009edcda64089e3fa4cc88aa659",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+                "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
                 "shasum": ""
             },
             "require": {
@@ -1987,7 +2054,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2017-09-03T09:38:53+00:00"
+            "time": "2017-09-04T11:05:03+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3850,9 +3917,17 @@
             "time": "2014-08-17T16:31:47+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "1.1.0",
+            "alias_normalized": "1.1.0.0",
+            "version": "dev-twig2",
+            "package": "jasny/twig-extensions"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "jasny/twig-extensions": 20,
         "wyrihaximus/phpunit-class-reflection-helpers": 20
     },
     "prefer-stable": true,
