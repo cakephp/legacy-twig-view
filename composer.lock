@@ -312,12 +312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/inoas/twig-extensions.git",
-                "reference": "13758d43abd455bb5d95779f1a11f32d11de6d75"
+                "reference": "ca4c311d334d7a289f9894f5c7e62f85dcfdaa83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inoas/twig-extensions/zipball/13758d43abd455bb5d95779f1a11f32d11de6d75",
-                "reference": "13758d43abd455bb5d95779f1a11f32d11de6d75",
+                "url": "https://api.github.com/repos/inoas/twig-extensions/zipball/ca4c311d334d7a289f9894f5c7e62f85dcfdaa83",
+                "reference": "ca4c311d334d7a289f9894f5c7e62f85dcfdaa83",
                 "shasum": ""
             },
             "require": {
@@ -327,7 +327,8 @@
             "require-dev": {
                 "ext-intl": "*",
                 "ext-pcre": "*",
-                "jasny/php-code-quality": "^2.1"
+                "jasny/php-code-quality": "^2.1",
+                "phpunit/phpunit": "^5.0"
             },
             "suggest": {
                 "ext-intl": "Required for the use of the LocalDate Twig extension",
@@ -371,7 +372,7 @@
                 "issues": "https://github.com/jasny/twig-extensions/issues",
                 "source": "https://github.com/jasny/twig-extensions"
             },
-            "time": "2017-09-04T15:33:21+00:00"
+            "time": "2017-09-05T16:04:31+00:00"
         },
         {
             "name": "psr/http-message",
