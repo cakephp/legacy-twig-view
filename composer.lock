@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9410185fa126f4f83d7a69a2a207dad",
+    "content-hash": "3c3ae3a68f09e6b10ea425e4383dc60b",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
@@ -652,16 +652,16 @@
     "packages-dev": [
         {
             "name": "api-clients/test-utilities",
-            "version": "dev-phpunit630",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/inoas/test-utilities.git",
-                "reference": "8b2c0ad4898332591235e7cbaaa513d0390fe794"
+                "url": "https://github.com/php-api-clients/test-utilities.git",
+                "reference": "5525f78c25d2089d561da0dc6c744519e7ed0a08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inoas/test-utilities/zipball/8b2c0ad4898332591235e7cbaaa513d0390fe794",
-                "reference": "8b2c0ad4898332591235e7cbaaa513d0390fe794",
+                "url": "https://api.github.com/repos/php-api-clients/test-utilities/zipball/5525f78c25d2089d561da0dc6c744519e7ed0a08",
+                "reference": "5525f78c25d2089d561da0dc6c744519e7ed0a08",
                 "shasum": ""
             },
             "require": {
@@ -679,66 +679,7 @@
                     "ApiClients\\Tools\\TestUtilities\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "ApiClients\\Tests\\Tools\\TestUtilities\\": "tests/"
-                }
-            },
-            "scripts": {
-                "ensure-installed": [
-                    "composer install --ansi -n -q"
-                ],
-                "cs": [
-                    "@ensure-installed",
-                    "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
-                ],
-                "cs-fix": [
-                    "@ensure-installed",
-                    "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
-                ],
-                "unit": [
-                    "@ensure-installed",
-                    "phpunit --colors=always -c phpunit.xml.dist"
-                ],
-                "unit-coverage": [
-                    "@ensure-installed",
-                    "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
-                ],
-                "lint-php": [
-                    "@ensure-installed",
-                    "parallel-lint --exclude vendor ."
-                ],
-                "qa-all": [
-                    "@lint-php",
-                    "@cs",
-                    "@unit"
-                ],
-                "qa-all-coverage": [
-                    "@lint-php",
-                    "@cs",
-                    "@unit-coverage"
-                ],
-                "qa-windows": [
-                    "@lint-php",
-                    "@cs",
-                    "@unit"
-                ],
-                "qa-ci": [
-                    "@unit"
-                ],
-                "qa-ci-extended": [
-                    "@qa-all-coverage"
-                ],
-                "qa-ci-windows": [
-                    "@qa-windows"
-                ],
-                "qa-contrib": [
-                    "@qa-all"
-                ],
-                "ci-coverage": [
-                    "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -749,10 +690,7 @@
                 }
             ],
             "description": "Test utilities for api-clients packages",
-            "support": {
-                "source": "https://github.com/inoas/test-utilities/tree/phpunit630"
-            },
-            "time": "2017-09-07T07:38:09+00:00"
+            "time": "2017-09-07T09:07:01+00:00"
         },
         {
             "name": "cakephp/bake",
@@ -4136,18 +4074,11 @@
             "alias_normalized": "1.1.0.0",
             "version": "dev-twig2",
             "package": "jasny/twig-extensions"
-        },
-        {
-            "alias": "4.1",
-            "alias_normalized": "4.1.0.0",
-            "version": "dev-phpunit630",
-            "package": "api-clients/test-utilities"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "jasny/twig-extensions": 20,
-        "api-clients/test-utilities": 20,
         "wyrihaximus/phpunit-class-reflection-helpers": 20
     },
     "prefer-stable": true,

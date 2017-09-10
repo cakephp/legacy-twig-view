@@ -5,7 +5,9 @@
     "license": "MIT",
     "keywords": [
         "twig",
+        "twig2",
         "view",
+        "template",
         "cakephp",
         "cakephp3"
     ],
@@ -20,10 +22,6 @@
         {
             "type": "vcs",
             "url": "https://github.com/inoas/twig-extensions"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/inoas/test-utilities"
         }
     ],
     "require": {
@@ -35,7 +33,7 @@
         "twig/twig": "^2.4.3"
     },
     "require-dev": {
-        "api-clients/test-utilities": "dev-phpunit630 as 4.1",
+        "api-clients/test-utilities": "^4.2.0",
         "cakephp/bake": "^1.4.1",
         "cakephp/debug_kit": "^3.11.1",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
