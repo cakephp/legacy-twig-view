@@ -50,7 +50,6 @@
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     },
-    "prefer-stable": true,
     "scripts": {
         "ensure-installed": "composer install --ansi -n -q",
         "cs": [

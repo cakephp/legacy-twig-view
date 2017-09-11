@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c3ae3a68f09e6b10ea425e4383dc60b",
+    "content-hash": "43a1da535e7642806239bc4804f59154",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
@@ -893,16 +893,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "b17e6153cb7f33c7e44eb59578dc12eee5dc8e12"
+                "reference": "9dd73a03951357922d8aee6cc084500de93e2343"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/b17e6153cb7f33c7e44eb59578dc12eee5dc8e12",
-                "reference": "b17e6153cb7f33c7e44eb59578dc12eee5dc8e12",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/9dd73a03951357922d8aee6cc084500de93e2343",
+                "reference": "9dd73a03951357922d8aee6cc084500de93e2343",
                 "shasum": ""
             },
             "require": {
@@ -948,20 +948,20 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2017-03-06T11:59:08+00:00"
+            "time": "2017-09-11T07:24:36+00:00"
         },
         {
             "name": "composer/composer",
-            "version": "1.5.1",
+            "version": "1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "d60a1ff0cb421fcd2811c3f2b57f7e3e2b6c9d0e"
+                "reference": "c639623fa2178b404ed4bab80f0d1263853fa4ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/d60a1ff0cb421fcd2811c3f2b57f7e3e2b6c9d0e",
-                "reference": "d60a1ff0cb421fcd2811c3f2b57f7e3e2b6c9d0e",
+                "url": "https://api.github.com/repos/composer/composer/zipball/c639623fa2178b404ed4bab80f0d1263853fa4ae",
+                "reference": "c639623fa2178b404ed4bab80f0d1263853fa4ae",
                 "shasum": ""
             },
             "require": {
@@ -1025,7 +1025,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2017-08-09T14:07:22+00:00"
+            "time": "2017-09-11T14:59:26+00:00"
         },
         {
             "name": "composer/semver",
@@ -1328,19 +1328,20 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.5.0",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "63aad575ec2a29d50eb6c3b5cbc17430b28895b2"
+                "reference": "5642a36a60c11cdd01488d192541a89bb44a4abf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/63aad575ec2a29d50eb6c3b5cbc17430b28895b2",
-                "reference": "63aad575ec2a29d50eb6c3b5cbc17430b28895b2",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/5642a36a60c11cdd01488d192541a89bb44a4abf",
+                "reference": "5642a36a60c11cdd01488d192541a89bb44a4abf",
                 "shasum": ""
             },
             "require": {
+                "composer/semver": "^1.4",
                 "doctrine/annotations": "^1.2",
                 "ext-json": "*",
                 "ext-tokenizer": "*",
@@ -1376,6 +1377,11 @@
                 "php-cs-fixer"
             ],
             "type": "application",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "PhpCsFixer\\": "src/"
@@ -1403,7 +1409,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2017-08-22T14:15:09+00:00"
+            "time": "2017-09-11T15:23:20+00:00"
         },
         {
             "name": "gecko-packages/gecko-php-unit",
@@ -1952,16 +1958,16 @@
         },
         {
             "name": "phpdocumentor/reflection-common",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-                "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c"
+                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
-                "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
+                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
                 "shasum": ""
             },
             "require": {
@@ -2002,7 +2008,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2015-12-27T11:43:31+00:00"
+            "time": "2017-09-11T18:02:19+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -4081,7 +4087,7 @@
         "jasny/twig-extensions": 20,
         "wyrihaximus/phpunit-class-reflection-helpers": 20
     },
-    "prefer-stable": true,
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.0"
