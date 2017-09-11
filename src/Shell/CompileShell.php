@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Shell;
 
 use Cake\Console\ConsoleIo;
+use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
 use Cake\Core\Plugin;
 use WyriHaximus\TwigView\Lib\Scanner;
@@ -96,7 +97,7 @@ class CompileShell extends Shell
      *
      * @return \Cake\Console\ConsoleOptionParser
      */
-    public function getOptionParser()
+    public function getOptionParser(): ConsoleOptionParser
     {
         return parent::getOptionParser()->addSubcommand(
             'all',
