@@ -16,7 +16,7 @@ use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\View\View;
 use Exception;
-use Twig\Environment as TwigEnvironment;
+use Twig\Environment;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\Event\LoaderEvent;
@@ -88,7 +88,7 @@ class TwigView extends View
         }
         $this->eventManager = $eventManager;
 
-        $this->twig = new TwigEnvironment($this->getLoader(), $this->resolveConfig());
+        $this->twig = new Environment($this->getLoader(), $this->resolveConfig());
 
         $this->eventManager->dispatch(ConstructEvent::create($this, $this->twig));
 

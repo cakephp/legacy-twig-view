@@ -12,7 +12,7 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
 use Cake\TestSuite\TestCase;
 use Phake;
-use Twig\Environment as TwigEnvironment;
+use Twig\Environment;
 use Twig\TokenParser\IncludeTokenParser;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\TokenParsersListener;
@@ -32,7 +32,7 @@ class TokenParsersListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock(TwigEnvironment::class);
+        $twig = Phake::mock(Environment::class);
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new TokenParsersListener())->construct(ConstructEvent::create($twigView, $twig));

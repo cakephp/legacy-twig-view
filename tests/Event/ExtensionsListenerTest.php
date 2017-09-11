@@ -17,7 +17,7 @@ use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use Phake;
-use Twig\Environment as TwigEnvironment;
+use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ExtensionsListener;
@@ -37,7 +37,7 @@ class ExtensionsListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock(TwigEnvironment::class);
+        $twig = Phake::mock(Environment::class);
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
@@ -52,7 +52,7 @@ class ExtensionsListenerTest extends TestCase
             $this->prophesize(MarkdownEngineInterface::class)->reveal()
         );
 
-        $twig = Phake::mock(TwigEnvironment::class);
+        $twig = Phake::mock(Environment::class);
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
@@ -64,7 +64,7 @@ class ExtensionsListenerTest extends TestCase
 
     public function testConstructNoMarkdownEngine()
     {
-        $twig = Phake::mock(TwigEnvironment::class);
+        $twig = Phake::mock(Environment::class);
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
@@ -78,7 +78,7 @@ class ExtensionsListenerTest extends TestCase
     {
         Configure::write('debug', true);
 
-        $twig = Phake::mock(TwigEnvironment::class);
+        $twig = Phake::mock(Environment::class);
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
@@ -91,7 +91,7 @@ class ExtensionsListenerTest extends TestCase
     {
         Configure::write('debug', false);
 
-        $twig = Phake::mock(TwigEnvironment::class);
+        $twig = Phake::mock(Environment::class);
 
         $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
