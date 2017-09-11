@@ -34,9 +34,9 @@ class Cell extends Node implements NodeOutputInterface
      *
      * @param bool                                     $assign   Assign or echo.
      * @param mixed                                    $variable Variable to assign to.
-     * @param /Twig\Node\Expression\AbstractExpression $name     Name.
-     * @param /Twig\Node\Expression\AbstractExpression $data     Data array.
-     * @param /Twig\Node\Expression\AbstractExpression $options  Options array.
+     * @param \Twig\Node\Expression\AbstractExpression $name     Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data     Data array.
+     * @param \Twig\Node\Expression\AbstractExpression $options  Options array.
      * @param string                                   $lineno   Line number.
      * @param string                                   $tag      Tag name.
      */
