@@ -24,7 +24,7 @@ class Utils extends AbstractExtension
      *
      * @return \Twig\TwigFilter[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('serialize', 'serialize'),
@@ -44,7 +44,7 @@ class Utils extends AbstractExtension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'utils';
     }

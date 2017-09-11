@@ -24,7 +24,7 @@ class Inflector extends AbstractExtension
      *
      * @return \Twig\TwigFunction[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('pluralize', 'Cake\Utility\Inflector::pluralize'),
@@ -44,7 +44,7 @@ class Inflector extends AbstractExtension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'inflector';
     }

@@ -19,7 +19,7 @@ class TwigPanel extends DebugPanel
      *
      * @return array
      */
-    public function data()
+    public function data(): array
     {
         return [
             'templates' => TreeScanner::all(),

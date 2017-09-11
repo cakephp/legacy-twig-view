@@ -25,9 +25,9 @@ class Element extends IncludeTokenParser
      *
      * @param \Twig\Token $token Token.
      *
-     * @return \Twig\Node\NodeOutputInterface|ElementNode // FIXME OR NodeCaptureInterface?
+     * @return ElementNode
      */
-    public function parse(Token $token)
+    public function parse(Token $token): ElementNode
     {
         $stream = $this->parser->getStream();
         $name = $this->parser->getExpressionParser()->parseExpression();
@@ -52,7 +52,7 @@ class Element extends IncludeTokenParser
      *
      * @return string
      */
-    public function getTag()
+    public function getTag(): string
     {
         return 'element';
     }

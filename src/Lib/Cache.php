@@ -14,7 +14,7 @@ class Cache implements CacheProviderInterface
      *
      * @param string $identifier Identifier for this bit of data to read.
      *
-     * @return mixed
+     * @return mixed The cached data, or false if the data doesn't exist, has expired, or on error while fetching.
      */
     public function fetch($identifier)
     {
@@ -32,7 +32,7 @@ class Cache implements CacheProviderInterface
      *
      * @return bool
      */
-    public function save($identifier, $data, $lifeTime = 0)
+    public function save($identifier, $data, $lifeTime = 0): bool
     {
         list($config, $key) = $this->configSplit($identifier);
 
@@ -47,7 +47,7 @@ class Cache implements CacheProviderInterface
      *
      * @return array
      */
-    protected function configSplit($name, $config = 'default')
+    protected function configSplit($name, $config = 'default'): array
     {
         if (strpos($name, ':') !== false) {
             $parts = explode(':', $name, 2);

@@ -25,7 +25,7 @@ class Number extends AbstractExtension
      *
      * @return \Twig\TwigFilter[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
@@ -42,7 +42,7 @@ class Number extends AbstractExtension
      *
      * @return \Twig\TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('defaultCurrency', 'Cake\I18n\Number::defaultCurrency'),
@@ -55,7 +55,7 @@ class Number extends AbstractExtension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'string';
     }

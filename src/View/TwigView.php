@@ -111,7 +111,7 @@ class TwigView extends View
      *
      * @return \Twig\Environment
      */
-    public function getTwig()
+    public function getTwig(): Environment
     {
         return $this->twig;
     }
@@ -119,7 +119,7 @@ class TwigView extends View
     /**
      * @return array
      */
-    protected function resolveConfig()
+    protected function resolveConfig(): array
     {
         $charset = 'utf-8';
         if (Configure::read('App.encoding') !== null) {
@@ -147,7 +147,7 @@ class TwigView extends View
     /**
      * @return array
      */
-    protected function readConfig()
+    protected function readConfig(): array
     {
         if (!Configure::check(static::ENV_CONFIG)) {
             return [];
@@ -164,9 +164,9 @@ class TwigView extends View
     /**
      * Create the template loader.
      *
-     * @return \Twig\Loader\LoaderInterface
+     * @return \WyriHaximus\TwigView\Lib\Twig\Loader
      */
-    protected function getLoader()
+    protected function getLoader(): Loader
     {
         $event = LoaderEvent::create(new Loader());
         $this->eventManager->dispatch($event);
@@ -199,7 +199,7 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _render($viewFile, $data = [])
+    protected function _render($viewFile, $data = []): string
     {
         if (empty($data)) {
             $data = $this->viewVars;
@@ -257,7 +257,7 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _getLayoutFileName($name = null)
+    protected function _getLayoutFileName($name = null): string
     {
         $rethrow = new \Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
@@ -278,7 +278,7 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _getElementFileName($name, $pluginCheck = true)
+    protected function _getElementFileName($name, $pluginCheck = true): string
     {
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;

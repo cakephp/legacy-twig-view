@@ -13,7 +13,7 @@ class TreeScanner
      *
      * @return array
      */
-    public static function all()
+    public static function all(): array
     {
         return static::deepen(RelativeScanner::all());
     }
@@ -39,7 +39,7 @@ class TreeScanner
      *
      * @return array
      */
-    protected static function deepen($sections)
+    protected static function deepen($sections): array
     {
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::convertToTree($paths);
@@ -55,7 +55,7 @@ class TreeScanner
      *
      * @return array
      */
-    protected static function convertToTree(array $paths)
+    protected static function convertToTree(array $paths): array
     {
         foreach ($paths as $index => $path) {
             static::convertPathToTree($paths, $index, $path);
@@ -89,7 +89,7 @@ class TreeScanner
      *
      * @return array
      */
-    protected static function branch(array $paths, array $branches)
+    protected static function branch(array $paths, array $branches): array
     {
         $twig = array_shift($branches);
         if (count($branches) == 0) {

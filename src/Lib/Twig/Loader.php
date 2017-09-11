@@ -31,7 +31,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      *
      * @return string
      */
-    public function getSource($name)
+    public function getSource($name): string
     {
         $name = $this->resolveFileName($name);
 
@@ -47,7 +47,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      * @return Twig\Source
      *
      */
-    public function getSourceContext($name)
+    public function getSourceContext($name): Source
     {
         $code = $this->getSource($name);
         $path = $this->getFilename($name);
@@ -62,7 +62,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      *
      * @return string
      */
-    public function getCacheKey($name)
+    public function getCacheKey($name): string
     {
         return $this->resolveFileName($name);
     }
@@ -75,7 +75,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      *
      * @return bool
      */
-    public function isFresh($name, $time)
+    public function isFresh($name, $time): bool
     {
         $name = $this->resolveFileName($name);
 
@@ -89,7 +89,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      *
      * @return bool If the template source code is handled by this loader or not.
      */
-    public function exists($name)
+    public function exists($name): bool
     {
         $filename = $this->getFilename($name);
         if ($filename === false) {
@@ -108,7 +108,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      * @return string
      *
      */
-    protected function resolveFileName($name)
+    protected function resolveFileName($name): string
     {
         $filename = $this->getFilename($name);
         if ($filename === false) {
@@ -158,7 +158,7 @@ class Loader implements LoaderInterface, SourceContextLoaderInterface
      *
      * @return array
      */
-    protected function getPaths($plugin)
+    protected function getPaths($plugin): array
     {
         if ($plugin === null || !Plugin::loaded($plugin)) {
             return App::path('Template');

@@ -25,7 +25,7 @@ class Strings extends AbstractExtension
      *
      * @return \Twig\TwigFilter[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('substr', 'substr'),
@@ -56,7 +56,7 @@ class Strings extends AbstractExtension
      *
      * @return \Twig\TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('uuid', 'Cake\Utility\Text::uuid'),
@@ -68,7 +68,7 @@ class Strings extends AbstractExtension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'string';
     }

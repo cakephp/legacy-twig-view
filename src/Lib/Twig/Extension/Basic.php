@@ -24,7 +24,7 @@ class Basic extends AbstractExtension
      *
      * @return \Twig\TwigFilter[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new TwigFilter('debug', 'debug'),
@@ -45,7 +45,7 @@ class Basic extends AbstractExtension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'basic';
     }

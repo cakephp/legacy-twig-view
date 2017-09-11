@@ -24,7 +24,7 @@ class Arrays extends AbstractExtension
      *
      * @return \Twig\TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             new TwigFunction('in_array', 'in_array'),
@@ -46,7 +46,7 @@ class Arrays extends AbstractExtension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'array';
     }

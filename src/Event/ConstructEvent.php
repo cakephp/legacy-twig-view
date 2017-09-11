@@ -23,7 +23,7 @@ class ConstructEvent extends Event
      * @param  \Twig\Environment $twig
      * @return static
      */
-    public static function create(TwigView $twigView, Environment $twig)
+    public static function create(TwigView $twigView, Environment $twig): ConstructEvent
     {
         return new static(static::EVENT, $twigView, [
             'twigView' => $twigView,
@@ -34,7 +34,7 @@ class ConstructEvent extends Event
     /**
      * @return TwigView
      */
-    public function getTwigView()
+    public function getTwigView(): TwigView
     {
         return $this->data()['twigView'];
     }
@@ -42,7 +42,7 @@ class ConstructEvent extends Event
     /**
      * @return \Twig\Environment
      */
-    public function getTwig()
+    public function getTwig(): Environment
     {
         return $this->data()['twig'];
     }

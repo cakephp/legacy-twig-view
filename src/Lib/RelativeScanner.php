@@ -15,7 +15,7 @@ class RelativeScanner
      *
      * @return array
      */
-    public static function all()
+    public static function all(): array
     {
         return static::strip(Scanner::all());
     }
@@ -41,7 +41,7 @@ class RelativeScanner
      *
      * @return array
      */
-    protected static function strip($sections)
+    protected static function strip($sections): array
     {
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::stripAbsolutePath($paths, $section == 'APP' ? null : $section);
@@ -58,7 +58,7 @@ class RelativeScanner
      *
      * @return array
      */
-    protected static function stripAbsolutePath(array $paths, $plugin = null)
+    protected static function stripAbsolutePath(array $paths, $plugin = null): array
     {
         foreach (App::path('Template', $plugin) as $templatesPath) {
             array_walk($paths, function (&$path) use ($templatesPath) {

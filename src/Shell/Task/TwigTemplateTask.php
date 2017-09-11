@@ -26,7 +26,7 @@ class TwigTemplateTask extends TemplateTask
      *
      * @return string Task name.
      */
-    public function name()
+    public function name(): string
     {
         return 'twig_template';
     }
@@ -38,7 +38,7 @@ class TwigTemplateTask extends TemplateTask
      * @param  string $content Content to write.
      * @return string Generated file content.
      */
-    public function bake($action, $content = '')
+    public function bake($action, $content = ''): string
     {
         if ($content === true) {
             $content = $this->getContent($action);

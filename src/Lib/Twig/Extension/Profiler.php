@@ -26,7 +26,7 @@ class Profiler extends ProfilerExtension
      * @param \Twig\Profiler\Profile $profile Profile.
      *
      */
-    public function enter(Profile $profile)
+    public function enter(Profile $profile): Profile
     {
         $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
         DebugTimer::start($name, __d('twig_view', $name));
@@ -40,7 +40,7 @@ class Profiler extends ProfilerExtension
      * @param \Twig\Profiler\Profile $profile Profile.
      *
      */
-    public function leave(Profile $profile)
+    public function leave(Profile $profile): Profile
     {
         parent::leave($profile);
 

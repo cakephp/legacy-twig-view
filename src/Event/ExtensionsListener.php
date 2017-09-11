@@ -38,7 +38,7 @@ class ExtensionsListener implements EventListenerInterface
      *
      * @return array
      */
-    public function implementedEvents()
+    public function implementedEvents(): array
     {
         return [
             ConstructEvent::EVENT => 'construct',
@@ -49,7 +49,6 @@ class ExtensionsListener implements EventListenerInterface
      * Event handler.
      *
      * @param ConstructEvent $event Event.
-     *
      */
     public function construct(ConstructEvent $event)
     {

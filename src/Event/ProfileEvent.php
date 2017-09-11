@@ -21,7 +21,7 @@ class ProfileEvent extends Event
      * @param  \Twig\Profiler\Profile $profile
      * @return static
      */
-    public static function create(Profile $profile)
+    public static function create(Profile $profile): ProfileEvent
     {
         return new static(static::EVENT, $profile);
     }
@@ -29,7 +29,7 @@ class ProfileEvent extends Event
     /**
      * @return \Twig\Profiler\Profile
      */
-    public function getLoader()
+    public function getLoader(): Profile
     {
         return $this->subject();
     }

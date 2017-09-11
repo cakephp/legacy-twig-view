@@ -31,7 +31,7 @@ class LoaderEvent extends Event
     /**
      * @return \Twig\Loader\LoaderInterface
      */
-    public function getLoader()
+    public function getLoader(): LoaderInterface
     {
         return $this->subject();
     }
@@ -39,7 +39,7 @@ class LoaderEvent extends Event
     /**
      * @return string|Twig\Loader\LoaderInterface
      */
-    public function getResultLoader()
+    public function getResultLoader(): LoaderInterface
     {
         if ($this->result instanceof LoaderInterface) {
             return $this->result;

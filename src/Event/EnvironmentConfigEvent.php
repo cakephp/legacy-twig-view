@@ -21,7 +21,7 @@ class EnvironmentConfigEvent extends Event
      *
      * @return static
      */
-    public static function create(array $config)
+    public static function create(array $config): EnvironmentConfigEvent
     {
         return new static(static::EVENT, null, [
             'config' => $config,
@@ -31,17 +31,21 @@ class EnvironmentConfigEvent extends Event
     /**
      * @return array
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         return $this->data()['config'];
     }
 
     /**
      * @param array $config
+     *
+     * @return $this
      */
-    public function setConfig(array $config)
+    public function setConfig(array $config): EnvironmentConfigEvent
     {
         $conf = array_replace_recursive($this->data['config'], $config);
         $this->data = array_merge($this->data, ['config' => $conf]);
+
+        return $this;
     }
 }

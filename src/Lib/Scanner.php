@@ -4,6 +4,11 @@ namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use FilesystemIterator;
+use Iterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use RegexIterator;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
@@ -17,7 +22,7 @@ class Scanner
      *
      * @return array
      */
-    public static function all()
+    public static function all(): array
     {
         $sections = [];
 
@@ -65,7 +70,7 @@ class Scanner
      *
      * @return array
      */
-    protected static function clearEmptySections(array $sections)
+    protected static function clearEmptySections(array $sections): array
     {
         array_walk($sections, function ($templates, $index) use (&$sections) {
             if (count($templates) == 0) {
@@ -81,7 +86,7 @@ class Scanner
      *
      * @return array
      */
-    protected static function pluginsWithTemplates()
+    protected static function pluginsWithTemplates(): array
     {
         $plugins = Plugin::loaded();
 
@@ -105,7 +110,7 @@ class Scanner
      *
      * @return array
      */
-    protected static function iteratePath($path)
+    protected static function iteratePath($path): array
     {
         return static::walkIterator(static::setupIterator($path));
     }
@@ -115,20 +120,20 @@ class Scanner
      *
      * @param string $path Path to setup iterator for.
      *
-     * @return \Iterator
+     * @return Iterator
      */
-    protected static function setupIterator($path)
+    protected static function setupIterator($path): Iterator
     {
-        return new \RegexIterator(new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator(
+        return new RegexIterator(new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator(
                 $path,
-                \FilesystemIterator::KEY_AS_PATHNAME |
-                \FilesystemIterator::CURRENT_AS_FILEINFO |
-                \FilesystemIterator::SKIP_DOTS
+                FilesystemIterator::KEY_AS_PATHNAME |
+                FilesystemIterator::CURRENT_AS_FILEINFO |
+                FilesystemIterator::SKIP_DOTS
             ),
-            \RecursiveIteratorIterator::CHILD_FIRST,
-            \RecursiveIteratorIterator::CATCH_GET_CHILD
-        ), '/.*?' . TwigView::EXT . '$/', \RegexIterator::GET_MATCH);
+            RecursiveIteratorIterator::CHILD_FIRST,
+            RecursiveIteratorIterator::CATCH_GET_CHILD
+        ), '/.*?' . TwigView::EXT . '$/', RegexIterator::GET_MATCH);
     }
 
     /**
@@ -138,7 +143,7 @@ class Scanner
      *
      * @return array
      */
-    protected static function walkIterator(\Iterator $iterator)
+    protected static function walkIterator(Iterator $iterator): array
     {
         $items = [];
 
