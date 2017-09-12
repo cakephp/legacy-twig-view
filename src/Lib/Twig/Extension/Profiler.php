@@ -18,15 +18,14 @@ use Twig\Profiler\Profile;
  * Class Basic.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Profiler extends ProfilerExtension
+final class Profiler extends ProfilerExtension
 {
     /**
      * Enter $profile.
      *
      * @param \Twig\Profiler\Profile $profile Profile.
-     *
      */
-    public function enter(Profile $profile): Profile
+    public function enter(Profile $profile)
     {
         $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
         DebugTimer::start($name, __d('twig_view', $name));
@@ -38,9 +37,8 @@ class Profiler extends ProfilerExtension
      * Leave $profile.
      *
      * @param \Twig\Profiler\Profile $profile Profile.
-     *
      */
-    public function leave(Profile $profile): Profile
+    public function leave(Profile $profile)
     {
         parent::leave($profile);
 
