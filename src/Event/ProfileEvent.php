@@ -13,7 +13,7 @@ namespace WyriHaximus\TwigView\Event;
 use Cake\Event\Event;
 use Twig\Profiler\Profile;
 
-class ProfileEvent extends Event
+final class ProfileEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.profile';
 

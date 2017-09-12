@@ -18,7 +18,7 @@ use Twig\TwigFunction;
  * Class View.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class View extends AbstractExtension
+final class View extends AbstractExtension
 {
     /**
      * View to call methods upon.

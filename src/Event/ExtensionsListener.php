@@ -31,7 +31,7 @@ use WyriHaximus\TwigView\Lib\Twig\Extension;
  * Class ExtensionsListener.
  * @package WyriHaximus\TwigView\Event
  */
-class ExtensionsListener implements EventListenerInterface
+final class ExtensionsListener implements EventListenerInterface
 {
     /**
      * Return implemented events.

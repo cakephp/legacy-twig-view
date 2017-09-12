@@ -19,7 +19,7 @@ use WyriHaximus\TwigView\Lib\Twig\Extension;
  * Class ExtensionsListener.
  * @package WyriHaximus\TwigView\Event
  */
-class ProfilerListener implements EventListenerInterface
+final class ProfilerListener implements EventListenerInterface
 {
     /**
      * Return implemented events.

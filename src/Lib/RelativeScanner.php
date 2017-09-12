@@ -8,7 +8,7 @@ use Cake\Core\App;
  * Class RelativeScanner.
  * @package WyriHaximus\TwigView\Lib
  */
-class RelativeScanner
+final class RelativeScanner
 {
     /**
      * Return all sections (app & plugins) with an Template directory.

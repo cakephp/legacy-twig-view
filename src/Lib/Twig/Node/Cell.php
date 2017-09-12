@@ -19,7 +19,7 @@ use Twig\Node\NodeOutputInterface;
  * Class Cell.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Cell extends Node implements NodeOutputInterface
+final class Cell extends Node implements NodeOutputInterface
 {
 
     /**

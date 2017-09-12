@@ -13,7 +13,7 @@ namespace WyriHaximus\TwigView\Event;
 use Cake\Event\Event;
 use Twig\Loader\LoaderInterface;
 
-class LoaderEvent extends Event
+final class LoaderEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.loader';
 

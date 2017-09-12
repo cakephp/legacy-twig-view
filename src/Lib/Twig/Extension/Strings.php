@@ -18,7 +18,7 @@ use Twig\TwigFunction;
  * Class Strings.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Strings extends AbstractExtension
+final class Strings extends AbstractExtension
 {
     /**
      * Get declared filters.

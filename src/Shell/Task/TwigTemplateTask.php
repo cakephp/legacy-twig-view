@@ -19,7 +19,7 @@ use Cake\Utility\Inflector;
  * Task class for creating and updating twig view template files.
  *
  */
-class TwigTemplateTask extends TemplateTask
+class TwigTemplateTask extends TemplateTask // FIXME Class "WyriHaximus\TwigView\Shell\Task\TwigTemplateTask" is declared "final" and cannot be mocked.
 {
     /**
      * FIXME missing docblock.

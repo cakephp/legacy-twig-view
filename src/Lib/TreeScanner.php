@@ -6,7 +6,7 @@ namespace WyriHaximus\TwigView\Lib;
  * Class TreeScanner.
  * @package WyriHaximus\TwigView\Lib
  */
-class TreeScanner
+final class TreeScanner
 {
     /**
      * Return all sections (app & plugins) with an Template directory.

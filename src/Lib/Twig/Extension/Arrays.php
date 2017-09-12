@@ -17,7 +17,7 @@ use Twig\TwigFunction;
  * Class Arrays.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Arrays extends AbstractExtension
+final class Arrays extends AbstractExtension
 {
     /**
      * Get declared functions.

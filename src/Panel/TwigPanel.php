@@ -5,7 +5,7 @@ namespace WyriHaximus\TwigView\Panel;
 use DebugKit\DebugPanel;
 use WyriHaximus\TwigView\Lib\TreeScanner;
 
-class TwigPanel extends DebugPanel
+final class TwigPanel extends DebugPanel
 {
     /**
      * Plugin name.

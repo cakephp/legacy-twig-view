@@ -12,7 +12,7 @@ namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
 
-class EnvironmentConfigEvent extends Event
+final class EnvironmentConfigEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.environment';
 

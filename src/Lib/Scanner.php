@@ -15,7 +15,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class Scanner.
  * @package WyriHaximus\TwigView\Lib
  */
-class Scanner
+final class Scanner
 {
     /**
      * Return all sections (app & plugins) with an Template directory.

@@ -18,7 +18,7 @@ use Twig\Node\Node;
  * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Element extends Node
+final class Element extends Node
 {
     /**
      * Constructor.

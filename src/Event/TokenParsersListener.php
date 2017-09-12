@@ -17,7 +17,7 @@ use WyriHaximus\TwigView\Lib\Twig\TokenParser;
  * Class TokenParsersListener.
  * @package WyriHaximus\TwigView\Event
  */
-class TokenParsersListener implements EventListenerInterface
+final class TokenParsersListener implements EventListenerInterface
 {
     /**
      * Return implemented events.

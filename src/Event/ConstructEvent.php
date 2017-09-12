@@ -14,7 +14,7 @@ use Cake\Event\Event;
 use Twig\Environment;
 use WyriHaximus\TwigView\View\TwigView;
 
-class ConstructEvent extends Event
+final class ConstructEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.construct';
 

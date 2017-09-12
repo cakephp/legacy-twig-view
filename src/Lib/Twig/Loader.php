@@ -22,7 +22,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class Loader.
  * @package WyriHaximus\TwigView\Lib\Twig
  */
-class Loader implements LoaderInterface, SourceContextLoaderInterface
+final class Loader implements LoaderInterface, SourceContextLoaderInterface
 {
     /**
      * Get the file contents of a template.

@@ -17,7 +17,7 @@ use Twig\TwigFilter;
  * Class Basic.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Basic extends AbstractExtension
+final class Basic extends AbstractExtension
 {
     /**
      * Get declared filters.

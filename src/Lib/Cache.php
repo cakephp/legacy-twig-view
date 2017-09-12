@@ -5,7 +5,7 @@ namespace WyriHaximus\TwigView\Lib;
 use Asm89\Twig\CacheExtension\CacheProviderInterface;
 use Cake\Cache\Cache as CakeCache;
 
-class Cache implements CacheProviderInterface
+final class Cache implements CacheProviderInterface
 {
     const CACHE_PREFIX = 'twig-view-in-template-item-';
 

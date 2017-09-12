@@ -18,7 +18,7 @@ use Twig\TwigFunction;
  * Class Number.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Number extends AbstractExtension
+final class Number extends AbstractExtension
 {
     /**
      * Get declared functions.
