@@ -21,7 +21,7 @@ final class LoaderEvent extends Event
      * @param  \Twig\Loader\LoaderInterface $loader
      * @return LoaderEvent
      */
-    public static function create(LoaderInterface $loader)
+    public static function create(LoaderInterface $loader): LoaderEvent
     {
         return new static(static::EVENT, $loader, [
             'loader' => $loader,
