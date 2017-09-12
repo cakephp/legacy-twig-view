@@ -13,7 +13,6 @@ namespace WyriHaximus\TwigView\Event;
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-// use Ajgl\Twig\Extension\BreakpointExtension; // FIXME Not ported to Twig 2.x yet
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Core\Configure;
@@ -87,10 +86,5 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new PcreExtension());
         $event->getTwig()->addExtension(new TextExtension());
         $event->getTwig()->addExtension(new ArrayExtension());
-
-        // Breakpoint extension
-        if (Configure::read('debug') === true) {
-            // $event->getTwig()->addExtension(new BreakpointExtension()); // FIXME Not ported to Twig 2.x yet
-        }
     }
 }

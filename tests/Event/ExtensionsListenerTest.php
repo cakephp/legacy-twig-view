@@ -10,7 +10,6 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-// use Ajgl\Twig\Extension\BreakpointExtension; // FIXME not ready for Twig 2.x yet
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
@@ -84,7 +83,6 @@ class ExtensionsListenerTest extends TestCase
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
         Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
-        // Phake::verify($twig)->addExtension($this->isInstanceOf(BreakpointExtension::class));  // FIXME Not ported to Twig 2.x yet
     }
 
     public function testConstructDebugFalse()
@@ -97,6 +95,5 @@ class ExtensionsListenerTest extends TestCase
         (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
 
         Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
-        Phake::verify($twig, Phake::never())->addExtension($this->isInstanceOf(BreakpointExtension::class));
     }
 }
