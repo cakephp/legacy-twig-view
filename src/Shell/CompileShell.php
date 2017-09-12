@@ -21,7 +21,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class CompileTemplatesShell.
  * @package WyriHaximus\TwigView\Console\Command
  */
-class CompileShell extends Shell // FIXME InvalidArgumentException: Final classes cannot be mocked.
+class CompileShell extends Shell
 {
 
     /**

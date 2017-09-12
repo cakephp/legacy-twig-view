@@ -26,7 +26,7 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
  * Class TwigView.
  * @package WyriHaximus\TwigView\View
  */
-class TwigView extends View // FIXME: PHP Fatal error:  Class App\View\AppView may not inherit from final class (WyriHaximus\TwigView\View\TwigView)
+class TwigView extends View
 {
     const EXT = '.twig';
 
