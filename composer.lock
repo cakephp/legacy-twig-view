@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "43a1da535e7642806239bc4804f59154",
+    "content-hash": "2aa20572b25e0b869e179569f1583c85",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
