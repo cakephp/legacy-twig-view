@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,19 +7,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use Twig\Error\LoaderError;
+use Twig\Loader\LoaderInterface;
+use Twig\Loader\SourceContextLoaderInterface;
+use Twig\Source;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
- * Class Loader
+ * Class Loader.
  * @package WyriHaximus\TwigView\Lib\Twig
  */
-class Loader implements \Twig_LoaderInterface
+final class Loader implements LoaderInterface, SourceContextLoaderInterface
 {
-
     /**
      * Get the file contents of a template.
      *
@@ -28,10 +31,28 @@ class Loader implements \Twig_LoaderInterface
      *
      * @return string
      */
-    public function getSource($name)
+    public function getSource($name): string
     {
         $name = $this->resolveFileName($name);
+
         return file_get_contents($name);
+    }
+
+    /**
+     * Returns the source context for a given template logical name.
+     *
+     * @param string $name The template logical name.
+     *
+     * @throws Twig\Error\Loader When $name is not found
+     * @return Twig\Source
+     *
+     */
+    public function getSourceContext($name): Source
+    {
+        $code = $this->getSource($name);
+        $path = $this->getFilename($name);
+
+        return new Source($code, $name, $path);
     }
 
     /**
@@ -41,7 +62,7 @@ class Loader implements \Twig_LoaderInterface
      *
      * @return string
      */
-    public function getCacheKey($name)
+    public function getCacheKey($name): string
     {
         return $this->resolveFileName($name);
     }
@@ -49,15 +70,33 @@ class Loader implements \Twig_LoaderInterface
     /**
      * Check if template is still fresh.
      *
-     * @param string  $name Template.
-     * @param integer $time Timestamp.
+     * @param string $name Template.
+     * @param int    $time Timestamp.
      *
-     * @return boolean
+     * @return bool
      */
-    public function isFresh($name, $time)
+    public function isFresh($name, $time): bool
     {
         $name = $this->resolveFileName($name);
+
         return filemtime($name) < $time;
+    }
+
+    /**
+     * Check if we have the source code of a template, given its name.
+     *
+     * @param string $name The name of the template to check if we can load.
+     *
+     * @return bool If the template source code is handled by this loader or not.
+     */
+    public function exists($name): bool
+    {
+        $filename = $this->getFilename($name);
+        if ($filename === false) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -65,23 +104,36 @@ class Loader implements \Twig_LoaderInterface
      *
      * @param string $name Template.
      *
+     * @throws \Twig\Error\LoaderError Thrown when template file isn't found.
      * @return string
      *
-     * @throws \Twig_Error_Loader Thrown when template file isn't found.
      */
-    // @codingStandardsIgnoreStart
-    protected function resolveFileName($name)
+    protected function resolveFileName($name): string
     {
-        // @codingStandardsIgnoreEnd
+        $filename = $this->getFilename($name);
+        if ($filename === false) {
+            throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
+        }
+
+        return $filename;
+    }
+
+    /**
+     * Get template filename.
+     *
+     * @param string $name Template.
+     *
+     * @return string|false
+     *
+     */
+    protected function getFilename($name)
+    {
         if (file_exists($name)) {
             return $name;
         }
 
         list($plugin, $file) = pluginSplit($name);
-        foreach ([
-            null,
-            $plugin,
-        ] as $scope) {
+        foreach ([null, $plugin] as $scope) {
             $paths = $this->getPaths($scope);
             foreach ($paths as $path) {
                 $filePath = $path . $file;
@@ -96,7 +148,7 @@ class Loader implements \Twig_LoaderInterface
             }
         }
 
-        throw new \Twig_Error_Loader(sprintf('Template "%s" is not defined.', $name));
+        return false;
     }
 
     /**
@@ -106,7 +158,7 @@ class Loader implements \Twig_LoaderInterface
      *
      * @return array
      */
-    protected function getPaths($plugin)
+    protected function getPaths($plugin): array
     {
         if ($plugin === null || !Plugin::loaded($plugin)) {
             return App::path('Template');

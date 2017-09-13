@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,28 +7,31 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 /**
- * Class I18n
+ * Class I18n.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class I18n extends \Twig_Extension
+final class I18n extends AbstractExtension
 {
-
     /**
      * Get declared functions.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('__', '__'),
-            new \Twig_SimpleFunction('__d', '__d'),
-            new \Twig_SimpleFunction('__n', '__n'),
-            new \Twig_SimpleFunction('__x', '__x'),
-            new \Twig_SimpleFunction('__dn', '__dn'),
+            new TwigFunction('__', '__'),
+            new TwigFunction('__d', '__d'),
+            new TwigFunction('__n', '__n'),
+            new TwigFunction('__x', '__x'),
+            new TwigFunction('__dn', '__dn'),
         ];
     }
 
@@ -38,7 +40,7 @@ class I18n extends \Twig_Extension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'i18n';
     }

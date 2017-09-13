@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,21 +7,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
+use Twig\Environment;
 use WyriHaximus\TwigView\View\TwigView;
 
-class ConstructEvent extends Event
+final class ConstructEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.construct';
 
     /**
-     * @param TwigView $twigView
-     * @param \Twig_Environment $twig
+     * @param  TwigView          $twigView
+     * @param  \Twig\Environment $twig
      * @return static
      */
-    public static function create(TwigView $twigView, \Twig_Environment $twig)
+    public static function create(TwigView $twigView, Environment $twig): ConstructEvent
     {
         return new static(static::EVENT, $twigView, [
             'twigView' => $twigView,
@@ -33,15 +34,15 @@ class ConstructEvent extends Event
     /**
      * @return TwigView
      */
-    public function getTwigView()
+    public function getTwigView(): TwigView
     {
         return $this->data()['twigView'];
     }
 
     /**
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
-    public function getTwig()
+    public function getTwig(): Environment
     {
         return $this->data()['twig'];
     }

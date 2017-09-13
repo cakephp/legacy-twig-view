@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
@@ -16,18 +16,17 @@ use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\View\View;
 use Exception;
+use Twig\Environment;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
- * Class TwigView
+ * Class TwigView.
  * @package WyriHaximus\TwigView\View
  */
-// @codingStandardsIgnoreStart
 class TwigView extends View
-// @codingStandardsIgnoreEnd
 {
     const EXT = '.twig';
 
@@ -38,9 +37,7 @@ class TwigView extends View
      *
      * @var string
      */
-    // @codingStandardsIgnoreStart
     protected $_ext = self::EXT;
-    // @codingStandardsIgnoreEnd
 
     /**
      * @var array
@@ -54,7 +51,7 @@ class TwigView extends View
     /**
      * Twig instance.
      *
-     * @var \Twig_Environment
+     * @var \Twig\Environment
      */
     protected $twig;
 
@@ -91,7 +88,7 @@ class TwigView extends View
         }
         $this->eventManager = $eventManager;
 
-        $this->twig = new \Twig_Environment($this->getLoader(), $this->resolveConfig());
+        $this->twig = new Environment($this->getLoader(), $this->resolveConfig());
 
         $this->eventManager->dispatch(ConstructEvent::create($this, $this->twig));
 
@@ -102,28 +99,55 @@ class TwigView extends View
     }
 
     /**
+     * @param string $extension
+     */
+    public function unshiftExtension($extension)
+    {
+        array_unshift($this->extensions, $extension);
+    }
+
+    /**
+     * Get twig environment instance.
+     *
+     * @return \Twig\Environment
+     */
+    public function getTwig(): Environment
+    {
+        return $this->twig;
+    }
+
+    /**
      * @return array
      */
-    protected function resolveConfig()
+    protected function resolveConfig(): array
     {
+        $charset = 'utf-8';
+        if (Configure::read('App.encoding') !== null) {
+            $charset = strtolower(Configure::read('App.encoding'));
+        }
+        $debugFlag = false;
+        if (Configure::read('App.encoding') === true) {
+            $debugFlag = true;
+        }
         $config = [
             'cache' => CACHE . 'twigView' . DS,
-            'charset' => strtolower(Configure::read('App.encoding')),
-            'auto_reload' => Configure::read('debug'),
-            'debug' => Configure::read('debug'),
+            'charset' => $charset,
+            'auto_reload' => $debugFlag,
+            'debug' => $debugFlag,
         ];
 
         $config = array_replace($config, $this->readConfig());
 
         $configEvent = EnvironmentConfigEvent::create($config);
         $this->eventManager->dispatch($configEvent);
+
         return $configEvent->getConfig();
     }
 
     /**
      * @return array
      */
-    protected function readConfig()
+    protected function readConfig(): array
     {
         if (!Configure::check(static::ENV_CONFIG)) {
             return [];
@@ -138,34 +162,26 @@ class TwigView extends View
     }
 
     /**
-     * @param string $extension
-     */
-    public function unshiftExtension($extension)
-    {
-        array_unshift($this->extensions, $extension);
-    }
-
-    /**
      * Create the template loader.
      *
-     * @return \Twig_LoaderInterface
+     * @return \WyriHaximus\TwigView\Lib\Twig\Loader
      */
-    protected function getLoader()
+    protected function getLoader(): Loader
     {
         $event = LoaderEvent::create(new Loader());
         $this->eventManager->dispatch($event);
+
         return $event->getResultLoader();
     }
 
     /**
      * Create a useful helper list.
      *
-     * @return void
      */
     protected function generateHelperList()
     {
         $registry = $this->helpers();
-        
+
         $helpersList = array_merge($this->helpers, $registry->loaded());
         $helpers = $registry->normalizeArray($helpersList);
         foreach ($helpers as $properties) {
@@ -183,19 +199,15 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    // @codingStandardsIgnoreStart
-    protected function _render($viewFile, $data = array())
+    protected function _render($viewFile, $data = []): string
     {
-        // @codingStandardsIgnoreEnd
         if (empty($data)) {
             $data = $this->viewVars;
         }
 
         if (substr($viewFile, -3) === 'ctp') {
             $out = parent::_render($viewFile, $data);
-            // @codingStandardsIgnoreStart
         } else {
-            // @codingStandardsIgnoreEnd
             $data = array_merge(
                 $data,
                 $this->helperList,
@@ -204,7 +216,6 @@ class TwigView extends View
                 ]
             );
 
-            // @codingStandardsIgnoreStart
             try {
                 $out = $this->getTwig()->loadTemplate($viewFile)->render($data);
             } catch (Exception $e) {
@@ -216,21 +227,18 @@ class TwigView extends View
                     throw $e;
                 }
             }
-            // @codingStandardsIgnoreEnd
         }
 
         return $out;
     }
 
     /**
-     * @param string|null $name
-     * @return string
+     * @param  string|null $name
      * @throws \Exception
+     * @return string
      */
-    // @codingStandardsIgnoreStart
     protected function _getViewFileName($name = null)
     {
-        // @codingStandardsIgnoreEnd
         $rethrow = new \Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
@@ -245,14 +253,12 @@ class TwigView extends View
     }
 
     /**
-     * @param string|null $name
-     * @return string
+     * @param  string|null $name
      * @throws \Exception
+     * @return string
      */
-    // @codingStandardsIgnoreStart
-    protected function _getLayoutFileName($name = null)
+    protected function _getLayoutFileName($name = null): string
     {
-        // @codingStandardsIgnoreEnd
         $rethrow = new \Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
@@ -267,15 +273,13 @@ class TwigView extends View
     }
 
     /**
-     * @param string $name
-     * @param bool $pluginCheck
-     * @return string
+     * @param  string     $name
+     * @param  bool       $pluginCheck
      * @throws \Exception
+     * @return string
      */
-    // @codingStandardsIgnoreStart
-    protected function _getElementFileName($name, $pluginCheck = true)
+    protected function _getElementFileName($name, $pluginCheck = true): string
     {
-        // @codingStandardsIgnoreEnd
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
             $result = parent::_getElementFileName($name, $pluginCheck);
@@ -285,15 +289,5 @@ class TwigView extends View
         }
 
         return false;
-    }
-
-    /**
-     * Get twig environment instance.
-     *
-     * @return \Twig_Environment
-     */
-    public function getTwig()
-    {
-        return $this->twig;
     }
 }

@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,12 +7,12 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Event;
 
 use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-use Ajgl\Twig\Extension\BreakpointExtension;
 use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
 use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Core\Configure;
@@ -22,22 +21,23 @@ use Jasny\Twig\ArrayExtension;
 use Jasny\Twig\DateExtension;
 use Jasny\Twig\PcreExtension;
 use Jasny\Twig\TextExtension;
+use Twig\Extension\DebugExtension;
+use Twig\Extension\StringLoaderExtension;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
-use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 /**
- * Class ExtensionsListener
+ * Class ExtensionsListener.
  * @package WyriHaximus\TwigView\Event
  */
-class ExtensionsListener implements EventListenerInterface
+final class ExtensionsListener implements EventListenerInterface
 {
     /**
      * Return implemented events.
      *
      * @return array
      */
-    public function implementedEvents()
+    public function implementedEvents(): array
     {
         return [
             ConstructEvent::EVENT => 'construct',
@@ -48,27 +48,22 @@ class ExtensionsListener implements EventListenerInterface
      * Event handler.
      *
      * @param ConstructEvent $event Event.
-     *
-     * @return void
      */
-    // @codingStandardsIgnoreStart
     public function construct(ConstructEvent $event)
     {
-        // @codingStandardsIgnoreEnd
-        // @codingStandardsIgnoreStart
         // Twig core extensions
-        $event->getTwig()->addExtension(new \Twig_Extension_StringLoader);
-        $event->getTwig()->addExtension(new \Twig_Extension_Debug);
+        $event->getTwig()->addExtension(new StringLoaderExtension());
+        $event->getTwig()->addExtension(new DebugExtension());
 
         // CakePHP bridging extensions
-        $event->getTwig()->addExtension(new Extension\I18n);
-        $event->getTwig()->addExtension(new Extension\Time);
-        $event->getTwig()->addExtension(new Extension\Basic);
-        $event->getTwig()->addExtension(new Extension\Number);
-        $event->getTwig()->addExtension(new Extension\Utils);
-        $event->getTwig()->addExtension(new Extension\Arrays);
-        $event->getTwig()->addExtension(new Extension\Strings);
-        $event->getTwig()->addExtension(new Extension\Inflector);
+        $event->getTwig()->addExtension(new Extension\I18n());
+        $event->getTwig()->addExtension(new Extension\Time());
+        $event->getTwig()->addExtension(new Extension\Basic());
+        $event->getTwig()->addExtension(new Extension\Number());
+        $event->getTwig()->addExtension(new Extension\Utils());
+        $event->getTwig()->addExtension(new Extension\Arrays());
+        $event->getTwig()->addExtension(new Extension\Strings());
+        $event->getTwig()->addExtension(new Extension\Inflector());
 
         // Markdown extension
         if (
@@ -91,13 +86,5 @@ class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new PcreExtension());
         $event->getTwig()->addExtension(new TextExtension());
         $event->getTwig()->addExtension(new ArrayExtension());
-
-
-        // Breakpoint extension
-        if (Configure::read('debug') === true) {
-            $event->getTwig()->addExtension(new BreakpointExtension());
-        }
-
-        // @codingStandardsIgnoreEnd
     }
 }

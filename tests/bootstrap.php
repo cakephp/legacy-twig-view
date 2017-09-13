@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 
@@ -18,42 +17,42 @@ $TMP->create(TMP . 'cache/views', 0777);
 
 Configure::write('debug', true);
 if (!getenv('db_dsn')) {
-	putenv('db_dsn=sqlite:///:memory:');
+    putenv('db_dsn=sqlite:///:memory:');
 }
 ConnectionManager::config('test', ['url' => getenv('db_dsn')]);
 
 Cake\Core\Plugin::load(
-	'TwigView',
-	[
-		'namespace' => 'WyriHaximus\TwigView',
-		'path' => PLUGIN_REPO_ROOT,
-	]
+    'TwigView',
+    [
+        'namespace' => 'WyriHaximus\TwigView',
+        'path' => PLUGIN_REPO_ROOT,
+    ]
 );
 Cake\Core\Plugin::load(
-	'Bake',
-	[
-		'namespace' => 'Bake',
-		'path' => dirname(__DIR__) . '/vendor/cakephp/bake/',
-	]
+    'Bake',
+    [
+        'namespace' => 'Bake',
+        'path' => dirname(__DIR__) . '/vendor/cakephp/bake/',
+    ]
 );
 Cake\Core\Configure::write(
-	'App',
-	[
-		'namespace' => 'App'
-	]
+    'App',
+    [
+        'namespace' => 'App',
+    ]
 );
 
 $cache = [
-	'default' => [
-		'engine' => 'File'
-	],
-	'_cake_core_' => [
-		'className' => 'File',
-		'prefix' => '_cake_core_',
-		'path' => CACHE . 'persistent/',
-		'serialize' => true,
-		'duration' => '+10 seconds'
-	],
+    'default' => [
+        'engine' => 'File',
+    ],
+    '_cake_core_' => [
+        'className' => 'File',
+        'prefix' => '_cake_core_',
+        'path' => CACHE . 'persistent/',
+        'serialize' => true,
+        'duration' => '+10 seconds',
+    ],
 ];
 
 Cake\Cache\Cache::config($cache);

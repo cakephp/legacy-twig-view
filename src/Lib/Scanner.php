@@ -1,26 +1,29 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use FilesystemIterator;
+use Iterator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use RegexIterator;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
- * Class Scanner
+ * Class Scanner.
  * @package WyriHaximus\TwigView\Lib
  */
-class Scanner
+final class Scanner
 {
     /**
      * Return all sections (app & plugins) with an Template directory.
      *
      * @return array
      */
-    // @codingStandardsIgnoreStart
-    public static function all()
+    public static function all(): array
     {
-        // @codingStandardsIgnoreEnd
         $sections = [];
 
         foreach (App::path('Template') as $path) {
@@ -43,46 +46,6 @@ class Scanner
     }
 
     /**
-     * Check sections a remove the ones without anything in them.
-     *
-     * @param array $sections Sections to check.
-     *
-     * @return array
-     */
-    protected static function clearEmptySections(array $sections)
-    {
-        array_walk($sections, function ($templates, $index) use (&$sections) {
-            if (count($templates) == 0) {
-                unset($sections[$index]);
-            }
-        });
-
-        return $sections;
-    }
-
-    /**
-     * Finds all plugins with a Template directory.
-     *
-     * @return array
-     */
-    protected static function pluginsWithTemplates()
-    {
-        $plugins = Plugin::loaded();
-
-        array_walk($plugins, function ($plugin, $index) use (&$plugins) {
-            $paths = App::path('Template', $plugin);
-
-            array_walk($paths, function ($path, $index) use (&$paths) {
-                if (!is_dir($path)) {
-                    unset($paths[$index]);
-                }
-            });
-        });
-
-        return $plugins;
-    }
-
-    /**
      * Return all templates for a given plugin.
      *
      * @param string $plugin The plugin to find all templates for.
@@ -101,13 +64,53 @@ class Scanner
     }
 
     /**
+     * Check sections a remove the ones without anything in them.
+     *
+     * @param array $sections Sections to check.
+     *
+     * @return array
+     */
+    protected static function clearEmptySections(array $sections): array
+    {
+        array_walk($sections, function ($templates, $index) use (&$sections) {
+            if (count($templates) == 0) {
+                unset($sections[$index]);
+            }
+        });
+
+        return $sections;
+    }
+
+    /**
+     * Finds all plugins with a Template directory.
+     *
+     * @return array
+     */
+    protected static function pluginsWithTemplates(): array
+    {
+        $plugins = Plugin::loaded();
+
+        array_walk($plugins, function ($plugin, $index) use (&$plugins) {
+            $paths = App::path('Template', $plugin);
+
+            array_walk($paths, function ($path, $index) use (&$paths) {
+                if (!is_dir($path)) {
+                    unset($paths[$index]);
+                }
+            });
+        });
+
+        return $plugins;
+    }
+
+    /**
      * Iterage over the given path and return all matching .tpl files in it.
      *
      * @param string $path Path to iterate over.
      *
      * @return array
      */
-    protected static function iteratePath($path)
+    protected static function iteratePath($path): array
     {
         return static::walkIterator(static::setupIterator($path));
     }
@@ -117,20 +120,20 @@ class Scanner
      *
      * @param string $path Path to setup iterator for.
      *
-     * @return \Iterator
+     * @return Iterator
      */
-    protected static function setupIterator($path)
+    protected static function setupIterator($path): Iterator
     {
-        return new \RegexIterator(new \RecursiveIteratorIterator(
-            new \RecursiveDirectoryIterator(
+        return new RegexIterator(new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator(
                 $path,
-                \FilesystemIterator::KEY_AS_PATHNAME |
-                \FilesystemIterator::CURRENT_AS_FILEINFO |
-                \FilesystemIterator::SKIP_DOTS
+                FilesystemIterator::KEY_AS_PATHNAME |
+                FilesystemIterator::CURRENT_AS_FILEINFO |
+                FilesystemIterator::SKIP_DOTS
             ),
-            \RecursiveIteratorIterator::CHILD_FIRST,
-            \RecursiveIteratorIterator::CATCH_GET_CHILD
-        ), '/.*?' . TwigView::EXT . '$/', \RegexIterator::GET_MATCH);
+            RecursiveIteratorIterator::CHILD_FIRST,
+            RecursiveIteratorIterator::CATCH_GET_CHILD
+        ), '/.*?' . TwigView::EXT . '$/', RegexIterator::GET_MATCH);
     }
 
     /**
@@ -140,8 +143,7 @@ class Scanner
      *
      * @return array
      */
-    // @codingStandardsIgnoreStart
-    protected static function walkIterator(\Iterator $iterator)
+    protected static function walkIterator(Iterator $iterator): array
     {
         $items = [];
 
@@ -162,5 +164,4 @@ class Scanner
 
         return $items;
     }
-    // @codingStandardsIgnoreEnd
 }

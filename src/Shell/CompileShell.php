@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,21 +7,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Shell;
 
 use Cake\Console\ConsoleIo;
+use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
 use Cake\Core\Plugin;
 use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
- * Class CompileTemplatesShell
+ * Class CompileTemplatesShell.
  * @package WyriHaximus\TwigView\Console\Command
  */
-// @codingStandardsIgnoreStart
 class CompileShell extends Shell
-// @codingStandardsIgnoreEnd
 {
 
     /**
@@ -49,7 +48,6 @@ class CompileShell extends Shell
      *
      * @param TwigView $twigView TwigView instance.
      *
-     * @return void
      */
     public function setTwigview(TwigView $twigView)
     {
@@ -59,26 +57,22 @@ class CompileShell extends Shell
     /**
      * Compile all templates.
      *
-     * @return void
      */
-    // @codingStandardsIgnoreStart
     public function all()
     {
         $this->out('<info>Compiling all templates</info>');
 
-        foreach(Scanner::all() as $section => $templates) {
+        foreach (Scanner::all() as $section => $templates) {
             $this->out('<info>Compiling ' . $section . '\'s templates</info>');
             $this->walkIterator($templates);
         }
     }
-    // @codingStandardsIgnoreEnd
 
     /**
      * Compile only this plugin.
      *
      * @param string $plugin Plugin name.
      *
-     * @return void
      */
     public function plugin($plugin)
     {
@@ -91,7 +85,6 @@ class CompileShell extends Shell
      *
      * @param string $fileName File to compile.
      *
-     * @return void
      */
     public function file($fileName)
     {
@@ -100,11 +93,38 @@ class CompileShell extends Shell
     }
 
     /**
+     * Set options for this console.
+     *
+     * @return \Cake\Console\ConsoleOptionParser
+     */
+    public function getOptionParser(): ConsoleOptionParser
+    {
+        return parent::getOptionParser()->addSubcommand(
+            'all',
+            [
+                'short' => 'a',
+                'help' => __('Searches and precompiles all twig templates it finds.'),
+            ]
+        )->addSubcommand(
+            'plugin',
+            [
+                'short' => 'p',
+                'help' => __('Searches and precompiles all twig templates for a specific plugin.'),
+            ]
+        )->addSubcommand(
+            'file',
+            [
+                'short' => 'f',
+                'help' => __('Precompile a specific file.'),
+            ]
+        )->description(__('TwigView templates precompiler'));
+    }
+
+    /**
      * Walk over $iterator and compile all templates in it.
      *
      * @param mixed $iterator Iterator to walk over.
      *
-     * @return void
      */
     protected function walkIterator($iterator)
     {
@@ -118,7 +138,6 @@ class CompileShell extends Shell
      *
      * @param string $fileName Template to compile.
      *
-     * @return void
      */
     protected function compileTemplate($fileName)
     {
@@ -132,43 +151,5 @@ class CompileShell extends Shell
             $this->out('<error>' . $fileName . '</error>');
             $this->out('<error>' . $exception->getMessage() . '</error>');
         }
-    }
-
-    /**
-     * Set options for this console.
-     *
-     * @return \Cake\Console\ConsoleOptionParser
-     */
-    // @codingStandardsIgnoreStart
-    public function getOptionParser()
-    {
-        // @codingStandardsIgnoreEnd
-        return parent::getOptionParser()->addSubcommand(
-            'all',
-            [
-                'short' => 'a',
-                // @codingStandardsIgnoreStart
-                'help' => __('Searches and precompiles all twig templates it finds.')
-                // @codingStandardsIgnoreEnd
-            ]
-        )->addSubcommand(
-            'plugin',
-            [
-                'short' => 'p',
-                // @codingStandardsIgnoreStart
-                'help' => __('Searches and precompiles all twig templates for a specific plugin.')
-                // @codingStandardsIgnoreEnd
-            ]
-        )->addSubcommand(
-            'file',
-            [
-                'short' => 'f',
-                // @codingStandardsIgnoreStart
-                'help' => __('Precompile a specific file.')
-                // @codingStandardsIgnoreEnd
-            ]
-        // @codingStandardsIgnoreStart
-        )->description(__('TwigView templates precompiler'));
-        // @codingStandardsIgnoreEnd
     }
 }

@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,27 +7,29 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
+use Twig\Profiler\Profile;
 
-class ProfileEvent extends Event
+final class ProfileEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.profile';
 
     /**
-     * @param \Twig_Profiler_Profile $profile
+     * @param  \Twig\Profiler\Profile $profile
      * @return static
      */
-    public static function create(\Twig_Profiler_Profile $profile)
+    public static function create(Profile $profile): ProfileEvent
     {
         return new static(static::EVENT, $profile);
     }
 
     /**
-     * @return \Twig_Profiler_Profile
+     * @return \Twig\Profiler\Profile
      */
-    public function getLoader()
+    public function getLoader(): Profile
     {
         return $this->subject();
     }

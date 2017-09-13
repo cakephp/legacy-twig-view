@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,14 +7,16 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig\Extension;
 
 use Cake\TestSuite\TestCase;
+use Twig\TokenParser\TokenParserInterface;
 
 abstract class AbstractExtensionTest extends TestCase
 {
     /**
-     * @var \Twig_ExtensionInterface
+     * @var \Twig\Extension\AbstractExtensionInterface
      */
     protected $extension;
 
@@ -34,7 +35,7 @@ abstract class AbstractExtensionTest extends TestCase
         $tokenParsers = $this->extension->getTokenParsers();
         $this->assertTrue(is_array($tokenParsers));
         foreach ($tokenParsers as $tokenParser) {
-            $this->assertTrue($tokenParser instanceof \Twig_TokenParserInterface || $tokenParser instanceof \Twig_TokenParserBrokerInterface);
+            $this->assertTrue($tokenParser instanceof TokenParserInterface);
         }
     }
 
@@ -56,6 +57,13 @@ abstract class AbstractExtensionTest extends TestCase
         }
     }
 
+    public function testName()
+    {
+        $name = $this->extension->getName();
+        $this->assertInternalType('string', $name);
+        $this->assertTrue(strlen($name) > 0);
+    }
+
     protected function getFilter($name)
     {
         $filters = $this->extension->getFilters();
@@ -74,12 +82,5 @@ abstract class AbstractExtensionTest extends TestCase
                 return $function;
             }
         }
-    }
-
-    public function testName()
-    {
-        $name = $this->extension->getName();
-        $this->assertInternalType('string', $name);
-        $this->assertTrue(strlen($name) > 0);
     }
 }

@@ -1,21 +1,21 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
 
 /**
- * Class RelativeScanner
+ * Class RelativeScanner.
  * @package WyriHaximus\TwigView\Lib
  */
-class RelativeScanner
+final class RelativeScanner
 {
     /**
      * Return all sections (app & plugins) with an Template directory.
      *
      * @return array
      */
-    public static function all()
+    public static function all(): array
     {
         return static::strip(Scanner::all());
     }
@@ -41,11 +41,12 @@ class RelativeScanner
      *
      * @return array
      */
-    protected static function strip($sections)
+    protected static function strip($sections): array
     {
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::stripAbsolutePath($paths, $section == 'APP' ? null : $section);
         }
+
         return $sections;
     }
 
@@ -57,7 +58,7 @@ class RelativeScanner
      *
      * @return array
      */
-    protected static function stripAbsolutePath(array $paths, $plugin = null)
+    protected static function stripAbsolutePath(array $paths, $plugin = null): array
     {
         foreach (App::path('Template', $plugin) as $templatesPath) {
             array_walk($paths, function (&$path) use ($templatesPath) {

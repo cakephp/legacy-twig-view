@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,17 +7,18 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use Cake\View\View as CakeView;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
 /**
- * Class View
+ * Class View.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-// @codingStandardsIgnoreStart
-class View extends \Twig_Extension
-// @codingStandardsIgnoreEnd
+final class View extends AbstractExtension
 {
     /**
      * View to call methods upon.
@@ -40,18 +40,18 @@ class View extends \Twig_Extension
     /**
      * Get declared functions.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('elementExists', function ($name) {
+            new TwigFunction('elementExists', function ($name) {
                 return $this->view->elementExists($name);
             }),
-            new \Twig_SimpleFunction('getVars', function () {
+            new TwigFunction('getVars', function () {
                 return $this->view->getVars();
             }),
-            new \Twig_SimpleFunction('get', function ($var, $default = null) {
+            new TwigFunction('get', function ($var, $default = null) {
                 return $this->view->get($var, $default);
             }),
         ];
@@ -62,7 +62,7 @@ class View extends \Twig_Extension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'view';
     }

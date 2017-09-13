@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * This file is part of TwigView.
@@ -8,11 +8,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Shell\Task;
 
 use Bake\Shell\Task\TemplateTask;
 use Cake\Console\Shell;
-use Cake\Core\Configure;
 use Cake\Utility\Inflector;
 
 /**
@@ -21,8 +21,10 @@ use Cake\Utility\Inflector;
  */
 class TwigTemplateTask extends TemplateTask
 {
-
-    public function name()
+    /**
+     * @return string Task name.
+     */
+    public function name(): string
     {
         return 'twig_template';
     }
@@ -30,11 +32,11 @@ class TwigTemplateTask extends TemplateTask
     /**
      * Assembles and writes bakes the twig view file.
      *
-     * @param string $action Action to bake.
-     * @param string $content Content to write.
+     * @param  string $action  Action to bake.
+     * @param  string $content Content to write.
      * @return string Generated file content.
      */
-    public function bake($action, $content = '')
+    public function bake($action, $content = ''): string
     {
         if ($content === true) {
             $content = $this->getContent($action);

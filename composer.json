@@ -5,7 +5,9 @@
     "license": "MIT",
     "keywords": [
         "twig",
+        "twig2",
         "view",
+        "template",
         "cakephp",
         "cakephp3"
     ],
@@ -16,21 +18,24 @@
             "homepage": "http://wyrihaximus.net/"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/inoas/twig-extensions"
+        }
+    ],
     "require": {
-        "php": "^5.5.9 || ^7.0",
-        "ajgl/breakpoint-twig-extension": "^0.3.0",
-        "aptoma/twig-markdown": "^2.0",
+        "php": "^7.0",
+        "aptoma/twig-markdown": "^3.0",
         "asm89/twig-cache-extension": "^1.0",
-        "cakephp/cakephp": "^3.2",
-        "jasny/twig-extensions": "^1.0",
-        "twig/twig": "^1.18"
+        "jasny/twig-extensions": "dev-twig2 as 1.1.0",
+        "cakephp/cakephp": "^3.5.2",
+        "twig/twig": "^2.4.3"
     },
     "require-dev": {
-        "cakephp/bake": "^1.2.2",
-        "cakephp/debug_kit": "^3.0",
-        "phake/phake": "^1.0.4",
-        "phpunit/phpunit": "^4.8 || ^5.0",
-        "squizlabs/php_codesniffer": "^1.5.6",
+        "api-clients/test-utilities": "^4.2.0",
+        "cakephp/bake": "^1.4.1",
+        "cakephp/debug_kit": "^3.11.1",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
     },
     "autoload": {
@@ -45,10 +50,63 @@
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     },
+    "scripts": {
+        "ensure-installed": "composer install --ansi -n -q",
+        "cs": [
+          "@ensure-installed",
+          "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
+        ],
+        "cs-fix": [
+          "@ensure-installed",
+          "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
+        ],
+        "unit": [
+          "@ensure-installed",
+          "phpunit --colors=always -c phpunit.xml.dist"
+        ],
+        "unit-coverage": [
+          "@ensure-installed",
+          "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
+        ],
+        "lint-php": [
+          "@ensure-installed",
+          "parallel-lint --exclude vendor ."
+        ],
+        "qa-all": [
+          "@lint-php",
+          "@cs",
+          "@unit"
+        ],
+        "qa-all-coverage": [
+          "@lint-php",
+          "@cs",
+          "@unit-coverage"
+        ],
+        "qa-windows": [
+          "@lint-php",
+          "@cs",
+          "@unit"
+        ],
+        "qa-ci": [
+          "@unit"
+        ],
+        "qa-ci-extended": [
+          "@qa-all-coverage"
+        ],
+        "qa-ci-windows": [
+          "@qa-windows"
+        ],
+        "qa-contrib": [
+          "@qa-all"
+        ],
+        "ci-coverage": [
+          "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
+        ]
+    },
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "5.5.9"
+            "php": "7.0"
         }
     }
 }

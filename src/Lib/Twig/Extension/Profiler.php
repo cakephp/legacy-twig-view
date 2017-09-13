@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,24 +7,25 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
 use DebugKit\DebugTimer;
+use Twig\Extension\ProfilerExtension;
+use Twig\Profiler\Profile;
 
 /**
- * Class Basic
+ * Class Basic.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Profiler extends \Twig_Extension_Profiler
+final class Profiler extends ProfilerExtension
 {
     /**
      * Enter $profile.
      *
-     * @param \Twig_Profiler_Profile $profile Profile.
-     *
-     * @return void
+     * @param \Twig\Profiler\Profile $profile Profile.
      */
-    public function enter(\Twig_Profiler_Profile $profile)
+    public function enter(Profile $profile)
     {
         $name = 'Twig Template: ' . substr($profile->getName(), strlen(ROOT) + 1);
         DebugTimer::start($name, __d('twig_view', $name));
@@ -36,11 +36,9 @@ class Profiler extends \Twig_Extension_Profiler
     /**
      * Leave $profile.
      *
-     * @param \Twig_Profiler_Profile $profile Profile.
-     *
-     * @return void
+     * @param \Twig\Profiler\Profile $profile Profile.
      */
-    public function leave(\Twig_Profiler_Profile $profile)
+    public function leave(Profile $profile)
     {
         parent::leave($profile);
 
