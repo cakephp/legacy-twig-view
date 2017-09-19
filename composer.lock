@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2aa20572b25e0b869e179569f1583c85",
+    "content-hash": "948fc8edd4d3f0b0b435c87115b4c8a4",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
@@ -308,16 +308,16 @@
         },
         {
             "name": "jasny/twig-extensions",
-            "version": "dev-twig2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/inoas/twig-extensions.git",
-                "reference": "6dd971fad8a1750dc129f6938e820dd08a68ab25"
+                "url": "https://github.com/jasny/twig-extensions.git",
+                "reference": "30bdf3a3903c021544f36332c9d5d4d563527da4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inoas/twig-extensions/zipball/6dd971fad8a1750dc129f6938e820dd08a68ab25",
-                "reference": "6dd971fad8a1750dc129f6938e820dd08a68ab25",
+                "url": "https://api.github.com/repos/jasny/twig-extensions/zipball/30bdf3a3903c021544f36332c9d5d4d563527da4",
+                "reference": "30bdf3a3903c021544f36332c9d5d4d563527da4",
                 "shasum": ""
             },
             "require": {
@@ -340,11 +340,7 @@
                     "Jasny\\Twig\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "classmap": [
-                    "tests/support/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -368,11 +364,7 @@
                 "text",
                 "time"
             ],
-            "support": {
-                "issues": "https://github.com/jasny/twig-extensions/issues",
-                "source": "https://github.com/jasny/twig-extensions"
-            },
-            "time": "2017-09-07T09:47:46+00:00"
+            "time": "2017-09-13 07:38:01"
         },
         {
             "name": "psr/http-message",
@@ -598,16 +590,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "1d23172f9dc1687a97c195a777b0199f14f7b26e"
+                "reference": "2faa791b66bac33ca40031d8bce03b7dc8143490"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/1d23172f9dc1687a97c195a777b0199f14f7b26e",
-                "reference": "1d23172f9dc1687a97c195a777b0199f14f7b26e",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/2faa791b66bac33ca40031d8bce03b7dc8143490",
+                "reference": "2faa791b66bac33ca40031d8bce03b7dc8143490",
                 "shasum": ""
             },
             "require": {
@@ -626,8 +618,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev",
-                    "dev-develop": "1.6-dev"
+                    "dev-master": "1.6-dev",
+                    "dev-develop": "1.7-dev"
                 }
             },
             "autoload": {
@@ -646,7 +638,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2017-08-22T20:38:56+00:00"
+            "time": "2017-09-13T14:47:08+00:00"
         }
     ],
     "packages-dev": [
@@ -694,16 +686,16 @@
         },
         {
             "name": "cakephp/bake",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "53e40910aec77743ed1e30d4925a43b37197729d"
+                "reference": "952f1d4f6d96fe7834a0f9eb39b2bd207ed6629f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/53e40910aec77743ed1e30d4925a43b37197729d",
-                "reference": "53e40910aec77743ed1e30d4925a43b37197729d",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/952f1d4f6d96fe7834a0f9eb39b2bd207ed6629f",
+                "reference": "952f1d4f6d96fe7834a0f9eb39b2bd207ed6629f",
                 "shasum": ""
             },
             "require": {
@@ -737,7 +729,7 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2017-08-19T02:47:18+00:00"
+            "time": "2017-09-15T12:24:02+00:00"
         },
         {
             "name": "cakephp/debug_kit",
@@ -4074,14 +4066,7 @@
             "time": "2014-08-17T16:31:47+00:00"
         }
     ],
-    "aliases": [
-        {
-            "alias": "1.1.0",
-            "alias_normalized": "1.1.0.0",
-            "version": "dev-twig2",
-            "package": "jasny/twig-extensions"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "jasny/twig-extensions": 20,
