@@ -296,4 +296,14 @@ class TwigView extends View
     {
         return $this->twig;
     }
+
+    /**
+     * Return empty string when View instance is cast to string.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return '';
+    }
 }
