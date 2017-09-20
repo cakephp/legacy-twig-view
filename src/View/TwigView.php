@@ -237,14 +237,14 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _getViewFileName($name = null)
+    protected function _getViewFileName($name = null): string
     {
-        $rethrow = new \Exception('You\'re not supposed to get here');
+        $rethrow = new Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
             try {
                 return parent::_getViewFileName($name);
-            } catch (\Exception $exception) {
+            } catch (Exception $exception) {
                 $rethrow = $exception;
             }
         }
@@ -259,12 +259,12 @@ class TwigView extends View
      */
     protected function _getLayoutFileName($name = null): string
     {
-        $rethrow = new \Exception('You\'re not supposed to get here');
+        $rethrow = new Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
             try {
                 return parent::_getLayoutFileName($name);
-            } catch (\Exception $exception) {
+            } catch (Exception $exception) {
                 $rethrow = $exception;
             }
         }
@@ -273,12 +273,11 @@ class TwigView extends View
     }
 
     /**
-     * @param  string     $name
-     * @param  bool       $pluginCheck
-     * @throws \Exception
-     * @return string
+     * @param  string      $name
+     * @param  bool        $pluginCheck
+     * @return string|bool
      */
-    protected function _getElementFileName($name, $pluginCheck = true): string
+    protected function _getElementFileName($name, $pluginCheck = true)
     {
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
@@ -289,5 +288,15 @@ class TwigView extends View
         }
 
         return false;
+    }
+
+    /**
+     * Return empty string when View instance is cast to string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return '';
     }
 }
