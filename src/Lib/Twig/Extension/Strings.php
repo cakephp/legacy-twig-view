@@ -60,6 +60,7 @@ final class Strings extends AbstractExtension
     {
         return [
             new TwigFunction('uuid', 'Cake\Utility\Text::uuid'),
+            new TwigFunction('sprintf', 'sprintf'),
         ];
     }
 
