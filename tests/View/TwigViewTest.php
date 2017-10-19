@@ -71,15 +71,6 @@ class TwigViewTest extends TestCase
         $this->assertTrue($callbackFired);
     }
 
-    public function testGenerateHelperList()
-    {
-        $view = new TwigView(Phake::mock('Cake\Http\ServerRequest'), Phake::mock('Cake\Http\Response'), Phake::mock('Cake\Event\EventManager'));
-
-        $view->loadHelper('TestSecond');
-        $helpers = self::getProperty('helperList')->getValue($view);
-        $this->assertInstanceOf('App\View\Helper\TestSecondHelper', $helpers['TestSecond']);
-    }
-
     public function test_renderCtp()
     {
         $output = 'foo:bar with a beer';

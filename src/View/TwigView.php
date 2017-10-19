@@ -54,13 +54,6 @@ class TwigView extends View
     protected $twig;
 
     /**
-     * Helpers.
-     *
-     * @var \Cake\View\Helper[]
-     */
-    protected $helperList = [];
-
-    /**
      * Initialize view.
      *
      * @return void
@@ -153,24 +146,6 @@ class TwigView extends View
     }
 
     /**
-     * Load helper and add to list of helper instances.
-     *
-     * @param string $name  Name of the helper to load.
-     * @param array $config Settings for the helper.
-     *
-     * @return \Cake\View\Helper A constructed helper object.
-     */
-    public function loadHelper($name, array $config = []): Helper
-    {
-        $helper = parent::loadHelper($name, $config);
-
-        list(, $alias) = pluginSplit($name);
-        $this->helperList[$alias] = $helper;
-
-        return $helper;
-    }
-
-    /**
      * Render the template.
      *
      * @param string $viewFile Template file.
@@ -190,7 +165,7 @@ class TwigView extends View
         } else {
             $data = array_merge(
                 $data,
-                $this->helperList,
+                iterator_to_array($this->helpers()->getIterator()),
                 [
                     '_view' => $this,
                 ]
