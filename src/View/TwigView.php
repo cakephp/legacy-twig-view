@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
+use Cake\View\Helper;
 use Cake\View\View;
 use Exception;
 use Twig\Environment;
@@ -154,11 +155,12 @@ class TwigView extends View
     /**
      * Load helper and add to list of helper instances.
      *
-     * @param string $name Name of the helper to load.
-     * @param array $config Settings for the helper
-     * @return \Cake\View\Helper a constructed helper object.
+     * @param string $name  Name of the helper to load.
+     * @param array $config Settings for the helper.
+     *
+     * @return \Cake\View\Helper A constructed helper object.
      */
-    public function loadHelper($name, array $config = [])
+    public function loadHelper($name, array $config = []): Helper
     {
         $helper = parent::loadHelper($name, $config);
 
