@@ -128,33 +128,18 @@ class TwigViewTest extends TestCase
 
 	public function testGenerateHelperList()
 	{
-		$helpersArray = [
-			'TestHelper',
-		];
-
-		$registery = Phake::mock('Cake\View\HelperRegistry');
-		Phake::when($registery)->normalizeArray($helpersArray)->thenReturn(
-			[
-				[
-					'class' => 'TestHelper',
-				],
-			]
+		$view = new TwigView(
+			Phake::mock('Cake\Network\Request'),
+			Phake::mock('Cake\Network\Response'),
+			Phake::mock('Cake\Event\EventManager'),
+			['helpers' => ['Html']]
 		);
-
-		$view = new TwigView(Phake::mock('Cake\Network\Request'), Phake::mock('Cake\Network\Response'), Phake::mock('Cake\Event\EventManager'));
-		$view->TestHelper = 'foo:bar';
-		$view->helpers = $helpersArray;
 		$view->loadHelper('TestSecond');
-		$view->TestSecond = 'bar:foo';
 
-		self::getMethod('generateHelperList')->invoke($view);
-		$this->assertSame(
-			[
-				'TestHelper' => 'foo:bar',
-				'TestSecond' => 'bar:foo',
-			],
-			self::getProperty('helperList')->getValue($view)
-		);
+		$helperList = self::getMethod('generateHelperList')->invoke($view);
+		$this->assertCount(2, $helperList);
+		$this->assertInstanceOf('Cake\View\Helper\HtmlHelper', $helperList['Html']);
+		$this->assertInstanceOf('App\View\Helper\TestSecondHelper', $helperList['TestSecond']);
 	}
 
 	public function test_renderCtp()
