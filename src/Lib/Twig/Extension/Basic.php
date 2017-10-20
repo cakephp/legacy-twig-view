@@ -27,8 +27,6 @@ class Basic extends \Twig_Extension
         return [
             new \Twig_SimpleFilter('debug', 'debug'),
             new \Twig_SimpleFilter('pr', 'pr'),
-            new \Twig_SimpleFilter('low', 'low'),
-            new \Twig_SimpleFilter('up', 'up'),
             new \Twig_SimpleFilter('env', 'env'),
             new \Twig_SimpleFilter('count', 'count'),
             new \Twig_SimpleFilter('h', 'h'),
