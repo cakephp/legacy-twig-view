@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
 use Asm89\Twig\CacheExtension\CacheProviderInterface;
 use Cake\Cache\Cache as CakeCache;
 
-class Cache implements CacheProviderInterface
+final class Cache implements CacheProviderInterface
 {
     const CACHE_PREFIX = 'twig-view-in-template-item-';
 
@@ -14,13 +14,29 @@ class Cache implements CacheProviderInterface
      *
      * @param string $identifier Identifier for this bit of data to read.
      *
-     * @return mixed
+     * @return mixed The cached data, or false if the data doesn't exist, has expired, or on error while fetching.
      */
     public function fetch($identifier)
     {
         list($config, $key) = $this->configSplit($identifier);
 
         return CakeCache::read(static::CACHE_PREFIX . $key, $config);
+    }
+
+    /**
+     * Save data to the cache.
+     *
+     * @param string $identifier Identifier for this bit of data to write.
+     * @param string $data       Data to cache.
+     * @param int    $lifeTime   Time to life inside the cache.
+     *
+     * @return bool
+     */
+    public function save($identifier, $data, $lifeTime = 0): bool
+    {
+        list($config, $key) = $this->configSplit($identifier);
+
+        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
     }
 
     /**
@@ -31,29 +47,14 @@ class Cache implements CacheProviderInterface
      *
      * @return array
      */
-    protected function configSplit($name, $config = 'default')
+    protected function configSplit($name, $config = 'default'): array
     {
         if (strpos($name, ':') !== false) {
             $parts = explode(':', $name, 2);
+
             return $parts;
         }
 
         return [$config, $name];
-    }
-
-    /**
-     * Save data to the cache.
-     *
-     * @param string  $identifier Identifier for this bit of data to write.
-     * @param string  $data       Data to cache.
-     * @param integer $lifeTime   Time to life inside the cache.
-     *
-     * @return boolean
-     */
-    public function save($identifier, $data, $lifeTime = 0)
-    {
-        list($config, $key) = $this->configSplit($identifier);
-
-        return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
     }
 }

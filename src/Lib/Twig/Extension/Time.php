@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,26 +7,31 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Cake\I18n\Time as CakeTime;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+
 /**
- * Class Time
+ * Class Time.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Time extends \Twig_Extension
+final class Time extends AbstractExtension
 {
     /**
      * Get declared functions.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('time', function ($time = null, $timezone = null) {
-                return new \Cake\I18n\Time($time, $timezone);
+            new TwigFunction('time', function ($time = null, $timezone = null) {
+                return new CakeTime($time, $timezone);
             }),
-            new \Twig_SimpleFunction('timezones', 'Cake\I18n\Time::listTimezones'),
+            new TwigFunction('timezones', 'Cake\I18n\Time::listTimezones'),
         ];
     }
 
@@ -36,7 +40,7 @@ class Time extends \Twig_Extension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'time';
     }

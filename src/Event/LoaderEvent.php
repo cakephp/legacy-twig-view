@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,19 +7,21 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\Event;
+use Twig\Loader\LoaderInterface;
 
-class LoaderEvent extends Event
+final class LoaderEvent extends Event
 {
     const EVENT = 'TwigView.TwigView.loader';
 
     /**
-     * @param \Twig_LoaderInterface $loader
+     * @param  \Twig\Loader\LoaderInterface $loader
      * @return LoaderEvent
      */
-    public static function create(\Twig_LoaderInterface $loader)
+    public static function create(LoaderInterface $loader): LoaderEvent
     {
         return new static(static::EVENT, $loader, [
             'loader' => $loader,
@@ -28,23 +29,23 @@ class LoaderEvent extends Event
     }
 
     /**
-     * @return \Twig_LoaderInterface
+     * @return \Twig\Loader\LoaderInterface
      */
-    public function getLoader()
+    public function getLoader(): LoaderInterface
     {
         return $this->subject();
     }
 
     /**
-     * @return string|Twig_LoaderInterface
+     * @return string|Twig\Loader\LoaderInterface
      */
-    public function getResultLoader()
+    public function getResultLoader(): LoaderInterface
     {
-        if ($this->result instanceof \Twig_LoaderInterface) {
+        if ($this->result instanceof LoaderInterface) {
             return $this->result;
         }
 
-        if (is_array($this->result) && $this->result['loader'] instanceof \Twig_LoaderInterface) {
+        if (is_array($this->result) && $this->result['loader'] instanceof LoaderInterface) {
             return $this->result['loader'];
         }
 

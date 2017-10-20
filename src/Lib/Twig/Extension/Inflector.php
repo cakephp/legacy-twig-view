@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,32 +7,35 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+
 /**
- * Class Inflector
+ * Class Inflector.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Inflector extends \Twig_Extension
+final class Inflector extends AbstractExtension
 {
-
     /**
      * Get filters for this extension.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('pluralize', 'Cake\Utility\Inflector::pluralize'),
-            new \Twig_SimpleFilter('singularize', 'Cake\Utility\Inflector::singularize'),
-            new \Twig_SimpleFilter('camelize', 'Cake\Utility\Inflector::camelize'),
-            new \Twig_SimpleFilter('underscore', 'Cake\Utility\Inflector::underscore'),
-            new \Twig_SimpleFilter('humanize', 'Cake\Utility\Inflector::humanize'),
-            new \Twig_SimpleFilter('tableize', 'Cake\Utility\Inflector::tableize'),
-            new \Twig_SimpleFilter('classify', 'Cake\Utility\Inflector::classify'),
-            new \Twig_SimpleFilter('variable', 'Cake\Utility\Inflector::variable'),
-            new \Twig_SimpleFilter('slug', 'Cake\Utility\Text::slug'),
+            new TwigFilter('pluralize', 'Cake\Utility\Inflector::pluralize'),
+            new TwigFilter('singularize', 'Cake\Utility\Inflector::singularize'),
+            new TwigFilter('camelize', 'Cake\Utility\Inflector::camelize'),
+            new TwigFilter('underscore', 'Cake\Utility\Inflector::underscore'),
+            new TwigFilter('humanize', 'Cake\Utility\Inflector::humanize'),
+            new TwigFilter('tableize', 'Cake\Utility\Inflector::tableize'),
+            new TwigFilter('classify', 'Cake\Utility\Inflector::classify'),
+            new TwigFilter('variable', 'Cake\Utility\Inflector::variable'),
+            new TwigFilter('slug', 'Cake\Utility\Text::slug'),
         ];
     }
 
@@ -42,7 +44,7 @@ class Inflector extends \Twig_Extension
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'inflector';
     }

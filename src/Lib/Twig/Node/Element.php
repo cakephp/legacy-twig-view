@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,27 +7,32 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
+use Twig\Compiler;
+use Twig\Node\Expression\AbstractExpression;
+use Twig\Node\Node;
+
 /**
- * Class Element
+ * Class Element.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-class Element extends \Twig_Node
+final class Element extends Node
 {
     /**
      * Constructor.
      *
-     * @param \Twig_Node_Expression $name    Name.
-     * @param \Twig_Node_Expression $data    Data.
-     * @param \Twig_Node_Expression $options Options.
-     * @param string                $lineno  Linenumber.
-     * @param string                $tag     Tag.
+     * @param \Twig\Node\Expression\AbstractExpression $name    Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data    Data.
+     * @param \Twig\Node\Expression\AbstractExpression $options Options.
+     * @param string                                   $lineno  Linenumber.
+     * @param string                                   $tag     Tag.
      */
     public function __construct(
-        \Twig_Node_Expression $name,
-        \Twig_Node_Expression $data = null,
-        \Twig_Node_Expression $options = null,
+        AbstractExpression $name,
+        AbstractExpression $data = null,
+        AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
@@ -47,11 +51,10 @@ class Element extends \Twig_Node
     /**
      * Compile node.
      *
-     * @param \Twig_Compiler $compiler Compiler.
+     * @param \Twig\Compiler $compiler Compiler.
      *
-     * @return void
      */
-    public function compile(\Twig_Compiler $compiler)
+    public function compile(Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 

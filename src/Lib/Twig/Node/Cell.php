@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -8,41 +7,45 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
+use Twig\Compiler;
+use Twig\Node\Expression\AbstractExpression;
+use Twig\Node\Node;
+use Twig\Node\NodeOutputInterface;
+
 /**
- * Class Cell
+ * Class Cell.
  * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
-// @codingStandardsIgnoreStart
-class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
-// @codingStandardsIgnoreEnd
+final class Cell extends Node implements NodeOutputInterface
 {
 
     /**
      * Whether to assign the data or not.
      *
-     * @var boolean
+     * @var bool
      */
     protected $assign = false;
 
     /**
      * Constructor.
      *
-     * @param boolean               $assign   Assign or echo.
-     * @param mixed                 $variable Variable to assign to.
-     * @param \Twig_Node_Expression $name     Name.
-     * @param \Twig_Node_Expression $data     Data array.
-     * @param \Twig_Node_Expression $options  Options array.
-     * @param string                $lineno   Line number.
-     * @param string                $tag      Tag name.
+     * @param bool                                     $assign   Assign or echo.
+     * @param mixed                                    $variable Variable to assign to.
+     * @param \Twig\Node\Expression\AbstractExpression $name     Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data     Data array.
+     * @param \Twig\Node\Expression\AbstractExpression $options  Options array.
+     * @param string                                   $lineno   Line number.
+     * @param string                                   $tag      Tag name.
      */
     public function __construct(
         $assign,
         $variable,
-        \Twig_Node_Expression $name,
-        \Twig_Node_Expression $data = null,
-        \Twig_Node_Expression $options = null,
+        AbstractExpression $name,
+        AbstractExpression $data = null,
+        AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
@@ -65,21 +68,16 @@ class Cell extends \Twig_Node implements \Twig_NodeOutputInterface
     /**
      * Compile tag.
      *
-     * @param \Twig_Compiler $compiler Compiler.
+     * @param \Twig\Compiler $compiler Compiler.
      *
-     * @return void
      */
-    // @codingStandardsIgnoreStart
-    public function compile(\Twig_Compiler $compiler)
+    public function compile(Compiler $compiler)
     {
-        // @codingStandardsIgnoreEnd
         $compiler->addDebugInfo($this);
 
         if ($this->assign) {
             $compiler->raw('$context[\'' . $this->getAttribute('variable') . '\'] = ');
-            // @codingStandardsIgnoreStart
         } else {
-            // @codingStandardsIgnoreEnd
             $compiler->raw('echo ');
         }
         $compiler->raw('$context[\'_view\']->cell(');

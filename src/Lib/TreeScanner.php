@@ -1,19 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib;
 
 /**
- * Class TreeScanner
+ * Class TreeScanner.
  * @package WyriHaximus\TwigView\Lib
  */
-class TreeScanner
+final class TreeScanner
 {
     /**
      * Return all sections (app & plugins) with an Template directory.
      *
      * @return array
      */
-    public static function all()
+    public static function all(): array
     {
         return static::deepen(RelativeScanner::all());
     }
@@ -39,11 +39,12 @@ class TreeScanner
      *
      * @return array
      */
-    protected static function deepen($sections)
+    protected static function deepen($sections): array
     {
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::convertToTree($paths);
         }
+
         return $sections;
     }
 
@@ -54,7 +55,7 @@ class TreeScanner
      *
      * @return array
      */
-    protected static function convertToTree(array $paths)
+    protected static function convertToTree(array $paths): array
     {
         foreach ($paths as $index => $path) {
             static::convertPathToTree($paths, $index, $path);
@@ -70,7 +71,6 @@ class TreeScanner
      * @param mixed  $index Index of $path.
      * @param string $path  Path to breakup and turn into a tree.
      *
-     * @return void
      */
     protected static function convertPathToTree(array &$paths, $index, $path)
     {
@@ -89,11 +89,12 @@ class TreeScanner
      *
      * @return array
      */
-    protected static function branch(array $paths, array $branches)
+    protected static function branch(array $paths, array $branches): array
     {
         $twig = array_shift($branches);
         if (count($branches) == 0) {
             $paths[] = $twig;
+
             return $paths;
         }
 
