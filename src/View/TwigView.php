@@ -11,9 +11,7 @@
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
-use Cake\Event\EventManager;
-use Cake\Network\Request;
-use Cake\Network\Response;
+use Cake\View\Helper;
 use Cake\View\View;
 use Exception;
 use Twig\Environment;
@@ -56,46 +54,19 @@ class TwigView extends View
     protected $twig;
 
     /**
-     * Helpers.
+     * Initialize view.
      *
-     * @var array
+     * @return void
      */
-    protected $helperList = [];
-
-    /**
-     * Event manager.
-     *
-     * @var EventManager
-     */
-    protected $eventManager;
-
-    /**
-     * Constructor.
-     *
-     * @param Request      $request      Request.
-     * @param Response     $response     Response.
-     * @param EventManager $eventManager EventManager.
-     * @param array        $viewOptions  View options.
-     */
-    public function __construct(
-        Request $request = null,
-        Response $response = null,
-        EventManager $eventManager = null,
-        array $viewOptions = []
-    ) {
-        if ($eventManager === null) {
-            $eventManager = EventManager::instance();
-        }
-        $this->eventManager = $eventManager;
-
+    public function initialize()
+    {
         $this->twig = new Environment($this->getLoader(), $this->resolveConfig());
 
-        $this->eventManager->dispatch(ConstructEvent::create($this, $this->twig));
+        $this->getEventManager()->dispatch(ConstructEvent::create($this, $this->twig));
 
-        parent::__construct($request, $response, $eventManager, $viewOptions);
         $this->_ext = self::EXT;
 
-        $this->generateHelperList();
+        parent::initialize();
     }
 
     /**
@@ -149,7 +120,7 @@ class TwigView extends View
         $config = array_replace($config, $this->readConfig());
 
         $configEvent = EnvironmentConfigEvent::create($config);
-        $this->eventManager->dispatch($configEvent);
+        $this->getEventManager()->dispatch($configEvent);
 
         return $configEvent->getConfig();
     }
@@ -179,25 +150,9 @@ class TwigView extends View
     protected function getLoader(): Loader
     {
         $event = LoaderEvent::create(new Loader());
-        $this->eventManager->dispatch($event);
+        $this->getEventManager()->dispatch($event);
 
         return $event->getResultLoader();
-    }
-
-    /**
-     * Create a useful helper list.
-     *
-     */
-    protected function generateHelperList()
-    {
-        $registry = $this->helpers();
-
-        $helpersList = array_merge($this->helpers, $registry->loaded());
-        $helpers = $registry->normalizeArray($helpersList);
-        foreach ($helpers as $properties) {
-            list(, $class) = pluginSplit($properties['class']);
-            $this->helperList[$class] = $this->{$class};
-        }
     }
 
     /**
@@ -220,7 +175,7 @@ class TwigView extends View
         } else {
             $data = array_merge(
                 $data,
-                $this->helperList,
+                iterator_to_array($this->helpers()->getIterator()),
                 [
                     '_view' => $this,
                 ]
