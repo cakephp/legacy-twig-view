@@ -99,6 +99,16 @@ class TwigView extends View
     }
 
     /**
+     * Return empty string when View instance is cast to string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return '';
+    }
+
+    /**
      * @param string $extension
      */
     public function unshiftExtension($extension)
@@ -288,15 +298,5 @@ class TwigView extends View
         }
 
         return false;
-    }
-
-    /**
-     * Return empty string when View instance is cast to string.
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return '';
     }
 }
