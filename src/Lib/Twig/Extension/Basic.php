@@ -27,16 +27,8 @@ final class Basic extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('debug', 'debug'),
-            new \Twig_SimpleFilter('pr', 'pr'),
-            new \Twig_SimpleFilter('env', 'env'),
-            new \Twig_SimpleFilter('count', 'count'),
-            new \Twig_SimpleFilter('h', 'h'),
-            new \Twig_SimpleFilter('null', function () {
             new TwigFilter('debug', 'debug'),
             new TwigFilter('pr', 'pr'),
-            new TwigFilter('low', 'low'),
-            new TwigFilter('up', 'up'),
             new TwigFilter('env', 'env'),
             new TwigFilter('count', 'count'),
             new TwigFilter('h', 'h'),
