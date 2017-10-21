@@ -49,6 +49,14 @@ final class Cell extends Node implements NodeOutputInterface
         $lineno = '',
         $tag = null
     ) {
+        if ($data === null) {
+            $data = new \Twig_Node_Expression_Array([], $lineno);
+        }
+
+        if ($options === null) {
+            $options = new \Twig_Node_Expression_Array([], $lineno);
+        }
+
         parent::__construct(
             [
                 'name' => $name,
