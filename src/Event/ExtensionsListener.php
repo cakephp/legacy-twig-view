@@ -22,6 +22,7 @@ use Jasny\Twig\ArrayExtension;
 use Jasny\Twig\DateExtension;
 use Jasny\Twig\PcreExtension;
 use Jasny\Twig\TextExtension;
+use Umpirsky\Twig\Extension\PhpFunctionExtension;
 use WyriHaximus\TwigView\Lib\Cache;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
@@ -92,6 +93,8 @@ class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new TextExtension());
         $event->getTwig()->addExtension(new ArrayExtension());
 
+        // umpirsky/twig-php-function
+        $event->getTwig()->addExtension(new PhpFunctionExtension());
 
         // Breakpoint extension
         if (Configure::read('debug') === true) {
