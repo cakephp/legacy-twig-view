@@ -11,7 +11,6 @@
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
-use Cake\View\Helper;
 use Cake\View\View;
 use Exception;
 use Twig\Environment;
@@ -54,9 +53,18 @@ class TwigView extends View
     protected $twig;
 
     /**
+     * Return empty string when View instance is cast to string.
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return '';
+    }
+
+    /**
      * Initialize view.
      *
-     * @return void
      */
     public function initialize()
     {
@@ -67,16 +75,6 @@ class TwigView extends View
         $this->_ext = self::EXT;
 
         parent::initialize();
-    }
-
-    /**
-     * Return empty string when View instance is cast to string.
-     *
-     * @return string
-     */
-    public function __toString(): string
-    {
-        return '';
     }
 
     /**
