@@ -252,6 +252,7 @@ We can write in a view
 * `formatDelta` maps to [`Cake\I18n\Number::formatDelta`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatDelta)
 * `currency` maps to [`Cake\I18n\Number::currency`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::currency)
 * `substr` maps to [`substr`](http://php.net/substr)
+* `str_replace` maps to [`str_replace`](http://php.net/str_replace)
 * `tokenize` maps to [`Cake\Utility\Text::tokenize`](https://book.cakephp.org/3.0/en/core-libraries/text.html#simple-string-parsing)
 * `insert` maps to [`Cake\Utility\Text::insert`](https://book.cakephp.org/3.0/en/core-libraries/text.html#formatting-strings)
 * `cleanInsert` maps to [`Cake\Utility\Text::cleanInsert`](https://book.cakephp.org/3.0/en/core-libraries/text.html#formatting-strings)
