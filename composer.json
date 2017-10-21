@@ -23,7 +23,8 @@
         "asm89/twig-cache-extension": "^1.0",
         "cakephp/cakephp": "^3.2",
         "jasny/twig-extensions": "^1.0",
-        "twig/twig": "^1.18"
+        "twig/twig": "^1.18",
+        "umpirsky/twig-php-function": "0.1"
     },
     "require-dev": {
         "cakephp/bake": "^1.2.2",
