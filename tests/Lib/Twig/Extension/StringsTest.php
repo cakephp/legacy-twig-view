@@ -28,6 +28,14 @@ final class StringsTest extends AbstractExtensionTest
         $this->assertSame('c', $result);
     }
 
+    public function testFilterStrReplace()
+    {
+        $string = 'abc';
+        $callable = $this->getFilter('str_replace')->getCallable();
+        $result = call_user_func_array($callable, [$string, 'b', 'X']);
+        $this->assertSame('aXc', $result);
+    }
+
     public function testFilterTokenize()
     {
         $string = 'a,b,c';

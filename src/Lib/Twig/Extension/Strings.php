@@ -26,6 +26,9 @@ class Strings extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('substr', 'substr'),
+            new \Twig_SimpleFilter('str_replace', function ($string, $search, $replace) {
+                return str_replace($search, $replace, $string);
+            }),
             new \Twig_SimpleFilter('tokenize', 'Cake\Utility\Text::tokenize'),
             new \Twig_SimpleFilter('insert', 'Cake\Utility\Text::insert'),
             new \Twig_SimpleFilter('cleanInsert', 'Cake\Utility\Text::cleanInsert'),
