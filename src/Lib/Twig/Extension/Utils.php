@@ -27,10 +27,8 @@ class Utils extends \Twig_Extension
         return [
             new \Twig_SimpleFilter('serialize', 'serialize'),
             new \Twig_SimpleFilter('unserialize', 'unserialize'),
-            new \Twig_SimpleFilter('md5', 'md5'),
             new \Twig_SimpleFilter('base64_encode', 'base64_encode'),
             new \Twig_SimpleFilter('base64_decode', 'base64_decode'),
-            new \Twig_SimpleFilter('nl2br', 'nl2br'),
             new \Twig_SimpleFilter('string', function ($str) {
                 return (string)$str;
             }),
