@@ -39,6 +39,18 @@ class Basic extends \Twig_Extension
     }
 
     /**
+     * Get declared functions.
+     *
+     * @return \Twig_SimpleFunction[]
+     */
+    public function getFunctions()
+    {
+        return [
+            new \Twig_SimpleFunction('config', 'Cake\Core\Configure::read'),
+        ];
+    }
+
+    /**
      * Get extension name.
      *
      * @return string
