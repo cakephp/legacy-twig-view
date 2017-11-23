@@ -37,7 +37,19 @@ final class Basic extends AbstractExtension
             }),
         ];
     }
-
+    
+    /**
+     * Get declared functions.
+     *
+     * @return \Twig\TwigFunction[]
+     */
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('config', 'Cake\Core\Configure::read'),
+        ];
+    }
+    
     /**
      * Get extension name.
      *
