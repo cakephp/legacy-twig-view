@@ -14,7 +14,7 @@ namespace WyriHaximus\TwigView\Lib\Twig\Extension;
  * Class Basic
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class Basic extends \Twig_Extension
+class PotentialDangerous extends \Twig_Extension
 {
 
     /**
@@ -25,15 +25,19 @@ class Basic extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('debug', 'debug'),
-            new \Twig_SimpleFilter('pr', 'pr'),
-            new \Twig_SimpleFilter('low', 'low'),
-            new \Twig_SimpleFilter('up', 'up'),
-            new \Twig_SimpleFilter('count', 'count'),
-            new \Twig_SimpleFilter('h', 'h'),
-            new \Twig_SimpleFilter('null', function () {
-                return '';
-            }),
+            new \Twig_SimpleFilter('env', 'env'),
+        ];
+    }
+
+    /**
+     * Get declared functions.
+     *
+     * @return \Twig_SimpleFunction[]
+     */
+    public function getFunctions()
+    {
+        return [
+        new \Twig_SimpleFunction('config', 'Cake\Core\Configure::read'),
         ];
     }
 

@@ -56,15 +56,4 @@ abc
         $result = call_user_func_array($callable, [$array]);
         $this->assertSame(3, $result);
     }
-
-    public function testFunctionConfig()
-    {
-        $callable = $this->getFunction('config')->getCallable();
-
-        $result = call_user_func($callable, 'foo');
-        $this->assertNull($result);
-
-        $result = call_user_func($callable, 'debug');
-        $this->assertInternalType('boolean', $result);
-    }
 }
