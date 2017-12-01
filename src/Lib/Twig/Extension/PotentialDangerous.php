@@ -48,6 +48,6 @@ class PotentialDangerous extends \Twig_Extension
      */
     public function getName()
     {
-        return 'basic';
+        return 'potential_dangerous';
     }
 }
