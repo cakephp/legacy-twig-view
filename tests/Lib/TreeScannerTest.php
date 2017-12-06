@@ -59,9 +59,18 @@ class TreeScannerTest extends TestCase
     {
         $this->assertEquals([
             'APP' => [
-                'exception.twig',
-                'layout.twig',
-                'syntaxerror.twig',
+                3 => 'exception.twig',
+                4 => 'layout.twig',
+                5 => 'syntaxerror.twig',
+                'Blog' => [
+                    'index.twig',
+                ],
+                'Element' => [
+                    'element.twig',
+                ],
+                'Layout' => [
+                    'layout.twig',
+                ],
             ],
             'TestTwigView' => [
                 3 => 'twig.twig',

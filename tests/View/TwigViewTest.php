@@ -10,6 +10,7 @@
  */
 use App\View\AppView;
 use Cake\Core\Configure;
+use Cake\Core\Plugin;
 use Cake\Event\EventManager;
 use Cake\TestSuite\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
@@ -217,4 +218,71 @@ class TwigViewTest extends TestCase
 		$view->render('syntaxerror');
 	}
 
+    public function testGetViewFileNameFallbackChecksCtpFirstBeforeTryingOtherPaths()
+    {
+        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+        Configure::write('App.paths.plugins', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS);
+        Plugin::load('Modern');
+
+        $view = new AppView();
+        $view->layout = false;
+        $view->theme = 'Modern';
+        $this->assertSame('index.ctp', $view->render('Blog/index'));
+	}
+
+    public function testGetLayoutFileNameFallbackChecksCtpFirstBeforeTryingOtherPaths()
+    {
+        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+        Configure::write('App.paths.plugins', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS);
+        Plugin::load('Modern');
+
+        $view = new AppView();
+        $view->layout = 'layout';
+        $view->theme = 'Modern';
+        $this->assertSame('layout.ctp', $view->render('Blog/index'));
+	}
+
+    public function testGetElementFileNameFallbackChecksCtpFirstBeforeTryingOtherPaths()
+    {
+        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+        Configure::write('App.paths.plugins', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS);
+        Plugin::load('Modern');
+
+        $view = new AppView();
+        $view->layout = false;
+        $view->theme = 'Modern';
+        $this->assertSame('element.ctp', $view->element('element'));
+	}
+    public function testGetViewFileNameFallbackChecksCtpFirstBeforeTryingOtherPathsFallingBackToOtherPaths()
+    {
+        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+        Configure::write('App.paths.plugins', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS);
+        Plugin::load('Modern');
+
+        $view = new AppView();
+        $view->layout = false;
+        $this->assertSame('index.twig', $view->render('Blog/index'));
+	}
+
+    public function testGetLayoutFileNameFallbackChecksCtpFirstBeforeTryingOtherPathsFallingBackToOtherPaths()
+    {
+        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+        Configure::write('App.paths.plugins', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS);
+        Plugin::load('Modern');
+
+        $view = new AppView();
+        $view->layout = 'layout';
+        $this->assertSame('layout.twig', $view->render('Blog/index'));
+	}
+
+    public function testGetElementFileNameFallbackChecksCtpFirstBeforeTryingOtherPathsFallingBackToOtherPaths()
+    {
+        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
+        Configure::write('App.paths.plugins', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS);
+        Plugin::load('Modern');
+
+        $view = new AppView();
+        $view->layout = false;
+        $this->assertSame('element.twig', $view->element('element'));
+	}
 }
