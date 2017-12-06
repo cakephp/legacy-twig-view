@@ -59,6 +59,9 @@ class RelativeScannerTest extends TestCase
     {
         $this->assertEquals([
             'APP' => [
+                'Blog/index.twig',
+                'Element/element.twig',
+                'Layout/layout.twig',
                 'exception.twig',
                 'layout.twig',
                 'syntaxerror.twig',

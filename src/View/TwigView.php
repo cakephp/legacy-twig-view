@@ -11,6 +11,8 @@
 namespace WyriHaximus\TwigView\View;
 
 use Cake\Core\Configure;
+use Cake\View\Exception\MissingLayoutException;
+use Cake\View\Exception\MissingTemplateException;
 use Cake\View\View;
 use Exception;
 use WyriHaximus\TwigView\Event\ConstructEvent;
@@ -200,17 +202,43 @@ class TwigView extends View
     protected function _getViewFileName($name = null)
     {
         // @codingStandardsIgnoreEnd
-        $rethrow = new \Exception('You\'re not supposed to get here');
-        foreach ($this->extensions as $extension) {
-            $this->_ext = $extension;
-            try {
-                return parent::_getViewFileName($name);
-            } catch (\Exception $exception) {
-                $rethrow = $exception;
+        $templatePath = $subDir = '';
+
+        if ($this->subDir !== null) {
+            $subDir = $this->subDir . DIRECTORY_SEPARATOR;
+        }
+        if ($this->templatePath) {
+            $templatePath = $this->templatePath . DIRECTORY_SEPARATOR;
+        }
+
+        if ($name === null) {
+            $name = $this->template;
+        }
+
+        list($plugin, $name) = $this->pluginSplit($name);
+        $name = str_replace('/', DIRECTORY_SEPARATOR, $name);
+
+        if (strpos($name, DIRECTORY_SEPARATOR) === false && $name[0] !== '.') {
+            $name = $templatePath . $subDir . $this->_inflectViewFileName($name);
+        } elseif (strpos($name, DIRECTORY_SEPARATOR) !== false) {
+            if ($name[0] === DIRECTORY_SEPARATOR || $name[1] === ':') {
+                $name = trim($name, DIRECTORY_SEPARATOR);
+            } elseif (!$plugin || $this->templatePath !== $this->name) {
+                $name = $templatePath . $subDir . $name;
+            } else {
+                $name = DIRECTORY_SEPARATOR . $subDir . $name;
             }
         }
 
-        throw $rethrow;
+        foreach ($this->_paths($plugin) as $path) {
+            foreach ($this->extensions as $extension) {
+                if (file_exists($path . $name . $extension)) {
+                    return $this->_checkFilePath($path . $name . $extension, $path);
+                }
+            }
+        }
+
+        throw new MissingTemplateException(['file' => $name . $this->_ext]);
     }
 
     /**
@@ -222,17 +250,31 @@ class TwigView extends View
     protected function _getLayoutFileName($name = null)
     {
         // @codingStandardsIgnoreEnd
-        $rethrow = new \Exception('You\'re not supposed to get here');
-        foreach ($this->extensions as $extension) {
-            $this->_ext = $extension;
-            try {
-                return parent::_getLayoutFileName($name);
-            } catch (\Exception $exception) {
-                $rethrow = $exception;
+        if ($name === null) {
+            $name = $this->layout;
+        }
+        $subDir = null;
+
+        if ($this->layoutPath) {
+            $subDir = $this->layoutPath . DIRECTORY_SEPARATOR;
+        }
+        list($plugin, $name) = $this->pluginSplit($name);
+
+        $layoutPaths = $this->_getSubPaths('Layout' . DIRECTORY_SEPARATOR . $subDir);
+
+        foreach ($this->_paths($plugin) as $path) {
+            foreach ($layoutPaths as $layoutPath) {
+                $currentPath = $path . $layoutPath;
+                foreach ($this->extensions as $extension) {
+                    if (file_exists($currentPath . $name . $extension)) {
+                        return $this->_checkFilePath($currentPath . $name . $extension, $currentPath);
+                    }
+                }
             }
         }
-
-        throw $rethrow;
+        throw new MissingLayoutException([
+            'file' => $layoutPaths[0] . $name . $this->_ext
+        ]);
     }
 
     /**
@@ -245,11 +287,18 @@ class TwigView extends View
     protected function _getElementFileName($name, $pluginCheck = true)
     {
         // @codingStandardsIgnoreEnd
-        foreach ($this->extensions as $extension) {
-            $this->_ext = $extension;
-            $result = parent::_getElementFileName($name, $pluginCheck);
-            if ($result !== false) {
-                return $result;
+        list($plugin, $name) = $this->pluginSplit($name, $pluginCheck);
+
+        $paths = $this->_paths($plugin);
+        $elementPaths = $this->_getSubPaths('Element');
+
+        foreach ($paths as $path) {
+            foreach ($elementPaths as $elementPath) {
+                foreach ($this->extensions as $extension) {
+                    if (file_exists($path . $elementPath . DIRECTORY_SEPARATOR . $name . $extension)) {
+                        return $path . $elementPath . DIRECTORY_SEPARATOR . $name . $extension;
+                    }
+                }
             }
         }
 
