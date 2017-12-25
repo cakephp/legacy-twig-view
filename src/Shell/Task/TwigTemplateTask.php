@@ -30,23 +30,27 @@ class TwigTemplateTask extends TemplateTask
     /**
      * Assembles and writes bakes the twig view file.
      *
-     * @param string $action Action to bake.
+     * @param string $template Template to generate content with.
      * @param string $content Content to write.
+     * @param string $outputFile The destination action name. If null, will fallback to $template.
      * @return string Generated file content.
      */
-    public function bake($action, $content = '')
+    public function bake($template, $content = '', $outputFile = null)
     {
+        if ($outputFile === null) {
+            $outputFile = $template;
+        }
         if ($content === true) {
-            $content = $this->getContent($action);
+            $content = $this->getContent($template);
         }
         if (empty($content)) {
-            $this->err("<warning>No generated content for '{$action}.ctp', not generating template.</warning>");
+            $this->err("<warning>No generated content for '{$template}.ctp', not generating template.</warning>");
 
             return false;
         }
-        $this->out("\n" . sprintf('Baking `%s` view twig template file...', $action), 1, Shell::QUIET);
+        $this->out("\n" . sprintf('Baking `%s` view twig template file...', $outputFile), 1, Shell::QUIET);
         $path = $this->getPath();
-        $filename = $path . Inflector::underscore($action) . '.twig';
+        $filename = $path . Inflector::underscore($outputFile) . '.twig';
         $this->createFile($filename, $content);
 
         return $content;
