@@ -41,6 +41,7 @@ class EnvironmentConfigEvent extends Event
      */
     public function setConfig(array $config)
     {
-        $this->data['config'] = array_replace_recursive($this->data['config'], $config);
+        $dataConfig = array_replace_recursive($this->data['config'], $config);
+        $this->data['config'] = $dataConfig;
     }
 }
