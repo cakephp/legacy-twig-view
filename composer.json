@@ -21,7 +21,7 @@
         "ajgl/breakpoint-twig-extension": "^0.3.0",
         "aptoma/twig-markdown": "^2.0",
         "asm89/twig-cache-extension": "^1.0",
-        "cakephp/cakephp": "^3.2",
+        "cakephp/cakephp": "^3.3",
         "jasny/twig-extensions": "^1.0",
         "twig/twig": "^1.18",
         "umpirsky/twig-php-function": "0.1"
