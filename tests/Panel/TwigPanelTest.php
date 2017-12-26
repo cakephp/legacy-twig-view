@@ -10,9 +10,8 @@
  */
 namespace WyriHaximus\CakePHP\Tests\TwigView\Panel;
 
-use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
-use WyriHaximus\TwigView\Lib\RelativeScanner;
+use WyriHaximus\TwigView\Lib\TreeScanner;
 use WyriHaximus\TwigView\Panel\TwigPanel;
 
 class TwigPanelTest extends TestCase
@@ -20,7 +19,7 @@ class TwigPanelTest extends TestCase
     public function testData()
     {
         $this->assertSame([
-            'templates' => RelativeScanner::all(),
+            'templates' => TreeScanner::all(),
         ], (new TwigPanel())->data());
     }
 }
