@@ -54,8 +54,8 @@ matrix:
 ## Run the appropriate composer command and show installed packages
 install:
   - composer validate
-  - composer config --unset platform.php
   - if [ -z "$dependencies" ]; then composer install -n --profile; fi;
+  - composer config --unset platform.php
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n --profile; fi;
   - if [ "$dependencies" = "highest" ]; then composer update -n --profile; fi;
   - composer show
