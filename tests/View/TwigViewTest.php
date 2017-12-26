@@ -8,10 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Event\EventManager;
+use Cake\Network\Request;
+use Cake\Network\Response;
 use Cake\TestSuite\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
@@ -88,7 +91,7 @@ class TwigViewTest extends TestCase
 		$callbackFired = false;
 		$that = $this;
 		$eventCallback = function ($event) use ($that, &$callbackFired) {
-			$that->assertInstanceof('Twig_Environment', $event->subject()->getTwig());
+			$that->assertInstanceof(Twig_Environment::class, $event->subject()->getTwig());
 			$callbackFired = true;
 		};
 		EventManager::instance()->attach($eventCallback, ConstructEvent::EVENT);
@@ -130,9 +133,9 @@ class TwigViewTest extends TestCase
 	public function testGenerateHelperList()
 	{
 		$view = new TwigView(
-			Phake::mock('Cake\Network\Request'),
-			Phake::mock('Cake\Network\Response'),
-			Phake::mock('Cake\Event\EventManager'),
+			$this->prophesize(Request::class)->reveal(),
+			$this->prophesize(Response::class)->reveal(),
+			$this->prophesize(EventManager::class)->reveal(),
 			['helpers' => ['Html']]
 		);
 		$view->loadHelper('TestSecond');

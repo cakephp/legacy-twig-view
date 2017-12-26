@@ -11,14 +11,16 @@
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
 use Cake\TestSuite\TestCase;
+use Twig_Environment;
 use WyriHaximus\TwigView\Event\ConstructEvent;
+use WyriHaximus\TwigView\View\TwigView;
 
 class ConstructEventTest extends TestCase
 {
     public function testCreate()
     {
-        $twigView        = \Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        $twigEnvironment = \Phake::mock('Twig_Environment');
+        $twigView        = $this->prophesize(TwigView::class)->reveal();
+        $twigEnvironment = $this->prophesize(Twig_Environment::class)->reveal();
         $event           = ConstructEvent::create($twigView, $twigEnvironment);
 
         $this->assertEquals($twigView, $event->getTwigView());
