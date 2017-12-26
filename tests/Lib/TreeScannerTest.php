@@ -82,6 +82,7 @@ class TreeScannerTest extends TestCase
                     'view.twig',
                 ],
             ],
+            'Bake' => TreeScanner::plugin('Bake'),
         ], TreeScanner::all());
     }
 
