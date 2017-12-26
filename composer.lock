@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3fc0f0c2fb93856d3be61e004774d2b",
+    "content-hash": "4b3e51777c58140bc024d4f924c26ca0",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
