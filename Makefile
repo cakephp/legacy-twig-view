@@ -2,7 +2,7 @@ all: cs unit
 travis: cs unit-travis
 
 init:
-	if [ ! -d vendor ]; then composer install; fi;
+	if [ ! -d vendor ]; then COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer install; fi;
 
 cs: init
 	./vendor/bin/phpcs --standard=PSR2 src/

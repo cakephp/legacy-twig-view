@@ -17,15 +17,20 @@ class EnvironmentConfigEvent extends Event
     const EVENT = 'TwigView.TwigView.environment';
 
     /**
+     * @var array
+     */
+    private $config = [];
+
+    /**
      * @param array $config
      *
      * @return static
      */
     public static function create(array $config)
     {
-        return new static(static::EVENT, null, [
-            'config' => $config,
-        ]);
+        $event = new static(static::EVENT);
+        $event->setConfig($config);
+        return $event;
     }
 
     /**
@@ -33,7 +38,7 @@ class EnvironmentConfigEvent extends Event
      */
     public function getConfig()
     {
-        return $this->data()['config'];
+        return $this->config;
     }
 
     /**
@@ -41,6 +46,6 @@ class EnvironmentConfigEvent extends Event
      */
     public function setConfig(array $config)
     {
-        $this->data['config'] = array_replace_recursive($this->data['config'], $config);
+        $this->config = array_replace_recursive($this->config, $config);
     }
 }

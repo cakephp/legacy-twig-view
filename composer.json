@@ -17,20 +17,20 @@
         }
     ],
     "require": {
-        "php": "^5.5.9 || ^7.0",
+        "php": "^5.6 || ^7.0",
         "ajgl/breakpoint-twig-extension": "^0.3.0",
         "aptoma/twig-markdown": "^2.0",
         "asm89/twig-cache-extension": "^1.0",
-        "cakephp/cakephp": "^3.2",
+        "cakephp/cakephp": "^3.5",
         "jasny/twig-extensions": "^1.0",
         "twig/twig": "^1.18",
         "umpirsky/twig-php-function": "0.1"
     },
     "require-dev": {
-        "cakephp/bake": "^1.2.2",
+        "cakephp/bake": "^1.5",
         "cakephp/debug_kit": "^3.0",
         "phake/phake": "^1.0.4",
-        "phpunit/phpunit": "^4.8 || ^5.0",
+        "phpunit/phpunit": "^5.7.14",
         "squizlabs/php_codesniffer": "^1.5.6",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
     },
@@ -49,7 +49,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "5.5.9"
+            "php": "5.6.0"
         }
     }
 }

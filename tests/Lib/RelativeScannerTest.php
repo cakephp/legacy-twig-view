@@ -72,6 +72,7 @@ class RelativeScannerTest extends TestCase
                 'Controller/view.twig',
                 'twig.twig',
             ],
+            'Bake' => RelativeScanner::plugin('Bake'),
         ], RelativeScanner::all());
     }
 

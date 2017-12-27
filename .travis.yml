@@ -7,7 +7,6 @@ cache:
 
 ## PHP versions we test against
 php:
-  - 5.5
   - 5.6
   - 7
   - 7.1
@@ -18,8 +17,6 @@ php:
 ## Build matrix for lowest and highest possible targets
 matrix:
   include:
-    - php: 5.5
-      env: dependencies=lowest
     - php: 5.6
       env: dependencies=lowest
     - php: 7
@@ -32,8 +29,6 @@ matrix:
       env: dependencies=lowest
     - php: hhvm
       env: dependencies=lowest
-    - php: 5.5
-      env: dependencies=highest
     - php: 5.6
       env: dependencies=highest
     - php: 7
@@ -53,11 +48,11 @@ matrix:
 
 ## Run the appropriate composer command and show installed packages
 install:
-  - composer validate
-  - composer config --unset platform.php
-  - if [ -z "$dependencies" ]; then composer install -n --profile; fi;
-  - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n --profile; fi;
-  - if [ "$dependencies" = "highest" ]; then composer update -n --profile; fi;
+  - COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer validate
+  - if [ -z "$dependencies" ]; then COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer install -n --profile; fi;
+  - COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer config --unset platform.php
+  - if [ "$dependencies" = "lowest" ]; then COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer update --prefer-lowest -n --profile; fi;
+  - if [ "$dependencies" = "highest" ]; then COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer update -n --profile; fi;
   - composer show
 
 ## Run the actual test
