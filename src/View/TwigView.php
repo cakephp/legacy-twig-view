@@ -66,7 +66,7 @@ class TwigView extends View
     {
         $this->twig = new \Twig_Environment($this->getLoader(), $this->resolveConfig());
 
-        $this->eventManager()->dispatch(ConstructEvent::create($this, $this->twig));
+        $this->getEventManager()->dispatch(ConstructEvent::create($this, $this->twig));
 
         $this->_ext = self::EXT;
 
@@ -88,7 +88,7 @@ class TwigView extends View
         $config = array_replace($config, $this->readConfig());
 
         $configEvent = EnvironmentConfigEvent::create($config);
-        $this->eventManager()->dispatch($configEvent);
+        $this->getEventManager()->dispatch($configEvent);
         return $configEvent->getConfig();
     }
 
@@ -125,7 +125,7 @@ class TwigView extends View
     protected function getLoader()
     {
         $event = LoaderEvent::create(new Loader());
-        $this->eventManager()->dispatch($event);
+        $this->getEventManager()->dispatch($event);
         return $event->getResultLoader();
     }
 

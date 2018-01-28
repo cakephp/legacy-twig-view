@@ -35,7 +35,7 @@ class ConstructEvent extends Event
      */
     public function getTwigView()
     {
-        return $this->data()['twigView'];
+        return $this->getData()['twigView'];
     }
 
     /**
@@ -43,6 +43,6 @@ class ConstructEvent extends Event
      */
     public function getTwig()
     {
-        return $this->data()['twig'];
+        return $this->getData()['twig'];
     }
 }

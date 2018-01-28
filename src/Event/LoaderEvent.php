@@ -32,7 +32,7 @@ class LoaderEvent extends Event
      */
     public function getLoader()
     {
-        return $this->subject();
+        return $this->getSubject();
     }
 
     /**
