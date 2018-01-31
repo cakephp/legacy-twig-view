@@ -12,13 +12,15 @@ namespace WyriHaximus\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use Twig_Error_Loader;
+use Twig_Source;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Loader
  * @package WyriHaximus\TwigView\Lib\Twig
  */
-class Loader implements \Twig_LoaderInterface
+class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twig_SourceContextLoaderInterface
 {
 
     /**
@@ -113,5 +115,19 @@ class Loader implements \Twig_LoaderInterface
         }
 
         return App::path('Template', $plugin);
+    }
+
+    public function exists($name)
+    {
+        $name = $this->resolveFileName($name);
+
+        return file_exists($name);
+    }
+
+    public function getSourceContext($name)
+    {
+        $path = $this->resolveFileName($name);
+
+        return new Twig_Source(file_get_contents($path), $name, $path);
     }
 }
