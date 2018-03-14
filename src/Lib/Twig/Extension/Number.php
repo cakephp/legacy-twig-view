@@ -54,6 +54,6 @@ class Number extends \Twig_Extension
      */
     public function getName()
     {
-        return 'string';
+        return 'number';
     }
 }
