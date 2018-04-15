@@ -117,7 +117,7 @@ class CompileShell extends Shell
                 'short' => 'f',
                 'help' => __('Precompile a specific file.'),
             ]
-        )->description(__('TwigView templates precompiler'));
+        )->setDescription(__('TwigView templates precompiler'));
     }
 
     /**
