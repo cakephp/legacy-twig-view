@@ -20,7 +20,7 @@ Configure::write('debug', true);
 if (!getenv('db_dsn')) {
 	putenv('db_dsn=sqlite:///:memory:');
 }
-ConnectionManager::config('test', ['url' => getenv('db_dsn')]);
+ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 
 Cake\Core\Plugin::load(
 	'TwigView',
@@ -56,4 +56,4 @@ $cache = [
 	],
 ];
 
-Cake\Cache\Cache::config($cache);
+Cake\Cache\Cache::setConfig($cache);

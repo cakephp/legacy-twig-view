@@ -168,7 +168,7 @@ class CompileShell extends Shell
                 // @codingStandardsIgnoreEnd
             ]
         // @codingStandardsIgnoreStart
-        )->description(__('TwigView templates precompiler'));
+        )->setDescription(__('TwigView templates precompiler'));
         // @codingStandardsIgnoreEnd
     }
 }
