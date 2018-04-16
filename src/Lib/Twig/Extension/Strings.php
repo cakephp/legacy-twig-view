@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
+
 use Cake\Utility\Text;
 
 /**
@@ -39,7 +40,8 @@ class Strings extends \Twig_Extension
             new \Twig_SimpleFilter('excerpt', 'Cake\Utility\Text::excerpt'),
             new \Twig_SimpleFilter('toList', 'Cake\Utility\Text::toList'),
             new \Twig_SimpleFilter('stripLinks', function ($string) {
-                $previousrErrorHandler = set_error_handler(function () {});
+                $previousrErrorHandler = set_error_handler(function () {
+                });
                 $strippedString = Text::stripLinks($string);
                 set_error_handler($previousrErrorHandler);
                 return $strippedString;
