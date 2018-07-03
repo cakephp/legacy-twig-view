@@ -248,7 +248,7 @@ We can write in a view
 * `toReadableSize` maps to [`Cake\I18n\Number::toReadableSize`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::toReadableSize)
 * `fromReadableSize` maps to [`Cake\I18n\Number::fromReadableSize`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::fromReadableSize)
 * `toPercentage` maps to [`Cake\I18n\Number::toPercentage`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::toPercentage)
-* `format` maps to [`Cake\I18n\Number::format`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::format)
+* `number_format` maps to [`Cake\I18n\Number::format`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::format)
 * `formatDelta` maps to [`Cake\I18n\Number::formatDelta`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatDelta)
 * `currency` maps to [`Cake\I18n\Number::currency`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::currency)
 * `substr` maps to [`substr`](http://php.net/substr)
