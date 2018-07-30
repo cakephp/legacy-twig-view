@@ -59,10 +59,14 @@ class ScannerTest extends TestCase
     {
         $this->assertSame([
             'APP' => [
+                PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'Blog' . DS . 'index.twig',
+                PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'Element' . DS . 'element.twig',
+                PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'Layout' . DS . 'layout.twig',
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'exception.twig',
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'layout.twig',
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'syntaxerror.twig',
             ],
+            'Bake' => Scanner::plugin('Bake'),
             'TestTwigView' => [
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'Component' . DS . 'magic.twig',
                 PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS . 'src' . DS . 'Template' . DS . 'Controller' . DS . 'index.twig',

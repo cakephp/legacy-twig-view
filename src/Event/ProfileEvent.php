@@ -31,6 +31,6 @@ final class ProfileEvent extends Event
      */
     public function getLoader(): Profile
     {
-        return $this->subject();
+        return $this->getSubject();
     }
 }

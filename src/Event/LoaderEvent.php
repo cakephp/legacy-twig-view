@@ -33,7 +33,7 @@ final class LoaderEvent extends Event
      */
     public function getLoader(): LoaderInterface
     {
-        return $this->subject();
+        return $this->getSubject();
     }
 
     /**

@@ -154,4 +154,21 @@ class TemplateTaskTest extends TestCase
             ->setConstructorArgs([$io])
             ->getMock();
     }
+    /**
+     * test baking an index with output file
+     *
+     * @return void
+     */
+    public function testBakeIndexWithOutputFile()
+    {
+        $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
+        $this->Task->controllerName = 'Authors';
+        $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
+
+        $this->Task->expects($this->at(0))->method('createFile')
+            ->with(
+                $this->_normalizePath(APP . 'Template/Authors/listing.twig')
+            );
+        $this->Task->bake('index', true, 'listing');
+    }
 }

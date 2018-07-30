@@ -65,6 +65,16 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new Extension\Strings());
         $event->getTwig()->addExtension(new Extension\Inflector());
 
+        if (
+            !Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') ||
+            (
+                Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') &&
+                Configure::read('WyriHaximus.TwigView.flags.potentialDangerous') === true
+            )
+        ) {
+            $event->getTwig()->addExtension(new Extension\PotentialDangerous);
+        }
+
         // Markdown extension
         if (
             Configure::check('WyriHaximus.TwigView.markdown.engine') &&
@@ -86,5 +96,15 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new PcreExtension());
         $event->getTwig()->addExtension(new TextExtension());
         $event->getTwig()->addExtension(new ArrayExtension());
+
+        // umpirsky/twig-php-function
+        $event->getTwig()->addExtension(new PhpFunctionExtension());
+
+        // Breakpoint extension
+        if (Configure::read('debug') === true) {
+            $event->getTwig()->addExtension(new BreakpointExtension());
+        }
+
+        // @codingStandardsIgnoreEnd
     }
 }

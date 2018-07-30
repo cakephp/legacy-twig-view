@@ -9,6 +9,9 @@ return [
             'markdown' => [
                 'engine' => 'engine', // See https://github.com/aptoma/twig-markdown#installation
             ],
+            'flags' => [
+                'potentialDangerous' => false,
+            ],
         ],
     ],
 ];

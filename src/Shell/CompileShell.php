@@ -152,4 +152,42 @@ class CompileShell extends Shell
             $this->out('<error>' . $exception->getMessage() . '</error>');
         }
     }
+
+    /**
+     * Set options for this console.
+     *
+     * @return \Cake\Console\ConsoleOptionParser
+     */
+    // @codingStandardsIgnoreStart
+    public function getOptionParser()
+    {
+        // @codingStandardsIgnoreEnd
+        return parent::getOptionParser()->addSubcommand(
+            'all',
+            [
+                'short' => 'a',
+                // @codingStandardsIgnoreStart
+                'help' => __('Searches and precompiles all twig templates it finds.')
+                // @codingStandardsIgnoreEnd
+            ]
+        )->addSubcommand(
+            'plugin',
+            [
+                'short' => 'p',
+                // @codingStandardsIgnoreStart
+                'help' => __('Searches and precompiles all twig templates for a specific plugin.')
+                // @codingStandardsIgnoreEnd
+            ]
+        )->addSubcommand(
+            'file',
+            [
+                'short' => 'f',
+                // @codingStandardsIgnoreStart
+                'help' => __('Precompile a specific file.')
+                // @codingStandardsIgnoreEnd
+            ]
+        // @codingStandardsIgnoreStart
+        )->setDescription(__('TwigView templates precompiler'));
+        // @codingStandardsIgnoreEnd
+    }
 }

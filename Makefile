@@ -14,7 +14,7 @@ contrib:
 	composer run-script qa-contrib --timeout=0
 
 init:
-	composer ensure-installed
+	if [ ! -d vendor ]; then COMPOSER_ROOT_VERSION=`git describe --abbrev=0` composer install; fi;
 
 cs:
 	composer cs

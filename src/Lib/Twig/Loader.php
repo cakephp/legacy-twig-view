@@ -23,6 +23,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * @package WyriHaximus\TwigView\Lib\Twig
  */
 final class Loader implements LoaderInterface, SourceContextLoaderInterface
+class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twig_SourceContextLoaderInterface
 {
     /**
      * Get the file contents of a template.
@@ -165,5 +166,19 @@ final class Loader implements LoaderInterface, SourceContextLoaderInterface
         }
 
         return App::path('Template', $plugin);
+    }
+
+    public function exists($name)
+    {
+        $name = $this->resolveFileName($name);
+
+        return file_exists($name);
+    }
+
+    public function getSourceContext($name)
+    {
+        $path = $this->resolveFileName($name);
+
+        return new Twig_Source(file_get_contents($path), $name, $path);
     }
 }
