@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe4b73c97aaddef0a4870e511a168d31",
+    "content-hash": "342bdfa983a57f8553a508610bd935c5",
     "packages": [
         {
             "name": "aptoma/twig-markdown",
@@ -165,21 +165,21 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.5.4",
+            "version": "3.6.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "eb609aff20945f8bc86cfb1fd3c50e6c62a502b0"
+                "reference": "08d9b9df64f89cfab0f0ac8b871c12a3a88ab3b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/eb609aff20945f8bc86cfb1fd3c50e6c62a502b0",
-                "reference": "eb609aff20945f8bc86cfb1fd3c50e6c62a502b0",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/08d9b9df64f89cfab0f0ac8b871c12a3a88ab3b8",
+                "reference": "08d9b9df64f89cfab0f0ac8b871c12a3a88ab3b8",
                 "shasum": ""
             },
             "require": {
                 "aura/intl": "^3.0.0",
-                "cakephp/chronos": "^1.0.0",
+                "cakephp/chronos": "^1.0.1",
                 "ext-intl": "*",
                 "ext-mbstring": "*",
                 "php": ">=5.6.0",
@@ -206,7 +206,7 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^3.0",
-                "phpunit/phpunit": "^5.7|^6.0"
+                "phpunit/phpunit": "^5.7.14|^6.0"
             },
             "suggest": {
                 "ext-openssl": "To use Security::encrypt() or have secure CSRF token generation.",
@@ -215,7 +215,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Cake\\": "src"
+                    "Cake\\": "src/"
                 },
                 "files": [
                     "src/Core/functions.php",
@@ -247,7 +247,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2017-10-16T02:25:27+00:00"
+            "time": "2018-07-26T01:36:34+00:00"
         },
         {
             "name": "cakephp/chronos",
