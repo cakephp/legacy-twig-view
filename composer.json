@@ -19,7 +19,7 @@
         }
     ],
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "aptoma/twig-markdown": "^3.0",
         "asm89/twig-cache-extension": "^1.0",
         "jasny/twig-extensions": "^1.2.0",
@@ -100,7 +100,7 @@
     "config": {
         "sort-packages": true,
         "platform": {
-            "php": "7.0"
+            "php": "7.1"
         }
     }
 }
