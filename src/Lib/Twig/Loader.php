@@ -13,6 +13,7 @@ namespace WyriHaximus\TwigView\Lib\Twig;
 use Cake\Core\App;
 use Cake\Core\Plugin;
 use Twig\Error\LoaderError;
+use Twig\Loader\ExistsLoaderInterface;
 use Twig\Loader\LoaderInterface;
 use Twig\Loader\SourceContextLoaderInterface;
 use Twig\Source;
@@ -22,8 +23,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class Loader.
  * @package WyriHaximus\TwigView\Lib\Twig
  */
-final class Loader implements LoaderInterface, SourceContextLoaderInterface
-class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twig_SourceContextLoaderInterface
+final class Loader implements LoaderInterface, ExistsLoaderInterface, SourceContextLoaderInterface
 {
     /**
      * Get the file contents of a template.
@@ -109,7 +109,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twi
      * @return string
      *
      */
-    protected function resolveFileName($name): string
+    private function resolveFileName($name): string
     {
         $filename = $this->getFilename($name);
         if ($filename === false) {
@@ -127,7 +127,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twi
      * @return string|false
      *
      */
-    protected function getFilename($name)
+    private function getFilename($name)
     {
         if (file_exists($name)) {
             return $name;
@@ -159,26 +159,12 @@ class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twi
      *
      * @return array
      */
-    protected function getPaths($plugin): array
+    private function getPaths($plugin): array
     {
         if ($plugin === null || !Plugin::loaded($plugin)) {
             return App::path('Template');
         }
 
         return App::path('Template', $plugin);
-    }
-
-    public function exists($name)
-    {
-        $name = $this->resolveFileName($name);
-
-        return file_exists($name);
-    }
-
-    public function getSourceContext($name)
-    {
-        $path = $this->resolveFileName($name);
-
-        return new Twig_Source(file_get_contents($path), $name, $path);
     }
 }

@@ -132,6 +132,23 @@ class TemplateTaskTest extends TestCase
     }
 
     /**
+     * test baking an index with output file.
+     *
+     */
+    public function testBakeIndexWithOutputFile()
+    {
+        $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
+        $this->Task->controllerName = 'Authors';
+        $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
+
+        $this->Task->expects($this->at(0))->method('createFile')
+            ->with(
+                $this->_normalizePath(APP . 'Template/Authors/listing.twig')
+            );
+        $this->Task->bake('index', true, 'listing');
+    }
+
+    /**
      * Generate the mock objects used in tests.
      *
      * @param $methods
@@ -153,22 +170,5 @@ class TemplateTaskTest extends TestCase
         $this->Task->Model = $this->getMockBuilder('Bake\Shell\Task\ModelTask')
             ->setConstructorArgs([$io])
             ->getMock();
-    }
-    /**
-     * test baking an index with output file
-     *
-     * @return void
-     */
-    public function testBakeIndexWithOutputFile()
-    {
-        $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
-        $this->Task->controllerName = 'Authors';
-        $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
-
-        $this->Task->expects($this->at(0))->method('createFile')
-            ->with(
-                $this->_normalizePath(APP . 'Template/Authors/listing.twig')
-            );
-        $this->Task->bake('index', true, 'listing');
     }
 }

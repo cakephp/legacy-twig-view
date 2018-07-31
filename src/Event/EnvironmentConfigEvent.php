@@ -30,6 +30,7 @@ final class EnvironmentConfigEvent extends Event
     {
         $event = new static(static::EVENT);
         $event->setConfig($config);
+
         return $event;
     }
 

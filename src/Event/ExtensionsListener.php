@@ -72,7 +72,7 @@ final class ExtensionsListener implements EventListenerInterface
                 Configure::read('WyriHaximus.TwigView.flags.potentialDangerous') === true
             )
         ) {
-            $event->getTwig()->addExtension(new Extension\PotentialDangerous);
+            $event->getTwig()->addExtension(new Extension\PotentialDangerous());
         }
 
         // Markdown extension
