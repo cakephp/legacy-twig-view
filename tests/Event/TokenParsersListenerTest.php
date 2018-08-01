@@ -10,10 +10,10 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Cake\TestSuite\TestCase;
 use Phake;
 use Twig\Environment;
 use Twig\TokenParser\IncludeTokenParser;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\TokenParsersListener;
 

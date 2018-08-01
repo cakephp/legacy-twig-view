@@ -10,8 +10,8 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Cake\TestSuite\TestCase;
 use Twig_LoaderInterface;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 

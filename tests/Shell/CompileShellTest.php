@@ -10,8 +10,8 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Shell;
 
-use Cake\TestSuite\TestCase;
 use Phake;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\PHPUnit\Helpers\ReflectionTrait;
 use WyriHaximus\TwigView\Shell\CompileShell;
 

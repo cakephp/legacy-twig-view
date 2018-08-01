@@ -15,11 +15,7 @@ use Bake\Shell\Task\TemplateTask;
 use Cake\Console\Shell;
 use Cake\Utility\Inflector;
 
-/**
- * Task class for creating and updating twig view template files.
- *
- */
-class TwigTemplateTask extends TemplateTask
+final class TwigTemplateTask extends TemplateTask
 {
     /**
      * @return string Task name.
@@ -32,20 +28,21 @@ class TwigTemplateTask extends TemplateTask
     /**
      * Assembles and writes bakes the twig view file.
      *
-     * @param  string $action  Action to bake.
-     * @param  string $content Content to write.
+     * @param  string $action     Action to bake.
+     * @param  string $content    Content to write.
+     * @param  string $outputFile The destination action name. If null, will fallback to $template.
      * @return string Generated file content.
      */
-    public function bake($action, $content = ''): string
+    public function bake($action, $content = '', $outputFile = null): string
     {
         if ($outputFile === null) {
-            $outputFile = $template;
+            $outputFile = $action;
         }
         if ($content === true) {
-            $content = $this->getContent($template);
+            $content = $this->getContent($action);
         }
         if (empty($content)) {
-            $this->err("<warning>No generated content for '{$template}.ctp', not generating template.</warning>");
+            $this->err("<warning>No generated content for '{$action}.ctp', not generating template.</warning>");
 
             return false;
         }

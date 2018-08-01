@@ -10,7 +10,8 @@
 use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
-use Cake\TestSuite\TestCase;
+use Twig\Environment;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\View\TwigView;
@@ -30,16 +31,15 @@ class TwigViewTest extends TestCase
         $this->_hibernateListeners(ConstructEvent::EVENT);
 
         $callbackFired = false;
-        $that = $this;
-        $eventCallback = function ($event) use ($that, &$callbackFired) {
-            $that->assertInstanceof('Twig_Environment', $event->subject()->getTwig());
+        $eventCallback = function ($event) use (&$callbackFired) {
+            self::assertInstanceof(Environment::class, $event->getSubject()->getTwig());
             $callbackFired = true;
         };
-        EventManager::instance()->attach($eventCallback, ConstructEvent::EVENT);
+        EventManager::instance()->on(ConstructEvent::EVENT, $eventCallback);
 
         new TwigView();
 
-        EventManager::instance()->detach($eventCallback, ConstructEvent::EVENT);
+        EventManager::instance()->off(ConstructEvent::EVENT, $eventCallback);
         $this->_wakeupListeners(ConstructEvent::EVENT);
 
         $this->assertTrue($callbackFired);
@@ -61,11 +61,11 @@ class TwigViewTest extends TestCase
 
             $callbackFired = true;
         };
-        EventManager::instance()->attach($eventCallback, EnvironmentConfigEvent::EVENT);
+        EventManager::instance()->on(EnvironmentConfigEvent::EVENT, $eventCallback);
 
         new TwigView();
 
-        EventManager::instance()->detach($eventCallback, EnvironmentConfigEvent::EVENT);
+        EventManager::instance()->off(EnvironmentConfigEvent::EVENT, $eventCallback);
         $this->_wakeupListeners(EnvironmentConfigEvent::EVENT);
 
         $this->assertTrue($callbackFired);
@@ -177,7 +177,7 @@ class TwigViewTest extends TestCase
         $this->__preservedEventListeners[$eventKey] = EventManager::instance()->listeners($eventKey);
 
         foreach ($this->__preservedEventListeners[$eventKey] as $eventListener) {
-            EventManager::instance()->detach($eventListener['callable'], $eventKey);
+            EventManager::instance()->off($eventListener['callable'], $eventKey);
         }
     }
 
@@ -188,7 +188,7 @@ class TwigViewTest extends TestCase
         }
 
         foreach ($this->__preservedEventListeners[$eventKey] as $eventListener) {
-            EventManager::instance()->attach(
+            EventManager::instance()->on(
                 $eventListener['callable'],
                 $eventKey,
                 [

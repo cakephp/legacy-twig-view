@@ -96,15 +96,6 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new PcreExtension());
         $event->getTwig()->addExtension(new TextExtension());
         $event->getTwig()->addExtension(new ArrayExtension());
-
-        // umpirsky/twig-php-function
-        $event->getTwig()->addExtension(new PhpFunctionExtension());
-
-        // Breakpoint extension
-        if (Configure::read('debug') === true) {
-            $event->getTwig()->addExtension(new BreakpointExtension());
-        }
-
         // @codingStandardsIgnoreEnd
     }
 }

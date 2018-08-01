@@ -10,7 +10,7 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Panel;
 
-use Cake\TestSuite\TestCase;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\TreeScanner;
 use WyriHaximus\TwigView\Panel\TwigPanel;
 

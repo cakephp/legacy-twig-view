@@ -10,8 +10,8 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Cake\TestSuite\TestCase;
 use Twig_Environment;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\View\TwigView;
 

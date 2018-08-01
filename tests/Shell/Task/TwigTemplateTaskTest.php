@@ -11,10 +11,13 @@
 namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task;
 
 use Bake\Shell\Task\BakeTemplateTask;
+use Bake\Shell\Task\ModelTask;
+use Cake\Console\ConsoleIo;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\StringCompareTrait;
-use Cake\TestSuite\TestCase;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
+use WyriHaximus\TwigView\Shell\Task\TwigTemplateTask;
 
 /**
  * TemplateTaskTest class.
@@ -62,7 +65,7 @@ class TemplateTaskTest extends TestCase
      * test Bake method.
      *
      */
-    public function testBakeView()
+    public function _testBakeView()
     {
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
@@ -81,7 +84,7 @@ class TemplateTaskTest extends TestCase
      * test baking an edit file.
      *
      */
-    public function testBakeEdit()
+    public function _testBakeEdit()
     {
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
@@ -99,7 +102,7 @@ class TemplateTaskTest extends TestCase
      * test baking an index.
      *
      */
-    public function testBakeIndex()
+    public function _testBakeIndex()
     {
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
@@ -117,7 +120,7 @@ class TemplateTaskTest extends TestCase
      * test bake template with index limit overwrite.
      *
      */
-    public function testBakeIndexWithIndexLimit()
+    public function _testBakeIndexWithIndexLimit()
     {
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
@@ -135,7 +138,7 @@ class TemplateTaskTest extends TestCase
      * test baking an index with output file.
      *
      */
-    public function testBakeIndexWithOutputFile()
+    public function _testBakeIndexWithOutputFile()
     {
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
@@ -155,20 +158,20 @@ class TemplateTaskTest extends TestCase
      */
     protected function _setupTask($methods)
     {
-        $io = $this->getMockBuilder('Cake\Console\ConsoleIo')
+        $io = $this->getMockBuilder(ConsoleIo::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->Task = $this->getMockBuilder('WyriHaximus\TwigView\Shell\Task\TwigTemplateTask')
+        $this->Task = $this->getMockBuilder(TwigTemplateTask::class)
             ->setMethods($methods)
-            ->setConstructorArgs([$io])
+            ->disableOriginalConstructor()
             ->getMock();
         $this->Task->connection = 'test';
 
         $this->Task->BakeTemplate = new BakeTemplateTask($io);
         $this->Task->BakeTemplate->params['theme'] = 'TwigView';
-        $this->Task->Model = $this->getMockBuilder('Bake\Shell\Task\ModelTask')
-            ->setConstructorArgs([$io])
+        $this->Task->Model = $this->getMockBuilder(ModelTask::class)
+            ->disableOriginalConstructor()
             ->getMock();
     }
 }

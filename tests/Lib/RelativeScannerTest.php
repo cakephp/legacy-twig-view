@@ -12,7 +12,7 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Lib;
 
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
-use Cake\TestSuite\TestCase;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\RelativeScanner;
 
 /**
@@ -57,7 +57,7 @@ class RelativeScannerTest extends TestCase
 
     public function testAll()
     {
-        $this->assertEquals([
+        $expected = [
             'APP' => [
                 'Blog/index.twig',
                 'Element/element.twig',
@@ -72,8 +72,13 @@ class RelativeScannerTest extends TestCase
                 'Controller/view.twig',
                 'twig.twig',
             ],
-            'Bake' => RelativeScanner::plugin('Bake'),
-        ], RelativeScanner::all());
+        ];
+
+        /*if (Plugin::loaded('Bake')) {
+            $expected['Bake'] = RelativeScanner::plugin('Bake');
+        }*/
+
+        $this->assertEquals($expected, RelativeScanner::all());
     }
 
     public function testPlugin()

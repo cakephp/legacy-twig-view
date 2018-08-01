@@ -14,10 +14,10 @@ use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 use Cake\Core\Configure;
-use Cake\TestSuite\TestCase;
 use Phake;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ExtensionsListener;
 

@@ -10,7 +10,7 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Cake\TestSuite\TestCase;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 
 class EnvironmentConfigEventTest extends TestCase

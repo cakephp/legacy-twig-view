@@ -12,7 +12,7 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig;
 
 use Cake\Core\Configure;
 use Cake\Core\Plugin as CakePlugin;
-use Cake\TestSuite\TestCase;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**

@@ -10,8 +10,8 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig\Extension;
 
-use Cake\TestSuite\TestCase;
 use Twig\TokenParser\TokenParserInterface;
+use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 
 abstract class AbstractExtensionTest extends TestCase
 {
