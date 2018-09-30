@@ -1,1 +1,1 @@
-index.ctp
+index.php

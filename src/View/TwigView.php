@@ -167,7 +167,7 @@ class TwigView extends View
             $data = $this->viewVars;
         }
 
-        if (substr($viewFile, -3) === 'ctp') {
+        if (substr($viewFile, -3) === 'php') {
             $out = parent::_render($viewFile, $data);
         } else {
             $data = array_merge(

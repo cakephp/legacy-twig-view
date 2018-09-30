@@ -42,7 +42,7 @@ final class TwigTemplateTask extends TemplateTask
             $content = $this->getContent($action);
         }
         if (empty($content)) {
-            $this->err("<warning>No generated content for '{$action}.ctp', not generating template.</warning>");
+            $this->err("<warning>No generated content for '{$action}.php', not generating template.</warning>");
 
             return false;
         }

@@ -1,1 +1,1 @@
-layout.ctp
+layout.php

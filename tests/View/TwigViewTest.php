@@ -85,7 +85,7 @@ class TwigViewTest extends TestCase
             self::getMethod('_render')->invokeArgs(
                 $view,
                 [
-                    PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'cakephp.ctp',
+                    PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'cakephp.php',
                 ]
             )
         );
