@@ -24,28 +24,8 @@ class TreeScannerTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Configure::write(
-            'App',
-            [
-                'paths' => [
-                    'templates' => [
-                        PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS,
-                    ],
-                ],
-            ]
-        );
-        Plugin::load(
-            'TestTwigView',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS,
-            ]
-        );
-        Plugin::load(
-            'TestTwigViewEmpty',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigViewEmpty' . DS,
-            ]
-        );
+
+        $this->loadPlugins(['TestTwigView']);
     }
 
     public function tearDown()

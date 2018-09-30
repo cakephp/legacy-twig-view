@@ -40,6 +40,8 @@
         "psr-4": {
             "WyriHaximus\\CakePHP\\Tests\\TwigView\\": "tests/",
             "App\\": "tests/test_app/",
+            "TestTwigView\\": "tests/test_app/Plugin/TestTwigView/src",
+            "Modern\\": "tests/test_app/Plugin/Modern/src",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     },

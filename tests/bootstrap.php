@@ -11,6 +11,7 @@ define('APP', sys_get_temp_dir());
 define('TMP', sys_get_temp_dir() . '/TwigViewTmp/');
 define('CACHE', sys_get_temp_dir() . '/TwigViewTmp/cache/');
 define('PLUGIN_REPO_ROOT', dirname(__DIR__) . DS);
+define('TEST_APP', PLUGIN_REPO_ROOT . 'tests/test_app' . DS);
 
 $TMP = new \Cake\Filesystem\Folder(TMP);
 $TMP->create(TMP . 'cache/models', 0777);
@@ -29,6 +30,10 @@ Configure::write(
     'App',
     [
         'namespace' => 'App',
+        'paths' => [
+            'plugins' => [TEST_APP . 'Plugin' . DS],
+            'templates' => [TEST_APP . 'templates' . DS],
+        ],
     ]
 );
 
