@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
+use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -21,21 +23,9 @@ if (!getenv('db_dsn')) {
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 
-Cake\Core\Plugin::load(
-    'TwigView',
-    [
-        'namespace' => 'WyriHaximus\TwigView',
-        'path' => PLUGIN_REPO_ROOT,
-    ]
-);
-Cake\Core\Plugin::load(
-    'Bake',
-    [
-        'namespace' => 'Bake',
-        'path' => dirname(__DIR__) . '/vendor/cakephp/bake/',
-    ]
-);
-Cake\Core\Configure::write(
+Plugin::getCollection()->add(new \WyriHaximus\TwigView\Plugin());
+
+Configure::write(
     'App',
     [
         'namespace' => 'App',
@@ -55,4 +45,4 @@ $cache = [
     ],
 ];
 
-Cake\Cache\Cache::setConfig($cache);
+Cache::setConfig($cache);
