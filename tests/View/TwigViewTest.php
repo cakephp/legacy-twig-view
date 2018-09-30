@@ -126,7 +126,6 @@ class TwigViewTest extends TestCase
      */
     public function test_renderTwigCustomException()
     {
-        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
         $view = new AppView();
         $view->setLayout(false);
         $view->render('exception');
@@ -140,7 +139,6 @@ class TwigViewTest extends TestCase
      */
     public function test_renderTwigTwigException()
     {
-        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
         $view = new AppView();
         $view->setLayout(false);
         $view->render('syntaxerror');
