@@ -51,6 +51,10 @@ final class ExtensionsListener implements EventListenerInterface
      */
     public function construct(ConstructEvent $event)
     {
+        if ($event->getTwig()->hasExtension(StringLoaderExtension::class)) {
+            return;
+        }
+
         // Twig core extensions
         $event->getTwig()->addExtension(new StringLoaderExtension());
         $event->getTwig()->addExtension(new DebugExtension());

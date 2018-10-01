@@ -41,10 +41,12 @@ final class ProfilerListener implements EventListenerInterface
      */
     public function construct(ConstructEvent $event)
     {
+        if ($event->getTwig()->hasExtension(Extension\Profiler::class)) {
+            return;
+        }
+
         $profile = new Profile();
-        $event->
-            getTwig()->
-            addExtension(new Extension\Profiler($profile));
+        $event->getTwig()->addExtension(new Extension\Profiler($profile));
 
         EventManager::instance()->dispatch(ProfileEvent::create($profile));
     }
