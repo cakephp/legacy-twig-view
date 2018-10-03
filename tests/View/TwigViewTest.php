@@ -71,7 +71,7 @@ class TwigViewTest extends TestCase
         $this->assertTrue($callbackFired);
     }
 
-    public function test_renderCtp()
+    public function test_renderPhp()
     {
         $output = 'foo:bar with a beer';
 
@@ -85,35 +85,7 @@ class TwigViewTest extends TestCase
             self::getMethod('_render')->invokeArgs(
                 $view,
                 [
-                    PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'cakephp.php',
-                ]
-            )
-        );
-    }
-
-    public function test_renderTpl()
-    {
-        $output = 'foo:bar with a beer';
-
-        $template = Phake::mock('Twig_Template');
-
-        $twig = Phake::mock('Twig_Environment');
-        Phake::when($twig)->loadTemplate('foo.tpl')->thenReturn($template);
-
-        $view = Phake::partialMock('WyriHaximus\TwigView\View\TwigView');
-        Phake::when($view)->getTwig()->thenReturn($twig);
-        Phake::when($template)->render(
-            [
-                '_view' => $view,
-            ]
-        )->thenReturn($output);
-
-        $this->assertSame(
-            $output,
-            self::getMethod('_render')->invokeArgs(
-                $view,
-                [
-                    'foo.tpl',
+                    PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'templates' . DS . 'cakephp.php',
                 ]
             )
         );
