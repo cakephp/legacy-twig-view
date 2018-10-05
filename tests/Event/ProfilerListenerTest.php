@@ -36,7 +36,6 @@ class ProfilerListenerTest extends TestCase
     {
         $twig = $this->prophesize(Environment::class);
         $twig->hasExtension(Profiler::class)->shouldBeCalled()->willReturn(true);
-        $twig->addTokenParser(Argument::type(AbstractExtension::class))->shouldBeCalled();
 
         $twigView = new TwigView();
         (new ProfilerListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
