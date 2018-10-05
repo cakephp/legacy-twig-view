@@ -10,12 +10,13 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Phake;
+use Prophecy\Argument;
 use Twig\Environment;
 use Twig\TokenParser\IncludeTokenParser;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\TokenParsersListener;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class TokenParserListenerTest.
@@ -32,11 +33,10 @@ class TokenParsersListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->addTokenParser(Argument::type(IncludeTokenParser::class))->shouldBeCalled();
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new TokenParsersListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addTokenParser($this->isInstanceOf(IncludeTokenParser::class));
+        $twigView = new TwigView();
+        (new TokenParsersListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 }
