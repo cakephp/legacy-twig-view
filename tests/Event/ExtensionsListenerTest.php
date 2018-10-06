@@ -14,12 +14,14 @@ use Aptoma\Twig\Extension\MarkdownEngineInterface;
 use Aptoma\Twig\Extension\MarkdownExtension;
 use Aptoma\Twig\TokenParser\MarkdownTokenParser;
 use Cake\Core\Configure;
-use Phake;
+use Prophecy\Argument;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Extension\StringLoaderExtension;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ExtensionsListener;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ExtensionsListenerTest.
@@ -36,12 +38,12 @@ class ExtensionsListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->hasExtension(StringLoaderExtension::class)->shouldBeCalled();
+        $twig->addExtension(Argument::type(AbstractExtension::class))->shouldBeCalled();
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
+        $twigView = new TwigView();
+        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 
     public function testConstructMarkdownEngine()
@@ -51,49 +53,49 @@ class ExtensionsListenerTest extends TestCase
             $this->prophesize(MarkdownEngineInterface::class)->reveal()
         );
 
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->hasExtension(StringLoaderExtension::class)->shouldBeCalled();
+        $twig->addExtension(Argument::type(AbstractExtension::class))->shouldBeCalled();
+        $twig->addExtension(Argument::type(MarkdownExtension::class))->shouldBeCalled();
+        $twig->addTokenParser(Argument::type(MarkdownTokenParser::class))->shouldBeCalled();
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
-        Phake::verify($twig)->addExtension($this->isInstanceOf(MarkdownExtension::class));
-        Phake::verify($twig)->addTokenParser($this->isInstanceOf(MarkdownTokenParser::class));
+        $twigView = new TwigView();
+        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 
     public function testConstructNoMarkdownEngine()
     {
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->hasExtension(StringLoaderExtension::class)->shouldBeCalled();
+        $twig->addExtension(Argument::type(AbstractExtension::class))->shouldBeCalled();
+        $twig->addExtension(Argument::type(MarkdownExtension::class))->shouldNotBeCalled();
+        $twig->addTokenParser(Argument::type(MarkdownTokenParser::class))->shouldNotBeCalled();
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
-        Phake::verify($twig, Phake::never())->addExtension($this->isInstanceOf(MarkdownExtension::class));
-        Phake::verify($twig, Phake::never())->addTokenParser($this->isInstanceOf(MarkdownTokenParser::class));
+        $twigView = new TwigView();
+        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 
     public function testConstructDebug()
     {
         Configure::write('debug', true);
 
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->hasExtension(StringLoaderExtension::class)->shouldBeCalled();
+        $twig->addExtension(Argument::type(AbstractExtension::class))->shouldBeCalled();
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
+        $twigView = new TwigView();
+        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 
     public function testConstructDebugFalse()
     {
         Configure::write('debug', false);
 
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->hasExtension(StringLoaderExtension::class)->shouldBeCalled();
+        $twig->addExtension(Argument::type(AbstractExtension::class))->shouldBeCalled();
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
+        $twigView = new TwigView();
+        (new ExtensionsListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 }

@@ -10,7 +10,6 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib;
 
-use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Routing\Router;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;

@@ -10,12 +10,12 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Phake;
 use Twig\Environment;
-use Twig\Extension\AbstractExtension;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ProfilerListener;
+use WyriHaximus\TwigView\Lib\Twig\Extension\Profiler;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ProfilerListenerTest.
@@ -32,11 +32,10 @@ class ProfilerListenerTest extends TestCase
 
     public function testConstruct()
     {
-        $twig = Phake::mock(Environment::class);
+        $twig = $this->prophesize(Environment::class);
+        $twig->hasExtension(Profiler::class)->shouldBeCalled()->willReturn(true);
 
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        (new ProfilerListener())->construct(ConstructEvent::create($twigView, $twig));
-
-        Phake::verify($twig, Phake::atLeast(1))->addExtension($this->isInstanceOf(AbstractExtension::class));
+        $twigView = new TwigView();
+        (new ProfilerListener())->construct(ConstructEvent::create($twigView, $twig->reveal()));
     }
 }

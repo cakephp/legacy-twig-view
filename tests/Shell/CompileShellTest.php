@@ -10,10 +10,13 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Shell;
 
-use Phake;
+use Cake\Console\ConsoleOptionParser;
+use Twig\Environment;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\PHPUnit\Helpers\ReflectionTrait;
+use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\Shell\CompileShell;
+use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class CompileShell.
@@ -25,9 +28,18 @@ class CompileShellTest extends TestCase
 
     public function testAll()
     {
-        $shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileShell');
-        Phake::when($shell)->all()->thenCallParent();
+        $twig = $this->prophesize(Environment::class);
+        foreach (Scanner::all() as $section => $templates) {
+            foreach ($templates as $template) {
+                $twig->loadTemplate($template)->shouldBeCalled()->willReturn('');
+            }
+        }
 
+        $twigView = new TwigView();
+        $twigView->setTwig($twig->reveal());
+
+        $shell = new CompileShell();
+        $shell->setTwigview($twigView);
         $shell->all();
     }
 
@@ -36,35 +48,33 @@ class CompileShellTest extends TestCase
      */
     public function testPlugin()
     {
-        $shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileShell');
-        Phake::when($shell)->plugin('bar:foo')->thenCallParent();
+        $twig = $this->prophesize(Environment::class);
+
+        $twigView = new TwigView();
+        $twigView->setTwig($twig->reveal());
+
+        $shell = new CompileShell();
+        $shell->setTwigview($twigView);
 
         $shell->plugin('bar:foo');
     }
 
     public function testFile()
     {
-        $shell = Phake::mock('WyriHaximus\TwigView\Shell\CompileShell');
-        Phake::when($shell)->file('foo:bar')->thenCallParent();
+        $twig = $this->prophesize(Environment::class);
+        $twig->loadTemplate('foo:bar')->shouldBeCalled()->willReturn('');
+
+        $twigView = new TwigView();
+        $twigView->setTwig($twig->reveal());
+
+        $shell = new CompileShell();
+        $shell->setTwigview($twigView);
 
         $shell->file('foo:bar');
-
-        Phake::verify($shell)->compileTemplate('foo:bar');
     }
 
     public function testGetOptionParser()
     {
-        $this->assertInstanceOf('\Cake\Console\ConsoleOptionParser', (new CompileShell())->getOptionParser());
-    }
-
-    public function testCompileTemplate()
-    {
-        $twig = Phake::mock('Twig_Environment');
-
-        $twigView = Phake::mock('WyriHaximus\TwigView\View\TwigView');
-        Phake::when($twigView)->getTwig()->thenReturn($twig);
-
-        $shell = new CompileShell();
-        $shell->setTwigview($twigView);
+        $this->assertInstanceOf(ConsoleOptionParser::class, (new CompileShell())->getOptionParser());
     }
 }
