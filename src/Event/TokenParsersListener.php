@@ -11,6 +11,7 @@
 namespace WyriHaximus\TwigView\Event;
 
 use Cake\Event\EventListenerInterface;
+use LogicException;
 use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 /**
@@ -40,7 +41,11 @@ final class TokenParsersListener implements EventListenerInterface
     public function construct(ConstructEvent $event)
     {
         // CakePHP specific tags
-        $event->getTwig()->addTokenParser(new TokenParser\Cell());
-        $event->getTwig()->addTokenParser(new TokenParser\Element());
+        try {
+            $event->getTwig()->addTokenParser(new TokenParser\Cell());
+            $event->getTwig()->addTokenParser(new TokenParser\Element());
+        } catch (LogicException $d) {
+            // Nothing to do as token parser already added.
+        }
     }
 }

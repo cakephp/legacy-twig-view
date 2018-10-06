@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
@@ -71,52 +72,18 @@ class TwigViewTest extends TestCase
         $this->assertTrue($callbackFired);
     }
 
-    public function test_renderCtp()
+    public function test_renderPhp()
     {
         $output = 'foo:bar with a beer';
+        $filename = 'cakephp';
 
-        $twig = Phake::mock('Twig_Environment');
+        $twig = $this->prophesize(Environment::class);
 
-        $view = Phake::partialMock('WyriHaximus\TwigView\View\TwigView');
-        Phake::when($view)->getTwig()->thenReturn($twig);
+        $view = new TwigView();
+        $view->setTwig($twig->reveal());
+        $renderedView = $view->render($filename);
 
-        $this->assertSame(
-            $output,
-            self::getMethod('_render')->invokeArgs(
-                $view,
-                [
-                    PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS . 'cakephp.ctp',
-                ]
-            )
-        );
-    }
-
-    public function test_renderTpl()
-    {
-        $output = 'foo:bar with a beer';
-
-        $template = Phake::mock('Twig_Template');
-
-        $twig = Phake::mock('Twig_Environment');
-        Phake::when($twig)->loadTemplate('foo.tpl')->thenReturn($template);
-
-        $view = Phake::partialMock('WyriHaximus\TwigView\View\TwigView');
-        Phake::when($view)->getTwig()->thenReturn($twig);
-        Phake::when($template)->render(
-            [
-                '_view' => $view,
-            ]
-        )->thenReturn($output);
-
-        $this->assertSame(
-            $output,
-            self::getMethod('_render')->invokeArgs(
-                $view,
-                [
-                    'foo.tpl',
-                ]
-            )
-        );
+        self::assertSame($output, $renderedView);
     }
 
     /**
@@ -126,9 +93,8 @@ class TwigViewTest extends TestCase
      */
     public function test_renderTwigCustomException()
     {
-        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
         $view = new AppView();
-        $view->layout = false;
+        $view->setLayout(false);
         $view->render('exception');
     }
 
@@ -140,9 +106,8 @@ class TwigViewTest extends TestCase
      */
     public function test_renderTwigTwigException()
     {
-        Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
         $view = new AppView();
-        $view->layout = false;
+        $view->setLayout(false);
         $view->render('syntaxerror');
     }
 

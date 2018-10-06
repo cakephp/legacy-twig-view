@@ -41,8 +41,7 @@ class TwigView extends View
      */
     protected $extensions = [
         self::EXT,
-        '.tpl',
-        '.ctp',
+        '.php',
     ];
 
     /**
@@ -66,7 +65,7 @@ class TwigView extends View
      * Initialize view.
      *
      */
-    public function initialize()
+    public function initialize(): void
     {
         $this->twig = new Environment($this->getLoader(), $this->resolveConfig());
 
@@ -93,6 +92,14 @@ class TwigView extends View
     public function getTwig(): Environment
     {
         return $this->twig;
+    }
+
+    /**
+     * @internal
+     */
+    public function setTwig(Environment $twig): void
+    {
+        $this->twig = $twig;
     }
 
     /**
@@ -162,13 +169,13 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _render($viewFile, $data = []): string
+    protected function _render(string $viewFile, array $data = []): string
     {
         if (empty($data)) {
             $data = $this->viewVars;
         }
 
-        if (substr($viewFile, -3) === 'ctp') {
+        if (substr($viewFile, -3) === 'php') {
             $out = parent::_render($viewFile, $data);
         } else {
             $data = array_merge(
@@ -200,7 +207,7 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _getViewFileName($name = null): string
+    protected function _getViewFileName(?string $name = null): string
     {
         $rethrow = new Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
@@ -220,7 +227,7 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _getLayoutFileName($name = null): string
+    protected function _getLayoutFileName(?string $name = null): string
     {
         $rethrow = new Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
@@ -240,7 +247,7 @@ class TwigView extends View
      * @param  bool        $pluginCheck
      * @return string|bool
      */
-    protected function _getElementFileName($name, $pluginCheck = true)
+    protected function _getElementFileName(string $name, bool $pluginCheck = true)
     {
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;

@@ -1,5 +1,7 @@
 <?php declare(strict_types=1);
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
+use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -9,6 +11,7 @@ define('APP', sys_get_temp_dir());
 define('TMP', sys_get_temp_dir() . '/TwigViewTmp/');
 define('CACHE', sys_get_temp_dir() . '/TwigViewTmp/cache/');
 define('PLUGIN_REPO_ROOT', dirname(__DIR__) . DS);
+define('TEST_APP', PLUGIN_REPO_ROOT . 'tests/test_app' . DS);
 
 $TMP = new \Cake\Filesystem\Folder(TMP);
 $TMP->create(TMP . 'cache/models', 0777);
@@ -21,24 +24,16 @@ if (!getenv('db_dsn')) {
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 
-Cake\Core\Plugin::load(
-    'TwigView',
-    [
-        'namespace' => 'WyriHaximus\TwigView',
-        'path' => PLUGIN_REPO_ROOT,
-    ]
-);
-Cake\Core\Plugin::load(
-    'Bake',
-    [
-        'namespace' => 'Bake',
-        'path' => dirname(__DIR__) . '/vendor/cakephp/bake/',
-    ]
-);
-Cake\Core\Configure::write(
+Plugin::getCollection()->add(new \WyriHaximus\TwigView\Plugin());
+
+Configure::write(
     'App',
     [
         'namespace' => 'App',
+        'paths' => [
+            'plugins' => [TEST_APP . 'Plugin' . DS],
+            'templates' => [TEST_APP . 'templates' . DS],
+        ],
     ]
 );
 
@@ -55,4 +50,4 @@ $cache = [
     ],
 ];
 
-Cake\Cache\Cache::setConfig($cache);
+Cache::setConfig($cache);

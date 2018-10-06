@@ -32,7 +32,7 @@ class TemplateTaskTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'core.authors',
+        'core.Authors',
     ];
 
     /**
@@ -41,7 +41,7 @@ class TemplateTaskTest extends TestCase
      * Ensure that the default template is used
      *
      */
-    public function setUp()
+    public function _setUp()
     {
         parent::setUp();
         $this->_compareBasePath = PLUGIN_REPO_ROOT . 'tests' . DS . 'comparisons' . DIRECTORY_SEPARATOR;
@@ -54,7 +54,7 @@ class TemplateTaskTest extends TestCase
      * tearDown method.
      *
      */
-    public function tearDown()
+    public function _tearDown()
     {
         parent::tearDown();
         TableRegistry::clear();
@@ -65,8 +65,10 @@ class TemplateTaskTest extends TestCase
      * test Bake method.
      *
      */
-    public function _testBakeView()
+    public function testBakeView()
     {
+        $this->markTestSkipped();
+
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
         $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
@@ -84,8 +86,10 @@ class TemplateTaskTest extends TestCase
      * test baking an edit file.
      *
      */
-    public function _testBakeEdit()
+    public function testBakeEdit()
     {
+        $this->markTestSkipped();
+
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
         $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
@@ -102,8 +106,10 @@ class TemplateTaskTest extends TestCase
      * test baking an index.
      *
      */
-    public function _testBakeIndex()
+    public function testBakeIndex()
     {
+        $this->markTestSkipped();
+
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
         $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
@@ -120,8 +126,10 @@ class TemplateTaskTest extends TestCase
      * test bake template with index limit overwrite.
      *
      */
-    public function _testBakeIndexWithIndexLimit()
+    public function testBakeIndexWithIndexLimit()
     {
+        $this->markTestSkipped();
+
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
         $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
@@ -138,8 +146,10 @@ class TemplateTaskTest extends TestCase
      * test baking an index with output file.
      *
      */
-    public function _testBakeIndexWithOutputFile()
+    public function testBakeIndexWithOutputFile()
     {
+        $this->markTestSkipped();
+
         $this->Task->modelName = __NAMESPACE__ . '\\TemplateTask\\AuthorsTable';
         $this->Task->controllerName = 'Authors';
         $this->Task->controllerClass = __NAMESPACE__ . '\\TemplateTask\\AuthorsController';
@@ -156,8 +166,10 @@ class TemplateTaskTest extends TestCase
      *
      * @param $methods
      */
-    protected function _setupTask($methods)
+    protected function setupTask($methods)
     {
+        $this->markTestSkipped();
+
         $io = $this->getMockBuilder(ConsoleIo::class)
             ->disableOriginalConstructor()
             ->getMock();

@@ -14,6 +14,7 @@ use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
 use Cake\Core\Plugin;
+use Cake\ORM\Locator\LocatorInterface;
 use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\View\TwigView;
 
@@ -36,9 +37,9 @@ class CompileShell extends Shell
      *
      * @param ConsoleIo $consoleIo An IO instance.
      */
-    public function __construct(ConsoleIo $consoleIo = null)
+    public function __construct(?ConsoleIo $io = null, ?LocatorInterface $locator = null)
     {
-        parent::__construct($consoleIo);
+        parent::__construct($io, $locator);
 
         $this->twigView = new TwigView();
     }

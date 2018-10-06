@@ -18,7 +18,7 @@ class AppView extends \WyriHaximus\TwigView\View\TwigView
      * Loads the necessary helper and properly configures them.
      *
      */
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
         $this->loadHelper('TestSecond');

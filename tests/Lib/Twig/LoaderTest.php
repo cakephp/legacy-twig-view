@@ -10,7 +10,6 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig;
 
-use Cake\Core\Configure;
 use Cake\Core\Plugin as CakePlugin;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
@@ -29,22 +28,8 @@ class LoaderTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Configure::write(
-            'App',
-            [
-                'paths' => [
-                    'templates' => [
-                        PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS,
-                    ],
-                ],
-            ]
-        );
-        CakePlugin::load(
-            'TestTwigView',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS,
-            ]
-        );
+
+        $this->loadPlugins(['TestTwigView']);
 
         $this->Loader = new Loader();
     }
@@ -75,7 +60,7 @@ class LoaderTest extends TestCase
     public function testGetCacheKeyNoPlugin()
     {
         $this->assertSame(
-            PLUGIN_REPO_ROOT . 'tests/test_app/Template/layout.twig',
+            PLUGIN_REPO_ROOT . 'tests/test_app/templates/layout.twig',
             $this->Loader->getCacheKey('layout')
         );
     }
@@ -83,11 +68,11 @@ class LoaderTest extends TestCase
     public function testGetCacheKeyPlugin()
     {
         $this->assertSame(
-            PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.twig',
+            PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/templates/twig.twig',
             $this->Loader->getCacheKey('TestTwigView.twig')
         );
         $this->assertSame(
-            PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/src/Template/twig.twig',
+            PLUGIN_REPO_ROOT . 'tests/test_app/Plugin/TestTwigView/templates/twig.twig',
             $this->Loader->getCacheKey('TestTwigView.twig.twig')
         );
     }

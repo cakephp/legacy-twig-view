@@ -22,9 +22,9 @@ class LoaderEventTest extends TestCase
         $loader = new Loader();
         $loader2 = $this->prophesize(Twig_LoaderInterface::class)->reveal();
         $event = LoaderEvent::create($loader);
-        $event->result = [
+        $event->setResult([
             'loader' => $loader2,
-        ];
+        ]);
         $this->assertEquals($loader2, $event->getResultLoader());
     }
 
@@ -33,7 +33,7 @@ class LoaderEventTest extends TestCase
         $loader = new Loader();
         $loader2 = $this->prophesize(Twig_LoaderInterface::class)->reveal();
         $event = LoaderEvent::create($loader);
-        $event->result = $loader2;
+        $event->setResult($loader2);
         $this->assertEquals($loader2, $event->getResultLoader());
     }
 

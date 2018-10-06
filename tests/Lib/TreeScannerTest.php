@@ -10,8 +10,8 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib;
 
-use Cake\Core\Configure;
 use Cake\Core\Plugin;
+use Cake\Routing\Router;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\TreeScanner;
 
@@ -24,28 +24,9 @@ class TreeScannerTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        Configure::write(
-            'App',
-            [
-                'paths' => [
-                    'templates' => [
-                        PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS,
-                    ],
-                ],
-            ]
-        );
-        Plugin::load(
-            'TestTwigView',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS,
-            ]
-        );
-        Plugin::load(
-            'TestTwigViewEmpty',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigViewEmpty' . DS,
-            ]
-        );
+
+        Router::reload();
+        $this->loadPlugins(['TestTwigView']);
     }
 
     public function tearDown()
