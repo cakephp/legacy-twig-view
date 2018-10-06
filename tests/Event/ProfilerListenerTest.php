@@ -10,9 +10,7 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Prophecy\Argument;
 use Twig\Environment;
-use Twig\Extension\AbstractExtension;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ProfilerListener;
