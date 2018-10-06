@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
@@ -74,21 +75,15 @@ class TwigViewTest extends TestCase
     public function test_renderPhp()
     {
         $output = 'foo:bar with a beer';
+        $filename = 'cakephp';
 
-        $twig = Phake::mock('Twig_Environment');
+        $twig = $this->prophesize(Environment::class);
 
-        $view = Phake::partialMock('WyriHaximus\TwigView\View\TwigView');
-        Phake::when($view)->getTwig()->thenReturn($twig);
+        $view = new TwigView();
+        $view->setTwig($twig->reveal());
+        $renderedView = $view->render($filename);
 
-        $this->assertSame(
-            $output,
-            self::getMethod('_render')->invokeArgs(
-                $view,
-                [
-                    PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'templates' . DS . 'cakephp.php',
-                ]
-            )
-        );
+        self::assertSame($output, $renderedView);
     }
 
     /**
