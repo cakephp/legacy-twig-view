@@ -1,6 +1,6 @@
 {
     "name": "wyrihaximus/twig-view",
-    "description": "Twig powered View for CakePHP3",
+    "description": "Twig powered View for CakePHP",
     "type":"cakephp-plugin",
     "license": "MIT",
     "keywords": [
@@ -8,8 +8,7 @@
         "twig2",
         "view",
         "template",
-        "cakephp",
-        "cakephp3"
+        "cakephp"
     ],
     "authors": [
         {
