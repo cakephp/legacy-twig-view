@@ -138,12 +138,12 @@ final class Loader implements LoaderInterface, ExistsLoaderInterface, SourceCont
             $paths = $this->getPaths($scope);
             foreach ($paths as $path) {
                 $filePath = $path . $file;
-                if (file_exists($filePath)) {
+                if (is_file($filePath)) {
                     return $filePath;
                 }
 
                 $filePath = $path . $file . TwigView::EXT;
-                if (file_exists($filePath)) {
+                if (is_file($filePath)) {
                     return $filePath;
                 }
             }
