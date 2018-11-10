@@ -8,7 +8,7 @@ use WyriHaximus\TwigView\Event;
 EventManager::instance()->on(new Event\ExtensionsListener());
 EventManager::instance()->on(new Event\TokenParsersListener());
 
-if (Configure::read('debug') && Plugin::loaded('DebugKit')) {
+if (Configure::read('debug') && Plugin::isLoaded('DebugKit')) {
     Configure::write('DebugKit.panels', array_merge(
         (array)Configure::read('DebugKit.panels'),
         [
