@@ -35,6 +35,7 @@ final class Inflector extends AbstractExtension
             new TwigFilter('tableize', 'Cake\Utility\Inflector::tableize'),
             new TwigFilter('classify', 'Cake\Utility\Inflector::classify'),
             new TwigFilter('variable', 'Cake\Utility\Inflector::variable'),
+            new TwigFilter('dasherize', 'Cake\Utility\Inflector::dasherize'),
             new TwigFilter('slug', 'Cake\Utility\Text::slug'),
         ];
     }
