@@ -34,23 +34,35 @@ class RelativeScannerTest extends TestCase
                 ]
             ]
         );
-        Plugin::load(
-            'TestTwigView',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS,
-            ]
-        );
-        Plugin::load(
-            'TestTwigViewEmpty',
-            [
-                'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigViewEmpty' . DS,
-            ]
-        );
+
+        $this->deprecated(function () {
+            Plugin::load(
+                'TestTwigView',
+                [
+                    'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigView' . DS,
+                ]
+            );
+            Plugin::load(
+                'TestTwigViewEmpty',
+                [
+                    'path' => PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS . 'TestTwigViewEmpty' . DS,
+                ]
+            );
+            Plugin::load(
+                'Bake',
+                [
+                    'namespace' => 'Bake',
+                    'path' => PLUGIN_REPO_ROOT . 'vendor/cakephp/bake/',
+                ]
+            );
+        });
     }
 
     public function tearDown()
     {
-        Plugin::unload('TestTwigView');
+        $this->deprecated(function () {
+            Plugin::unload('TestTwigView');
+        });
 
         parent::tearDown();
     }

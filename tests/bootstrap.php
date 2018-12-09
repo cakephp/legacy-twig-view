@@ -22,20 +22,6 @@ if (!getenv('db_dsn')) {
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 
-Cake\Core\Plugin::load(
-	'TwigView',
-	[
-		'namespace' => 'WyriHaximus\TwigView',
-		'path' => PLUGIN_REPO_ROOT,
-	]
-);
-Cake\Core\Plugin::load(
-	'Bake',
-	[
-		'namespace' => 'Bake',
-		'path' => dirname(__DIR__) . '/vendor/cakephp/bake/',
-	]
-);
 Cake\Core\Configure::write(
 	'App',
 	[

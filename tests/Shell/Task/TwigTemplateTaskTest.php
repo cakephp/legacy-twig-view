@@ -10,7 +10,9 @@
 namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task;
 
 use Bake\Shell\Task\BakeTemplateTask;
+use Bake\Shell\Task\ModelTask;
 use Cake\Core\Configure;
+use Cake\Core\Plugin;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\StringCompareTrait;
 use Cake\TestSuite\TestCase;
@@ -27,7 +29,7 @@ class TemplateTaskTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'core.authors'
+        'core.Authors'
     ];
 
     /**
@@ -41,6 +43,15 @@ class TemplateTaskTest extends TestCase
     {
         parent::setUp();
         $this->_compareBasePath = PLUGIN_REPO_ROOT . 'tests' . DS . 'comparisons' . DIRECTORY_SEPARATOR;
+
+        $this->deprecated(function () {
+            Plugin::load(
+                'TwigView',
+                [
+                    'path' => PLUGIN_REPO_ROOT,
+                ]
+            );
+        });
 
         Configure::write('App.namespace', 'WyriHaximus\TwigView\Test\App');
         $this->_setupTask(['in', 'err', 'error', 'createFile', '_stop']);
@@ -66,9 +77,7 @@ class TemplateTaskTest extends TestCase
 
         $this->Task->BakeTemplate = new BakeTemplateTask($io);
         $this->Task->BakeTemplate->params['theme'] = 'TwigView';
-        $this->Task->Model = $this->getMockBuilder('Bake\Shell\Task\ModelTask')
-            ->setConstructorArgs([$io])
-            ->getMock();
+        $this->Task->Model = new ModelTask($io);
     }
 
     /**

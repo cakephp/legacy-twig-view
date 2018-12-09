@@ -11,7 +11,7 @@ use Cake\Utility\Inflector;
 
 $fields = collection($fields)
     ->filter(function($field) use ($schema) {
-        return $schema->columnType($field) !== 'binary';
+        return $schema->getColumnType($field) !== 'binary';
     });
 
 if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
@@ -59,7 +59,7 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
                 continue;
             }
             if (isset($keyFields[$field])) {
-                $fieldData = $schema->column($field);
+                $fieldData = $schema->getColumn($field);
                 if (!empty($fieldData['null'])) {
 %>
         {{ Form.input('<%= $field %>', {'options' : <%= $keyFields[$field] %>, 'empty' : true})|raw }}
@@ -72,7 +72,7 @@ if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
                 continue;
             }
             if (!in_array($field, ['created', 'modified', 'updated'])) {
-                $fieldData = $schema->column($field);
+                $fieldData = $schema->getColumn($field);
                 if (in_array($fieldData['type'], ['date', 'datetime', 'time']) && (!empty($fieldData['null']))) {
 %>
         {{ Form.input('<%= $field %>', {'empty' : true})|raw }}
