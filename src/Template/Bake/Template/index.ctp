@@ -11,7 +11,7 @@ use Cake\Utility\Inflector;
 
 $fields = collection($fields)
     ->filter(function($field) use ($schema) {
-        return !in_array($schema->columnType($field), ['binary', 'text']);
+        return !in_array($schema->getColumnType($field), ['binary', 'text']);
     });
 
 if (isset($modelObject) && $modelObject->behaviors()->has('Tree')) {
@@ -73,7 +73,7 @@ if (!empty($indexColumns)) {
                 }
             }
             if ($isKey !== true) {
-                if (!in_array($schema->columnType($field), ['integer', 'biginteger', 'decimal', 'float'])) {
+                if (!in_array($schema->getColumnType($field), ['integer', 'biginteger', 'decimal', 'float'])) {
 %>
                 <td>{{ <%= $singularVar %>.<%= $field %>|h }}</td>
 <%

@@ -203,7 +203,7 @@ class TwigViewTest extends TestCase
 	{
 		Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
 		$view = new AppView();
-		$view->layout = false;
+		$view->setLayout(false);
 		$view->render('exception');
 	}
 
@@ -217,7 +217,7 @@ class TwigViewTest extends TestCase
 	{
 		Configure::write('App.paths.templates', PLUGIN_REPO_ROOT . 'tests' . DS . 'test_app' . DS . 'Template' . DS);
 		$view = new AppView();
-		$view->layout = false;
+		$view->setLayout(false);
 		$view->render('syntaxerror');
 	}
 
@@ -228,7 +228,7 @@ class TwigViewTest extends TestCase
         Plugin::load('Modern');
 
         $view = new AppView();
-        $view->layout = false;
+        $view->setLayout(false);
         $view->theme = 'Modern';
         $this->assertSame('index.ctp', $view->render('Blog/index'));
 	}
@@ -252,7 +252,7 @@ class TwigViewTest extends TestCase
         Plugin::load('Modern');
 
         $view = new AppView();
-        $view->layout = false;
+        $view->setLayout(false);
         $view->theme = 'Modern';
         $this->assertSame('element.ctp', $view->element('element'));
 	}
@@ -263,7 +263,7 @@ class TwigViewTest extends TestCase
         Plugin::load('Modern');
 
         $view = new AppView();
-        $view->layout = false;
+        $view->setLayout(false);
         $this->assertSame('index.twig', $view->render('Blog/index'));
 	}
 
@@ -285,7 +285,7 @@ class TwigViewTest extends TestCase
         Plugin::load('Modern');
 
         $view = new AppView();
-        $view->layout = false;
+        $view->setLayout(false);
         $this->assertSame('element.twig', $view->element('element'));
 	}
 }
