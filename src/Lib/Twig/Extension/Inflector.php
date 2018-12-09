@@ -33,6 +33,7 @@ class Inflector extends \Twig_Extension
             new \Twig_SimpleFilter('tableize', 'Cake\Utility\Inflector::tableize'),
             new \Twig_SimpleFilter('classify', 'Cake\Utility\Inflector::classify'),
             new \Twig_SimpleFilter('variable', 'Cake\Utility\Inflector::variable'),
+            new \Twig_SimpleFilter('dasherize', 'Cake\Utility\Inflector::dasherize'),
             new \Twig_SimpleFilter('slug', 'Cake\Utility\Text::slug'),
         ];
     }
