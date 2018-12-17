@@ -25,7 +25,8 @@ ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 Cake\Core\Configure::write(
 	'App',
 	[
-		'namespace' => 'App'
+		'namespace' => 'App',
+        'encoding' => 'utf-8',
 	]
 );
 
