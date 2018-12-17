@@ -80,7 +80,7 @@ class TwigView extends View
     {
         $config = [
             'cache' => CACHE . 'twigView' . DS,
-            'charset' => strtolower(Configure::read('App.encoding')),
+            'charset' => strtolower(Configure::readOrFail('App.encoding')),
             'auto_reload' => Configure::read('debug'),
             'debug' => Configure::read('debug'),
         ];
