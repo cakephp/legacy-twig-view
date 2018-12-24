@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "9c32f276df7ae959c1c525a64eef6e9e",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "3258bcd23f981770995ed300df5adfe1b1a10c40"
+                "reference": "2a73fcc271a9564315bae793a29df865d785bb37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/3258bcd23f981770995ed300df5adfe1b1a10c40",
-                "reference": "3258bcd23f981770995ed300df5adfe1b1a10c40",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/2a73fcc271a9564315bae793a29df865d785bb37",
+                "reference": "2a73fcc271a9564315bae793a29df865d785bb37",
                 "shasum": ""
             },
             "require": {
@@ -205,10 +205,9 @@
                 "cakephp/validation": "self.version"
             },
             "require-dev": {
-                "cakephp/cakephp-codesniffer": "^3.0",
+                "cakephp/cakephp-codesniffer": "dev-next",
                 "mikey179/vfsstream": "^1.6",
-                "phpunit/phpunit": "^7.0",
-                "slevomat/coding-standard": "^4.6.2"
+                "phpunit/phpunit": "^7.0"
             },
             "suggest": {
                 "ext-curl": "To enable more efficient network calls in Http\\Client.",
@@ -250,7 +249,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2018-10-11T00:53:12+00:00"
+            "time": "2018-12-22T11:55:59+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -677,7 +676,7 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -735,16 +734,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.9.0",
+            "version": "v1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8"
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/d0cd638f4634c16d8df4508e847f14e9e43168b8",
-                "reference": "d0cd638f4634c16d8df4508e847f14e9e43168b8",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
+                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
                 "shasum": ""
             },
             "require": {
@@ -790,36 +789,36 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-08-06T14:22:27+00:00"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v2.5.0",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "6a5f676b77a90823c2d4eaf76137b771adf31323"
+                "reference": "a11dd39f5b6589e14f0ff3b36675d06047c589b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/6a5f676b77a90823c2d4eaf76137b771adf31323",
-                "reference": "6a5f676b77a90823c2d4eaf76137b771adf31323",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a11dd39f5b6589e14f0ff3b36675d06047c589b1",
+                "reference": "a11dd39f5b6589e14f0ff3b36675d06047c589b1",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
                 "symfony/polyfill-ctype": "^1.8",
-                "symfony/polyfill-mbstring": "~1.0"
+                "symfony/polyfill-mbstring": "^1.3"
             },
             "require-dev": {
                 "psr/container": "^1.0",
                 "symfony/debug": "^2.7",
-                "symfony/phpunit-bridge": "^3.3"
+                "symfony/phpunit-bridge": "^3.4.19|^4.1.8"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -857,7 +856,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-07-13T07:18:09+00:00"
+            "time": "2018-12-16T10:36:48+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -1027,12 +1026,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "88907e3bd81ab9a93de762eb0781fb398870f71e"
+                "reference": "16cb2c4cd769a3b7132d586199469bceb18d11a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/88907e3bd81ab9a93de762eb0781fb398870f71e",
-                "reference": "88907e3bd81ab9a93de762eb0781fb398870f71e",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/16cb2c4cd769a3b7132d586199469bceb18d11a3",
+                "reference": "16cb2c4cd769a3b7132d586199469bceb18d11a3",
                 "shasum": ""
             },
             "require": {
@@ -1078,7 +1077,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2018-09-27T07:57:01+00:00"
+            "time": "2018-12-19T20:06:32+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
