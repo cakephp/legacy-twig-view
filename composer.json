@@ -28,7 +28,7 @@
     "require-dev": {
         "api-clients/cs-fixer-config": "^1.0",
         "cakephp/debug_kit": "4.x-dev as 4.0.0",
-        "friendsofphp/php-cs-fixer": "^2.13",
+        "friendsofphp/php-cs-fixer": "^2.14",
         "jakub-onderka/php-console-highlighter": "^0.4.0",
         "jakub-onderka/php-parallel-lint": "^1.0",
         "phpunit/phpunit": "^7.1",
