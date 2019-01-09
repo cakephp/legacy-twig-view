@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "97e290548cc563dc41df13822c3b67374b7d20ff"
+                "reference": "8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/97e290548cc563dc41df13822c3b67374b7d20ff",
-                "reference": "97e290548cc563dc41df13822c3b67374b7d20ff",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9",
+                "reference": "8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-01-07T00:36:21+00:00"
+            "time": "2019-01-07T06:37:21+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -3989,20 +3989,21 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
+                "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
-                "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/83e253c8e0be5b0257b881e1827274667c5c17a9",
+                "reference": "83e253c8e0be5b0257b881e1827274667c5c17a9",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0"
+                "php": "^5.3.3 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.6",
@@ -4035,7 +4036,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2018-01-29T19:49:41+00:00"
+            "time": "2018-12-25T11:19:39+00:00"
         },
         {
             "name": "wyrihaximus/phpunit-class-reflection-helpers",
