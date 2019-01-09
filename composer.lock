@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "97e290548cc563dc41df13822c3b67374b7d20ff"
+                "reference": "8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/97e290548cc563dc41df13822c3b67374b7d20ff",
-                "reference": "97e290548cc563dc41df13822c3b67374b7d20ff",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9",
+                "reference": "8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-01-07T00:36:21+00:00"
+            "time": "2019-01-07T06:37:21+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -910,16 +910,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "2.0.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "0bae78192e634774b5584f0210c1232da82cb1ff"
+                "reference": "c3c330192bc9cc51b7e9ce968ff721dc32ffa986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/0bae78192e634774b5584f0210c1232da82cb1ff",
-                "reference": "0bae78192e634774b5584f0210c1232da82cb1ff",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/c3c330192bc9cc51b7e9ce968ff721dc32ffa986",
+                "reference": "c3c330192bc9cc51b7e9ce968ff721dc32ffa986",
                 "shasum": ""
             },
             "require": {
@@ -942,8 +942,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev",
-                    "dev-develop": "2.1.x-dev",
+                    "dev-master": "2.1.x-dev",
+                    "dev-develop": "2.2.x-dev",
                     "dev-release-1.8": "1.8.x-dev"
                 }
             },
@@ -972,7 +972,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2018-09-27T19:49:04+00:00"
+            "time": "2019-01-05T20:13:32+00:00"
         },
         {
             "name": "zendframework/zend-httphandlerrunner",
