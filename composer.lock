@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "97e290548cc563dc41df13822c3b67374b7d20ff"
+                "reference": "8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/97e290548cc563dc41df13822c3b67374b7d20ff",
-                "reference": "97e290548cc563dc41df13822c3b67374b7d20ff",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9",
+                "reference": "8c2ccf1b8c0617fc0c5273664975a9ca6a3698d9",
                 "shasum": ""
             },
             "require": {
@@ -250,7 +250,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-01-07T00:36:21+00:00"
+            "time": "2019-01-07T06:37:21+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -311,16 +311,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "46afded9720f40b9dc63542af4e3e43a1177acb0"
+                "reference": "8afa52cd417f4ec417b4bfe86b68106538a87660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/46afded9720f40b9dc63542af4e3e43a1177acb0",
-                "reference": "46afded9720f40b9dc63542af4e3e43a1177acb0",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/8afa52cd417f4ec417b4bfe86b68106538a87660",
+                "reference": "8afa52cd417f4ec417b4bfe86b68106538a87660",
                 "shasum": ""
             },
             "require": {
@@ -363,7 +363,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2018-08-08T08:57:40+00:00"
+            "time": "2018-10-18T06:09:13+00:00"
         },
         {
             "name": "jasny/twig-extensions",
