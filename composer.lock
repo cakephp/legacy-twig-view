@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "ae167799c443dd60a566eb163525aebc63db6d78"
+                "reference": "d3daecdde3cf20f28ba94e1757a47a0397b796be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/ae167799c443dd60a566eb163525aebc63db6d78",
-                "reference": "ae167799c443dd60a566eb163525aebc63db6d78",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/d3daecdde3cf20f28ba94e1757a47a0397b796be",
+                "reference": "d3daecdde3cf20f28ba94e1757a47a0397b796be",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-02-09T03:15:57+00:00"
+            "time": "2019-02-14T04:17:47+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -2706,16 +2706,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.4",
+            "version": "7.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "2896657da5fb237bc316bdfc18c2650efeee0dc0"
+                "reference": "23a200a60552cb9ba483a8d1e106c70fb0be0bb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2896657da5fb237bc316bdfc18c2650efeee0dc0",
-                "reference": "2896657da5fb237bc316bdfc18c2650efeee0dc0",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/23a200a60552cb9ba483a8d1e106c70fb0be0bb9",
+                "reference": "23a200a60552cb9ba483a8d1e106c70fb0be0bb9",
                 "shasum": ""
             },
             "require": {
@@ -2786,7 +2786,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-02-07T14:15:04+00:00"
+            "time": "2019-02-15T14:00:34+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
