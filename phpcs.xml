@@ -3,4 +3,7 @@
     <config name="installed_paths" value="../../cakephp/cakephp-codesniffer" />
 
     <rule ref="CakePHP" />
+    <rule ref="CakePHP.Commenting.FunctionComment">
+        <severity>0</severity>
+    </rule>
 </ruleset>

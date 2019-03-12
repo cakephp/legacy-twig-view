@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -13,7 +14,6 @@ namespace WyriHaximus\TwigView\Shell;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
-use Cake\Core\Plugin;
 use Cake\ORM\Locator\LocatorInterface;
 use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\View\TwigView;
@@ -24,18 +24,17 @@ use WyriHaximus\TwigView\View\TwigView;
  */
 class CompileShell extends Shell
 {
-
     /**
      * Instance of TwigView to be used to compile templates.
      *
-     * @var TwigView
+     * @var \WyriHaximus\TwigView\View\TwigView
      */
     protected $twigView;
 
     /**
      * Constructor.
      *
-     * @param ConsoleIo $consoleIo An IO instance.
+     * @param \Cake\Console\ConsoleIo $io An IO instance.
      */
     public function __construct(?ConsoleIo $io = null, ?LocatorInterface $locator = null)
     {
@@ -47,7 +46,7 @@ class CompileShell extends Shell
     /**
      * Set TwigView.
      *
-     * @param TwigView $twigView TwigView instance.
+     * @param \WyriHaximus\TwigView\View\TwigView $twigView TwigView instance.
      *
      */
     public function setTwigview(TwigView $twigView)

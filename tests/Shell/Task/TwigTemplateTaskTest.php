@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -20,9 +21,9 @@ use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Shell\Task\TwigTemplateTask;
 
 /**
- * TemplateTaskTest class.
+ * TwigTemplateTaskTest class.
  */
-class TemplateTaskTest extends TestCase
+class TwigTemplateTaskTest extends TestCase
 {
     use StringCompareTrait;
 
@@ -41,20 +42,20 @@ class TemplateTaskTest extends TestCase
      * Ensure that the default template is used
      *
      */
-    public function _setUp()
+    public function setUp()
     {
         parent::setUp();
         $this->_compareBasePath = PLUGIN_REPO_ROOT . 'tests' . DS . 'comparisons' . DIRECTORY_SEPARATOR;
 
         Configure::write('App.namespace', 'WyriHaximus\TwigView\Test\App');
-        $this->_setupTask(['in', 'err', 'error', 'createFile', '_stop']);
+        $this->setupTask(['in', 'err', 'error', 'createFile', '_stop']);
     }
 
     /**
      * tearDown method.
      *
      */
-    public function _tearDown()
+    public function tearDown()
     {
         parent::tearDown();
         TableRegistry::clear();

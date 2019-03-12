@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -44,8 +45,8 @@ final class Loader implements LoaderInterface, ExistsLoaderInterface, SourceCont
      *
      * @param string $name The template logical name.
      *
-     * @throws Twig\Error\Loader When $name is not found
-     * @return Twig\Source
+     * @throws \WyriHaximus\TwigView\Lib\Twig\Twig\Error\Loader When $name is not found
+     * @return \WyriHaximus\TwigView\Lib\Twig\Twig\Source
      *
      */
     public function getSourceContext($name): Source
@@ -133,7 +134,7 @@ final class Loader implements LoaderInterface, ExistsLoaderInterface, SourceCont
             return $name;
         }
 
-        list($plugin, $file) = pluginSplit($name);
+        [$plugin, $file] = pluginSplit($name);
         foreach ([null, $plugin] as $scope) {
             $paths = $this->getPaths($scope);
             foreach ($paths as $path) {

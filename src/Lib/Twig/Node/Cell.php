@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -21,7 +22,6 @@ use Twig\Node\NodeOutputInterface;
  */
 final class Cell extends Node implements NodeOutputInterface
 {
-
     /**
      * Whether to assign the data or not.
      *
@@ -44,8 +44,8 @@ final class Cell extends Node implements NodeOutputInterface
         $assign,
         $variable,
         AbstractExpression $name,
-        AbstractExpression $data = null,
-        AbstractExpression $options = null,
+        ?AbstractExpression $data = null,
+        ?AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {

@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -19,9 +20,9 @@ class ConstructEventTest extends TestCase
 {
     public function testCreate()
     {
-        $twigView        = $this->prophesize(TwigView::class)->reveal();
+        $twigView = $this->prophesize(TwigView::class)->reveal();
         $twigEnvironment = $this->prophesize(Twig_Environment::class)->reveal();
-        $event           = ConstructEvent::create($twigView, $twigEnvironment);
+        $event = ConstructEvent::create($twigView, $twigEnvironment);
 
         $this->assertEquals($twigView, $event->getTwigView());
         $this->assertEquals($twigEnvironment, $event->getTwig());

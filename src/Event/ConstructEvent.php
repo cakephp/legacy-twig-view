@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -16,10 +17,10 @@ use WyriHaximus\TwigView\View\TwigView;
 
 final class ConstructEvent extends Event
 {
-    const EVENT = 'TwigView.TwigView.construct';
+    public const EVENT = 'TwigView.TwigView.construct';
 
     /**
-     * @param  TwigView          $twigView
+     * @param  \WyriHaximus\TwigView\View\TwigView          $twigView
      * @param  \Twig\Environment $twig
      * @return static
      */
@@ -32,7 +33,7 @@ final class ConstructEvent extends Event
     }
 
     /**
-     * @return TwigView
+     * @return \WyriHaximus\TwigView\View\TwigView
      */
     public function getTwigView(): TwigView
     {

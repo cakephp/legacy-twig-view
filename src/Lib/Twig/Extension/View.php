@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -23,14 +24,14 @@ final class View extends AbstractExtension
     /**
      * View to call methods upon.
      *
-     * @var CakeView
+     * @var \Cake\View\View
      */
     protected $view;
 
     /**
      * Constructor.
      *
-     * @param CakeView $view View instance.
+     * @param \Cake\View\View $view View instance.
      */
     public function __construct(CakeView $view)
     {

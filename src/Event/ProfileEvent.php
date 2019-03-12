@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -15,7 +16,7 @@ use Twig\Profiler\Profile;
 
 final class ProfileEvent extends Event
 {
-    const EVENT = 'TwigView.TwigView.profile';
+    public const EVENT = 'TwigView.TwigView.profile';
 
     /**
      * @param  \Twig\Profiler\Profile $profile

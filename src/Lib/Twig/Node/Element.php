@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -31,8 +32,8 @@ final class Element extends Node
      */
     public function __construct(
         AbstractExpression $name,
-        AbstractExpression $data = null,
-        AbstractExpression $options = null,
+        ?AbstractExpression $data = null,
+        ?AbstractExpression $options = null,
         $lineno = '',
         $tag = null
     ) {
