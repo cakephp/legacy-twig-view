@@ -10,7 +10,6 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib;
 
-use Cake\Core\Plugin;
 use Cake\Routing\Router;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\RelativeScanner;
@@ -31,7 +30,7 @@ class RelativeScannerTest extends TestCase
 
     public function tearDown()
     {
-        Plugin::unload('TestTwigView');
+        $this->removePlugins(['TestTwigView']);
 
         parent::tearDown();
     }

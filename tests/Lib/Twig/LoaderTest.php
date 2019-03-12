@@ -10,7 +10,6 @@
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig;
 
-use Cake\Core\Plugin as CakePlugin;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
@@ -38,7 +37,7 @@ class LoaderTest extends TestCase
     {
         unset($this->Loader);
 
-        CakePlugin::unload('TestTwigView');
+        $this->removePlugins(['TestTwigView']);
 
         parent::tearDown();
     }
