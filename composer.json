@@ -26,9 +26,8 @@
         "twig/twig": "^2.4.3"
     },
     "require-dev": {
-        "api-clients/cs-fixer-config": "^1.0",
+        "cakephp/cakephp-codesniffer": "dev-next",
         "cakephp/debug_kit": "4.x-dev as 4.0.0",
-        "friendsofphp/php-cs-fixer": "^2.14",
         "jakub-onderka/php-console-highlighter": "^0.4.0",
         "jakub-onderka/php-parallel-lint": "^1.0",
         "phpunit/phpunit": "^7.1",
@@ -52,11 +51,11 @@
         "ensure-installed": "composer install --ansi -n -q",
         "cs": [
           "@ensure-installed",
-          "php-cs-fixer fix --config=.php_cs --ansi --dry-run --diff --verbose --allow-risky=yes --show-progress=estimating"
+          "phpcs -p src/ tests/"
         ],
         "cs-fix": [
           "@ensure-installed",
-          "php-cs-fixer fix --config=.php_cs --ansi --verbose --allow-risky=yes --show-progress=estimating"
+          "phpcbf -p src/ tests/"
         ],
         "unit": [
           "@ensure-installed",

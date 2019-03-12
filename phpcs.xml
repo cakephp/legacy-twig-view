@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="Project">
-    <description>Object Calisthenics</description>
-    <rule ref="vendor/object-calisthenics/phpcs-calisthenics-rules/ObjectCalisthenics/ruleset.xml"/>
+<?xml version="1.0"?>
+<ruleset name="TwigView">
+    <config name="installed_paths" value="../../cakephp/cakephp-codesniffer" />
+
+    <rule ref="CakePHP" />
 </ruleset>
