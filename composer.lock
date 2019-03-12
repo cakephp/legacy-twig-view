@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "3d4274ac8e0ba73f44c7c340a90dc368b8179f8b"
+                "reference": "be5265a95eadd608bc7a34b217d91f35e91c7e3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/3d4274ac8e0ba73f44c7c340a90dc368b8179f8b",
-                "reference": "3d4274ac8e0ba73f44c7c340a90dc368b8179f8b",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/be5265a95eadd608bc7a34b217d91f35e91c7e3e",
+                "reference": "be5265a95eadd608bc7a34b217d91f35e91c7e3e",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-02-19T05:38:48+00:00"
+            "time": "2019-03-12T05:48:38+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -824,7 +824,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -898,16 +898,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.6.2",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7"
+                "reference": "57bd838bb7a9368ecf8b19bbe9788090502d1615"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/57bd838bb7a9368ecf8b19bbe9788090502d1615",
+                "reference": "57bd838bb7a9368ecf8b19bbe9788090502d1615",
                 "shasum": ""
             },
             "require": {
@@ -923,7 +923,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
@@ -961,7 +961,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-01-14T15:00:48+00:00"
+            "time": "2019-03-12T12:46:23+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
@@ -1131,12 +1131,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "16cb2c4cd769a3b7132d586199469bceb18d11a3"
+                "reference": "bbe2b5e36155b3b015b35f59e99705f4e8c2fd4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/16cb2c4cd769a3b7132d586199469bceb18d11a3",
-                "reference": "16cb2c4cd769a3b7132d586199469bceb18d11a3",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/bbe2b5e36155b3b015b35f59e99705f4e8c2fd4e",
+                "reference": "bbe2b5e36155b3b015b35f59e99705f4e8c2fd4e",
                 "shasum": ""
             },
             "require": {
@@ -1147,7 +1147,7 @@
                 "jdorn/sql-formatter": "^1.2"
             },
             "require-dev": {
-                "cakephp/cakephp-codesniffer": "^3.0",
+                "cakephp/cakephp-codesniffer": "dev-next",
                 "phpunit/phpunit": "^7.0"
             },
             "suggest": {
@@ -1182,7 +1182,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2018-12-19T20:06:32+00:00"
+            "time": "2019-03-12T07:56:13+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
