@@ -824,7 +824,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -898,16 +898,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.7.0",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "57bd838bb7a9368ecf8b19bbe9788090502d1615"
+                "reference": "70c59531da43afe598c66135e39cac39475a2f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/57bd838bb7a9368ecf8b19bbe9788090502d1615",
-                "reference": "57bd838bb7a9368ecf8b19bbe9788090502d1615",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/70c59531da43afe598c66135e39cac39475a2f51",
+                "reference": "70c59531da43afe598c66135e39cac39475a2f51",
                 "shasum": ""
             },
             "require": {
@@ -961,7 +961,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-12T12:46:23+00:00"
+            "time": "2019-03-12T18:48:26+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
