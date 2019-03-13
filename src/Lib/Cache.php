@@ -1,5 +1,5 @@
-<?php declare(strict_types=1);
-
+<?php
+declare(strict_types=1);
 namespace WyriHaximus\TwigView\Lib;
 
 use Asm89\Twig\CacheExtension\CacheProviderInterface;
@@ -7,7 +7,7 @@ use Cake\Cache\Cache as CakeCache;
 
 final class Cache implements CacheProviderInterface
 {
-    const CACHE_PREFIX = 'twig-view-in-template-item-';
+    public const CACHE_PREFIX = 'twig-view-in-template-item-';
 
     /**
      * Retrieve data from the cache.
@@ -18,7 +18,7 @@ final class Cache implements CacheProviderInterface
      */
     public function fetch($identifier)
     {
-        list($config, $key) = $this->configSplit($identifier);
+        [$config, $key] = $this->configSplit($identifier);
 
         return CakeCache::read(static::CACHE_PREFIX . $key, $config);
     }
@@ -34,7 +34,7 @@ final class Cache implements CacheProviderInterface
      */
     public function save($identifier, $data, $lifeTime = 0): bool
     {
-        list($config, $key) = $this->configSplit($identifier);
+        [$config, $key] = $this->configSplit($identifier);
 
         return CakeCache::write(static::CACHE_PREFIX . $key, $data, $config);
     }

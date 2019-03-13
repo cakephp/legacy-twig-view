@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -15,11 +16,11 @@ use Twig\Loader\LoaderInterface;
 
 final class LoaderEvent extends Event
 {
-    const EVENT = 'TwigView.TwigView.loader';
+    public const EVENT = 'TwigView.TwigView.loader';
 
     /**
      * @param  \Twig\Loader\LoaderInterface $loader
-     * @return LoaderEvent
+     * @return \WyriHaximus\TwigView\Event\LoaderEvent
      */
     public static function create(LoaderInterface $loader): LoaderEvent
     {
@@ -37,7 +38,7 @@ final class LoaderEvent extends Event
     }
 
     /**
-     * @return string|Twig\Loader\LoaderInterface
+     * @return string|\WyriHaximus\TwigView\Event\Twig\Loader\LoaderInterface
      */
     public function getResultLoader(): LoaderInterface
     {

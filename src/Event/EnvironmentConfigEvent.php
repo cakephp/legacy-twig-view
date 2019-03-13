@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -14,7 +15,7 @@ use Cake\Event\Event;
 
 final class EnvironmentConfigEvent extends Event
 {
-    const EVENT = 'TwigView.TwigView.environment';
+    public const EVENT = 'TwigView.TwigView.environment';
 
     /**
      * @var array

@@ -1,5 +1,5 @@
-<?php declare(strict_types=1);
-
+<?php
+declare(strict_types=1);
 namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
@@ -28,7 +28,7 @@ final class Scanner
 
         foreach (App::path('Template') as $path) {
             if (is_dir($path)) {
-                $sections['APP'] = isset($sections['APP']) ? $sections['APP'] : [];
+                $sections['APP'] = $sections['APP'] ?? [];
                 $sections['APP'] = array_merge($sections['APP'], static::iteratePath($path));
             }
         }
@@ -36,7 +36,7 @@ final class Scanner
         foreach (static::pluginsWithTemplates() as $plugin) {
             foreach (App::path('Template', $plugin) as $path) {
                 if (is_dir($path)) {
-                    $sections[$plugin] = isset($sections[$plugin]) ? $sections[$plugin] : [];
+                    $sections[$plugin] = $sections[$plugin] ?? [];
                     $sections[$plugin] = array_merge($sections[$plugin], static::iteratePath($path));
                 }
             }
@@ -120,7 +120,7 @@ final class Scanner
      *
      * @param string $path Path to setup iterator for.
      *
-     * @return Iterator
+     * @return \Iterator
      */
     protected static function setupIterator($path): Iterator
     {
@@ -153,7 +153,7 @@ final class Scanner
                 return 0;
             }
 
-            return ($a < $b) ? -1 : 1;
+            return $a < $b ? -1 : 1;
         });
 
         foreach ($array as $paths) {

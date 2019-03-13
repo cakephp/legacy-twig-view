@@ -1,4 +1,9 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
+/**
+ * Tests boostrap
+ */
+
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;

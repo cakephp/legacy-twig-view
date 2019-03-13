@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -25,9 +26,9 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
  */
 class TwigView extends View
 {
-    const EXT = '.twig';
+    public const EXT = '.twig';
 
-    const ENV_CONFIG = 'WyriHaximus.TwigView.environment';
+    public const ENV_CONFIG = 'WyriHaximus.TwigView.environment';
 
     /**
      * Extension to use.

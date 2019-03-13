@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -25,7 +26,7 @@ final class Cell extends IncludeTokenParser
      *
      * @param \Twig\Token $token Token.
      *
-     * @return CellNode
+     * @return \WyriHaximus\TwigView\Lib\Twig\Node\Cell
      */
     public function parse(Token $token): CellNode
     {

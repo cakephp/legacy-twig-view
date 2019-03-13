@@ -14,7 +14,7 @@ matrix:
     - php: 7.2
       env:
         - dropPlatform=false
-    - php: nightly
+    - php: 7.3
       env:
         - dropPlatform=false
     - php: 7.1
@@ -24,7 +24,7 @@ matrix:
       env:
         - dependencies=lowest
         - dropPlatform=false
-    - php: nightly
+    - php: 7.3
       env:
         - dependencies=lowest
         - dropPlatform=false
@@ -35,10 +35,13 @@ matrix:
       env:
         - dependencies=highest
         - dropPlatform=false
-    - php: nightly
+    - php: 7.3
       env:
         - dependencies=highest
         - dropPlatform=false
+    - php: 7.1
+      env:
+        - csCheck=true
 
 ## Install or update dependencies
 install:
@@ -52,8 +55,9 @@ install:
 
 ## Run the actual test
 script:
-  - if [ -z "$qaExtended" ]; then make ci; fi;
+  - if [ -z "$qaExtended" && -z "$csCheck" ]; then make ci; fi;
   - if [ "$qaExtended" = "true" ]; then make ci-extended; fi;
+  - if [ "$csCheck" = "true" ]; then make cs; fi;
 
 ## Gather coverage and set it to coverage servers
 after_script: if [ "$qaExtended" = "true" ]; then make ci-coverage; fi;

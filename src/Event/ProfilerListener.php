@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 /**
  * This file is part of TwigView.
  *
@@ -36,7 +37,7 @@ final class ProfilerListener implements EventListenerInterface
     /**
      * Event handler.
      *
-     * @param ConstructEvent $event Event.
+     * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
      *
      */
     public function construct(ConstructEvent $event)
