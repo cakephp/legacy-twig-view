@@ -371,21 +371,27 @@
         },
         {
             "name": "jasny/twig-extensions",
-            "version": "1.0.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jasny/twig-extensions.git",
-                "reference": "9ed046b433e9448a81db83fc437fe802a4cb3de4"
+                "reference": "30bdf3a3903c021544f36332c9d5d4d563527da4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jasny/twig-extensions/zipball/9ed046b433e9448a81db83fc437fe802a4cb3de4",
-                "reference": "9ed046b433e9448a81db83fc437fe802a4cb3de4",
+                "url": "https://api.github.com/repos/jasny/twig-extensions/zipball/30bdf3a3903c021544f36332c9d5d4d563527da4",
+                "reference": "30bdf3a3903c021544f36332c9d5d4d563527da4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "twig/twig": "1.*"
+                "php": ">=7.0.0 | >=5.6.0",
+                "twig/twig": "^2.0 | ^1.12"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "ext-pcre": "*",
+                "jasny/php-code-quality": "^2.1",
+                "phpunit/phpunit": "^5.0"
             },
             "suggest": {
                 "ext-intl": "Required for the use of the LocalDate Twig extension",
@@ -393,8 +399,8 @@
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Jasny\\Twig": "src/"
+                "psr-4": {
+                    "Jasny\\Twig\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -421,7 +427,7 @@
                 "text",
                 "time"
             ],
-            "time": "2014-02-07T17:56:30+00:00"
+            "time": "2017-09-13T07:38:01+00:00"
         },
         {
             "name": "psr/http-message",
