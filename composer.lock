@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
-            "version": "0.3.2",
+            "version": "0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ajgarlag/AjglBreakpointTwigExtension.git",
-                "reference": "bb419d13775d8fb5cd03b31012eaf496b31b444f"
+                "reference": "81b9eee68417ff6a708e6ab63532febb41443335"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/bb419d13775d8fb5cd03b31012eaf496b31b444f",
-                "reference": "bb419d13775d8fb5cd03b31012eaf496b31b444f",
+                "url": "https://api.github.com/repos/ajgarlag/AjglBreakpointTwigExtension/zipball/81b9eee68417ff6a708e6ab63532febb41443335",
+                "reference": "81b9eee68417ff6a708e6ab63532febb41443335",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
                 "breakpoint",
                 "twig"
             ],
-            "time": "2018-12-10T08:22:36+00:00"
+            "time": "2019-03-18T10:59:03+00:00"
         },
         {
             "name": "aptoma/twig-markdown",
