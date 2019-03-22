@@ -110,7 +110,7 @@ Replace `Template/Layout/default.ctp` by this `Layout/default.twig`
 ```
 
 ### Template View
-Create a template, for exemple `Template/Users/index.twig` like this
+Create a template, for example `Template/Users/index.twig` like this
 ```Twig
 {{ _view.assign('title', __("I'm title")) }}
 
