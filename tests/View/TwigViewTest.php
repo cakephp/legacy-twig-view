@@ -95,8 +95,7 @@ class TwigViewTest extends TestCase
     public function test_renderTwigCustomException()
     {
         $view = new AppView();
-        $view->setLayout(false);
-        $view->render('exception');
+        $view->render('exception', false);
     }
 
     /**
@@ -108,8 +107,7 @@ class TwigViewTest extends TestCase
     public function test_renderTwigTwigException()
     {
         $view = new AppView();
-        $view->setLayout(false);
-        $view->render('syntaxerror');
+        $view->render('syntaxerror', false);
     }
 
     /**

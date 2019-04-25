@@ -101,9 +101,8 @@
         ]
     },
     "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "7.1"
-        }
-    }
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

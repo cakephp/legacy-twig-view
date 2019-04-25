@@ -12,6 +12,7 @@ use Cake\Datasource\ConnectionManager;
 require dirname(__DIR__) . '/vendor/autoload.php';
 require dirname(__DIR__) . '/vendor/cakephp/cakephp/src/basics.php';
 
+define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__DIR__));
 define('APP', sys_get_temp_dir());
 define('TMP', sys_get_temp_dir() . '/TwigViewTmp/');
