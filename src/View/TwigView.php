@@ -208,13 +208,13 @@ class TwigView extends View
      * @throws \Exception
      * @return string
      */
-    protected function _getViewFileName(?string $name = null): string
+    protected function _getTemplateFileName(?string $name = null): string
     {
         $rethrow = new Exception('You\'re not supposed to get here');
         foreach ($this->extensions as $extension) {
             $this->_ext = $extension;
             try {
-                return parent::_getViewFileName($name);
+                return parent::_getTemplateFileName($name);
             } catch (Exception $exception) {
                 $rethrow = $exception;
             }
