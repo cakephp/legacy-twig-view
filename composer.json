@@ -30,7 +30,7 @@
         "cakephp/debug_kit": "4.x-dev as 4.0.0",
         "jakub-onderka/php-console-highlighter": "^0.4.0",
         "jakub-onderka/php-parallel-lint": "^1.0",
-        "phpunit/phpunit": "^7.1",
+        "phpunit/phpunit": "^7.1 || ^8.0",
         "wyrihaximus/phpunit-class-reflection-helpers": "dev-master"
     },
     "autoload": {
