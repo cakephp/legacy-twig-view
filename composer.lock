@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "03f06a11b00a6fcbbe9bf246678efaa0413ac2cf"
+                "reference": "07763cbf0a3938dc2d312ae7161efe6feb08a986"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/03f06a11b00a6fcbbe9bf246678efaa0413ac2cf",
-                "reference": "03f06a11b00a6fcbbe9bf246678efaa0413ac2cf",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/07763cbf0a3938dc2d312ae7161efe6feb08a986",
+                "reference": "07763cbf0a3938dc2d312ae7161efe6feb08a986",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-05-09T22:05:55+00:00"
+            "time": "2019-05-13T14:16:50+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -260,16 +260,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "47fee6c835f0118e5f8f98a4d119e4402eea6eb4"
+                "reference": "cc91cbe032dffdc1c3c33c02aafc3deaa864ff13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/47fee6c835f0118e5f8f98a4d119e4402eea6eb4",
-                "reference": "47fee6c835f0118e5f8f98a4d119e4402eea6eb4",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/cc91cbe032dffdc1c3c33c02aafc3deaa864ff13",
+                "reference": "cc91cbe032dffdc1c3c33c02aafc3deaa864ff13",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "athletic/athletic": "~0.1",
@@ -308,7 +308,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-05-06T02:38:21+00:00"
+            "time": "2019-05-12T13:01:24+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1137,12 +1137,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "8354eb8a28928f08ea48f0a0150ed8a9b86832c7"
+                "reference": "3f364462fef2dc97c37e9fadc5d56664345b269e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/8354eb8a28928f08ea48f0a0150ed8a9b86832c7",
-                "reference": "8354eb8a28928f08ea48f0a0150ed8a9b86832c7",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/3f364462fef2dc97c37e9fadc5d56664345b269e",
+                "reference": "3f364462fef2dc97c37e9fadc5d56664345b269e",
                 "shasum": ""
             },
             "require": {
@@ -1150,7 +1150,8 @@
                 "cakephp/chronos": "2.x-dev as 2.0.0",
                 "cakephp/plugin-installer": "^1.0",
                 "composer/composer": "^1.3",
-                "jdorn/sql-formatter": "^1.2"
+                "jdorn/sql-formatter": "^1.2",
+                "php": ">=7.2"
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "dev-next",
@@ -1162,8 +1163,8 @@
             "type": "cakephp-plugin",
             "autoload": {
                 "psr-4": {
-                    "DebugKit\\": "src",
-                    "DebugKit\\Test\\Fixture\\": "tests\\Fixture"
+                    "DebugKit\\": "src/",
+                    "DebugKit\\Test\\Fixture\\": "tests/Fixture/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1188,7 +1189,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2019-05-07T02:50:57+00:00"
+            "time": "2019-05-12T13:02:08+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -2404,16 +2405,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.1.4",
+            "version": "8.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b534b017daaef2d7f60c6ee61e6aa2e13fdc6910"
+                "reference": "01392d4b5878aa617e8d9bc7a529e5febc8fe956"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b534b017daaef2d7f60c6ee61e6aa2e13fdc6910",
-                "reference": "b534b017daaef2d7f60c6ee61e6aa2e13fdc6910",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/01392d4b5878aa617e8d9bc7a529e5febc8fe956",
+                "reference": "01392d4b5878aa617e8d9bc7a529e5febc8fe956",
                 "shasum": ""
             },
             "require": {
@@ -2482,7 +2483,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-05-09T05:13:39+00:00"
+            "time": "2019-05-14T04:57:31+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
