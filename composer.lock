@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "07763cbf0a3938dc2d312ae7161efe6feb08a986"
+                "reference": "a38a8b6924cd57463d58d08e13a5d9e310a1e6b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/07763cbf0a3938dc2d312ae7161efe6feb08a986",
-                "reference": "07763cbf0a3938dc2d312ae7161efe6feb08a986",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/a38a8b6924cd57463d58d08e13a5d9e310a1e6b5",
+                "reference": "a38a8b6924cd57463d58d08e13a5d9e310a1e6b5",
                 "shasum": ""
             },
             "require": {
@@ -210,12 +210,14 @@
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "dev-next",
                 "mikey179/vfsstream": "^1.6",
+                "paragonie/csp-builder": "^2.3",
                 "phpunit/phpunit": "^8.0"
             },
             "suggest": {
                 "ext-curl": "To enable more efficient network calls in Http\\Client.",
                 "ext-openssl": "To use Security::encrypt() or have secure CSRF token generation.",
-                "lib-ICU": "The intl PHP library, to use Text::transliterate() or Text::slug()"
+                "lib-ICU": "The intl PHP library, to use Text::transliterate() or Text::slug()",
+                "paragonie/csp-builder": "CSP builder, to use the CSP Middleware"
             },
             "type": "library",
             "autoload": {
@@ -252,7 +254,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-05-13T14:16:50+00:00"
+            "time": "2019-05-18T02:31:28+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -897,16 +899,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.9.0",
+            "version": "v2.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae"
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
-                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5240e21982885b76629552d83b4ebb6d41ccde6b",
+                "reference": "5240e21982885b76629552d83b4ebb6d41ccde6b",
                 "shasum": ""
             },
             "require": {
@@ -922,7 +924,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.9-dev"
+                    "dev-master": "2.10-dev"
                 }
             },
             "autoload": {
@@ -960,7 +962,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-04-28T06:57:38+00:00"
+            "time": "2019-05-14T12:03:52+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
