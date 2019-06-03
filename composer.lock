@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aptoma/twig-markdown",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aptoma/twig-markdown.git",
-                "reference": "dd287a4c60bd7ca44b6f74795a4c3b96d7497e83"
+                "reference": "496ec52657ead7c7e816a8702da26c3cc2e0990c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aptoma/twig-markdown/zipball/dd287a4c60bd7ca44b6f74795a4c3b96d7497e83",
-                "reference": "dd287a4c60bd7ca44b6f74795a4c3b96d7497e83",
+                "url": "https://api.github.com/repos/aptoma/twig-markdown/zipball/496ec52657ead7c7e816a8702da26c3cc2e0990c",
+                "reference": "496ec52657ead7c7e816a8702da26c3cc2e0990c",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "markdown",
                 "twig"
             ],
-            "time": "2019-03-13T11:25:31+00:00"
+            "time": "2019-05-24T07:47:05+00:00"
         },
         {
             "name": "asm89/twig-cache-extension",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "8067bd0b59004609654c63e8134b05ed5ca46bc0"
+                "reference": "7dca886d7739779515fa3390d1e96da9ea046bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/8067bd0b59004609654c63e8134b05ed5ca46bc0",
-                "reference": "8067bd0b59004609654c63e8134b05ed5ca46bc0",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/7dca886d7739779515fa3390d1e96da9ea046bea",
+                "reference": "7dca886d7739779515fa3390d1e96da9ea046bea",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-05-29T00:11:17+00:00"
+            "time": "2019-06-01T14:37:32+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -1139,12 +1139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "15ea70c3c0dacfd41c23e485666f5595560847ab"
+                "reference": "2082e29323dcafc8f49da18c638f7e66adbba867"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/15ea70c3c0dacfd41c23e485666f5595560847ab",
-                "reference": "15ea70c3c0dacfd41c23e485666f5595560847ab",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/2082e29323dcafc8f49da18c638f7e66adbba867",
+                "reference": "2082e29323dcafc8f49da18c638f7e66adbba867",
                 "shasum": ""
             },
             "require": {
@@ -1191,7 +1191,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2019-05-27T17:29:48+00:00"
+            "time": "2019-05-31T13:53:34+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
