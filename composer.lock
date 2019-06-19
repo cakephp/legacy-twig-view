@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "f51db7f36dee2f7a3c2b7aab347b2425f6fc8648"
+                "reference": "1d573c0d038250274fbb28ec8b82778b54f7cf02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/f51db7f36dee2f7a3c2b7aab347b2425f6fc8648",
-                "reference": "f51db7f36dee2f7a3c2b7aab347b2425f6fc8648",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/1d573c0d038250274fbb28ec8b82778b54f7cf02",
+                "reference": "1d573c0d038250274fbb28ec8b82778b54f7cf02",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-06-15T02:39:40+00:00"
+            "time": "2019-06-18T13:21:09+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -899,16 +899,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.11.2",
+            "version": "v2.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "84a463403da1c81afbcedda8f0e788c78bd25a79"
+                "reference": "699ed2342557c88789a15402de5eb834dedd6792"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/84a463403da1c81afbcedda8f0e788c78bd25a79",
-                "reference": "84a463403da1c81afbcedda8f0e788c78bd25a79",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/699ed2342557c88789a15402de5eb834dedd6792",
+                "reference": "699ed2342557c88789a15402de5eb834dedd6792",
                 "shasum": ""
             },
             "require": {
@@ -962,7 +962,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-06-05T11:17:07+00:00"
+            "time": "2019-06-18T15:37:11+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
