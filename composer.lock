@@ -225,16 +225,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "035458f3f4832b25acb685d6d2f47d4ca518cb8b"
+                "reference": "1e89aa0399ce4c0f9af764e3b61aa24826278feb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/035458f3f4832b25acb685d6d2f47d4ca518cb8b",
-                "reference": "035458f3f4832b25acb685d6d2f47d4ca518cb8b",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/1e89aa0399ce4c0f9af764e3b61aa24826278feb",
+                "reference": "1e89aa0399ce4c0f9af764e3b61aa24826278feb",
                 "shasum": ""
             },
             "require": {
@@ -310,20 +310,20 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-05-30T02:33:00+00:00"
+            "time": "2019-06-20T01:33:59+00:00"
         },
         {
             "name": "cakephp/chronos",
-            "version": "1.2.6",
+            "version": "1.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "5af476617f8a2919a829b92df4f8c3c62e23f4c5"
+                "reference": "0292f06e8cc23fc82f0574889da2d8bf27b613c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/5af476617f8a2919a829b92df4f8c3c62e23f4c5",
-                "reference": "5af476617f8a2919a829b92df4f8c3c62e23f4c5",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/0292f06e8cc23fc82f0574889da2d8bf27b613c1",
+                "reference": "0292f06e8cc23fc82f0574889da2d8bf27b613c1",
                 "shasum": ""
             },
             "require": {
@@ -367,7 +367,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-05-30T13:29:03+00:00"
+            "time": "2019-06-17T15:19:18+00:00"
         },
         {
             "name": "jasny/twig-extensions",
