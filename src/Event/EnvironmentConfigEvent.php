@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /**
  * This file is part of TwigView.
  *
@@ -48,7 +49,7 @@ final class EnvironmentConfigEvent extends Event
      *
      * @return $this
      */
-    public function setConfig(array $config): EnvironmentConfigEvent
+    public function setConfig(array $config)
     {
         $this->config = array_replace_recursive($this->config, $config);
 

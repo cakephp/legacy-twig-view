@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /**
  * This file is part of TwigView.
  *
@@ -20,7 +21,7 @@ final class LoaderEvent extends Event
 
     /**
      * @param  \Twig\Loader\LoaderInterface $loader
-     * @return \WyriHaximus\TwigView\Event\LoaderEvent
+     * @return static
      */
     public static function create(LoaderInterface $loader): LoaderEvent
     {
