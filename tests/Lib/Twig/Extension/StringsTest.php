@@ -15,7 +15,7 @@ use WyriHaximus\TwigView\Lib\Twig\Extension\Strings;
 
 final class StringsTest extends AbstractExtensionTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->extension = new Strings();
         parent::setUp();
@@ -147,7 +147,7 @@ final class StringsTest extends AbstractExtensionTest
         $input = '133.780486GB';
         $callable = $this->getFilter('parseFileSize')->getCallable();
         $result = call_user_func_array($callable, [$input]);
-        $this->assertSame(143645703053.24646, $result);
+        $this->assertSame(143645703053, $result);
     }
 
     public function testFilterNone()

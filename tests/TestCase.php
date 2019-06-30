@@ -7,9 +7,4 @@ use Cake\TestSuite\TestCase as CakeTestCase;
 
 abstract class TestCase extends CakeTestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-        Configure::write('Error.errorLevel', E_ALL & ~E_USER_DEPRECATED);
-    }
 }

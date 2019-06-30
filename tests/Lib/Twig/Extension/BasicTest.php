@@ -15,7 +15,7 @@ use WyriHaximus\TwigView\Lib\Twig\Extension\Basic;
 
 final class BasicTest extends AbstractExtensionTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->extension = new Basic();
         parent::setUp();

@@ -21,7 +21,7 @@ use WyriHaximus\TwigView\Lib\RelativeScanner;
  */
 class RelativeScannerTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -29,7 +29,7 @@ class RelativeScannerTest extends TestCase
         $this->loadPlugins(['TestTwigView']);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->removePlugins(['TestTwigView']);
 

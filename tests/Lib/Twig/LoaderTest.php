@@ -25,7 +25,7 @@ class LoaderTest extends TestCase
      */
     protected $Loader;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -34,7 +34,7 @@ class LoaderTest extends TestCase
         $this->Loader = new Loader();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->Loader);
 

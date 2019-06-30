@@ -42,7 +42,7 @@ class TwigTemplateTaskTest extends TestCase
      * Ensure that the default template is used
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->_compareBasePath = PLUGIN_REPO_ROOT . 'tests' . DS . 'comparisons' . DIRECTORY_SEPARATOR;
@@ -55,7 +55,7 @@ class TwigTemplateTaskTest extends TestCase
      * tearDown method.
      *
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
         TableRegistry::clear();

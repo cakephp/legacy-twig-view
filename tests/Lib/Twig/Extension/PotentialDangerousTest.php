@@ -15,7 +15,7 @@ use WyriHaximus\TwigView\Lib\Twig\Extension\PotentialDangerous;
 
 final class PotentialDangerousTest extends AbstractExtensionTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->extension = new PotentialDangerous();
         parent::setUp();
