@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace WyriHaximus\TwigView\Lib;
 
 use Asm89\Twig\CacheExtension\CacheProviderInterface;

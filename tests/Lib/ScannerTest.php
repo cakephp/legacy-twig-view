@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 /**
  * This file is part of TwigView.
  *
@@ -21,7 +22,7 @@ use WyriHaximus\TwigView\Lib\Scanner;
  */
 class ScannerTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -29,7 +30,7 @@ class ScannerTest extends TestCase
         $this->loadPlugins(['TestTwigView']);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->removePlugins(['TestTwigView']);
 
