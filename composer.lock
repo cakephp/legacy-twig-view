@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "6567312f2437c25bd85d0fae5be129dab1528a93"
+                "reference": "a82129310329fe91ae8df8b9c0f39f2533d6300b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/6567312f2437c25bd85d0fae5be129dab1528a93",
-                "reference": "6567312f2437c25bd85d0fae5be129dab1528a93",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/a82129310329fe91ae8df8b9c0f39f2533d6300b",
+                "reference": "a82129310329fe91ae8df8b9c0f39f2533d6300b",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2019-07-14T02:27:08+00:00"
+            "time": "2019-08-02T00:47:35+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -262,12 +262,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "cc91cbe032dffdc1c3c33c02aafc3deaa864ff13"
+                "reference": "f79838a42f70501bf85eeb2f6447d0da5b7d5840"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/cc91cbe032dffdc1c3c33c02aafc3deaa864ff13",
-                "reference": "cc91cbe032dffdc1c3c33c02aafc3deaa864ff13",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/f79838a42f70501bf85eeb2f6447d0da5b7d5840",
+                "reference": "f79838a42f70501bf85eeb2f6447d0da5b7d5840",
                 "shasum": ""
             },
             "require": {
@@ -310,7 +310,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-05-12T13:01:24+00:00"
+            "time": "2019-07-20T02:32:20+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1139,12 +1139,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "9353d8098c5bbe23befd62d759e3c722d28220b2"
+                "reference": "aa9252c61206b3db1c1410dbec9b2ce878722fb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/9353d8098c5bbe23befd62d759e3c722d28220b2",
-                "reference": "9353d8098c5bbe23befd62d759e3c722d28220b2",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/aa9252c61206b3db1c1410dbec9b2ce878722fb9",
+                "reference": "aa9252c61206b3db1c1410dbec9b2ce878722fb9",
                 "shasum": ""
             },
             "require": {
@@ -1176,8 +1176,8 @@
             "authors": [
                 {
                     "name": "Mark Story",
-                    "homepage": "http://mark-story.com",
-                    "role": "Author"
+                    "role": "Author",
+                    "homepage": "http://mark-story.com"
                 },
                 {
                     "name": "CakePHP Community",
@@ -1191,7 +1191,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2019-07-15T02:36:40+00:00"
+            "time": "2019-07-16T15:12:11+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -1921,18 +1921,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "email": "arne@blankerts.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "arne@blankerts.de"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "email": "sebastian@phpeople.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpeople.de"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -2202,16 +2202,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "7.0.6",
+            "version": "7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "d471d0d2b529a67c6a722dd446c4ec90881ac315"
+                "reference": "7743bbcfff2a907e9ee4a25be13d0f8ec5e73800"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d471d0d2b529a67c6a722dd446c4ec90881ac315",
-                "reference": "d471d0d2b529a67c6a722dd446c4ec90881ac315",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/7743bbcfff2a907e9ee4a25be13d0f8ec5e73800",
+                "reference": "7743bbcfff2a907e9ee4a25be13d0f8ec5e73800",
                 "shasum": ""
             },
             "require": {
@@ -2220,7 +2220,7 @@
                 "php": "^7.2",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
-                "phpunit/php-token-stream": "^3.0.2",
+                "phpunit/php-token-stream": "^3.1.0",
                 "sebastian/code-unit-reverse-lookup": "^1.0.1",
                 "sebastian/environment": "^4.2.2",
                 "sebastian/version": "^2.0.1",
@@ -2250,8 +2250,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -2261,7 +2261,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-07-08T05:29:42+00:00"
+            "time": "2019-07-25T05:31:54+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2405,16 +2405,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "3.0.2",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c"
+                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
-                "reference": "c4a66b97f040e3e20b3aa2a243230a1c3a9f7c8c",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e899757bb3df5ff6e95089132f32cd59aac2220a",
+                "reference": "e899757bb3df5ff6e95089132f32cd59aac2220a",
                 "shasum": ""
             },
             "require": {
@@ -2427,7 +2427,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -2450,20 +2450,20 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2019-07-08T05:24:54+00:00"
+            "time": "2019-07-25T05:29:42+00:00"
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.2.5",
+            "version": "8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c1b8534b3730f20f58600124129197bf1183dc92"
+                "reference": "c5153162ec8f31d632ad72eb99a7c3c1e69f87e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c1b8534b3730f20f58600124129197bf1183dc92",
-                "reference": "c1b8534b3730f20f58600124129197bf1183dc92",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c5153162ec8f31d632ad72eb99a7c3c1e69f87e9",
+                "reference": "c5153162ec8f31d632ad72eb99a7c3c1e69f87e9",
                 "shasum": ""
             },
             "require": {
@@ -2479,7 +2479,7 @@
                 "phar-io/version": "^2.0.1",
                 "php": "^7.2",
                 "phpspec/prophecy": "^1.8.1",
-                "phpunit/php-code-coverage": "^7.0.5",
+                "phpunit/php-code-coverage": "^7.0.7",
                 "phpunit/php-file-iterator": "^2.0.2",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.1.2",
@@ -2507,7 +2507,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.2-dev"
+                    "dev-master": "8.3-dev"
                 }
             },
             "autoload": {
@@ -2522,8 +2522,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
+                    "role": "lead",
+                    "email": "sebastian@phpunit.de"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -2533,7 +2533,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-07-15T06:26:24+00:00"
+            "time": "2019-08-02T05:00:37+00:00"
         },
         {
             "name": "psr/container",
