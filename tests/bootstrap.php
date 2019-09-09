@@ -15,6 +15,7 @@ require dirname(__DIR__) . '/vendor/cakephp/cakephp/src/basics.php';
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__DIR__));
+define('CORE_PATH', ROOT . DS . 'vendor/cakephp/cakephp');
 define('APP', sys_get_temp_dir());
 define('TMP', sys_get_temp_dir() . '/TwigViewTmp/');
 define('CACHE', sys_get_temp_dir() . '/TwigViewTmp/cache/');

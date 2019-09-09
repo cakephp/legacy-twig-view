@@ -28,7 +28,7 @@ class ProfilerListenerTest extends TestCase
     public function testImplementedEvents()
     {
         $eventsList = (new ProfilerListener())->implementedEvents();
-        $this->assertInternalType('array', $eventsList);
+        $this->assertIsArray($eventsList);
         $this->assertSame(1, count($eventsList));
     }
 

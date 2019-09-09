@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace WyriHaximus\TwigView\Lib;
 
 use Cake\Core\App;
+use Cake\Core\Plugin;
 
 /**
  * Class RelativeScanner.
@@ -61,7 +62,13 @@ final class RelativeScanner
      */
     protected static function stripAbsolutePath(array $paths, $plugin = null): array
     {
-        foreach (App::path('Template', $plugin) as $templatesPath) {
+        if ($plugin === null) {
+            $allPaths = App::path('templates');
+        } else {
+            $allPaths = [Plugin::templatePath($plugin)];
+        }
+
+        foreach ($allPaths as $templatesPath) {
             array_walk($paths, function (&$path) use ($templatesPath) {
                 if (substr($path, 0, strlen($templatesPath)) == $templatesPath) {
                     $path = substr($path, strlen($templatesPath));

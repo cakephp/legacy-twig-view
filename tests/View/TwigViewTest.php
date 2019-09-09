@@ -10,6 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
+use App\Exception\MissingSomethingException;
 use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
@@ -59,7 +60,7 @@ class TwigViewTest extends TestCase
         $callbackFired = false;
         $that = $this;
         $eventCallback = function ($event) use ($that, &$callbackFired) {
-            $that->assertInternalType('array', $event->getConfig());
+            $that->assertIsArray($event->getConfig());
             $that->assertTrue($event->getConfig()['true']);
 
             $callbackFired = true;
@@ -90,11 +91,11 @@ class TwigViewTest extends TestCase
 
     /**
      * Tests that a twig file that throws a custom exception correctly renders the thrown exception and not a Twig one.
-     *
-     * @expectedException App\Exception\MissingSomethingException
      */
     public function test_renderTwigCustomException()
     {
+        $this->expectException(MissingSomethingException::class);
+
         $view = new AppView();
         $view->render('exception', false);
     }
@@ -102,11 +103,11 @@ class TwigViewTest extends TestCase
     /**
      * Tests that a twig file that throws a Twig exception correctly throws the twig exception and does not get caught
      * byt the modification.
-     *
-     * @expectedException Twig_Error_Syntax
      */
     public function test_renderTwigTwigException()
     {
+        $this->expectException(\Twig_Error_Syntax::class);
+
         $view = new AppView();
         $view->render('syntaxerror', false);
     }

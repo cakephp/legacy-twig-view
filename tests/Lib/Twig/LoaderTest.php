@@ -50,11 +50,10 @@ class LoaderTest extends TestCase
         $this->assertSame('TwigView', $this->Loader->getSource('TestTwigView.twig.twig'));
     }
 
-    /**
-     * @expectedException Twig_Error_Loader
-     */
     public function testGetSourceNonExistingFile()
     {
+        $this->expectException(\Twig_Error_Loader::class);
+
         $this->Loader->getSource('TestTwigView.no_twig');
     }
 
@@ -78,11 +77,10 @@ class LoaderTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException Twig_Error_Loader
-     */
     public function testGetCacheKeyPluginNonExistingFile()
     {
+        $this->expectException(\Twig_Error_Loader::class);
+
         $this->Loader->getCacheKey('TestTwigView.twog');
     }
 
@@ -97,11 +95,10 @@ class LoaderTest extends TestCase
         unlink(TMP . 'TwigViewIsFreshTest');
     }
 
-    /**
-     * @expectedException Twig_Error_Loader
-     */
     public function testIsFreshNonExistingFile()
     {
+        $this->expectException(\Twig_Error_Loader::class);
+
         $this->Loader->isFresh(TMP . 'foobar' . time(), time());
     }
 }

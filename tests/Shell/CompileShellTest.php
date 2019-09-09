@@ -45,11 +45,10 @@ class CompileShellTest extends TestCase
         $shell->all();
     }
 
-    /**
-     * @expectedException Exception
-     */
     public function testPlugin()
     {
+        $this->expectException(\Exception::class);
+
         $twig = $this->prophesize(Environment::class);
 
         $twigView = new TwigView();

@@ -27,7 +27,7 @@ final class Scanner
     {
         $sections = [];
 
-        foreach (App::path('Template') as $path) {
+        foreach (App::path('templates') as $path) {
             if (is_dir($path)) {
                 $sections['APP'] = $sections['APP'] ?? [];
                 $sections['APP'] = array_merge($sections['APP'], static::iteratePath($path));
@@ -35,11 +35,10 @@ final class Scanner
         }
 
         foreach (static::pluginsWithTemplates() as $plugin) {
-            foreach (App::path('Template', $plugin) as $path) {
-                if (is_dir($path)) {
-                    $sections[$plugin] = $sections[$plugin] ?? [];
-                    $sections[$plugin] = array_merge($sections[$plugin], static::iteratePath($path));
-                }
+            $path = Plugin::templatePath($plugin);
+            if (is_dir($path)) {
+                $sections[$plugin] = $sections[$plugin] ?? [];
+                $sections[$plugin] = array_merge($sections[$plugin], static::iteratePath($path));
             }
         }
 
@@ -55,11 +54,8 @@ final class Scanner
      */
     public static function plugin($plugin)
     {
-        $templates = [];
-
-        foreach (App::path('Template', $plugin) as $path) {
-            $templates = array_merge($templates, static::iteratePath($path));
-        }
+        $path = Plugin::templatePath($plugin);
+        $templates = static::iteratePath($path);
 
         return $templates;
     }
@@ -92,13 +88,11 @@ final class Scanner
         $plugins = Plugin::loaded();
 
         array_walk($plugins, function ($plugin, $index) use (&$plugins) {
-            $paths = App::path('Template', $plugin);
+            $path = Plugin::templatePath($plugin);
 
-            array_walk($paths, function ($path, $index) use (&$paths) {
-                if (!is_dir($path)) {
-                    unset($paths[$index]);
-                }
-            });
+            if (!is_dir($path)) {
+                unset($plugins[$index]);
+            }
         });
 
         return $plugins;
