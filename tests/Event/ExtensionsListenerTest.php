@@ -34,7 +34,7 @@ class ExtensionsListenerTest extends TestCase
     public function testImplementedEvents()
     {
         $eventsList = (new ExtensionsListener())->implementedEvents();
-        $this->assertInternalType('array', $eventsList);
+        $this->assertIsArray($eventsList);
         $this->assertSame(1, count($eventsList));
     }
 

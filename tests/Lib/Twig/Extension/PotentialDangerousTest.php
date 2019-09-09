@@ -30,6 +30,6 @@ final class PotentialDangerousTest extends AbstractExtensionTest
         $this->assertNull($result);
 
         $result = call_user_func($callable, 'debug');
-        $this->assertInternalType('boolean', $result);
+        $this->assertIsBool($result);
     }
 }

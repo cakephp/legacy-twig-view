@@ -164,9 +164,9 @@ final class Loader implements LoaderInterface, ExistsLoaderInterface, SourceCont
     private function getPaths($plugin): array
     {
         if ($plugin === null || !Plugin::loaded($plugin)) {
-            return App::path('Template');
+            return App::path('templates');
         }
 
-        return App::path('Template', $plugin);
+        return [Plugin::templatePath($plugin)];
     }
 }

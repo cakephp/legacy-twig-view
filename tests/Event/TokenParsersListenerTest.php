@@ -29,7 +29,7 @@ class TokenParsersListenerTest extends TestCase
     public function testImplementedEvents()
     {
         $eventsList = (new TokenParsersListener())->implementedEvents();
-        $this->assertInternalType('array', $eventsList);
+        $this->assertIsArray($eventsList);
         $this->assertSame(1, count($eventsList));
     }
 
