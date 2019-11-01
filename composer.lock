@@ -853,16 +853,16 @@
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.20.4",
+            "version": "3.20.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "ba396be8e296563c77f5db6b7e718aad1173f4b6"
+                "reference": "7c399398fc31db2cfad93400c0986a160ddc3834"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/ba396be8e296563c77f5db6b7e718aad1173f4b6",
-                "reference": "ba396be8e296563c77f5db6b7e718aad1173f4b6",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/7c399398fc31db2cfad93400c0986a160ddc3834",
+                "reference": "7c399398fc31db2cfad93400c0986a160ddc3834",
                 "shasum": ""
             },
             "require": {
@@ -909,7 +909,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2019-10-31T00:04:48+00:00"
+            "time": "2019-11-01T01:21:14+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
