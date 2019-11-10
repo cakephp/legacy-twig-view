@@ -52,7 +52,6 @@ CONTRIBUTING.md export-ignore
 LICENSE.txt export-ignore
 Makefile export-ignore
 README.md export-ignore
-config export-ignore
 docs export-ignore
 phpcs.xml export-ignore
 phpunit.xml.dist export-ignore
