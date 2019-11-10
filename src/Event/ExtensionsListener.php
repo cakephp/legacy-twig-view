@@ -71,7 +71,8 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new Extension\Strings());
         $event->getTwig()->addExtension(new Extension\Inflector());
 
-        if (!Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') ||
+        if (
+            !Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') ||
             (
                 Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') &&
                 Configure::read('WyriHaximus.TwigView.flags.potentialDangerous') === true
@@ -81,7 +82,8 @@ final class ExtensionsListener implements EventListenerInterface
         }
 
         // Markdown extension
-        if (Configure::check('WyriHaximus.TwigView.markdown.engine') &&
+        if (
+            Configure::check('WyriHaximus.TwigView.markdown.engine') &&
             Configure::read('WyriHaximus.TwigView.markdown.engine') instanceof MarkdownEngineInterface
         ) {
             $engine = Configure::read('WyriHaximus.TwigView.markdown.engine');
