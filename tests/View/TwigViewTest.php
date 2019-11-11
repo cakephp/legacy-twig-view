@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace WyriHaximus\CakePHP\Tests\TwigView;
+
 /**
  * This file is part of TwigView.
  *
@@ -15,7 +17,6 @@ use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use Twig\Environment;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\View\TwigView;
@@ -114,7 +115,7 @@ class TwigViewTest extends TestCase
 
     /**
      * @param $name
-     * @return ReflectionMethod
+     * @return \WyriHaximus\CakePHP\Tests\TwigView\ReflectionMethod
      */
     protected static function getMethod($name)
     {
@@ -127,7 +128,7 @@ class TwigViewTest extends TestCase
 
     /**
      * @param $name
-     * @return ReflectionProperty
+     * @return \WyriHaximus\CakePHP\Tests\TwigView\ReflectionProperty
      */
     protected static function getProperty($name)
     {
