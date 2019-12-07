@@ -7,7 +7,7 @@
 [![License](https://poser.pugx.org/wyrihaximus/Twig-View/license.png)](https://packagist.org/packages/wyrihaximus/Twig-View)
 [![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/TwigView/badge.svg)](https://travis-ci.org/WyriHaximus/TwigView)
 
-This plugin for version 3 the [CakePHP Framework](http://cakephp.org) allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
+This plugin for the [CakePHP Framework](http://cakephp.org) allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
 
 In addition to enabling the use of most of Twig's features, the plugin is tightly integrated with the CakePHP view renderer giving you full access to helpers, objects and elements.
 
@@ -22,11 +22,10 @@ composer require wyrihaximus/twig-view
 ## Configuration ##
 
 ### Load Plugin
-Add the following to your `config/bootstrap.php` to load the plugin.
-```php
-Plugin::load('WyriHaximus/TwigView', [
-    'bootstrap' => true,
-]);
+Run the following CLI command:
+
+```sh
+bin/cake plugin load WyriHaximus/TwigView
 ```
 
 ### Use View class
@@ -44,29 +43,10 @@ class AppView extends TwigView
 
 ## Quick Start
 
-### Load Helpers
-In `Controller/AppController` load your helpers:
-
-```PHP
-public $helpers = ['Html', 'Form']; // And more
-```
-
-Or in your AppView file :
-
-```PHP
-public function initialize()
-{
-    parent::initialize();
-
-    $this->loadHelper('Html');
-    $this->loadHelper('Form');
-}
-```
-
-Note: TwigView will look for its templates with the extension `.twig` and then for `.tpl` (deprecated).
+TwigView will look for its templates with the extension `.twig`.
 
 ### Layout
-Replace `Template/Layout/default.ctp` by this `Layout/default.twig`
+Replace `templates/layout/default.php` by this `templates/layout/default.twig`
 
 ``` twig
 <!DOCTYPE html>
@@ -110,7 +90,7 @@ Replace `Template/Layout/default.ctp` by this `Layout/default.twig`
 ```
 
 ### Template View
-Create a template, for example `Template/Users/index.twig` like this
+Create a template, for example `templates/Users/index.twig` like this
 ```Twig
 {{ _view.assign('title', __("I'm title")) }}
 
@@ -140,13 +120,7 @@ But with Twig
 ```
 ### Helpers
 
-Any helper you defined in your controller.
-
-```php
-public $helpers = ['Html', 'Form']; // ...
-```
-
-Can be access by their CamelCase name, for example creating a form using the `FormHelper`:
+Any helper can be access by their CamelCase name, for example:
 
 ```twig
 {{ Html.link('Edit user', {'controller':'Users', 'action': 'edit' ~ '/' ~ user.id}, {'class':'myclass'})|raw }}
@@ -230,44 +204,44 @@ We can write in a view
 **Note : the block `body` is required, it's equivalent to `<?= $this->fetch('content') ?>`**
 
 ### Filters
-* `debug` maps to [`debug`](https://book.cakephp.org/3.0/en/development/debugging.html#basic-debugging)
+* `debug` maps to [`debug`](https://book.cakephp.org/4/en/development/debugging.html#basic-debugging)
 * `pr` maps to `pr`
 * `low` maps to [`low`](http://php.net/low)
 * `up` maps to [`up`](http://php.net/up)
 * `env` maps to [`env`](http://php.net/env)
 * `count` maps to [`count`](http://php.net/count)
-* `pluralize` maps to [`Cake\Utility\Inflector::pluralize`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::pluralize)
-* `singularize` maps to [`Cake\Utility\Inflector::singularize`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::singularize)
-* `camelize` maps to [`Cake\Utility\Inflector::camelize`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::camelize)
-* `underscore` maps to [`Cake\Utility\Inflector::underscore`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::underscore)
-* `humanize` maps to [`Cake\Utility\Inflector::humanize`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::humanize)
-* `tableize` maps to [`Cake\Utility\Inflector::tableize`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::tableize)
-* `classify` maps to [`Cake\Utility\Inflector::classify`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::classify)
-* `variable` maps to [`Cake\Utility\Inflector::variable`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::variable)
-* `slug` maps to [`Cake\Utility\Inflector::slug`](https://book.cakephp.org/3.0/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::slug)
-* `toReadableSize` maps to [`Cake\I18n\Number::toReadableSize`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::toReadableSize)
-* `fromReadableSize` maps to [`Cake\I18n\Number::fromReadableSize`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::fromReadableSize)
-* `toPercentage` maps to [`Cake\I18n\Number::toPercentage`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::toPercentage)
-* `number_format` maps to [`Cake\I18n\Number::format`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::format)
-* `formatDelta` maps to [`Cake\I18n\Number::formatDelta`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatDelta)
-* `currency` maps to [`Cake\I18n\Number::currency`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::currency)
+* `pluralize` maps to [`Cake\Utility\Inflector::pluralize`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::pluralize)
+* `singularize` maps to [`Cake\Utility\Inflector::singularize`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::singularize)
+* `camelize` maps to [`Cake\Utility\Inflector::camelize`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::camelize)
+* `underscore` maps to [`Cake\Utility\Inflector::underscore`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::underscore)
+* `humanize` maps to [`Cake\Utility\Inflector::humanize`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::humanize)
+* `tableize` maps to [`Cake\Utility\Inflector::tableize`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::tableize)
+* `classify` maps to [`Cake\Utility\Inflector::classify`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::classify)
+* `variable` maps to [`Cake\Utility\Inflector::variable`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::variable)
+* `slug` maps to [`Cake\Utility\Inflector::slug`](https://book.cakephp.org/4/en/core-libraries/inflector.html#Cake\\Utility\\Inflector::slug)
+* `toReadableSize` maps to [`Cake\I18n\Number::toReadableSize`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::toReadableSize)
+* `fromReadableSize` maps to [`Cake\I18n\Number::fromReadableSize`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::fromReadableSize)
+* `toPercentage` maps to [`Cake\I18n\Number::toPercentage`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::toPercentage)
+* `number_format` maps to [`Cake\I18n\Number::format`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::format)
+* `formatDelta` maps to [`Cake\I18n\Number::formatDelta`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::formatDelta)
+* `currency` maps to [`Cake\I18n\Number::currency`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::currency)
 * `substr` maps to [`substr`](http://php.net/substr)
-* `tokenize` maps to [`Cake\Utility\Text::tokenize`](https://book.cakephp.org/3.0/en/core-libraries/text.html#simple-string-parsing)
-* `insert` maps to [`Cake\Utility\Text::insert`](https://book.cakephp.org/3.0/en/core-libraries/text.html#formatting-strings)
-* `cleanInsert` maps to [`Cake\Utility\Text::cleanInsert`](https://book.cakephp.org/3.0/en/core-libraries/text.html#formatting-strings)
-* `wrap` maps to [`Cake\Utility\Text::wrap`](https://book.cakephp.org/3.0/en/core-libraries/text.html#wrapping-text)
-* `wrapBlock` maps to [`Cake\Utility\Text::wrapBlock`](https://book.cakephp.org/3.0/en/core-libraries/text.html#wrapping-text)
-* `wordWrap` maps to [`Cake\Utility\Text::wordWrap`](https://book.cakephp.org/3.0/en/core-libraries/text.html#wrapping-text)
-* `highlight` maps to [`Cake\Utility\Text::highlight`](https://book.cakephp.org/3.0/en/core-libraries/text.html#highlighting-substrings)
-* `tail` maps to [`Cake\Utility\Text::tail`](https://book.cakephp.org/3.0/en/core-libraries/text.html#truncating-the-tail-of-a-string)
-* `truncate` maps to [`Cake\Utility\Text::truncate`](https://book.cakephp.org/3.0/en/core-libraries/text.html#truncating-text)
-* `excerpt` maps to [`Cake\Utility\Text::excerpt`](https://book.cakephp.org/3.0/en/core-libraries/text.html#extracting-an-excerpt)
-* `toList` maps to [`Cake\Utility\Text::toList`](https://book.cakephp.org/3.0/en/core-libraries/text.html#converting-an-array-to-sentence-)
-* `stripLinks` maps to [`Cake\Utility\Text::stripLinks`](https://book.cakephp.org/3.0/en/core-libraries/text.html#removing-links)
+* `tokenize` maps to [`Cake\Utility\Text::tokenize`](https://book.cakephp.org/4/en/core-libraries/text.html#simple-string-parsing)
+* `insert` maps to [`Cake\Utility\Text::insert`](https://book.cakephp.org/4/en/core-libraries/text.html#formatting-strings)
+* `cleanInsert` maps to [`Cake\Utility\Text::cleanInsert`](https://book.cakephp.org/4/en/core-libraries/text.html#formatting-strings)
+* `wrap` maps to [`Cake\Utility\Text::wrap`](https://book.cakephp.org/4/en/core-libraries/text.html#wrapping-text)
+* `wrapBlock` maps to [`Cake\Utility\Text::wrapBlock`](https://book.cakephp.org/4/en/core-libraries/text.html#wrapping-text)
+* `wordWrap` maps to [`Cake\Utility\Text::wordWrap`](https://book.cakephp.org/4/en/core-libraries/text.html#wrapping-text)
+* `highlight` maps to [`Cake\Utility\Text::highlight`](https://book.cakephp.org/4/en/core-libraries/text.html#highlighting-substrings)
+* `tail` maps to [`Cake\Utility\Text::tail`](https://book.cakephp.org/4/en/core-libraries/text.html#truncating-the-tail-of-a-string)
+* `truncate` maps to [`Cake\Utility\Text::truncate`](https://book.cakephp.org/4/en/core-libraries/text.html#truncating-text)
+* `excerpt` maps to [`Cake\Utility\Text::excerpt`](https://book.cakephp.org/4/en/core-libraries/text.html#extracting-an-excerpt)
+* `toList` maps to [`Cake\Utility\Text::toList`](https://book.cakephp.org/4/en/core-libraries/text.html#converting-an-array-to-sentence-)
+* `stripLinks` maps to [`Cake\Utility\Text::stripLinks`](https://book.cakephp.org/4/en/core-libraries/text.html#removing-links)
 * `isMultibyte` maps to `Cake\Utility\Text::isMultibyte`
 * `utf8` maps to `Cake\Utility\Text::utf8`
 * `ascii` maps to `Cake\Utility\Text::ascii`
-* `parseFileSize` maps to [`Cake\Utility\Text::parseFileSize`](https://book.cakephp.org/3.0/en/core-libraries/text.html#simple-string-parsing)
+* `parseFileSize` maps to [`Cake\Utility\Text::parseFileSize`](https://book.cakephp.org/4/en/core-libraries/text.html#simple-string-parsing)
 * `serialize` maps to [`serialize`](http://php.net/serialize)
 * `unserialize` maps to [`unserialize`](http://php.net/unserialize)
 * `md5` maps to [`md5`](http://php.net/md5)
@@ -286,15 +260,15 @@ We can write in a view
 * `array_next` maps to [`next`](http://php.net/next)
 * `array_current` maps to [`current`](http://php.net/current)
 * `array_each` maps to [`each`](http://php.net/each)
-* `__` maps to [`__`](https://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
-* `__d` maps to [`__d`](https://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
-* `__n` maps to [`__n`](https://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
-* `__x` maps to [`__x`](https://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
-* `__dn` maps to [`__dn`](https://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html)
-* `defaultCurrency` maps to [`Cake\I18n\Number::defaultCurrency`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::defaultCurrency)
-* `number_formatter` maps to [`Cake\I18n\Number::formatter`](https://book.cakephp.org/3.0/en/core-libraries/number.html#Cake\\I18n\\Number::formatter)
-* `uuid` maps to [`Cake\Utility\Text::uuid`](https://book.cakephp.org/3.0/en/core-libraries/text.html#generating-uuids)
-* `time` passed the first and optional second argument into [`new \Cake\I18n\Time()`](https://book.cakephp.org/3.0/en/core-libraries/time.html#creating-time-instances)
+* `__` maps to [`__`](https://book.cakephp.org/4/en/core-libraries/internationalization-and-localization.html)
+* `__d` maps to [`__d`](https://book.cakephp.org/4/en/core-libraries/internationalization-and-localization.html)
+* `__n` maps to [`__n`](https://book.cakephp.org/4/en/core-libraries/internationalization-and-localization.html)
+* `__x` maps to [`__x`](https://book.cakephp.org/4/en/core-libraries/internationalization-and-localization.html)
+* `__dn` maps to [`__dn`](https://book.cakephp.org/4/en/core-libraries/internationalization-and-localization.html)
+* `defaultCurrency` maps to [`Cake\I18n\Number::defaultCurrency`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::defaultCurrency)
+* `number_formatter` maps to [`Cake\I18n\Number::formatter`](https://book.cakephp.org/4/en/core-libraries/number.html#Cake\\I18n\\Number::formatter)
+* `uuid` maps to [`Cake\Utility\Text::uuid`](https://book.cakephp.org/4/en/core-libraries/text.html#generating-uuids)
+* `time` passed the first and optional second argument into [`new \Cake\I18n\Time()`](https://book.cakephp.org/4/en/core-libraries/time.html#creating-time-instances)
 * `timezones` maps to `Cake\I18n\Time::listTimezones`
 * `elementExists` maps to `Cake\View\View::elementExists`,
 * `getVars` maps to `Cake\View\View::getVars`
@@ -328,7 +302,7 @@ use WyriHaximus\TwigView\Event\LoaderEvent;
 
 class LoaderListener implements EventListenerInterface
 {
-    public function implementedEvents()
+    public function implementedEvents(): array
     {
         return [
             LoaderEvent::EVENT => 'loader',
@@ -367,7 +341,7 @@ use WyriHaximus\TwigView\Event\ConstructEvent;
 
 class LoaderListener implements EventListenerInterface
 {
-    public function implementedEvents()
+    public function implementedEvents(): array
     {
         return [
             ConstructEvent::EVENT => 'construct',
