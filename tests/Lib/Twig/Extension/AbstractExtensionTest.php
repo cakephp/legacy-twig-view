@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig\Extension;
 
 use Twig\TokenParser\TokenParserInterface;
+use Twig\TwigFilter;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 
 abstract class AbstractExtensionTest extends TestCase
@@ -55,7 +56,7 @@ abstract class AbstractExtensionTest extends TestCase
         $filters = $this->extension->getFilters();
         $this->assertTrue(is_array($filters));
         foreach ($filters as $filter) {
-            $this->assertInstanceOf('Twig_SimpleFilter', $filter);
+            $this->assertInstanceOf(TwigFilter::class, $filter);
         }
     }
 

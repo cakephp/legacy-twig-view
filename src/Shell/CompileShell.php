@@ -146,7 +146,7 @@ class CompileShell extends Shell
             $this->
                 twigView->
                 getTwig()->
-                loadTemplate($fileName);
+                load($fileName);
             $this->out('<success>' . $fileName . '</success>');
         } catch (\Exception $exception) {
             $this->out('<error>' . $fileName . '</error>');

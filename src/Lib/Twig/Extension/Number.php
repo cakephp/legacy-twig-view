@@ -30,12 +30,12 @@ final class Number extends AbstractExtension
     public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
-            new \Twig_SimpleFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
-            new \Twig_SimpleFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
-            new \Twig_SimpleFilter('number_format', 'Cake\I18n\Number::format'),
-            new \Twig_SimpleFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
-            new \Twig_SimpleFilter('currency', 'Cake\I18n\Number::currency'),
+            new TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
+            new TwigFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
+            new TwigFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
+            new TwigFilter('number_format', 'Cake\I18n\Number::format'),
+            new TwigFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
+            new TwigFilter('currency', 'Cake\I18n\Number::currency'),
             new TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
             new TwigFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
             new TwigFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),

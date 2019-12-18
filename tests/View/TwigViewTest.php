@@ -17,6 +17,7 @@ use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
 use Twig\Environment;
+use Twig\Error\SyntaxError;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\View\TwigView;
@@ -107,7 +108,7 @@ class TwigViewTest extends TestCase
      */
     public function test_renderTwigTwigException()
     {
-        $this->expectException(\Twig_Error_Syntax::class);
+        $this->expectException(SyntaxError::class);
 
         $view = new AppView();
         $view->render('syntaxerror', false);

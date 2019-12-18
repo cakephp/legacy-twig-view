@@ -189,7 +189,7 @@ class TwigView extends View
             );
 
             try {
-                $out = $this->getTwig()->loadTemplate($viewFile)->render($data);
+                $out = $this->getTwig()->load($viewFile)->render($data);
             } catch (Exception $e) {
                 $previous = $e->getPrevious();
 

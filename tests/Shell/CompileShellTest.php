@@ -14,6 +14,8 @@ namespace WyriHaximus\CakePHP\Tests\TwigView\Shell;
 
 use Cake\Console\ConsoleOptionParser;
 use Twig\Environment;
+use Twig\Template;
+use Twig\TemplateWrapper;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\PHPUnit\Helpers\ReflectionTrait;
 use WyriHaximus\TwigView\Lib\Scanner;
@@ -31,9 +33,26 @@ class CompileShellTest extends TestCase
     public function testAll()
     {
         $twig = $this->prophesize(Environment::class);
+        $twig->getExtensions()->shouldBeCalled()->willReturn([]);
         foreach (Scanner::all() as $section => $templates) {
             foreach ($templates as $template) {
-                $twig->loadTemplate($template)->shouldBeCalled()->willReturn('');
+                $twig->load($template)->shouldBeCalled()->willReturn(new TemplateWrapper($twig->reveal(), new class ($twig->reveal()) extends Template {
+                    public function getTemplateName()
+                    {
+                    }
+
+                    public function getDebugInfo()
+                    {
+                    }
+
+                    public function getSourceContext()
+                    {
+                    }
+
+                    protected function doDisplay(array $context, array $blocks = [])
+                    {
+                    }
+                }));
             }
         }
 
@@ -63,7 +82,24 @@ class CompileShellTest extends TestCase
     public function testFile()
     {
         $twig = $this->prophesize(Environment::class);
-        $twig->loadTemplate('foo:bar')->shouldBeCalled()->willReturn('');
+        $twig->getExtensions()->shouldBeCalled()->willReturn([]);
+        $twig->load('foo:bar')->shouldBeCalled()->willReturn(new TemplateWrapper($twig->reveal(), new class ($twig->reveal()) extends Template {
+            public function getTemplateName()
+            {
+            }
+
+            public function getDebugInfo()
+            {
+            }
+
+            public function getSourceContext()
+            {
+            }
+
+            protected function doDisplay(array $context, array $blocks = [])
+            {
+            }
+        }));
 
         $twigView = new TwigView();
         $twigView->setTwig($twig->reveal());

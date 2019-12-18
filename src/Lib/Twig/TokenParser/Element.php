@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
+use Twig\Node\Node;
 use Twig\Token;
 use Twig\TokenParser\IncludeTokenParser;
 use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
@@ -29,7 +30,7 @@ final class Element extends IncludeTokenParser
      *
      * @return \WyriHaximus\TwigView\Lib\Twig\Node\Element
      */
-    public function parse(Token $token): ElementNode
+    public function parse(Token $token): Node
     {
         $stream = $this->parser->getStream();
         $name = $this->parser->getExpressionParser()->parseExpression();
