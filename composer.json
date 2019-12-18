@@ -21,13 +21,13 @@
         "php": "^7.2",
         "aptoma/twig-markdown": "^3.0",
         "asm89/twig-cache-extension": "^1.0",
-        "cakephp/cakephp": "4.x-dev as 4.0.0",
+        "cakephp/cakephp": "^4.0",
         "jasny/twig-extensions": "^1.2.0",
         "twig/twig": "^2.4.3"
     },
     "require-dev": {
-        "cakephp/cakephp-codesniffer": "dev-next",
-        "cakephp/debug_kit": "4.x-dev as 4.0.0",
+        "cakephp/cakephp-codesniffer": "^4.0",
+        "cakephp/debug_kit": "^4.0",
         "jakub-onderka/php-console-highlighter": "^0.4.0",
         "jakub-onderka/php-parallel-lint": "^1.0",
         "phpunit/phpunit": "^8.0",
