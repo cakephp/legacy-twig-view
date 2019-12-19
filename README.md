@@ -279,10 +279,8 @@ Visite [Twig Documentaion](http://twig.sensiolabs.org/documentation) for more ti
 
 ### Extra included extensions
 
-* [Breakpoint extension](https://github.com/ajgarlag/AjglBreakpointTwigExtension)
-* [aptoma/twig-markdown](https://github.com/aptoma/twig-markdown)
 * [jasny/twig-extensions](https://github.com/jasny/twig-extensions)
-* [umpirsky/twig-php-function](https://github.com/umpirsky/twig-php-function)
+* [twig/markdown-extra](https://github.com/twigphp/markdown-extra)
 
 ## Events ##
 
