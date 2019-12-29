@@ -15,9 +15,7 @@ namespace WyriHaximus\TwigView\Lib\Twig;
 use Cake\Core\App;
 use Cake\Core\Plugin;
 use Twig\Error\LoaderError;
-use Twig\Loader\ExistsLoaderInterface;
 use Twig\Loader\LoaderInterface;
-use Twig\Loader\SourceContextLoaderInterface;
 use Twig\Source;
 use WyriHaximus\TwigView\View\TwigView;
 
@@ -25,7 +23,7 @@ use WyriHaximus\TwigView\View\TwigView;
  * Class Loader.
  * @package WyriHaximus\TwigView\Lib\Twig
  */
-final class Loader implements LoaderInterface, ExistsLoaderInterface, SourceContextLoaderInterface
+final class Loader implements LoaderInterface
 {
     /**
      * Get the file contents of a template.

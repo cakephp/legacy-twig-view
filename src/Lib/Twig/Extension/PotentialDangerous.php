@@ -12,33 +12,37 @@ declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Lib\Twig\Extension;
 
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+
 /**
  * Class Basic.
  * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
-class PotentialDangerous extends \Twig_Extension
+class PotentialDangerous extends AbstractExtension
 {
     /**
      * Get declared filters.
      *
-     * @return \Twig_SimpleFilter[]
+     * @return \Twig\TwigFilter[]
      */
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('env', 'env'),
+            new TwigFilter('env', 'env'),
         ];
     }
 
     /**
      * Get declared functions.
      *
-     * @return \Twig_SimpleFunction[]
+     * @return \Twig\TwigFunction[]
      */
     public function getFunctions()
     {
         return [
-        new \Twig_SimpleFunction('config', 'Cake\Core\Configure::read'),
+            new TwigFunction('config', 'Cake\Core\Configure::read'),
         ];
     }
 

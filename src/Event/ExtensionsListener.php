@@ -12,11 +12,6 @@ declare(strict_types=1);
 
 namespace WyriHaximus\TwigView\Event;
 
-use Aptoma\Twig\Extension\MarkdownEngineInterface;
-use Aptoma\Twig\Extension\MarkdownExtension;
-use Aptoma\Twig\TokenParser\MarkdownTokenParser;
-use Asm89\Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy;
-use Asm89\Twig\CacheExtension\Extension as CacheExtension;
 use Cake\Core\Configure;
 use Cake\Event\EventListenerInterface;
 use Jasny\Twig\ArrayExtension;
@@ -25,7 +20,10 @@ use Jasny\Twig\PcreExtension;
 use Jasny\Twig\TextExtension;
 use Twig\Extension\DebugExtension;
 use Twig\Extension\StringLoaderExtension;
-use WyriHaximus\TwigView\Lib\Cache;
+use Twig\Extra\Markdown\MarkdownExtension;
+use Twig\Extra\Markdown\MarkdownInterface;
+use Twig\Extra\Markdown\MarkdownRuntime;
+use Twig\RuntimeLoader\RuntimeLoaderInterface;
 use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
@@ -84,18 +82,30 @@ final class ExtensionsListener implements EventListenerInterface
         // Markdown extension
         if (
             Configure::check('WyriHaximus.TwigView.markdown.engine') &&
-            Configure::read('WyriHaximus.TwigView.markdown.engine') instanceof MarkdownEngineInterface
+            Configure::read('WyriHaximus.TwigView.markdown.engine') instanceof MarkdownInterface
         ) {
             $engine = Configure::read('WyriHaximus.TwigView.markdown.engine');
-            $event->getTwig()->addExtension(new MarkdownExtension($engine));
-            $event->getTwig()->addTokenParser(new MarkdownTokenParser($engine));
-        }
+            $event->getTwig()->addExtension(new MarkdownExtension());
 
-        // Third party cache extension
-        $cacheProvider = new Cache();
-        $cacheStrategy = new LifetimeCacheStrategy($cacheProvider);
-        $cacheExtension = new CacheExtension($cacheStrategy);
-        $event->getTwig()->addExtension($cacheExtension);
+            $event->getTwig()->addRuntimeLoader(new class ($engine) implements RuntimeLoaderInterface {
+                /**
+                 * @var \Twig\Extra\Markdown\MarkdownInterface
+                 */
+                private $engine;
+
+                public function __construct(MarkdownInterface $engine)
+                {
+                    $this->engine = $engine;
+                }
+
+                public function load($class)
+                {
+                    if ($class === MarkdownRuntime::class) {
+                        return new MarkdownRuntime($this->engine);
+                    }
+                }
+            });
+        }
 
         // jasny/twig-extensions
         $event->getTwig()->addExtension(new DateExtension());

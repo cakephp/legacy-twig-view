@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig;
 
+use Twig\Error\LoaderError;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
 
@@ -52,7 +53,7 @@ class LoaderTest extends TestCase
 
     public function testGetSourceNonExistingFile()
     {
-        $this->expectException(\Twig_Error_Loader::class);
+        $this->expectException(LoaderError::class);
 
         $this->Loader->getSource('TestTwigView.no_twig');
     }
@@ -79,7 +80,7 @@ class LoaderTest extends TestCase
 
     public function testGetCacheKeyPluginNonExistingFile()
     {
-        $this->expectException(\Twig_Error_Loader::class);
+        $this->expectException(LoaderError::class);
 
         $this->Loader->getCacheKey('TestTwigView.twog');
     }
@@ -97,7 +98,7 @@ class LoaderTest extends TestCase
 
     public function testIsFreshNonExistingFile()
     {
-        $this->expectException(\Twig_Error_Loader::class);
+        $this->expectException(LoaderError::class);
 
         $this->Loader->isFresh(TMP . 'foobar' . time(), time());
     }

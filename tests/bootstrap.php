@@ -13,7 +13,6 @@ use Cake\Datasource\ConnectionManager;
 require dirname(__DIR__) . '/vendor/autoload.php';
 require dirname(__DIR__) . '/vendor/cakephp/cakephp/src/basics.php';
 
-define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__DIR__));
 define('CORE_PATH', ROOT . DS . 'vendor/cakephp/cakephp');
 define('APP', sys_get_temp_dir());

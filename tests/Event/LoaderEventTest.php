@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
 
-use Twig_LoaderInterface;
+use Twig\Loader\LoaderInterface;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
@@ -22,7 +22,7 @@ class LoaderEventTest extends TestCase
     public function testArrayResultLoader()
     {
         $loader = new Loader();
-        $loader2 = $this->prophesize(Twig_LoaderInterface::class)->reveal();
+        $loader2 = $this->prophesize(LoaderInterface::class)->reveal();
         $event = LoaderEvent::create($loader);
         $event->setResult([
             'loader' => $loader2,
@@ -33,7 +33,7 @@ class LoaderEventTest extends TestCase
     public function testResultLoader()
     {
         $loader = new Loader();
-        $loader2 = $this->prophesize(Twig_LoaderInterface::class)->reveal();
+        $loader2 = $this->prophesize(LoaderInterface::class)->reveal();
         $event = LoaderEvent::create($loader);
         $event->setResult($loader2);
         $this->assertEquals($loader2, $event->getResultLoader());
