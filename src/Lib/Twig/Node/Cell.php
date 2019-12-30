@@ -14,6 +14,7 @@ namespace WyriHaximus\TwigView\Lib\Twig\Node;
 
 use Twig\Compiler;
 use Twig\Node\Expression\AbstractExpression;
+use Twig\Node\Expression\ArrayExpression;
 use Twig\Node\Node;
 use Twig\Node\NodeOutputInterface;
 
@@ -38,7 +39,7 @@ final class Cell extends Node implements NodeOutputInterface
      * @param \Twig\Node\Expression\AbstractExpression $name     Name.
      * @param \Twig\Node\Expression\AbstractExpression $data     Data array.
      * @param \Twig\Node\Expression\AbstractExpression $options  Options array.
-     * @param string                                   $lineno   Line number.
+     * @param int                                      $lineno   Line number.
      * @param string                                   $tag      Tag name.
      */
     public function __construct(
@@ -47,15 +48,15 @@ final class Cell extends Node implements NodeOutputInterface
         AbstractExpression $name,
         ?AbstractExpression $data = null,
         ?AbstractExpression $options = null,
-        $lineno = '',
-        $tag = null
+        int $lineno = 0,
+        ?string $tag = null
     ) {
         if ($data === null) {
-            $data = new \Twig_Node_Expression_Array([], $lineno);
+            $data = new ArrayExpression([], $lineno);
         }
 
         if ($options === null) {
-            $options = new \Twig_Node_Expression_Array([], $lineno);
+            $options = new ArrayExpression([], $lineno);
         }
 
         parent::__construct(
