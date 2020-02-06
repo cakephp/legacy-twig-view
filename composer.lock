@@ -854,16 +854,16 @@
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.21.1",
+            "version": "3.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "beb1f551e6cf4282a9236d72d78aad94fb334d11"
+                "reference": "f2ed910f7bf4cb599bd710f7d3fd83dd23e919a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/beb1f551e6cf4282a9236d72d78aad94fb334d11",
-                "reference": "beb1f551e6cf4282a9236d72d78aad94fb334d11",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/f2ed910f7bf4cb599bd710f7d3fd83dd23e919a5",
+                "reference": "f2ed910f7bf4cb599bd710f7d3fd83dd23e919a5",
                 "shasum": ""
             },
             "require": {
@@ -875,6 +875,7 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
+                "cakephp/authorization": "^1.3.2",
                 "cakephp/cakephp-codesniffer": "^3.0",
                 "phpunit/phpunit": "^5.7.14|^6.0"
             },
@@ -910,7 +911,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2020-01-27T16:15:08+00:00"
+            "time": "2020-02-06T02:28:21+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -1011,16 +1012,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.9.2",
+            "version": "1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb"
+                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb",
-                "reference": "7a04aa0201ddaa0b3cf64d41022bd8cdcd7fafeb",
+                "url": "https://api.github.com/repos/composer/composer/zipball/1291a16ce3f48bfdeca39d64fca4875098af4d7b",
+                "reference": "1291a16ce3f48bfdeca39d64fca4875098af4d7b",
                 "shasum": ""
             },
             "require": {
@@ -1087,7 +1088,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2020-01-14T15:30:32+00:00"
+            "time": "2020-02-04T11:58:49+00:00"
         },
         {
             "name": "composer/semver",
