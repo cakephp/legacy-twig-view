@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 return [
-    'WyriHaximus' => [
+    'Cake' => [
         'TwigView' => [
             'environment' => [
                 // Anything you would pass into \Twig\Environment to overwrite the default settings, see: http://twig.sensiolabs.org/doc/api.html#environment-options

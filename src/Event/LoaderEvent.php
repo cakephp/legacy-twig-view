@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Event\Event;
 use Twig\Loader\LoaderInterface;
@@ -54,3 +54,7 @@ final class LoaderEvent extends Event
         return $this->getLoader();
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\LoaderEvent', 'Wyrihaximus\TwigView\Event\LoaderEvent');
+// phpcs:enable

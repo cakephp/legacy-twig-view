@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace App\View;
 
-class AppView extends \WyriHaximus\TwigView\View\TwigView
+class AppView extends \Cake\TwigView\View\TwigView
 {
     /**
      * Initialization hook method.

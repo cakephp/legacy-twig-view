@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Event\Event;
 use Twig\Profiler\Profile;
@@ -36,3 +36,7 @@ final class ProfileEvent extends Event
         return $this->getSubject();
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\ProfileEvent', 'Wyrihaximus\TwigView\Event\ProfileEvent');
+// phpcs:enable

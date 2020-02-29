@@ -10,15 +10,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig;
+namespace Cake\TwigView\Test\Lib\Twig;
 
+use Cake\TwigView\Lib\Twig\Loader;
+use Cake\TwigView\Test\TestCase;
 use Twig\Error\LoaderError;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
-use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
  * Class LoaderTest.
- * @package WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig
+ * @package Cake\TwigView\Test\Lib\Twig
  */
 class LoaderTest extends TestCase
 {

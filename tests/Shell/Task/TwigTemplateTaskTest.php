@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task;
+namespace Cake\TwigView\Test\Shell\Task;
 
 use Bake\Shell\Task\BakeTemplateTask;
 use Bake\Shell\Task\ModelTask;
@@ -18,8 +18,8 @@ use Cake\Console\ConsoleIo;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\StringCompareTrait;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
-use WyriHaximus\TwigView\Shell\Task\TwigTemplateTask;
+use Cake\TwigView\Shell\Task\TwigTemplateTask;
+use Cake\TwigView\Test\TestCase;
 
 /**
  * TwigTemplateTaskTest class.
@@ -48,7 +48,7 @@ class TwigTemplateTaskTest extends TestCase
         parent::setUp();
         $this->_compareBasePath = PLUGIN_REPO_ROOT . 'tests' . DS . 'comparisons' . DIRECTORY_SEPARATOR;
 
-        Configure::write('App.namespace', 'WyriHaximus\TwigView\Test\App');
+        Configure::write('App.namespace', 'Cake\TwigView\Test\App');
         $this->setupTask(['in', 'err', 'error', 'createFile', '_stop']);
     }
 

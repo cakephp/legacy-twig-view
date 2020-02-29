@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\TwigView\Lib;
+namespace Cake\TwigView\Lib;
 
 /**
  * Class TreeScanner.
- * @package WyriHaximus\TwigView\Lib
+ * @package Cake\TwigView\Lib
  */
 final class TreeScanner
 {

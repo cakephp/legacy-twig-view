@@ -10,14 +10,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig;
+namespace Cake\TwigView\Lib\Twig;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use Cake\TwigView\View\TwigView;
 use Twig\Error\LoaderError;
 use Twig\Loader\LoaderInterface;
 use Twig\Source;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Loader.

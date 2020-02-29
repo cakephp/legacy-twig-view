@@ -10,18 +10,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Event\Event;
+use Cake\TwigView\View\TwigView;
 use Twig\Environment;
-use WyriHaximus\TwigView\View\TwigView;
 
 final class ConstructEvent extends Event
 {
     public const EVENT = 'TwigView.TwigView.construct';
 
     /**
-     * @param \WyriHaximus\TwigView\View\TwigView $twigView TwigView instance.
+     * @param \Cake\TwigView\View\TwigView $twigView TwigView instance.
      * @param \Twig\Environment $twig Twig environment instance.
      * @return static
      */
@@ -34,7 +34,7 @@ final class ConstructEvent extends Event
     }
 
     /**
-     * @return \WyriHaximus\TwigView\View\TwigView
+     * @return \Cake\TwigView\View\TwigView
      */
     public function getTwigView(): TwigView
     {
@@ -49,3 +49,7 @@ final class ConstructEvent extends Event
         return $this->getData()['twig'];
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\ConstructEvent', 'Wyrihaximus\TwigView\Event\ConstructEvent');
+// phpcs:enable

@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView;
+namespace Cake\TwigView;
 
 use Cake\Core\BasePlugin;
 use Cake\Core\Configure;
@@ -19,7 +19,7 @@ use Cake\Core\PluginApplicationInterface;
 use Cake\Event\EventManager;
 
 /**
- * Plugin class for WyriHaximus\TwigView.
+ * Plugin class for Cake\TwigView.
  */
 class Plugin extends BasePlugin
 {
@@ -38,10 +38,14 @@ class Plugin extends BasePlugin
             Configure::write('DebugKit.panels', array_merge(
                 (array)Configure::read('DebugKit.panels'),
                 [
-                    'WyriHaximus/TwigView.Twig',
+                    'Cake/TwigView.Twig',
                 ]
             ));
             EventManager::instance()->on(new Event\ProfilerListener());
         }
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Plugin', 'Wyrihaximus\TwigView\Plugin');
+// phpcs:enable

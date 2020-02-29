@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\Extension;
+namespace Cake\TwigView\Lib\Twig\Extension;
 
 use Cake\View\View as CakeView;
 use Twig\Extension\AbstractExtension;

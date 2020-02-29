@@ -10,12 +10,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\TokenParser;
+namespace Cake\TwigView\Lib\Twig\TokenParser;
 
+use Cake\TwigView\Lib\Twig\Node\Element as ElementNode;
 use Twig\Node\Node;
 use Twig\Token;
 use Twig\TokenParser\IncludeTokenParser;
-use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
 
 /**
  * Class Element.

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\TwigView\Panel;
+namespace Cake\TwigView\Panel;
 
+use Cake\TwigView\Lib\TreeScanner;
 use DebugKit\DebugPanel;
-use WyriHaximus\TwigView\Lib\TreeScanner;
 
 final class TwigPanel extends DebugPanel
 {
@@ -13,7 +13,7 @@ final class TwigPanel extends DebugPanel
      *
      * @var string
      */
-    public $plugin = 'WyriHaximus/TwigView';
+    public $plugin = 'Cake/TwigView';
 
     /**
      * Get the data for the twig panel.
@@ -27,3 +27,7 @@ final class TwigPanel extends DebugPanel
         ];
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Panel\TwigPanel', 'Wyrihaximus\TwigView\Panel\TwigPanel');
+// phpcs:enable
