@@ -1,13 +1,11 @@
 # TwigView plugin for CakePHP #
 
-[![Build Status](https://travis-ci.org/cakephp/TwigView.png)](https://travis-ci.org/cakephp/TwigView)
-[![Latest Stable Version](https://poser.pugx.org/WyriHaximus/Twig-View/v/stable.png)](https://packagist.org/packages/WyriHaximus/Twig-View)
-[![Total Downloads](https://poser.pugx.org/WyriHaximus/Twig-View/downloads.png)](https://packagist.org/packages/WyriHaximus/Twig-View/stats)
-[![Code Coverage](https://scrutinizer-ci.com/g/cakephp/TwigView/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cakephp/TwigView/?branch=master)
-[![License](https://poser.pugx.org/wyrihaximus/Twig-View/license.png)](https://packagist.org/packages/wyrihaximus/Twig-View)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/cakephp/TwigView/badge.svg)](https://travis-ci.org/cakephp/TwigView)
+[![Build Status](https://img.shields.io/travis/cakephp/twig-view?style=flat-square)](https://travis-ci.org/cakephp/twig-view)
+[![Latest Stable Version](https://img.shields.io/github/v/release/cakephp/twig-view?sort=semver&style=flat-square)](https://packagist.org/packages/wyrihaximus/twig-view)
+[![Total Downloads](https://img.shields.io/packagist/dt/wyrihaximus/twig-view?style=flat-square)](https://packagist.org/packages/wyrihaximus/twig-view/stats)
+[![Code Coverage](https://img.shields.io/scrutinizer/build/g/cakephp/twig-view?style=flat-square)](https://scrutinizer-ci.com/g/cakephp/twig-view/)
 
-This plugin for the [CakePHP Framework](http://cakephp.org) allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
+This plugin allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
 
 In addition to enabling the use of most of Twig's features, the plugin is tightly integrated with the CakePHP view renderer giving you full access to helpers, objects and elements.
 
