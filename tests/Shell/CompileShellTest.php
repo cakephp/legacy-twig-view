@@ -17,7 +17,6 @@ use Twig\Environment;
 use Twig\Template;
 use Twig\TemplateWrapper;
 use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
-use WyriHaximus\PHPUnit\Helpers\ReflectionTrait;
 use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\Shell\CompileShell;
 use WyriHaximus\TwigView\View\TwigView;
@@ -28,8 +27,6 @@ use WyriHaximus\TwigView\View\TwigView;
  */
 class CompileShellTest extends TestCase
 {
-    use ReflectionTrait;
-
     public function testAll()
     {
         $twig = $this->prophesize(Environment::class);
