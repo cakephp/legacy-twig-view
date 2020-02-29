@@ -20,14 +20,14 @@ use WyriHaximus\TwigView\View\TwigView;
 
 class AppView extends TwigView
 {
-    public function initialize()
+    public function initialize(): void
     {
         $this->loadHelper('Html');
         $this->loadHelper('Form');
     }
 ```
 
-Note: TwigView will look for its templates with the extension `.twig` and then for `.tpl` (deprecated).
+Note: TwigView will look for its templates with the extension `.twig` and then for `.php`.
 
 ## Create the default layout to be used by TwigView named `default.twig` instead of `default.ctp`
 Layout example
