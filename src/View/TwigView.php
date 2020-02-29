@@ -29,7 +29,7 @@ class TwigView extends View
 {
     public const EXT = '.twig';
 
-    public const ENV_CONFIG = 'Cake.TwigView.environment';
+    public const ENV_CONFIG = 'TwigView.environment';
 
     /**
      * Extension to use.

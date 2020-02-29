@@ -70,10 +70,10 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new Extension\Inflector());
 
         if (
-            !Configure::check('Cake.TwigView.flags.potentialDangerous') ||
+            !Configure::check('TwigView.flags.potentialDangerous') ||
             (
-                Configure::check('Cake.TwigView.flags.potentialDangerous') &&
-                Configure::read('Cake.TwigView.flags.potentialDangerous') === true
+                Configure::check('TwigView.flags.potentialDangerous') &&
+                Configure::read('TwigView.flags.potentialDangerous') === true
             )
         ) {
             $event->getTwig()->addExtension(new Extension\PotentialDangerous());
@@ -81,10 +81,10 @@ final class ExtensionsListener implements EventListenerInterface
 
         // Markdown extension
         if (
-            Configure::check('Cake.TwigView.markdown.engine') &&
-            Configure::read('Cake.TwigView.markdown.engine') instanceof MarkdownInterface
+            Configure::check('TwigView.markdown.engine') &&
+            Configure::read('TwigView.markdown.engine') instanceof MarkdownInterface
         ) {
-            $engine = Configure::read('Cake.TwigView.markdown.engine');
+            $engine = Configure::read('TwigView.markdown.engine');
             $event->getTwig()->addExtension(new MarkdownExtension());
 
             $event->getTwig()->addRuntimeLoader(new class ($engine) implements RuntimeLoaderInterface {

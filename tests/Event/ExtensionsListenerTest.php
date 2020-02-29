@@ -50,7 +50,7 @@ class ExtensionsListenerTest extends TestCase
     public function testConstructMarkdownEngine()
     {
         Configure::write(
-            'Cake.TwigView.markdown.engine',
+            'TwigView.markdown.engine',
             $this->prophesize(MarkdownInterface::class)->reveal()
         );
 
