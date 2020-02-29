@@ -24,7 +24,6 @@ use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
  * Class TwigView.
- * @package WyriHaximus\TwigView\View
  */
 class TwigView extends View
 {

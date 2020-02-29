@@ -21,7 +21,6 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class CompileTemplatesShell.
- * @package WyriHaximus\TwigView\Console\Command
  */
 class CompileShell extends Shell
 {

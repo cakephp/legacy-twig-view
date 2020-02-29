@@ -5,7 +5,6 @@ namespace WyriHaximus\TwigView\Lib;
 
 /**
  * Class TreeScanner.
- * @package WyriHaximus\TwigView\Lib
  */
 final class TreeScanner
 {
