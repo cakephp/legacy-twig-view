@@ -21,6 +21,8 @@ use Twig\Source;
 
 /**
  * Class Loader.
+ *
+ * @internal
  */
 final class Loader implements LoaderInterface
 {

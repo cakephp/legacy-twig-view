@@ -5,6 +5,8 @@ namespace Cake\TwigView\Lib;
 
 /**
  * Class TreeScanner.
+ *
+ * @internal
  */
 final class TreeScanner
 {

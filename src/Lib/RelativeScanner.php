@@ -8,6 +8,8 @@ use Cake\Core\Plugin;
 
 /**
  * Class RelativeScanner.
+ *
+ * @internal
  */
 final class RelativeScanner
 {

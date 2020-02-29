@@ -17,6 +17,8 @@ use Twig\TwigFunction;
 
 /**
  * Class I18n.
+ *
+ * @internal
  */
 final class I18n extends AbstractExtension
 {

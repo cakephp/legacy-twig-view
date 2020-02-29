@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Time.
+ *
+ * @internal
  */
 final class Time extends AbstractExtension
 {

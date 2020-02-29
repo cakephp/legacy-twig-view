@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Basic.
+ *
+ * @internal
  */
 class PotentialDangerous extends AbstractExtension
 {

@@ -19,6 +19,8 @@ use Twig\TokenParser\IncludeTokenParser;
 
 /**
  * Class Element.
+ *
+ * @internal
  */
 final class Cell extends IncludeTokenParser
 {

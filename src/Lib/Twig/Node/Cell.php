@@ -20,6 +20,8 @@ use Twig\Node\NodeOutputInterface;
 
 /**
  * Class Cell.
+ *
+ * @internal
  */
 final class Cell extends Node implements NodeOutputInterface
 {

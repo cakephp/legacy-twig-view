@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Number.
+ *
+ * @internal
  */
 final class Number extends AbstractExtension
 {

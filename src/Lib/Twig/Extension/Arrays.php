@@ -17,6 +17,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Arrays.
+ *
+ * @internal
  */
 final class Arrays extends AbstractExtension
 {

@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class View.
+ *
+ * @internal
  */
 final class View extends AbstractExtension
 {

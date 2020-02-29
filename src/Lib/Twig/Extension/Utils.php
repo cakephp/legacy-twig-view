@@ -17,6 +17,8 @@ use Twig\TwigFilter;
 
 /**
  * Class Utils.
+ *
+ * @internal
  */
 final class Utils extends AbstractExtension
 {

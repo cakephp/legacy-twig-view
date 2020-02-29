@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Strings.
+ *
+ * @internal
  */
 final class Strings extends AbstractExtension
 {

@@ -18,6 +18,8 @@ use Twig\Profiler\Profile;
 
 /**
  * Class Basic.
+ *
+ * @internal
  */
 final class Profiler extends ProfilerExtension
 {

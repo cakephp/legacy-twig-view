@@ -14,6 +14,8 @@ use RegexIterator;
 
 /**
  * Class Scanner.
+ *
+ * @internal
  */
 final class Scanner
 {

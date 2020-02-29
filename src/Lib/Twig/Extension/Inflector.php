@@ -17,6 +17,8 @@ use Twig\TwigFilter;
 
 /**
  * Class Inflector.
+ *
+ * @internal
  */
 final class Inflector extends AbstractExtension
 {
