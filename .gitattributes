@@ -57,3 +57,6 @@ phpcs.xml export-ignore
 phpunit.xml.dist export-ignore
 quickstart.md export-ignore
 tests export-ignore
+psalm.xml export-ignore
+psalm-baseline.xml export-ignore
+phpstan.neon export-ignore

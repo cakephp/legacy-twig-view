@@ -8,7 +8,6 @@ use Cake\Core\Plugin;
 
 /**
  * Class RelativeScanner.
- * @package WyriHaximus\TwigView\Lib
  */
 final class RelativeScanner
 {
@@ -28,7 +27,7 @@ final class RelativeScanner
      * @param string $plugin The plugin to find all templates for.
      * @return mixed
      */
-    public static function plugin($plugin)
+    public static function plugin(string $plugin)
     {
         return static::strip([
             $plugin => Scanner::plugin($plugin),
@@ -38,10 +37,10 @@ final class RelativeScanner
     /**
      * Strip the absolute path of template's paths for all given sections.
      *
-     * @param string $sections Sections to iterate over.
+     * @param array $sections Sections to iterate over.
      * @return array
      */
-    protected static function strip($sections): array
+    protected static function strip(array $sections): array
     {
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::stripAbsolutePath($paths, $section == 'APP' ? null : $section);
@@ -57,7 +56,7 @@ final class RelativeScanner
      * @param string|null $plugin Hold plugin name or null for App.
      * @return array
      */
-    protected static function stripAbsolutePath(array $paths, $plugin = null): array
+    protected static function stripAbsolutePath(array $paths, ?string $plugin = null): array
     {
         if ($plugin === null) {
             $allPaths = App::path('templates');

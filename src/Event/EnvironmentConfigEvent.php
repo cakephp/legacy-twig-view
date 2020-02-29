@@ -49,6 +49,7 @@ final class EnvironmentConfigEvent extends Event
      */
     public function setConfig(array $config)
     {
+        /** @psalm-suppress PossiblyNullPropertyAssignmentValue */
         $this->config = array_replace_recursive($this->config, $config);
 
         return $this;

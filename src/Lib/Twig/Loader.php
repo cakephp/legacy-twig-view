@@ -28,10 +28,9 @@ final class Loader implements LoaderInterface
      * Get the file contents of a template.
      *
      * @param string $name Template.
-     *
      * @return string
      */
-    public function getSource($name): string
+    public function getSource(string $name): string
     {
         $name = $this->resolveFileName($name);
 
@@ -42,12 +41,9 @@ final class Loader implements LoaderInterface
      * Returns the source context for a given template logical name.
      *
      * @param string $name The template logical name.
-     *
-     * @throws \WyriHaximus\TwigView\Lib\Twig\Twig\Error\Loader When $name is not found
-     * @return \WyriHaximus\TwigView\Lib\Twig\Twig\Source
-     *
+     * @return \Twig\Source
      */
-    public function getSourceContext($name): Source
+    public function getSourceContext(string $name): Source
     {
         $code = $this->getSource($name);
         $path = $this->getFilename($name);
@@ -59,10 +55,9 @@ final class Loader implements LoaderInterface
      * Get cache key for template.
      *
      * @param string $name Template.
-     *
      * @return string
      */
-    public function getCacheKey($name): string
+    public function getCacheKey(string $name): string
     {
         return $this->resolveFileName($name);
     }
@@ -71,11 +66,11 @@ final class Loader implements LoaderInterface
      * Check if template is still fresh.
      *
      * @param string $name Template.
-     * @param int    $time Timestamp.
+     * @param int $time Timestamp.
      *
      * @return bool
      */
-    public function isFresh($name, $time): bool
+    public function isFresh(string $name, int $time): bool
     {
         $name = $this->resolveFileName($name);
 
@@ -86,13 +81,12 @@ final class Loader implements LoaderInterface
      * Check if we have the source code of a template, given its name.
      *
      * @param string $name The name of the template to check if we can load.
-     *
      * @return bool If the template source code is handled by this loader or not.
      */
-    public function exists($name): bool
+    public function exists(string $name): bool
     {
         $filename = $this->getFilename($name);
-        if ($filename === false) {
+        if ($filename === '') {
             return false;
         }
 
@@ -103,15 +97,13 @@ final class Loader implements LoaderInterface
      * Resolve template name to filename.
      *
      * @param string $name Template.
-     *
      * @throws \Twig\Error\LoaderError Thrown when template file isn't found.
      * @return string
-     *
      */
-    private function resolveFileName($name): string
+    private function resolveFileName(string $name): string
     {
         $filename = $this->getFilename($name);
-        if ($filename === false) {
+        if ($filename === '') {
             throw new LoaderError(sprintf('Template "%s" is not defined.', $name));
         }
 
@@ -122,11 +114,9 @@ final class Loader implements LoaderInterface
      * Get template filename.
      *
      * @param string $name Template.
-     *
-     * @return string|false
-     *
+     * @return string
      */
-    private function getFilename($name)
+    private function getFilename(string $name): string
     {
         if (file_exists($name)) {
             return $name;
@@ -148,19 +138,18 @@ final class Loader implements LoaderInterface
             }
         }
 
-        return false;
+        return '';
     }
 
     /**
      * Check if $plugin is active and return it's template paths or return the aps template paths.
      *
      * @param string|null $plugin The plugin in question.
-     *
      * @return array
      */
-    private function getPaths($plugin): array
+    private function getPaths(?string $plugin): array
     {
-        if ($plugin === null || !Plugin::loaded($plugin)) {
+        if ($plugin === null || !Plugin::isLoaded($plugin)) {
             return App::path('templates');
         }
 

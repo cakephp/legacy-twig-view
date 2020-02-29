@@ -26,8 +26,7 @@ final class Element extends IncludeTokenParser
      * Parse token.
      *
      * @param \Twig\Token $token Token.
-     *
-     * @return \WyriHaximus\TwigView\Lib\Twig\Node\Element
+     * @return \Twig\Node\Node
      */
     public function parse(Token $token): Node
     {

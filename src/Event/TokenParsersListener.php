@@ -39,7 +39,7 @@ final class TokenParsersListener implements EventListenerInterface
      * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
      * @return void
      */
-    public function construct(ConstructEvent $event)
+    public function construct(ConstructEvent $event): void
     {
         // CakePHP specific tags
         try {

@@ -49,7 +49,7 @@ final class ExtensionsListener implements EventListenerInterface
      * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
      * @return void
      */
-    public function construct(ConstructEvent $event)
+    public function construct(ConstructEvent $event): void
     {
         if ($event->getTwig()->hasExtension(StringLoaderExtension::class)) {
             return;
@@ -110,6 +110,8 @@ final class ExtensionsListener implements EventListenerInterface
                     if ($class === MarkdownRuntime::class) {
                         return new MarkdownRuntime($this->engine);
                     }
+
+                    return null;
                 }
             });
         }

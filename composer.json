@@ -96,7 +96,8 @@
         ],
         "ci-coverage": [
           "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
-        ]
+        ],
+        "stan-setup": "cp composer.json composer.backup && composer require --dev phpstan/phpstan:^0.12.7 psalm/phar:~3.9.0 && mv composer.backup composer.json"
     },
     "config": {
         "sort-packages": true

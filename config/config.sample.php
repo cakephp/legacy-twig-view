@@ -1,6 +1,5 @@
 <?php
-
-use Twig\Extra\Markdown\DefaultMarkdown;
+declare(strict_types=1);
 
 return [
     'WyriHaximus' => [

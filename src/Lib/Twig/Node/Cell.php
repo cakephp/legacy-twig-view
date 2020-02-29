@@ -33,16 +33,16 @@ final class Cell extends Node implements NodeOutputInterface
     /**
      * Constructor.
      *
-     * @param bool                                     $assign   Assign or echo.
-     * @param mixed                                    $variable Variable to assign to.
-     * @param \Twig\Node\Expression\AbstractExpression $name     Name.
-     * @param \Twig\Node\Expression\AbstractExpression $data     Data array.
-     * @param \Twig\Node\Expression\AbstractExpression $options  Options array.
-     * @param int                                      $lineno   Line number.
-     * @param string                                   $tag      Tag name.
+     * @param bool $assign Assign or echo.
+     * @param mixed $variable Variable to assign to.
+     * @param \Twig\Node\Expression\AbstractExpression $name Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data Data array.
+     * @param \Twig\Node\Expression\AbstractExpression $options Options array.
+     * @param int $lineno Line number.
+     * @param string $tag Tag name.
      */
     public function __construct(
-        $assign,
+        bool $assign,
         $variable,
         AbstractExpression $name,
         ?AbstractExpression $data = null,
@@ -80,7 +80,7 @@ final class Cell extends Node implements NodeOutputInterface
      * @param \Twig\Compiler $compiler Compiler.
      * @return void
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler->addDebugInfo($this);
 
@@ -91,16 +91,15 @@ final class Cell extends Node implements NodeOutputInterface
         }
         $compiler->raw('$context[\'_view\']->cell(');
         $compiler->subcompile($this->getNode('name'));
+
         $data = $this->getNode('data');
-        if ($data !== null) {
-            $compiler->raw(',');
-            $compiler->subcompile($data);
-        }
+        $compiler->raw(',');
+        $compiler->subcompile($data);
+
         $options = $this->getNode('options');
-        if ($options !== null) {
-            $compiler->raw(',');
-            $compiler->subcompile($options);
-        }
+        $compiler->raw(',');
+        $compiler->subcompile($options);
+
         $compiler->raw(");\n");
     }
 }

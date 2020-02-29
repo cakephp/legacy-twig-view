@@ -23,9 +23,9 @@ final class TreeScanner
      * Return all templates for a given plugin.
      *
      * @param string $plugin The plugin to find all templates for.
-     * @return mixed
+     * @return array
      */
-    public static function plugin($plugin)
+    public static function plugin(string $plugin): array
     {
         return static::deepen([
             $plugin => RelativeScanner::plugin($plugin),
@@ -38,7 +38,7 @@ final class TreeScanner
      * @param array $sections Sections to iterate over.
      * @return array
      */
-    protected static function deepen($sections): array
+    protected static function deepen(array $sections): array
     {
         foreach ($sections as $section => $paths) {
             $sections[$section] = static::convertToTree($paths);
@@ -70,7 +70,7 @@ final class TreeScanner
      * @param string $path Path to breakup and turn into a tree.
      * @return void
      */
-    protected static function convertPathToTree(array &$paths, $index, $path)
+    protected static function convertPathToTree(array &$paths, $index, string $path)
     {
         if (strpos($path, DIRECTORY_SEPARATOR) !== false) {
             $chunks = explode(DIRECTORY_SEPARATOR, $path);

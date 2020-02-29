@@ -30,8 +30,8 @@ final class Basic extends AbstractExtension
         return [
             new TwigFilter('debug', 'debug'),
             new TwigFilter('pr', 'pr'),
-            new TwigFilter('low', 'low'),
-            new TwigFilter('up', 'up'),
+            new TwigFilter('low', 'strtolower'),
+            new TwigFilter('up', 'strtoupper'),
             new TwigFilter('env', 'env'),
             new TwigFilter('count', 'count'),
             new TwigFilter('h', 'h'),

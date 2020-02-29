@@ -26,8 +26,7 @@ final class Cell extends IncludeTokenParser
      * Parse token.
      *
      * @param \Twig\Token $token Token.
-     *
-     * @return \WyriHaximus\TwigView\Lib\Twig\Node\Cell
+     * @return \Twig\Node\Node
      */
     public function parse(Token $token): Node
     {
