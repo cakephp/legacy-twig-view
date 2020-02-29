@@ -80,7 +80,7 @@ final class Cell extends Node implements NodeOutputInterface
      * @param \Twig\Compiler $compiler Compiler.
      * @return void
      */
-    public function compile(Compiler $compiler): void
+    public function compile(Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 

@@ -21,7 +21,6 @@ use Cake\TwigView\View\TwigView;
 
 /**
  * Class CompileTemplatesShell.
- * @package Cake\TwigView\Console\Command
  */
 class CompileShell extends Shell
 {

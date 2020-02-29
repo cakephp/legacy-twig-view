@@ -24,7 +24,6 @@ use Twig\Loader\LoaderInterface;
 
 /**
  * Class TwigView.
- * @package Cake\TwigView\View
  */
 class TwigView extends View
 {

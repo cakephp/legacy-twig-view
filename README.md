@@ -11,7 +11,7 @@ In addition to enabling the use of most of Twig's features, the plugin is tightl
 
 ## Installation ##
 
-To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `~`.
+To install via [Composer](http://getcomposer.org/), use the command below.
 
 ```bash
 composer require wyrihaximus/twig-view
@@ -303,7 +303,7 @@ class LoaderListener implements EventListenerInterface
         ];
     }
 
-    public function loader(LoaderEvent $event)
+    public function loader(LoaderEvent $event): void
     {
         $event->result = new TwitalLoader($event->getLoader());
     }
@@ -311,7 +311,7 @@ class LoaderListener implements EventListenerInterface
     /**
      * We've also listening in on this event so we can add the needed extensions to check for to the view
      */
-    public function construct(ConstructEvent $event)
+    public function construct(ConstructEvent $event): void
     {
         $event->getTwigView()->unshiftExtension('.twital.html');
         $event->getTwigView()->unshiftExtension('.twital.xml');
@@ -341,7 +341,7 @@ class LoaderListener implements EventListenerInterface
         ];
     }
 
-    public function construct(ConstructEvent $event)
+    public function construct(ConstructEvent $event): void
     {
         $event->getTwig()->addExtension(new YourTwigExtension);
     }
