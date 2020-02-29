@@ -23,7 +23,7 @@ final class Inflector extends AbstractExtension
     /**
      * Get filters for this extension.
      *
-     * @return \Twig\TwigFunction[]
+     * @return \Twig\TwigFilter[]
      */
     public function getFilters(): array
     {

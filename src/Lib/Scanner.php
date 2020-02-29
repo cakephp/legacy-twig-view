@@ -14,7 +14,6 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Scanner.
- * @package WyriHaximus\TwigView\Lib
  */
 final class Scanner
 {
@@ -51,7 +50,7 @@ final class Scanner
      * @param string $plugin The plugin to find all templates for.
      * @return mixed
      */
-    public static function plugin($plugin)
+    public static function plugin(string $plugin)
     {
         $path = Plugin::templatePath($plugin);
         $templates = static::iteratePath($path);
@@ -102,7 +101,7 @@ final class Scanner
      * @param string $path Path to iterate over.
      * @return array
      */
-    protected static function iteratePath($path): array
+    protected static function iteratePath(string $path): array
     {
         return static::walkIterator(static::setupIterator($path));
     }
@@ -113,7 +112,7 @@ final class Scanner
      * @param string $path Path to setup iterator for.
      * @return \Iterator
      */
-    protected static function setupIterator($path): Iterator
+    protected static function setupIterator(string $path): Iterator
     {
         return new RegexIterator(new RecursiveIteratorIterator(
             new RecursiveDirectoryIterator(

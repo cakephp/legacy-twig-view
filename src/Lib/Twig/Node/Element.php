@@ -25,11 +25,11 @@ final class Element extends Node
     /**
      * Constructor.
      *
-     * @param \Twig\Node\Expression\AbstractExpression $name    Name.
-     * @param \Twig\Node\Expression\AbstractExpression $data    Data.
+     * @param \Twig\Node\Expression\AbstractExpression $name Name.
+     * @param \Twig\Node\Expression\AbstractExpression $data Data.
      * @param \Twig\Node\Expression\AbstractExpression $options Options.
-     * @param int                                      $lineno  Linenumber.
-     * @param string                                   $tag     Tag.
+     * @param int $lineno Linenumber.
+     * @param string $tag Tag.
      */
     public function __construct(
         AbstractExpression $name,
@@ -64,22 +64,21 @@ final class Element extends Node
      * @param \Twig\Compiler $compiler Compiler.
      * @return void
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler->addDebugInfo($this);
 
         $compiler->raw('echo $context[\'_view\']->element(');
         $compiler->subcompile($this->getNode('name'));
+
         $data = $this->getNode('data');
-        if ($data !== null) {
-            $compiler->raw(',');
-            $compiler->subcompile($data);
-        }
+        $compiler->raw(',');
+        $compiler->subcompile($data);
+
         $options = $this->getNode('options');
-        if ($options !== null) {
-            $compiler->raw(',');
-            $compiler->subcompile($options);
-        }
+        $compiler->raw(',');
+        $compiler->subcompile($options);
+
         $compiler->raw(");\n");
     }
 }

@@ -16,6 +16,7 @@ use Bake\Shell\Task\TemplateTask;
 use Cake\Console\Shell;
 use Cake\Utility\Inflector;
 
+/** @psalm-suppress UndefinedClass */
 final class TwigTemplateTask extends TemplateTask
 {
     /**

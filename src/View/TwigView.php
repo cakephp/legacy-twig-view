@@ -16,6 +16,7 @@ use Cake\Core\Configure;
 use Cake\View\View;
 use Exception;
 use Twig\Environment;
+use Twig\Loader\LoaderInterface;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
 use WyriHaximus\TwigView\Event\LoaderEvent;
@@ -83,7 +84,7 @@ class TwigView extends View
      * @param string $extension Extension.
      * @return void
      */
-    public function unshiftExtension($extension)
+    public function unshiftExtension(string $extension): void
     {
         array_unshift($this->extensions, $extension);
     }
@@ -156,9 +157,9 @@ class TwigView extends View
     /**
      * Create the template loader.
      *
-     * @return \WyriHaximus\TwigView\Lib\Twig\Loader
+     * @return \Twig\Loader\LoaderInterface
      */
-    protected function getLoader(): Loader
+    protected function getLoader(): LoaderInterface
     {
         $event = LoaderEvent::create(new Loader());
         $this->getEventManager()->dispatch($event);
@@ -250,7 +251,7 @@ class TwigView extends View
     /**
      * @param string $name Element name.
      * @param bool $pluginCheck Whether to check within plugin.
-     * @return string|bool
+     * @return string|false
      */
     protected function _getElementFileName(string $name, bool $pluginCheck = true)
     {

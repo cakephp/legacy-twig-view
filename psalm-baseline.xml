@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.9.3@2e4154d76e24d1b4e59e6cc2bebef7790cb9e550">
+  <file src="src/Lib/Twig/TokenParser/Cell.php">
+    <InternalMethod occurrences="3">
+      <code>parseExpression</code>
+      <code>parseExpression</code>
+      <code>parseExpression</code>
+    </InternalMethod>
+  </file>
+  <file src="src/Lib/Twig/TokenParser/Element.php">
+    <InternalMethod occurrences="3">
+      <code>parseExpression</code>
+      <code>parseExpression</code>
+      <code>parseExpression</code>
+    </InternalMethod>
+  </file>
+  <file src="src/Shell/CompileShell.php">
+    <DeprecatedClass occurrences="3">
+      <code>Shell</code>
+      <code>parent::__construct($io, $locator)</code>
+      <code>parent::getOptionParser()</code>
+    </DeprecatedClass>
+  </file>
+</files>

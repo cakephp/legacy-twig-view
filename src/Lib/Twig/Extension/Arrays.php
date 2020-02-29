@@ -33,12 +33,10 @@ final class Arrays extends AbstractExtension
             new TwigFunction('array', function ($array) {
                 return (array)$array;
             }),
-            new TwigFunction('array_push', 'push'),
-            new TwigFunction('array_add', 'add'),
+            new TwigFunction('array_push', 'array_push'),
             new TwigFunction('array_prev', 'prev'),
             new TwigFunction('array_next', 'next'),
             new TwigFunction('array_current', 'current'),
-            new TwigFunction('array_each', 'each'),
         ];
     }
 

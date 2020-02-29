@@ -30,17 +30,11 @@ final class Number extends AbstractExtension
     {
         return [
             new TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
-            new TwigFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
             new TwigFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
             new TwigFilter('number_format', 'Cake\I18n\Number::format'),
             new TwigFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
             new TwigFilter('currency', 'Cake\I18n\Number::currency'),
-            new TwigFilter('toReadableSize', 'Cake\I18n\Number::toReadableSize'),
-            new TwigFilter('fromReadableSize', 'Cake\I18n\Number::fromReadableSize'),
-            new TwigFilter('toPercentage', 'Cake\I18n\Number::toPercentage'),
             new TwigFilter('format', 'Cake\I18n\Number::format'),
-            new TwigFilter('formatDelta', 'Cake\I18n\Number::formatDelta'),
-            new TwigFilter('currency', 'Cake\I18n\Number::currency'),
         ];
     }
 

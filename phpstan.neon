@@ -1,0 +1,21 @@
+parameters:
+    level: 6
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    excludes_analyse:
+        - src/Shell/Task/TwigTemplateTask.php
+    ignoreErrors:
+        -
+            message: "#^Parameter \\#2 \\$callable of class Twig\\\\TwigFilter constructor expects \\(callable\\(\\)\\: mixed\\)\\|null, 'debug' given\\.$#"
+            count: 1
+            path: src/Lib/Twig/Extension/Basic.php
+
+        -
+            message: "#^Constant ROOT not found\\.$#"
+            count: 2
+            path: src/Lib/Twig/Extension/Profiler.php
+
+        -
+            message: "#^Constant CACHE not found\\.$#"
+            count: 1
+            path: src/View/TwigView.php

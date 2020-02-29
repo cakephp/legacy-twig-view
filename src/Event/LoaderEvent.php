@@ -39,7 +39,7 @@ final class LoaderEvent extends Event
     }
 
     /**
-     * @return string|\Twig\Loader\LoaderInterface
+     * @return \Twig\Loader\LoaderInterface
      */
     public function getResultLoader(): LoaderInterface
     {
