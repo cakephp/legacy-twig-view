@@ -19,7 +19,6 @@ use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
  * Class ExtensionsListener.
- * @package WyriHaximus\TwigView\Event
  */
 final class ProfilerListener implements EventListenerInterface
 {
@@ -39,7 +38,7 @@ final class ProfilerListener implements EventListenerInterface
      * Event handler.
      *
      * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
-     *
+     * @return void
      */
     public function construct(ConstructEvent $event)
     {

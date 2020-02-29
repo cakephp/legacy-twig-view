@@ -21,7 +21,6 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Loader.
- * @package WyriHaximus\TwigView\Lib\Twig
  */
 final class Loader implements LoaderInterface
 {

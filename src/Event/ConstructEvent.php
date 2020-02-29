@@ -21,8 +21,8 @@ final class ConstructEvent extends Event
     public const EVENT = 'TwigView.TwigView.construct';
 
     /**
-     * @param  \WyriHaximus\TwigView\View\TwigView          $twigView
-     * @param  \Twig\Environment $twig
+     * @param \WyriHaximus\TwigView\View\TwigView $twigView TwigView instance.
+     * @param \Twig\Environment $twig Twig environment instance.
      * @return static
      */
     public static function create(TwigView $twigView, Environment $twig): ConstructEvent

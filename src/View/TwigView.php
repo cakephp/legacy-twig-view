@@ -66,6 +66,7 @@ class TwigView extends View
     /**
      * Initialize view.
      *
+     * @return void
      */
     public function initialize(): void
     {
@@ -79,7 +80,8 @@ class TwigView extends View
     }
 
     /**
-     * @param string $extension
+     * @param string $extension Extension.
+     * @return void
      */
     public function unshiftExtension($extension)
     {
@@ -97,6 +99,8 @@ class TwigView extends View
     }
 
     /**
+     * @param \Twig\Environment $twig Twig environment.
+     * @return void
      * @internal
      */
     public function setTwig(Environment $twig): void
@@ -166,8 +170,7 @@ class TwigView extends View
      * Render the template.
      *
      * @param string $viewFile Template file.
-     * @param array  $data     Data that can be used by the template.
-     *
+     * @param array $data Data that can be used by the template.
      * @throws \Exception
      * @return string
      */
@@ -205,7 +208,7 @@ class TwigView extends View
     }
 
     /**
-     * @param  string|null $name
+     * @param string|null $name Template name.
      * @throws \Exception
      * @return string
      */
@@ -225,7 +228,7 @@ class TwigView extends View
     }
 
     /**
-     * @param  string|null $name
+     * @param string|null $name Layout name.
      * @throws \Exception
      * @return string
      */
@@ -245,8 +248,8 @@ class TwigView extends View
     }
 
     /**
-     * @param  string      $name
-     * @param  bool        $pluginCheck
+     * @param string $name Element name.
+     * @param bool $pluginCheck Whether to check within plugin.
      * @return string|bool
      */
     protected function _getElementFileName(string $name, bool $pluginCheck = true)

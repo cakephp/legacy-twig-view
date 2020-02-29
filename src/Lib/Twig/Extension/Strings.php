@@ -18,7 +18,6 @@ use Twig\TwigFunction;
 
 /**
  * Class Strings.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 final class Strings extends AbstractExtension
 {

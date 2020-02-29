@@ -20,7 +20,6 @@ use Twig\Node\NodeOutputInterface;
 
 /**
  * Class Cell.
- * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
 final class Cell extends Node implements NodeOutputInterface
 {
@@ -79,7 +78,7 @@ final class Cell extends Node implements NodeOutputInterface
      * Compile tag.
      *
      * @param \Twig\Compiler $compiler Compiler.
-     *
+     * @return void
      */
     public function compile(Compiler $compiler)
     {

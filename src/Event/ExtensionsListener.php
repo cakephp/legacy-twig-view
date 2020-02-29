@@ -28,7 +28,6 @@ use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
  * Class ExtensionsListener.
- * @package WyriHaximus\TwigView\Event
  */
 final class ExtensionsListener implements EventListenerInterface
 {
@@ -48,6 +47,7 @@ final class ExtensionsListener implements EventListenerInterface
      * Event handler.
      *
      * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
+     * @return void
      */
     public function construct(ConstructEvent $event)
     {
@@ -93,11 +93,18 @@ final class ExtensionsListener implements EventListenerInterface
                  */
                 private $engine;
 
+                /**
+                 * @param \Twig\Extra\Markdown\MarkdownInterface $engine MarkdownInterface instance
+                 */
                 public function __construct(MarkdownInterface $engine)
                 {
                     $this->engine = $engine;
                 }
 
+                /**
+                 * @param string $class FQCN
+                 * @return object|null
+                 */
                 public function load($class)
                 {
                     if ($class === MarkdownRuntime::class) {

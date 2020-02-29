@@ -36,6 +36,7 @@ class CompileShell extends Shell
      * Constructor.
      *
      * @param \Cake\Console\ConsoleIo $io An IO instance.
+     * @param \Cake\ORM\Locator\LocatorInterface|null $locator Locator instance.
      */
     public function __construct(?ConsoleIo $io = null, ?LocatorInterface $locator = null)
     {
@@ -48,7 +49,7 @@ class CompileShell extends Shell
      * Set TwigView.
      *
      * @param \WyriHaximus\TwigView\View\TwigView $twigView TwigView instance.
-     *
+     * @return void
      */
     public function setTwigview(TwigView $twigView)
     {
@@ -58,6 +59,7 @@ class CompileShell extends Shell
     /**
      * Compile all templates.
      *
+     * @return void
      */
     public function all()
     {
@@ -73,7 +75,7 @@ class CompileShell extends Shell
      * Compile only this plugin.
      *
      * @param string $plugin Plugin name.
-     *
+     * @return void
      */
     public function plugin($plugin)
     {
@@ -85,7 +87,7 @@ class CompileShell extends Shell
      * Only compile one file.
      *
      * @param string $fileName File to compile.
-     *
+     * @return void
      */
     public function file($fileName)
     {
@@ -125,7 +127,7 @@ class CompileShell extends Shell
      * Walk over $iterator and compile all templates in it.
      *
      * @param mixed $iterator Iterator to walk over.
-     *
+     * @return void
      */
     protected function walkIterator($iterator)
     {
@@ -138,7 +140,7 @@ class CompileShell extends Shell
      * Compile a template.
      *
      * @param string $fileName Template to compile.
-     *
+     * @return void
      */
     protected function compileTemplate($fileName)
     {

@@ -19,7 +19,6 @@ use Twig\Node\Node;
 
 /**
  * Class Element.
- * @package WyriHaximus\TwigView\Lib\Twig\Node
  */
 final class Element extends Node
 {
@@ -63,7 +62,7 @@ final class Element extends Node
      * Compile node.
      *
      * @param \Twig\Compiler $compiler Compiler.
-     *
+     * @return void
      */
     public function compile(Compiler $compiler)
     {

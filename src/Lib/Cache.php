@@ -14,7 +14,6 @@ final class Cache implements CacheProviderInterface
      * Retrieve data from the cache.
      *
      * @param string $identifier Identifier for this bit of data to read.
-     *
      * @return mixed The cached data, or false if the data doesn't exist, has expired, or on error while fetching.
      */
     public function fetch($identifier)
@@ -28,9 +27,8 @@ final class Cache implements CacheProviderInterface
      * Save data to the cache.
      *
      * @param string $identifier Identifier for this bit of data to write.
-     * @param string $data       Data to cache.
-     * @param int    $lifeTime   Time to life inside the cache.
-     *
+     * @param string $data Data to cache.
+     * @param int $lifeTime Time to life inside the cache.
      * @return bool
      */
     public function save($identifier, $data, $lifeTime = 0): bool
@@ -43,9 +41,8 @@ final class Cache implements CacheProviderInterface
     /**
      * Extract $configName and $key from $name and $config.
      *
-     * @param string $name   Name.
+     * @param string $name Name.
      * @param string $config Cache configuration name to used.
-     *
      * @return array
      */
     protected function configSplit($name, $config = 'default'): array

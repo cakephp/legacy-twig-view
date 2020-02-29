@@ -20,7 +20,7 @@ final class LoaderEvent extends Event
     public const EVENT = 'TwigView.TwigView.loader';
 
     /**
-     * @param  \Twig\Loader\LoaderInterface $loader
+     * @param \Twig\Loader\LoaderInterface $loader LoaderInterface instance.
      * @return static
      */
     public static function create(LoaderInterface $loader): LoaderEvent
@@ -39,7 +39,7 @@ final class LoaderEvent extends Event
     }
 
     /**
-     * @return string|\WyriHaximus\TwigView\Event\Twig\Loader\LoaderInterface
+     * @return string|\Twig\Loader\LoaderInterface
      */
     public function getResultLoader(): LoaderInterface
     {

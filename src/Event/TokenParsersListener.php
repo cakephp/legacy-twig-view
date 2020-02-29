@@ -18,7 +18,6 @@ use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 /**
  * Class TokenParsersListener.
- * @package WyriHaximus\TwigView\Event
  */
 final class TokenParsersListener implements EventListenerInterface
 {
@@ -38,7 +37,7 @@ final class TokenParsersListener implements EventListenerInterface
      * Event handler.
      *
      * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
-     *
+     * @return void
      */
     public function construct(ConstructEvent $event)
     {

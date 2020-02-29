@@ -17,7 +17,6 @@ use Twig\TwigFilter;
 
 /**
  * Class Utils.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 final class Utils extends AbstractExtension
 {

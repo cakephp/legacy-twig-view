@@ -19,7 +19,6 @@ use WyriHaximus\TwigView\Lib\Twig\Node\Element as ElementNode;
 
 /**
  * Class Element.
- * @package WyriHaximus\TwigView\Lib\Twig\TokenParser
  */
 final class Element extends IncludeTokenParser
 {
