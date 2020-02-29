@@ -18,7 +18,6 @@ use Twig\TwigFunction;
 
 /**
  * Class Basic.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 class PotentialDangerous extends AbstractExtension
 {

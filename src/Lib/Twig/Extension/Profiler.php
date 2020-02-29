@@ -18,7 +18,6 @@ use Twig\Profiler\Profile;
 
 /**
  * Class Basic.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 final class Profiler extends ProfilerExtension
 {
@@ -26,6 +25,7 @@ final class Profiler extends ProfilerExtension
      * Enter $profile.
      *
      * @param \Twig\Profiler\Profile $profile Profile.
+     * @return void
      */
     public function enter(Profile $profile)
     {
@@ -39,6 +39,7 @@ final class Profiler extends ProfilerExtension
      * Leave $profile.
      *
      * @param \Twig\Profiler\Profile $profile Profile.
+     * @return void
      */
     public function leave(Profile $profile)
     {

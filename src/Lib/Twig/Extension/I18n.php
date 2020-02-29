@@ -17,7 +17,6 @@ use Twig\TwigFunction;
 
 /**
  * Class I18n.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 final class I18n extends AbstractExtension
 {

@@ -17,7 +17,6 @@ use Twig\TwigFunction;
 
 /**
  * Class Arrays.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 final class Arrays extends AbstractExtension
 {

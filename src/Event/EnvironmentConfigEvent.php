@@ -24,8 +24,7 @@ final class EnvironmentConfigEvent extends Event
     private $config = [];
 
     /**
-     * @param array $config
-     *
+     * @param array $config Config array
      * @return static
      */
     public static function create(array $config): EnvironmentConfigEvent
@@ -45,8 +44,7 @@ final class EnvironmentConfigEvent extends Event
     }
 
     /**
-     * @param array $config
-     *
+     * @param array $config Config array
      * @return $this
      */
     public function setConfig(array $config)

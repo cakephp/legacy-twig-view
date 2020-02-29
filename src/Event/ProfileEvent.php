@@ -20,7 +20,7 @@ final class ProfileEvent extends Event
     public const EVENT = 'TwigView.TwigView.profile';
 
     /**
-     * @param  \Twig\Profiler\Profile $profile
+     * @param \Twig\Profiler\Profile $profile Profile instance.
      * @return static
      */
     public static function create(Profile $profile): ProfileEvent

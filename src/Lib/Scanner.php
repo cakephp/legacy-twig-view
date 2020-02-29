@@ -49,7 +49,6 @@ final class Scanner
      * Return all templates for a given plugin.
      *
      * @param string $plugin The plugin to find all templates for.
-     *
      * @return mixed
      */
     public static function plugin($plugin)
@@ -64,7 +63,6 @@ final class Scanner
      * Check sections a remove the ones without anything in them.
      *
      * @param array $sections Sections to check.
-     *
      * @return array
      */
     protected static function clearEmptySections(array $sections): array
@@ -102,7 +100,6 @@ final class Scanner
      * Iterage over the given path and return all matching .tpl files in it.
      *
      * @param string $path Path to iterate over.
-     *
      * @return array
      */
     protected static function iteratePath($path): array
@@ -114,7 +111,6 @@ final class Scanner
      * Setup iterator for given path.
      *
      * @param string $path Path to setup iterator for.
-     *
      * @return \Iterator
      */
     protected static function setupIterator($path): Iterator
@@ -135,7 +131,6 @@ final class Scanner
      * Walk over the iterator and compile all templates.
      *
      * @param \Iterator $iterator Iterator to walk.
-     *
      * @return array
      */
     protected static function walkIterator(Iterator $iterator): array

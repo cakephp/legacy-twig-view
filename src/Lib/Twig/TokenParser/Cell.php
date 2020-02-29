@@ -19,7 +19,6 @@ use WyriHaximus\TwigView\Lib\Twig\Node\Cell as CellNode;
 
 /**
  * Class Element.
- * @package WyriHaximus\TwigView\Lib\Twig\TokenParser
  */
 final class Cell extends IncludeTokenParser
 {

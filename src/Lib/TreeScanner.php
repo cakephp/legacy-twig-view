@@ -23,7 +23,6 @@ final class TreeScanner
      * Return all templates for a given plugin.
      *
      * @param string $plugin The plugin to find all templates for.
-     *
      * @return mixed
      */
     public static function plugin($plugin)
@@ -36,8 +35,7 @@ final class TreeScanner
     /**
      * Strip the absolute path of template's paths for all given sections.
      *
-     * @param string $sections Sections to iterate over.
-     *
+     * @param array $sections Sections to iterate over.
      * @return array
      */
     protected static function deepen($sections): array
@@ -53,7 +51,6 @@ final class TreeScanner
      * Turn a set of paths into a tree.
      *
      * @param array $paths Paths to turn into a tree.
-     *
      * @return array
      */
     protected static function convertToTree(array $paths): array
@@ -68,10 +65,10 @@ final class TreeScanner
     /**
      * Convert a path into a tree when it contains a directory separator.
      *
-     * @param array  $paths The paths to work on.
-     * @param mixed  $index Index of $path.
-     * @param string $path  Path to breakup and turn into a tree.
-     *
+     * @param array $paths The paths to work on.
+     * @param mixed $index Index of $path.
+     * @param string $path Path to breakup and turn into a tree.
+     * @return void
      */
     protected static function convertPathToTree(array &$paths, $index, $path)
     {
@@ -85,9 +82,8 @@ final class TreeScanner
     /**
      * Create a branch for the current level and push a twig on it.
      *
-     * @param array $paths    Paths to append.
+     * @param array $paths Paths to append.
      * @param array $branches Branches to use untill only one left.
-     *
      * @return array
      */
     protected static function branch(array $paths, array $branches): array

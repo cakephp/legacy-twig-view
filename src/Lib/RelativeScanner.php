@@ -26,7 +26,6 @@ final class RelativeScanner
      * Return all templates for a given plugin.
      *
      * @param string $plugin The plugin to find all templates for.
-     *
      * @return mixed
      */
     public static function plugin($plugin)
@@ -40,7 +39,6 @@ final class RelativeScanner
      * Strip the absolute path of template's paths for all given sections.
      *
      * @param string $sections Sections to iterate over.
-     *
      * @return array
      */
     protected static function strip($sections): array
@@ -55,9 +53,8 @@ final class RelativeScanner
     /**
      * Strip the absolute path of template's paths.
      *
-     * @param array       $paths  Paths to strip.
+     * @param array $paths Paths to strip.
      * @param string|null $plugin Hold plugin name or null for App.
-     *
      * @return array
      */
     protected static function stripAbsolutePath(array $paths, $plugin = null): array

@@ -18,7 +18,6 @@ use Twig\TwigFunction;
 
 /**
  * Class Time.
- * @package WyriHaximus\TwigView\Lib\Twig\Extension
  */
 final class Time extends AbstractExtension
 {
