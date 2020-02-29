@@ -24,6 +24,13 @@ use Cake\Event\EventManager;
 class Plugin extends BasePlugin
 {
     /**
+     * Load routes or not
+     *
+     * @var bool
+     */
+    protected $routesEnabled = false;
+
+    /**
      * Load all the plugin configuration and bootstrap logic.
      *
      * @param \Cake\Core\PluginApplicationInterface $app The host application
