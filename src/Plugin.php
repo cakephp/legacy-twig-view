@@ -17,7 +17,7 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin as CorePlugin;
 use Cake\Core\PluginApplicationInterface;
 use Cake\Event\EventManager;
-use WyriHaximus\TwigView\View\TwigView;
+use Cake\TwigView\View\TwigView;
 
 /**
  * Plugin class for Cake\TwigView.
