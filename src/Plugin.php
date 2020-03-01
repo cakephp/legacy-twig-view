@@ -17,7 +17,6 @@ use Cake\Core\Configure;
 use Cake\Core\Plugin as CorePlugin;
 use Cake\Core\PluginApplicationInterface;
 use Cake\Event\EventManager;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Plugin class for WyriHaximus\TwigView.
@@ -50,10 +49,6 @@ class Plugin extends BasePlugin
                 ]
             ));
             EventManager::instance()->on(new Event\ProfilerListener());
-        }
-
-        if (Configure::read('debug')) {
-            Configure::write(sprintf('%s.cache', TwigView::ENV_CONFIG), false);
         }
     }
 }
