@@ -113,22 +113,17 @@ class TwigView extends View
      */
     protected function resolveConfig(): array
     {
-        $charset = 'utf-8';
-        if (Configure::read('App.encoding') !== null) {
-            $charset = strtolower(Configure::read('App.encoding'));
-        }
-        $debugFlag = false;
-        if (Configure::read('App.encoding') === true) {
-            $debugFlag = true;
-        }
-        $config = [
-            'cache' => CACHE . 'twigView' . DS,
-            'charset' => $charset,
-            'auto_reload' => $debugFlag,
-            'debug' => $debugFlag,
+        $debug = Configure::read('debug', false);
+
+        $config = $this->readConfig() + [
+            'charset' => Configure::read('App.encoding', 'UTF-8'),
+            'debug' => $debug,
+            'cache' => $debug ? false : CACHE . 'twigView' . DS,
         ];
 
-        $config = array_replace($config, $this->readConfig());
+        if ($config['cache'] === true) {
+            $config['cache'] = CACHE . 'twigView' . DS;
+        }
 
         $configEvent = EnvironmentConfigEvent::create($config);
         $this->getEventManager()->dispatch($configEvent);
