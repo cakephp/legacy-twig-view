@@ -70,6 +70,11 @@ class TwigView extends View
      */
     public function initialize(): void
     {
+        if (!Configure::check('TwigView') && Configure::check('Wyrihaximus.TwigView')) {
+            Configure::write('TwigView', Configure::read('Wyrihaximus.TwigView'));
+            deprecationWarning('Use of configure key `Wyrihaximus.TwigView` is deprecated, use `TwigView` instead.');
+        }
+
         $this->twig = new Environment($this->getLoader(), $this->resolveConfig());
 
         $this->getEventManager()->dispatch(ConstructEvent::create($this, $this->twig));
@@ -115,7 +120,8 @@ class TwigView extends View
     {
         $debug = Configure::read('debug', false);
 
-        $config = $this->readConfig() + [
+        $config = Configure::read(static::ENV_CONFIG, []);
+        $config += [
             'charset' => Configure::read('App.encoding', 'UTF-8'),
             'debug' => $debug,
             'cache' => $debug ? false : CACHE . 'twigView' . DS,
@@ -129,23 +135,6 @@ class TwigView extends View
         $this->getEventManager()->dispatch($configEvent);
 
         return $configEvent->getConfig();
-    }
-
-    /**
-     * @return array
-     */
-    protected function readConfig(): array
-    {
-        if (!Configure::check(static::ENV_CONFIG)) {
-            return [];
-        }
-
-        $config = Configure::read(static::ENV_CONFIG);
-        if (!is_array($config)) {
-            return [];
-        }
-
-        return $config;
     }
 
     /**
