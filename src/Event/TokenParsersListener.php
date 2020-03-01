@@ -10,11 +10,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Event\EventListenerInterface;
+use Cake\TwigView\Lib\Twig\TokenParser;
 use LogicException;
-use WyriHaximus\TwigView\Lib\Twig\TokenParser;
 
 /**
  * Class TokenParsersListener.
@@ -36,7 +36,7 @@ final class TokenParsersListener implements EventListenerInterface
     /**
      * Event handler.
      *
-     * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
+     * @param \Cake\TwigView\Event\ConstructEvent $event Event.
      * @return void
      */
     public function construct(ConstructEvent $event): void
@@ -50,3 +50,7 @@ final class TokenParsersListener implements EventListenerInterface
         }
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\TokenParsersListener', 'Wyrihaximus\TwigView\Event\TokenParsersListener');
+// phpcs:enable

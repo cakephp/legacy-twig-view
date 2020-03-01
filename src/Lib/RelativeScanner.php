@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\TwigView\Lib;
+namespace Cake\TwigView\Lib;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
 
 /**
  * Class RelativeScanner.
+ *
+ * @internal
  */
 final class RelativeScanner
 {

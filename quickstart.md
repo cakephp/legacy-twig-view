@@ -3,7 +3,7 @@
 // src/View/AppView.php
 namespace App\View;
 
-use WyriHaximus\TwigView\View\TwigView;
+use Cake\TwigView\View\TwigView;
 
 class AppView extends TwigView
 {
@@ -16,7 +16,7 @@ class AppView extends TwigView
 // src/View/AppView.php
 namespace App\View;
 
-use WyriHaximus\TwigView\View\TwigView;
+use Cake\TwigView\View\TwigView;
 
 class AppView extends TwigView
 {

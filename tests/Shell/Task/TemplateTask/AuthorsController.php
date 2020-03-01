@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task\TemplateTask;
+namespace Cake\TwigView\Test\Shell\Task\TemplateTask;
 
 use Cake\Controller\Controller;
 

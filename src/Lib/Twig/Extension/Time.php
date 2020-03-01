@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\Extension;
+namespace Cake\TwigView\Lib\Twig\Extension;
 
 use Cake\I18n\Time as CakeTime;
 use Twig\Extension\AbstractExtension;
@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Time.
+ *
+ * @internal
  */
 final class Time extends AbstractExtension
 {

@@ -1,19 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\TwigView\Lib;
+namespace Cake\TwigView\Lib;
 
 use Cake\Core\App;
 use Cake\Core\Plugin;
+use Cake\TwigView\View\TwigView;
 use FilesystemIterator;
 use Iterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use RegexIterator;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class Scanner.
+ *
+ * @internal
  */
 final class Scanner
 {

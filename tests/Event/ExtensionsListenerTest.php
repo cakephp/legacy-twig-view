@@ -10,23 +10,23 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
+namespace Cake\TwigView\Test\Event;
 
 use Cake\Core\Configure;
+use Cake\TwigView\Event\ConstructEvent;
+use Cake\TwigView\Event\ExtensionsListener;
+use Cake\TwigView\Test\TestCase;
+use Cake\TwigView\View\TwigView;
 use Prophecy\Argument;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Extra\Markdown\MarkdownExtension;
 use Twig\Extra\Markdown\MarkdownInterface;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
-use WyriHaximus\TwigView\Event\ConstructEvent;
-use WyriHaximus\TwigView\Event\ExtensionsListener;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ExtensionsListenerTest.
- * @package WyriHaximus\CakePHP\Tests\TwigView\Event
+ * @package Cake\TwigView\Test\Event
  */
 class ExtensionsListenerTest extends TestCase
 {
@@ -50,7 +50,7 @@ class ExtensionsListenerTest extends TestCase
     public function testConstructMarkdownEngine()
     {
         Configure::write(
-            'WyriHaximus.TwigView.markdown.engine',
+            'TwigView.markdown.engine',
             $this->prophesize(MarkdownInterface::class)->reveal()
         );
 

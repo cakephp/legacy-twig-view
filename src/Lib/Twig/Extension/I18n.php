@@ -10,13 +10,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\Extension;
+namespace Cake\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 /**
  * Class I18n.
+ *
+ * @internal
  */
 final class I18n extends AbstractExtension
 {

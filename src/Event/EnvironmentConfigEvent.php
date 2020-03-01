@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Event\Event;
 
@@ -55,3 +55,7 @@ final class EnvironmentConfigEvent extends Event
         return $this;
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\EnvironmentConfigEvent', 'Wyrihaximus\TwigView\Event\EnvironmentConfigEvent');
+// phpcs:enable

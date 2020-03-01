@@ -10,20 +10,20 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Shell;
+namespace Cake\TwigView\Test\Shell;
 
 use Cake\Console\ConsoleOptionParser;
+use Cake\TwigView\Lib\Scanner;
+use Cake\TwigView\Shell\CompileShell;
+use Cake\TwigView\Test\TestCase;
+use Cake\TwigView\View\TwigView;
 use Twig\Environment;
 use Twig\Template;
 use Twig\TemplateWrapper;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
-use WyriHaximus\TwigView\Lib\Scanner;
-use WyriHaximus\TwigView\Shell\CompileShell;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class CompileShell.
- * @package WyriHaximus\TwigView\Shell
+ * @package Cake\TwigView\Shell
  */
 class CompileShellTest extends TestCase
 {

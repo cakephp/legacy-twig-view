@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\Node;
+namespace Cake\TwigView\Lib\Twig\Node;
 
 use Twig\Compiler;
 use Twig\Node\Expression\AbstractExpression;
@@ -20,6 +20,8 @@ use Twig\Node\NodeOutputInterface;
 
 /**
  * Class Cell.
+ *
+ * @internal
  */
 final class Cell extends Node implements NodeOutputInterface
 {

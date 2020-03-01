@@ -10,10 +10,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Core\Configure;
 use Cake\Event\EventListenerInterface;
+use Cake\TwigView\Lib\Twig\Extension;
 use Jasny\Twig\ArrayExtension;
 use Jasny\Twig\DateExtension;
 use Jasny\Twig\PcreExtension;
@@ -24,7 +25,6 @@ use Twig\Extra\Markdown\MarkdownExtension;
 use Twig\Extra\Markdown\MarkdownInterface;
 use Twig\Extra\Markdown\MarkdownRuntime;
 use Twig\RuntimeLoader\RuntimeLoaderInterface;
-use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
  * Class ExtensionsListener.
@@ -46,7 +46,7 @@ final class ExtensionsListener implements EventListenerInterface
     /**
      * Event handler.
      *
-     * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
+     * @param \Cake\TwigView\Event\ConstructEvent $event Event.
      * @return void
      */
     public function construct(ConstructEvent $event): void
@@ -70,10 +70,10 @@ final class ExtensionsListener implements EventListenerInterface
         $event->getTwig()->addExtension(new Extension\Inflector());
 
         if (
-            !Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') ||
+            !Configure::check('TwigView.flags.potentialDangerous') ||
             (
-                Configure::check('WyriHaximus.TwigView.flags.potentialDangerous') &&
-                Configure::read('WyriHaximus.TwigView.flags.potentialDangerous') === true
+                Configure::check('TwigView.flags.potentialDangerous') &&
+                Configure::read('TwigView.flags.potentialDangerous') === true
             )
         ) {
             $event->getTwig()->addExtension(new Extension\PotentialDangerous());
@@ -81,10 +81,10 @@ final class ExtensionsListener implements EventListenerInterface
 
         // Markdown extension
         if (
-            Configure::check('WyriHaximus.TwigView.markdown.engine') &&
-            Configure::read('WyriHaximus.TwigView.markdown.engine') instanceof MarkdownInterface
+            Configure::check('TwigView.markdown.engine') &&
+            Configure::read('TwigView.markdown.engine') instanceof MarkdownInterface
         ) {
-            $engine = Configure::read('WyriHaximus.TwigView.markdown.engine');
+            $engine = Configure::read('TwigView.markdown.engine');
             $event->getTwig()->addExtension(new MarkdownExtension());
 
             $event->getTwig()->addRuntimeLoader(new class ($engine) implements RuntimeLoaderInterface {
@@ -124,3 +124,7 @@ final class ExtensionsListener implements EventListenerInterface
         // @codingStandardsIgnoreEnd
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\ExtensionsListener', 'Wyrihaximus\TwigView\Event\ExtensionsListener');
+// phpcs:enable

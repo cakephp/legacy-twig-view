@@ -33,7 +33,7 @@ if (!getenv('db_dsn')) {
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 
-Plugin::getCollection()->add(new \WyriHaximus\TwigView\Plugin());
+Plugin::getCollection()->add(new \Cake\TwigView\Plugin());
 
 Configure::write(
     'App',

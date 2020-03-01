@@ -23,7 +23,7 @@ composer require wyrihaximus/twig-view
 Run the following CLI command:
 
 ```sh
-bin/cake plugin load WyriHaximus/TwigView
+bin/cake plugin load Cake/TwigView
 ```
 
 ### Use View class
@@ -32,7 +32,7 @@ Instead of extending from the `View` let `AppView` extend `TwigView`:
 ```php
 namespace App\View;
 
-use WyriHaximus\TwigView\View\TwigView;
+use Cake\TwigView\View\TwigView;
 
 class AppView extends TwigView
 {
@@ -283,15 +283,15 @@ This plugin emits several events.
 
 ### Loaders ###
 
-The default loader can be replace by listening to the `WyriHaximus\TwigView\Event\LoaderEvent::EVENT`, for example with [twital](https://github.com/goetas/twital):
+The default loader can be replace by listening to the `Cake\TwigView\Event\LoaderEvent::EVENT`, for example with [twital](https://github.com/goetas/twital):
 
 ```php
 <?php
 
 use Cake\Event\EventListenerInterface;
 use Goetas\Twital\TwitalLoader;
-use WyriHaximus\TwigView\Event\ConstructEvent;
-use WyriHaximus\TwigView\Event\LoaderEvent;
+use Cake\TwigView\Event\ConstructEvent;
+use Cake\TwigView\Event\LoaderEvent;
 
 class LoaderListener implements EventListenerInterface
 {
@@ -324,13 +324,13 @@ class LoaderListener implements EventListenerInterface
 
 ### Extensions ###
 
-Extensions can be added to the twig environment by listening to the `WyriHaximus\TwigView\Event\ConstructEvent::EVENT`, for example:
+Extensions can be added to the twig environment by listening to the `Cake\TwigView\Event\ConstructEvent::EVENT`, for example:
 
 ```php
 <?php
 
 use Cake\Event\EventListenerInterface;
-use WyriHaximus\TwigView\Event\ConstructEvent;
+use Cake\TwigView\Event\ConstructEvent;
 
 class LoaderListener implements EventListenerInterface
 {
@@ -357,7 +357,7 @@ You can use the following command to generate your index, add, edit and view fil
 using Twig :
 
 ```bash
-bin/cake bake twig_template Tasks all -t WyriHaximus/TwigView
+bin/cake bake twig_template Tasks all -t Cake/TwigView
 ```
 
 ## Screenshots ##

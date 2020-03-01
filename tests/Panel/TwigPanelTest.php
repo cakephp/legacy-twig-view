@@ -10,11 +10,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Panel;
+namespace Cake\TwigView\Test\Panel;
 
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
-use WyriHaximus\TwigView\Lib\TreeScanner;
-use WyriHaximus\TwigView\Panel\TwigPanel;
+use Cake\TwigView\Lib\TreeScanner;
+use Cake\TwigView\Panel\TwigPanel;
+use Cake\TwigView\Test\TestCase;
 
 class TwigPanelTest extends TestCase
 {

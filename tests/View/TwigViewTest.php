@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\CakePHP\Tests\TwigView;
+namespace Cake\TwigView\Test;
 
 /**
  * This file is part of TwigView.
@@ -16,11 +16,11 @@ use App\Exception\MissingSomethingException;
 use App\View\AppView;
 use Cake\Core\Configure;
 use Cake\Event\EventManager;
+use Cake\TwigView\Event\ConstructEvent;
+use Cake\TwigView\Event\EnvironmentConfigEvent;
+use Cake\TwigView\View\TwigView;
 use Twig\Environment;
 use Twig\Error\SyntaxError;
-use WyriHaximus\TwigView\Event\ConstructEvent;
-use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
-use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class TwigViewTest.
@@ -116,11 +116,11 @@ class TwigViewTest extends TestCase
 
     /**
      * @param $name
-     * @return \WyriHaximus\CakePHP\Tests\TwigView\ReflectionMethod
+     * @return \Cake\TwigView\Test\ReflectionMethod
      */
     protected static function getMethod($name)
     {
-        $class = new ReflectionClass('WyriHaximus\TwigView\View\TwigView');
+        $class = new ReflectionClass('Cake\TwigView\View\TwigView');
         $method = $class->getMethod($name);
         $method->setAccessible(true);
 
@@ -129,11 +129,11 @@ class TwigViewTest extends TestCase
 
     /**
      * @param $name
-     * @return \WyriHaximus\CakePHP\Tests\TwigView\ReflectionProperty
+     * @return \Cake\TwigView\Test\ReflectionProperty
      */
     protected static function getProperty($name)
     {
-        $class = new ReflectionClass('WyriHaximus\TwigView\View\TwigView');
+        $class = new ReflectionClass('Cake\TwigView\View\TwigView');
         $property = $class->getProperty($name);
         $property->setAccessible(true);
 

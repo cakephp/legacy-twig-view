@@ -10,14 +10,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Shell;
+namespace Cake\TwigView\Shell;
 
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
 use Cake\Console\Shell;
 use Cake\ORM\Locator\LocatorInterface;
-use WyriHaximus\TwigView\Lib\Scanner;
-use WyriHaximus\TwigView\View\TwigView;
+use Cake\TwigView\Lib\Scanner;
+use Cake\TwigView\View\TwigView;
 
 /**
  * Class CompileTemplatesShell.
@@ -27,7 +27,7 @@ class CompileShell extends Shell
     /**
      * Instance of TwigView to be used to compile templates.
      *
-     * @var \WyriHaximus\TwigView\View\TwigView
+     * @var \Cake\TwigView\View\TwigView
      */
     protected $twigView;
 
@@ -47,7 +47,7 @@ class CompileShell extends Shell
     /**
      * Set TwigView.
      *
-     * @param \WyriHaximus\TwigView\View\TwigView $twigView TwigView instance.
+     * @param \Cake\TwigView\View\TwigView $twigView TwigView instance.
      * @return void
      */
     public function setTwigview(TwigView $twigView)

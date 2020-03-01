@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Shell\Task;
+namespace Cake\TwigView\Shell\Task;
 
 use Bake\Shell\Task\TemplateTask;
 use Cake\Console\Shell;

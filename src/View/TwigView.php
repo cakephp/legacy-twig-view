@@ -10,17 +10,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\View;
+namespace Cake\TwigView\View;
 
 use Cake\Core\Configure;
+use Cake\TwigView\Event\ConstructEvent;
+use Cake\TwigView\Event\EnvironmentConfigEvent;
+use Cake\TwigView\Event\LoaderEvent;
+use Cake\TwigView\Lib\Twig\Loader;
 use Cake\View\View;
 use Exception;
 use Twig\Environment;
 use Twig\Loader\LoaderInterface;
-use WyriHaximus\TwigView\Event\ConstructEvent;
-use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
-use WyriHaximus\TwigView\Event\LoaderEvent;
-use WyriHaximus\TwigView\Lib\Twig\Loader;
 
 /**
  * Class TwigView.
@@ -29,7 +29,7 @@ class TwigView extends View
 {
     public const EXT = '.twig';
 
-    public const ENV_CONFIG = 'WyriHaximus.TwigView.environment';
+    public const ENV_CONFIG = 'TwigView.environment';
 
     /**
      * Extension to use.
@@ -265,3 +265,7 @@ class TwigView extends View
         return false;
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\View\TwigView', 'Wyrihaximus\TwigView\View\TwigView');
+// phpcs:enable

@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\Extension;
+namespace Cake\TwigView\Lib\Twig\Extension;
 
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -18,6 +18,8 @@ use Twig\TwigFunction;
 
 /**
  * Class Number.
+ *
+ * @internal
  */
 final class Number extends AbstractExtension
 {

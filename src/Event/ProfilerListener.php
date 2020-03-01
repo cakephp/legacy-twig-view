@@ -10,12 +10,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Event;
+namespace Cake\TwigView\Event;
 
 use Cake\Event\EventListenerInterface;
 use Cake\Event\EventManager;
+use Cake\TwigView\Lib\Twig\Extension;
 use Twig\Profiler\Profile;
-use WyriHaximus\TwigView\Lib\Twig\Extension;
 
 /**
  * Class ExtensionsListener.
@@ -37,7 +37,7 @@ final class ProfilerListener implements EventListenerInterface
     /**
      * Event handler.
      *
-     * @param \WyriHaximus\TwigView\Event\ConstructEvent $event Event.
+     * @param \Cake\TwigView\Event\ConstructEvent $event Event.
      * @return void
      */
     public function construct(ConstructEvent $event): void
@@ -52,3 +52,7 @@ final class ProfilerListener implements EventListenerInterface
         EventManager::instance()->dispatch(ProfileEvent::create($profile));
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Event\ProfilerListener', 'Wyrihaximus\TwigView\Event\ProfilerListener');
+// phpcs:enable

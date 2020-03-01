@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\TwigView\Lib\Twig\Extension;
+namespace Cake\TwigView\Lib\Twig\Extension;
 
 use DebugKit\DebugTimer;
 use Twig\Extension\ProfilerExtension;
@@ -18,6 +18,8 @@ use Twig\Profiler\Profile;
 
 /**
  * Class Basic.
+ *
+ * @internal
  */
 final class Profiler extends ProfilerExtension
 {

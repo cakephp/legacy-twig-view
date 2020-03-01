@@ -10,9 +10,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig\Extension;
+namespace Cake\TwigView\Test\Lib\Twig\Extension;
 
-use WyriHaximus\TwigView\Lib\Twig\Extension\PotentialDangerous;
+use Cake\TwigView\Lib\Twig\Extension\PotentialDangerous;
 
 final class PotentialDangerousTest extends AbstractExtensionTest
 {
