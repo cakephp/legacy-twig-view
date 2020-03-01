@@ -70,7 +70,12 @@ class TwigView extends View
      */
     public function initialize(): void
     {
-        $this->twig = new Environment($this->getLoader(), $this->resolveConfig());
+        // Copy deprecated Wryihaximus.TwigView configure if TwigView configure is not set
+        if (!Configure::check('TwigView') && Configure::check('Wyrihaximus.TwigView')) {
+            Configure::write('TwigView', Configure::read('Wyrihaximus.TwigView'));
+        }
+
+        $this->twig = new Environment($this->getLoader(), $this->getEnvironmentConfig());
 
         $this->getEventManager()->dispatch(ConstructEvent::create($this, $this->twig));
 
@@ -111,7 +116,7 @@ class TwigView extends View
     /**
      * @return array
      */
-    protected function resolveConfig(): array
+    protected function getEnvironmentConfig(): array
     {
         $charset = 'utf-8';
         if (Configure::read('App.encoding') !== null) {
@@ -128,29 +133,17 @@ class TwigView extends View
             'debug' => $debugFlag,
         ];
 
-        $config = array_replace($config, $this->readConfig());
+        $config = array_replace($config, Configure::read(static::ENV_CONFIG) ?? []);
+
+        // Disable caching in debug mode even if user has set cache path
+        if (Configure::read('debug') && !Configure::read('TwigView.flags.alwaysCache')) {
+            $config['cache'] = false;
+        }
 
         $configEvent = EnvironmentConfigEvent::create($config);
         $this->getEventManager()->dispatch($configEvent);
 
         return $configEvent->getConfig();
-    }
-
-    /**
-     * @return array
-     */
-    protected function readConfig(): array
-    {
-        if (!Configure::check(static::ENV_CONFIG)) {
-            return [];
-        }
-
-        $config = Configure::read(static::ENV_CONFIG);
-        if (!is_array($config)) {
-            return [];
-        }
-
-        return $config;
     }
 
     /**
