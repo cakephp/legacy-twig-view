@@ -17,5 +17,5 @@ parameters:
 
         -
             message: "#^Constant CACHE not found\\.$#"
-            count: 1
+            count: 2
             path: src/View/TwigView.php
