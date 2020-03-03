@@ -155,3 +155,7 @@ class CompileShell extends Shell
         }
     }
 }
+
+// phpcs:disable
+class_alias('Cake\TwigView\Shell\CompileShell', 'Wyrihaximus\TwigView\Shell\CompileShell');
+// phpcs:enable
