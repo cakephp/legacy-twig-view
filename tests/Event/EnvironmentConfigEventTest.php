@@ -10,10 +10,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
+namespace WyriHaximus\TwigView\Test\Event;
 
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
+use WyriHaximus\TwigView\Test\TestCase;
 
 class EnvironmentConfigEventTest extends TestCase
 {

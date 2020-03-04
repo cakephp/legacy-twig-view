@@ -10,18 +10,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
+namespace WyriHaximus\TwigView\Test\Event;
 
 use Twig\Environment;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ProfilerListener;
 use WyriHaximus\TwigView\Lib\Twig\Extension\Profiler;
+use WyriHaximus\TwigView\Test\TestCase;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ProfilerListenerTest.
- * @package WyriHaximus\CakePHP\Tests\TwigView\Event
+ * @package WyriHaximus\TwigView\Test\Event
  */
 class ProfilerListenerTest extends TestCase
 {

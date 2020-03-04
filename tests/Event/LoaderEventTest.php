@@ -10,12 +10,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
+namespace WyriHaximus\TwigView\Test\Event;
 
 use Twig\Loader\LoaderInterface;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\LoaderEvent;
 use WyriHaximus\TwigView\Lib\Twig\Loader;
+use WyriHaximus\TwigView\Test\TestCase;
 
 class LoaderEventTest extends TestCase
 {

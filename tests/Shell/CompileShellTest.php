@@ -10,15 +10,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Shell;
+namespace WyriHaximus\TwigView\Test\Shell;
 
 use Cake\Console\ConsoleOptionParser;
 use Twig\Environment;
 use Twig\Template;
 use Twig\TemplateWrapper;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\Scanner;
 use WyriHaximus\TwigView\Shell\CompileShell;
+use WyriHaximus\TwigView\Test\TestCase;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
