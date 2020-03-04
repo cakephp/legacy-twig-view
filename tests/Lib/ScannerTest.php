@@ -10,15 +10,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Lib;
+namespace WyriHaximus\TwigView\Test\Lib;
 
 use Cake\Routing\Router;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Lib\Scanner;
+use WyriHaximus\TwigView\Test\TestCase;
 
 /**
  * Class ScannerTest.
- * @package WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig
+ * @package WyriHaximus\TwigView\Test\Lib\Twig
  */
 class ScannerTest extends TestCase
 {

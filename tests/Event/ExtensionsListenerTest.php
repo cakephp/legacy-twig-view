@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
+namespace WyriHaximus\TwigView\Test\Event;
 
 use Cake\Core\Configure;
 use Prophecy\Argument;
@@ -19,14 +19,14 @@ use Twig\Extension\AbstractExtension;
 use Twig\Extension\StringLoaderExtension;
 use Twig\Extra\Markdown\MarkdownExtension;
 use Twig\Extra\Markdown\MarkdownInterface;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\ExtensionsListener;
+use WyriHaximus\TwigView\Test\TestCase;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ExtensionsListenerTest.
- * @package WyriHaximus\CakePHP\Tests\TwigView\Event
+ * @package WyriHaximus\TwigView\Test\Event
  */
 class ExtensionsListenerTest extends TestCase
 {

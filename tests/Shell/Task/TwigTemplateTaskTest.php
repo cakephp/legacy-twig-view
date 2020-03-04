@@ -10,7 +10,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Shell\Task;
+namespace WyriHaximus\TwigView\Test\Shell\Task;
 
 use Bake\Shell\Task\BakeTemplateTask;
 use Bake\Shell\Task\ModelTask;
@@ -18,8 +18,8 @@ use Cake\Console\ConsoleIo;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\StringCompareTrait;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Shell\Task\TwigTemplateTask;
+use WyriHaximus\TwigView\Test\TestCase;
 
 /**
  * TwigTemplateTaskTest class.
@@ -34,7 +34,7 @@ class TwigTemplateTaskTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'core.Authors',
+        'plugin.WyriHaximus\TwigView.Authors',
     ];
 
     /**

@@ -10,19 +10,19 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Event;
+namespace WyriHaximus\TwigView\Test\Event;
 
 use Prophecy\Argument;
 use Twig\Environment;
 use Twig\TokenParser\IncludeTokenParser;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\TokenParsersListener;
+use WyriHaximus\TwigView\Test\TestCase;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class TokenParserListenerTest.
- * @package WyriHaximus\CakePHP\Tests\TwigView\Event
+ * @package WyriHaximus\TwigView\Test\Event
  */
 class TokenParsersListenerTest extends TestCase
 {

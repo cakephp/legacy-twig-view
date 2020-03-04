@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\CakePHP\Tests\TwigView;
+namespace WyriHaximus\TwigView\Test;
 
 /**
  * This file is part of TwigView.
@@ -116,7 +116,7 @@ class TwigViewTest extends TestCase
 
     /**
      * @param $name
-     * @return \WyriHaximus\CakePHP\Tests\TwigView\ReflectionMethod
+     * @return \WyriHaximus\TwigView\Test\ReflectionMethod
      */
     protected static function getMethod($name)
     {
@@ -129,7 +129,7 @@ class TwigViewTest extends TestCase
 
     /**
      * @param $name
-     * @return \WyriHaximus\CakePHP\Tests\TwigView\ReflectionProperty
+     * @return \WyriHaximus\TwigView\Test\ReflectionProperty
      */
     protected static function getProperty($name)
     {

@@ -10,11 +10,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace WyriHaximus\CakePHP\Tests\TwigView\Lib\Twig\Extension;
+namespace WyriHaximus\TwigView\Test\Lib\Twig\Extension;
 
 use Twig\TokenParser\TokenParserInterface;
 use Twig\TwigFilter;
-use WyriHaximus\CakePHP\Tests\TwigView\TestCase;
+use WyriHaximus\TwigView\Test\TestCase;
 
 abstract class AbstractExtensionTest extends TestCase
 {

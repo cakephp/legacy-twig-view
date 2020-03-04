@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\CakePHP\Tests\TwigView;
+namespace WyriHaximus\TwigView\Test;
 
 use Cake\TestSuite\TestCase as CakeTestCase;
 
