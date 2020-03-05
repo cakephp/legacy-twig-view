@@ -43,7 +43,7 @@ final class RelativeScanner
     protected static function strip(array $sections): array
     {
         foreach ($sections as $section => $paths) {
-            $sections[$section] = static::stripAbsolutePath($paths, $section == 'APP' ? null : $section);
+            $sections[$section] = static::stripAbsolutePath($paths, $section === 'APP' ? null : $section);
         }
 
         return $sections;
@@ -66,7 +66,7 @@ final class RelativeScanner
 
         foreach ($allPaths as $templatesPath) {
             array_walk($paths, function (&$path) use ($templatesPath) {
-                if (substr($path, 0, strlen($templatesPath)) == $templatesPath) {
+                if (substr($path, 0, strlen($templatesPath)) === $templatesPath) {
                     $path = substr($path, strlen($templatesPath));
                 }
             });

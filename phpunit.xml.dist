@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="tests/bootstrap.php" colors="true">
     <testsuites>
-        <testsuite name="TwigView Test Suite">
+        <testsuite name="twig-view">
             <directory>tests/</directory>
         </testsuite>
     </testsuites>
@@ -11,13 +11,11 @@
         </whitelist>
     </filter>
 
-    <!-- Setup a listener for fixtures -->
     <listeners>
         <listener
-                class="\Cake\TestSuite\Fixture\FixtureInjector"
-                file="./vendor/cakephp/cakephp/src/TestSuite/Fixture/FixtureInjector.php">
+                class="Cake\TestSuite\Fixture\FixtureInjector">
             <arguments>
-                <object class="\Cake\TestSuite\Fixture\FixtureManager" />
+                <object class="Cake\TestSuite\Fixture\FixtureManager"/>
             </arguments>
         </listener>
     </listeners>

@@ -39,9 +39,7 @@
     "autoload-dev": {
         "psr-4": {
             "WyriHaximus\\TwigView\\Test\\": "tests/",
-            "App\\": "tests/test_app/",
-            "TestTwigView\\": "tests/test_app/Plugin/TestTwigView/src",
-            "Modern\\": "tests/test_app/Plugin/Modern/src"
+            "App\\": "tests/test_app/"
         }
     },
     "scripts": {
@@ -63,6 +61,5 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev",
     "prefer-stable": true
 }
