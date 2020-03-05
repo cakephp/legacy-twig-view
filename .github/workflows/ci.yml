@@ -10,6 +10,47 @@ on:
       - '*'
 
 jobs:
+  testsuite:
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['7.2', '7.4']
+        db-type: [sqlite]
+    name: PHP ${{ matrix.php-version }} & ${{ matrix.db-type }}
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+        extensions: mbstring, intl
+        coverage: pcov
+
+    - name: Get composer cache directory
+      id: composer-cache
+      run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+    - name: Get date part for cache key
+      id: key-date
+      run: echo "::set-output name=date::$(date +'%Y-%m')"
+
+    - name: Cache composer dependencies
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}
+
+    - name: Composer Install
+      run: composer install
+
+    - name: Run PHPUnit
+      run: vendor/bin/phpunit --verbose
+
   static-analysis:
     name: Static Analysis
     runs-on: ubuntu-18.04
@@ -40,8 +81,11 @@ jobs:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ steps.key-date.outputs.date }}-${{ hashFiles('composer.json') }}
 
-    - name: composer install
+    - name: Composer Install
       run: composer stan-setup
+
+    - name: Run phpcs
+      run: vendor/bin/phpcs src/ tests/
 
     - name: Run psalm
       run: vendor/bin/psalm.phar --show-info=false --output-format=github
