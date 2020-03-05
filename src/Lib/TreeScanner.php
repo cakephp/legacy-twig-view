@@ -82,13 +82,13 @@ final class TreeScanner
      * Create a branch for the current level and push a twig on it.
      *
      * @param array $paths Paths to append.
-     * @param array $branches Branches to use untill only one left.
+     * @param string[] $branches Branches to use until only one left.
      * @return array
      */
     protected static function branch(array $paths, array $branches): array
     {
         $twig = array_shift($branches);
-        if (count($branches) == 0) {
+        if (count($branches) === 0) {
             $paths[] = $twig;
 
             return $paths;

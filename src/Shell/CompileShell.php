@@ -144,10 +144,9 @@ class CompileShell extends Shell
     protected function compileTemplate($fileName)
     {
         try {
-            $this->
-                twigView->
-                getTwig()->
-                load($fileName);
+            $this->twigView
+                ->getTwig()
+                ->load($fileName);
             $this->out('<success>' . $fileName . '</success>');
         } catch (\Exception $exception) {
             $this->out('<error>' . $fileName . '</error>');

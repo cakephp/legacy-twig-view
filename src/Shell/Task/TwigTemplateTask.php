@@ -46,8 +46,9 @@ final class TwigTemplateTask extends TemplateTask
         if (empty($content)) {
             $this->err("<warning>No generated content for '{$action}.php', not generating template.</warning>");
 
-            return false;
+            return '';
         }
+
         $this->out("\n" . sprintf('Baking `%s` view twig template file...', $outputFile), 1, Shell::QUIET);
         $path = $this->getPath();
         $filename = $path . Inflector::underscore($outputFile) . '.twig';

@@ -39,7 +39,7 @@ class TwigView extends View
     protected $_ext = self::EXT;
 
     /**
-     * @var array
+     * @var string[]
      */
     protected $extensions = [
         self::EXT,

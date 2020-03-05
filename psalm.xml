@@ -10,14 +10,14 @@
     errorBaseline="psalm-baseline.xml"
 >
     <projectFiles>
-        <directory name="src" />
+        <directory name="src"/>
         <ignoreFiles>
-            <directory name="vendor" />
+            <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
     <issueHandlers>
-        <PropertyNotSetInConstructor errorLevel="suppress" />
-        <MissingClosureParamType errorLevel="suppress" />
-        <MissingClosureReturnType errorLevel="suppress" />
+        <PropertyNotSetInConstructor errorLevel="suppress"/>
+        <MissingClosureParamType errorLevel="suppress"/>
+        <MissingClosureReturnType errorLevel="suppress"/>
     </issueHandlers>
 </psalm>
