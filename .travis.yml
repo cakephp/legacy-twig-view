@@ -17,7 +17,6 @@ matrix:
       env: CODECOVERAGE=1
 
 before_install:
-  - echo cakephp version
   - |
       if [[ $CODECOVERAGE == 1 ]]; then
         pecl channel-update pecl.php.net
