@@ -45,58 +45,20 @@
         }
     },
     "scripts": {
-        "ensure-installed": "composer install --ansi -n -q",
-        "cs": [
-          "@ensure-installed",
+        "cs-check": [
           "phpcs -p src/ tests/"
         ],
         "cs-fix": [
-          "@ensure-installed",
           "phpcbf -p src/ tests/"
         ],
-        "unit": [
-          "@ensure-installed",
-          "phpunit --colors=always -c phpunit.xml.dist"
+        "stan": [
+          "phpstan.phar analyse src/",
+          "psalm.phar --show-info=false"
         ],
-        "unit-coverage": [
-          "@ensure-installed",
-          "phpunit --colors=always -c phpunit.xml.dist --coverage-text --coverage-html covHtml --coverage-clover ./build/logs/clover.xml"
-        ],
-        "lint-php": [
-          "@ensure-installed",
-          "parallel-lint --exclude vendor ."
-        ],
-        "qa-all": [
-          "@lint-php",
-          "@cs",
-          "@unit"
-        ],
-        "qa-all-coverage": [
-          "@lint-php",
-          "@cs",
-          "@unit-coverage"
-        ],
-        "qa-windows": [
-          "@lint-php",
-          "@cs",
-          "@unit"
-        ],
-        "qa-ci": [
-          "@unit"
-        ],
-        "qa-ci-extended": [
-          "@qa-all-coverage"
-        ],
-        "qa-ci-windows": [
-          "@qa-windows"
-        ],
-        "qa-contrib": [
-          "@qa-all"
-        ],
-        "ci-coverage": [
-          "if [ -f ./build/logs/clover.xml ]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi"
-        ],
-        "stan-setup": "cp composer.json composer.backup && composer require --dev phpstan/phpstan:^0.12.7 psalm/phar:~3.9.0 && mv composer.backup composer.json"
+        "stan-setup": "cp composer.json composer.backup && composer require --dev phpstan/phpstan:^0.12.7 psalm/phar:~3.9.0 && mv composer.backup composer.json",
+        "test": [
+          "phpunit"
+        ]
     },
     "config": {
         "sort-packages": true

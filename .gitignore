@@ -1,4 +1,5 @@
-.DS_Store
-covHtml/
-vendor/
-.phpunit.result.cache
+/.DS_Store
+/.phpunit.result.cache
+/composer.lock
+/Thumbs.db
+/vendor/
