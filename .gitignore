@@ -2,5 +2,7 @@
 /.phpunit.result.cache
 /composer.lock
 /Thumbs.db
-/vendor/
+
 /.idea/
+/.vscode/
+/vendor/
