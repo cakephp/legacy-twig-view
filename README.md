@@ -4,6 +4,7 @@
 [![Latest Stable Version](https://img.shields.io/github/v/release/cakephp/legacy-twig-view?sort=semver&style=flat-square)](https://packagist.org/packages/wyrihaximus/twig-view)
 [![Total Downloads](https://img.shields.io/packagist/dt/wyrihaximus/twig-view?style=flat-square)](https://packagist.org/packages/wyrihaximus/twig-view/stats)
 [![Code Coverage](https://img.shields.io/coveralls/cakephp/legacy-twig-view/master.svg?style=flat-square)](https://coveralls.io/r/cakephp/legacy-twig-view?branch=master)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 This plugin allows you to use the [Twig Templating Language](http://twig.sensiolabs.org) for your views.
 
