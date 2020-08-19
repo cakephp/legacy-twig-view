@@ -18,6 +18,7 @@ use WyriHaximus\TwigView\Test\TestCase;
 
 /**
  * Class LoaderTest.
+ *
  * @package WyriHaximus\TwigView\Test\Lib\Twig
  */
 class LoaderTest extends TestCase

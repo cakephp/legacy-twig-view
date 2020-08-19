@@ -21,6 +21,7 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ProfilerListenerTest.
+ *
  * @package WyriHaximus\TwigView\Test\Event
  */
 class ProfilerListenerTest extends TestCase

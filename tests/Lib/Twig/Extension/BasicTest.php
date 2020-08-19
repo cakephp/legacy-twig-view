@@ -22,21 +22,6 @@ final class BasicTest extends AbstractExtensionTest
         parent::setUp();
     }
 
-    public function testFilterDebug()
-    {
-        $string = 'abc';
-        $callable = $this->getFilter('debug')->getCallable();
-        ob_start();
-        $result = call_user_func_array($callable, [$string, null, false]);
-        $output = ob_get_clean();
-        $this->assertSame('abc', $result);
-        $this->assertSame('
-########## DEBUG ##########
-\'abc\'
-###########################
-', $output);
-    }
-
     public function testFilterPr()
     {
         $string = 'abc';

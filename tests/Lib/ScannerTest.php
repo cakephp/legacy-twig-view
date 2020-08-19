@@ -18,6 +18,7 @@ use WyriHaximus\TwigView\Test\TestCase;
 
 /**
  * Class ScannerTest.
+ *
  * @package WyriHaximus\TwigView\Test\Lib\Twig
  */
 class ScannerTest extends TestCase

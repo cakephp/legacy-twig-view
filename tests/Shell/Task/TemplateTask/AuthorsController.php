@@ -21,7 +21,6 @@ class AuthorsController extends Controller
 {
     /**
      * Testing public controller action.
-     *
      */
     public function index()
     {
@@ -29,7 +28,6 @@ class AuthorsController extends Controller
 
     /**
      * Testing public controller action.
-     *
      */
     public function add()
     {

@@ -26,6 +26,7 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class ExtensionsListenerTest.
+ *
  * @package WyriHaximus\TwigView\Test\Event
  */
 class ExtensionsListenerTest extends TestCase
