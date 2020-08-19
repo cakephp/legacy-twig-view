@@ -36,7 +36,7 @@ abstract class AbstractExtensionTest extends TestCase
     public function testGetTokenParsers()
     {
         $tokenParsers = $this->extension->getTokenParsers();
-        $this->assertTrue(is_array($tokenParsers));
+        $this->assertIsArray($tokenParsers);
         foreach ($tokenParsers as $tokenParser) {
             $this->assertTrue($tokenParser instanceof TokenParserInterface);
         }
@@ -45,7 +45,7 @@ abstract class AbstractExtensionTest extends TestCase
     public function testGetNodeVisitors()
     {
         $nodeVisitors = $this->extension->getNodeVisitors();
-        $this->assertTrue(is_array($nodeVisitors));
+        $this->assertIsArray($nodeVisitors);
         foreach ($nodeVisitors as $nodeVisitor) {
             $this->assertInstanceOf('Twig_NodeVisitorInterface', $nodeVisitor);
         }
@@ -54,7 +54,7 @@ abstract class AbstractExtensionTest extends TestCase
     public function testGetFilters()
     {
         $filters = $this->extension->getFilters();
-        $this->assertTrue(is_array($filters));
+        $this->assertIsArray($filters);
         foreach ($filters as $filter) {
             $this->assertInstanceOf(TwigFilter::class, $filter);
         }
