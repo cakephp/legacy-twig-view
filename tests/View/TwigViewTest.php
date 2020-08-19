@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace WyriHaximus\TwigView\Test;
+namespace WyriHaximus\TwigView\Test\View;
 
 /**
  * This file is part of TwigView.
@@ -20,6 +20,7 @@ use Twig\Environment;
 use Twig\Error\SyntaxError;
 use WyriHaximus\TwigView\Event\ConstructEvent;
 use WyriHaximus\TwigView\Event\EnvironmentConfigEvent;
+use WyriHaximus\TwigView\Test\TestCase;
 use WyriHaximus\TwigView\View\TwigView;
 
 /**
@@ -38,7 +39,7 @@ class TwigViewTest extends TestCase
 
         $callbackFired = false;
         $eventCallback = function ($event) use (&$callbackFired) {
-            self::assertInstanceof(Environment::class, $event->getSubject()->getTwig());
+            $this->assertInstanceof(Environment::class, $event->getSubject()->getTwig());
             $callbackFired = true;
         };
         EventManager::instance()->on(ConstructEvent::EVENT, $eventCallback);
@@ -88,7 +89,7 @@ class TwigViewTest extends TestCase
         $view->setTwig($twig->reveal());
         $renderedView = $view->render($filename);
 
-        self::assertSame($output, $renderedView);
+        $this->assertSame($output, $renderedView);
     }
 
     /**
