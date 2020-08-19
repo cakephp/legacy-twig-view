@@ -18,7 +18,6 @@ class AppView extends \WyriHaximus\TwigView\View\TwigView
      * Initialization hook method.
      *
      * Loads the necessary helper and properly configures them.
-     *
      */
     public function initialize(): void
     {

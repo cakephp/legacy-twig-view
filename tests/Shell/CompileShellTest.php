@@ -23,6 +23,7 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class CompileShell.
+ *
  * @package WyriHaximus\TwigView\Shell
  */
 class CompileShellTest extends TestCase

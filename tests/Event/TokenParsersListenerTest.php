@@ -22,6 +22,7 @@ use WyriHaximus\TwigView\View\TwigView;
 
 /**
  * Class TokenParserListenerTest.
+ *
  * @package WyriHaximus\TwigView\Test\Event
  */
 class TokenParsersListenerTest extends TestCase

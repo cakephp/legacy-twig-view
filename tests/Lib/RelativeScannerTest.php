@@ -18,6 +18,7 @@ use WyriHaximus\TwigView\Test\TestCase;
 
 /**
  * Class RelativeScannerTest.
+ *
  * @package WyriHaximus\TwigView\Test\Lib\Twig
  */
 class RelativeScannerTest extends TestCase

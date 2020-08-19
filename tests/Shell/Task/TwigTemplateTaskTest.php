@@ -41,7 +41,6 @@ class TwigTemplateTaskTest extends TestCase
      * setUp method.
      *
      * Ensure that the default template is used
-     *
      */
     public function setUp(): void
     {
@@ -54,7 +53,6 @@ class TwigTemplateTaskTest extends TestCase
 
     /**
      * tearDown method.
-     *
      */
     public function tearDown(): void
     {
@@ -65,7 +63,6 @@ class TwigTemplateTaskTest extends TestCase
 
     /**
      * test Bake method.
-     *
      */
     public function testBakeView()
     {
@@ -86,7 +83,6 @@ class TwigTemplateTaskTest extends TestCase
 
     /**
      * test baking an edit file.
-     *
      */
     public function testBakeEdit()
     {
@@ -106,7 +102,6 @@ class TwigTemplateTaskTest extends TestCase
 
     /**
      * test baking an index.
-     *
      */
     public function testBakeIndex()
     {
@@ -126,7 +121,6 @@ class TwigTemplateTaskTest extends TestCase
 
     /**
      * test bake template with index limit overwrite.
-     *
      */
     public function testBakeIndexWithIndexLimit()
     {
@@ -146,7 +140,6 @@ class TwigTemplateTaskTest extends TestCase
 
     /**
      * test baking an index with output file.
-     *
      */
     public function testBakeIndexWithOutputFile()
     {
