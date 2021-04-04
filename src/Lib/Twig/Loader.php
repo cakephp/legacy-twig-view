@@ -110,7 +110,7 @@ class Loader implements \Twig_LoaderInterface, \Twig_ExistsLoaderInterface, \Twi
      */
     protected function getPaths($plugin)
     {
-        if ($plugin === null || !Plugin::loaded($plugin)) {
+        if ($plugin === null || !Plugin::isLoaded($plugin)) {
             return App::path('Template');
         }
 
