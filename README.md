@@ -10,6 +10,8 @@ This plugin allows you to use the [Twig Templating Language](http://twig.sensiol
 
 In addition to enabling the use of most of Twig's features, the plugin is tightly integrated with the CakePHP view renderer giving you full access to helpers, objects and elements.
 
+DEPRECATED: Use [cakephp/twig-view](https://github.com/cakephp/twig-view) instead.
+
 ## Installation ##
 
 To install via [Composer](https://getcomposer.org/), use the command below.
