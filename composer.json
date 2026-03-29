@@ -58,6 +58,7 @@
           "phpunit"
         ]
     },
+    "abandoned": "cakephp/twig-view",
     "config": {
         "sort-packages": true
     },
